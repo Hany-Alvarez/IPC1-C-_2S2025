@@ -68,6 +68,7 @@ if (OPCION <=9){
             if (NombredePersonajes[i]==null || NombredePersonajes[i].equals ("")){
                 NombredePersonajes[i]=ingresonombre;
                 ID[i] = 202500+i;
+                System.out.println("ID= "+ID[i]);
                 
                 for (int j=0;j<i;j++){
                     
@@ -278,6 +279,12 @@ if ( OPCION==2){
     String modificacion =buffer.readLine();
     
     for (int i=1;i<=101;i++){
+    // Si es nulo
+    if (modificacion.equalsIgnoreCase(null)){
+        System.out.println("Aun no hay personajes, agregue uno para poder modificar");
+    }   
+    
+    //Si se ingresa Nombre      
     if (modificacion.toLowerCase().equals(NombredePersonajes[i].toLowerCase())){
         System.out.println("Estos son las datos del personaje " + NombredePersonajes[i]);
         System.out.println("1.Nombre:"+NombredePersonajes[i]);
@@ -291,6 +298,7 @@ if ( OPCION==2){
         System.out.println("4.Nivel de poder:"+Fuerza[i]);
         System.out.println(" ");
         System.out.println("Si desea modificar algún atributo escriba el número correspondiente");
+        System.out.println("5.Sino desea modificar:");
         String modi =buffer.readLine();
         Integer MODI = Integer.parseInt(modi);
         
@@ -322,20 +330,218 @@ if ( OPCION==2){
                  }
             
             }
-        
-        
         }
         
         //Cambiar Arma
         if (MODI==2){
-            
+            ArmadePersonajes[i]=null;
+            System.out.println("Cambiar arma: ");
+            String ingresoarma =buffer.readLine();
+            ArmadePersonajes[i]=ingresoarma;          
         }
-    break;
+        
+        //Cambiar Habilidades
+        if (MODI==3){
+            System.out.println("¿Qué habilidad deseas cambiar o agregar? (Escribe el número de 1-5) ");
+            String cambiohabilidad= buffer.readLine();
+            Integer CAMBIO = Integer.parseInt(cambiohabilidad);
+            
+            if (CAMBIO ==1){
+            System.out.println("Escribe la nueva habilidad 1: ");
+            String Hnueva= buffer.readLine();
+            Habilidades[i*5]=Hnueva;
+            
+            }
+            
+            if (CAMBIO ==2){
+            System.out.println("Escribe la nueva habilidad 2: ");
+            String Hnueva= buffer.readLine();
+            Habilidades[(i*5)+1]=Hnueva;
+            
+            }
+            
+            if (CAMBIO ==3){
+            System.out.println("Escribe la nueva habilidad 3: ");
+            String Hnueva= buffer.readLine();
+            Habilidades[(i*5)+2]=Hnueva;
+            
+            }
+            
+            if (CAMBIO ==4){
+            System.out.println("Escribe la nueva habilidad 4: ");
+            String Hnueva= buffer.readLine();
+            Habilidades[(i*5)+3]=Hnueva;
+            
+            }
+            
+            if (CAMBIO ==5){
+            System.out.println("Escribe la nueva habilidad 5: ");
+            String Hnueva= buffer.readLine();
+            Habilidades[(i*5)+4]=Hnueva;
+            
+            }
+        }
+        
+        // Cambiar nivel de poder
+        if (MODI==4){
+        
+        Boolean repetido2 =true;
+        while (repetido2==true) {  
+        System.out.println("Seleccione un nuévo rango de poder (1-100)");
+        String stringresopoder= buffer.readLine();
+        Integer PODER = Integer.parseInt(stringresopoder);
+        repetido2 =false;
+        
+                Fuerza[i]=PODER;
+                    if (Fuerza[i]>=1 && Fuerza[i]<=100){
+                        System.out.println("¡Listo!");
+                        break;
+                    }
+                    else {
+                        System.out.println("Número fuera de rango, ingresa un valor válido");
+                        Fuerza[i]=null;
+                        repetido2 = true;
+                    }
+                      
+        }
+        }  
+        
+        //Salir sino quiero modificar nada
+        if (MODI==5){
+            break;
         }
     }
     
-    
-    
+    //Si se ingresa ID    
+    Integer CID = Integer.parseInt(modificacion);
+     if (CID.equals(ID[i])){
+        System.out.println("Estos son las datos del personaje " + NombredePersonajes[i]+ " con ID "+ ID[i]);
+        System.out.println("1.Nombre:"+NombredePersonajes[i]);
+        System.out.println("2.Arma:"+ArmadePersonajes[i]);
+        System.out.println("3.Habilidades:");
+            System.out.println("Habilidad 1= "+ Habilidades[i*5]); 
+            System.out.println("Habilidad 2= "+ Habilidades[(i*5)+1]);
+            System.out.println("Habilidad 3= "+ Habilidades[(i*5)+2]);
+            System.out.println("Habilidad 4= "+ Habilidades[(i*5)+3]);
+            System.out.println("Habilidad 5= "+ Habilidades[(i*5)+4]);
+        System.out.println("4.Nivel de poder:"+Fuerza[i]);
+        System.out.println(" ");
+        System.out.println("Si desea modificar algún atributo escriba el número correspondiente");
+        System.out.println("5.Sino desea modificar:");
+        String modi =buffer.readLine();
+        Integer MODI = Integer.parseInt(modi);
+        
+        // Cambio de Nombre
+        if ( MODI==1){
+        NombredePersonajes[i]=null;
+        
+        Boolean repetido =true;
+        while (repetido==true) {  
+        System.out.println("Cambiar nombre de personaje: ");
+        String ingresonombre = buffer.readLine(); 
+        NombredePersonajes[0]="Dato de primera comparación";
+        repetido =false;
+        
+            if (NombredePersonajes[i]==null || NombredePersonajes[i].equals ("")){
+                NombredePersonajes[i]=ingresonombre;
+                
+                for (int j=0;j<i;j++){
+                    
+                    if (NombredePersonajes[j].equalsIgnoreCase(NombredePersonajes[i])){
+                        System.out.println("El nombre ya existe,ingresa otro nombre");
+                        NombredePersonajes[i]=null;
+                        repetido = true;
+                        break;
+                       
+                        }
+                    }
+                
+                 }
+            
+            }
+        }
+        
+        //Cambiar Arma
+        if (MODI==2){
+            ArmadePersonajes[i]=null;
+            System.out.println("Cambiar arma: ");
+            String ingresoarma =buffer.readLine();
+            ArmadePersonajes[i]=ingresoarma;          
+        }
+        
+        //Cambiar Habilidades
+        if (MODI==3){
+            System.out.println("¿Qué habilidad deseas cambiar o agregar? (Escribe el número de 1-5) ");
+            String cambiohabilidad= buffer.readLine();
+            Integer CAMBIO = Integer.parseInt(cambiohabilidad);
+            
+            if (CAMBIO ==1){
+            System.out.println("Escribe la nueva habilidad 1: ");
+            String Hnueva= buffer.readLine();
+            Habilidades[i*5]=Hnueva;
+            
+            }
+            
+            if (CAMBIO ==2){
+            System.out.println("Escribe la nueva habilidad 2: ");
+            String Hnueva= buffer.readLine();
+            Habilidades[(i*5)+1]=Hnueva;
+            
+            }
+            
+            if (CAMBIO ==3){
+            System.out.println("Escribe la nueva habilidad 3: ");
+            String Hnueva= buffer.readLine();
+            Habilidades[(i*5)+2]=Hnueva;
+            
+            }
+            
+            if (CAMBIO ==4){
+            System.out.println("Escribe la nueva habilidad 4: ");
+            String Hnueva= buffer.readLine();
+            Habilidades[(i*5)+3]=Hnueva;
+            
+            }
+            
+            if (CAMBIO ==5){
+            System.out.println("Escribe la nueva habilidad 5: ");
+            String Hnueva= buffer.readLine();
+            Habilidades[(i*5)+4]=Hnueva;
+            
+            }
+        }
+        
+        // Cambiar nivel de poder
+        if (MODI==4){
+        
+        Boolean repetido2 =true;
+        while (repetido2==true) {  
+        System.out.println("Seleccione un nuévo rango de poder (1-100)");
+        String stringresopoder= buffer.readLine();
+        Integer PODER = Integer.parseInt(stringresopoder);
+        repetido2 =false;
+        
+                Fuerza[i]=PODER;
+                    if (Fuerza[i]>=1 && Fuerza[i]<=100){
+                        System.out.println("¡Listo!");
+                        break;
+                    }
+                    else {
+                        System.out.println("Número fuera de rango, ingresa un valor válido");
+                        Fuerza[i]=null;
+                        repetido2 = true;
+                    }
+                      
+        }
+        }  
+        
+        //Salir sino quiero modificar nada
+        if (MODI==5){
+            break;
+        }
+    break;
+        }   
+    } 
 }//llave que cierra opcion 2
     
     
