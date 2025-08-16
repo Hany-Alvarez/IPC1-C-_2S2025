@@ -546,21 +546,55 @@ if ( OPCION==2){
     
     
     
+//ELIMINAR PERSONAJE    
+if ( OPCION==3){
+    System.out.println("Escriba el ID del personaje que desea eliminar:");
+    String eliminar =buffer.readLine();
     
-    
-    
-    
-    
-    
-    
-    
-    
-    if ( OPCION==3){
-    System.out.println("3");
+    for (int i=1;i<=101;i++){
+    Integer CID = Integer.parseInt(eliminar);
+         if (CID.equals(ID[i])){
+             NombredePersonajes[i]=null;
+             ArmadePersonajes[i]=null;
+             Habilidades[i*5]=null;
+             Habilidades[(i*5)+1]=null;
+             Habilidades[(i*5)+2]=null;
+             Habilidades[(i*5)+3]=null;
+             Habilidades[(i*5)+4]=null;
+             Fuerza[i]=null;
+             ID[i]=null;
+             System.out.println("El personaje ha sido eliminado exitosamente");
+             break;
+         }
+        
     }
-    if ( OPCION==4){
-    System.out.println("4");
+    
+    
+    }//llave que cierra opcion 3
+
+
+//VER DATOS DE UN PERSONAJE
+if ( OPCION==4){
+    System.out.println("Escriba el ID del personaje :");
+    String ver =buffer.readLine();
+    
+    for (int i=1;i<=101;i++){
+    Integer CID = Integer.parseInt(ver);
+         if (CID.equals(ID[i])){
+        System.out.println("Estos son las datos del personaje " + NombredePersonajes[i]+ " con ID "+ ID[i]);
+        System.out.println("1.Nombre:"+NombredePersonajes[i]);
+        System.out.println("2.ID:"+ID[i]);
+        System.out.println("2.Arma:"+ArmadePersonajes[i]);
+        System.out.println("3.Habilidades:");
+            System.out.println("Habilidad 1= "+ Habilidades[i*5]); 
+            System.out.println("Habilidad 2= "+ Habilidades[(i*5)+1]);
+            System.out.println("Habilidad 3= "+ Habilidades[(i*5)+2]);
+            System.out.println("Habilidad 4= "+ Habilidades[(i*5)+3]);
+            System.out.println("Habilidad 5= "+ Habilidades[(i*5)+4]);
+        System.out.println("4.Nivel de poder:"+Fuerza[i]);  
+         }
     }
+}// llave que cierra opcion 4
     if ( OPCION==5){
     System.out.println("5");
     }
