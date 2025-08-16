@@ -17,10 +17,10 @@ public class Main {
  public static void main (String[] arge) throws IOException{   
     
 String[] NombredePersonajes = new String[101];
-Integer[] ID = new Integer[100];
+Integer[] ID = new Integer[101];
 String[] ArmadePersonajes = new String[101];
 String[] Habilidades = new String[502]; // Esto me da la posibilidad de solo poder agregar 100 personajes
-Integer[] Fuerza = new Integer[100];
+Integer[] Fuerza = new Integer[101];
  
 
 InputStreamReader capturarTeclado = new InputStreamReader(System.in);
@@ -278,7 +278,7 @@ if ( OPCION==2){
     System.out.println("Escriba el nombre o ID del personaje que desea modificar");
     String modificacion =buffer.readLine();
     
-    for (int i=1;i<=101;i++){
+    for (int i=1;i<101;i++){
     // Si es nulo
     if (modificacion.equalsIgnoreCase(null)){
         System.out.println("Aun no hay personajes, agregue uno para poder modificar");
@@ -578,7 +578,7 @@ if ( OPCION==4){
     System.out.println("Escriba el ID del personaje :");
     String ver =buffer.readLine();
     
-    for (int i=1;i<=101;i++){
+    for (int i=1;i<101;i++){
     Integer CID = Integer.parseInt(ver);
          if (CID.equals(ID[i])){
         System.out.println("Estos son las datos del personaje " + NombredePersonajes[i]+ " con ID "+ ID[i]);
@@ -595,9 +595,12 @@ if ( OPCION==4){
          }
     }
 }// llave que cierra opcion 4
+   
+
     if ( OPCION==5){
     System.out.println("5");
-    }
+        }
+
     if ( OPCION==6){
     System.out.println("6");
     }
