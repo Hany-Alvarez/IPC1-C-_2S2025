@@ -110,7 +110,7 @@ if (OPCION <=9){
         }
         }
         
-        //Habilidades del Personaje
+        //HABILIDAD DEL PERSONAJE (hasta 5)
         System.out.println("Puede agregar hasta 5 habilidades ");
         System.out.println("Agregar habilidad 1 :");
         String ingresohabilidad1=buffer.readLine();
@@ -122,11 +122,11 @@ if (OPCION <=9){
         }
         }
         
+        // Sino quiere habilidad 2 y el resto
         System.out.println("Agregar habilidad 2 (sino quiere más habilidades escriba saltar):");
         String ingresohabilidad2=buffer.readLine();
+        
         if (ingresohabilidad2.equals("saltar")){ 
-            
-           
             for (int i=2;i<=502;i+=5){
                 if (Habilidades[i]==null || Habilidades[i].equals ("")){
                 Habilidades[i]="No habilidad2"; 
@@ -158,41 +158,104 @@ if (OPCION <=9){
        
         }
         
+        // else madre
         else {
+        // Se guarda la habilidad 2
         for (int i=2;i<=502;i+=5){
             if (Habilidades[i]==null || Habilidades[i].equals ("")){
                 Habilidades[i]=ingresohabilidad2;
+            break;
+            }
+        }
+            // Sino se quiere la habilidad 3 y el resto
+            System.out.println("Agregar habilidad 3 (sino quiere más habilidades escriba saltar):");
+            String ingresohabilidad3=buffer.readLine();
         
-        break;
-        }
-        }
-         System.out.println("Agregar habilidad 3:");
-        String ingresohabilidad3=buffer.readLine();
-        for (int i=3;i<=502;i+=5){
-            if (Habilidades[i]==null || Habilidades[i].equals ("")){
-                Habilidades[i]=ingresohabilidad3;
-        
-        break;
-        }
-        }
-        System.out.println("Agregar habilidad 4:");
-        String ingresohabilidad4=buffer.readLine();
-        for (int i=4;i<=502;i+=5){
-            if (Habilidades[i]==null || Habilidades[i].equals ("")){
-                Habilidades[i]=ingresohabilidad4;
-        
-        break;
-        }
-        }
-        System.out.println("Agregar habilidad 5:");
-        String ingresohabilidad5=buffer.readLine();
-        for (int i=5;i<=502;i+=5){
-            if (Habilidades[i]==null || Habilidades[i].equals ("")){
-                Habilidades[i]=ingresohabilidad5;
-        
-        break;
-        }
-        }
+            if (ingresohabilidad3.equals("saltar")){ 
+                for (int i=3;i<502;i+=5){
+                    if (Habilidades[i]==null || Habilidades[i].equals ("")){
+                    Habilidades[i]="No habilidad3";
+                    break;
+                    }   
+                }
+          
+                for (int i=4;i<502;i+=5){
+                    if (Habilidades[i]==null || Habilidades[i].equals ("")){
+                    Habilidades[i]="No habilidad4";
+                    break;
+                    }   
+                }
+            
+                for (int i=5;i<502;i+=5){
+                    if (Habilidades[i]==null || Habilidades[i].equals ("")){
+                    Habilidades[i]="No habilidad5";
+                    break;
+                    }   
+                }           
+       
+            }
+            // else hijo mayor
+            else{
+            // Se guarda la habilidad 3
+                for (int i=3;i<=502;i+=5){
+                    if (Habilidades[i]==null || Habilidades[i].equals ("")){
+                    Habilidades[i]=ingresohabilidad3;
+                    break;
+                    }
+                }   
+                // Sino se quiere la habilidad 4 y el resto
+                System.out.println("Agregar habilidad 4 (sino quiere más habilidades escriba saltar):");
+                String ingresohabilidad4=buffer.readLine();
+                
+                if (ingresohabilidad4.equals("saltar")){ 
+                for (int i=4;i<502;i+=5){
+                    if (Habilidades[i]==null || Habilidades[i].equals ("")){
+                    Habilidades[i]="No habilidad4";
+                    break;
+                    }   
+                }
+          
+                for (int i=5;i<502;i+=5){
+                    if (Habilidades[i]==null || Habilidades[i].equals ("")){
+                    Habilidades[i]="No habilidad5";
+                    break;
+                    }   
+                }
+                }
+                // else hijo del medio
+                else{
+                    // Se guarda la habilidad 4
+                    for (int i=4;i<=502;i+=5){
+                        if (Habilidades[i]==null || Habilidades[i].equals ("")){
+                        Habilidades[i]=ingresohabilidad4;
+                        break;
+                        }
+                    }
+                
+                    // Sino se quiere la habilidad 4 y el resto
+                    System.out.println("Agregar habilidad 5 (sino quiere más habilidades escriba saltar):");
+                    String ingresohabilidad5=buffer.readLine();
+                
+                    if (ingresohabilidad5.equals("saltar")){ 
+                    for (int i=5;i<502;i+=5){
+                        if (Habilidades[i]==null || Habilidades[i].equals ("")){
+                        Habilidades[i]="No habilidad5";
+                        break;
+                        }   
+                    }
+                    }
+                    //else hijo menor
+                    else{
+                        // Se guarda la habilidad 5
+                        for (int i=5;i<=502;i+=5){
+                            if (Habilidades[i]==null || Habilidades[i].equals ("")){
+                            Habilidades[i]=ingresohabilidad5;
+                            break;
+                            }
+                        }   
+                            }
+                }   
+            }
         }
     }
        
