@@ -13,23 +13,7 @@ import java.io.InputStreamReader;
  * @author hanya
  */
 public class Main {
-    
-    private static void NombreVerificacion(String[] NombredePersonajes,String ingresonombre) 
-    {
-        
-        for (int i=0;i<=100;i++){
-            if (NombredePersonajes[i]!= ""){
-                System.out.println("Esta vacio");
-            }
-            else {
-                System.out.println("Esta lleno");
-            }
-        
-        
-        }
-    } 
-            
-
+         
  public static void main (String[] arge) throws IOException{   
     
 String[] NombredePersonajes = new String[101];
@@ -115,7 +99,7 @@ if (OPCION <=9){
         System.out.println("Puede agregar hasta 5 habilidades ");
         System.out.println("Agregar habilidad 1 :");
         String ingresohabilidad1=buffer.readLine();
-        for (int i=1;i<=502;i+=5){
+        for (int i=5;i<=506;i+=5){
             if (Habilidades[i]==null || Habilidades[i].equals ("")){
                 Habilidades[i]=ingresohabilidad1;
         
@@ -128,7 +112,7 @@ if (OPCION <=9){
             String ingresohabilidad2=buffer.readLine();
 
             if (ingresohabilidad2.equals("omitir")){ 
-                for (int i=2;i<=502;i+=5){
+                for (int i=6;i<=506;i+=5){
                     if (Habilidades[i]==null || Habilidades[i].equals ("")){
                     Habilidades[i]="No habilidad2"; 
                     break;
@@ -136,21 +120,21 @@ if (OPCION <=9){
                 }
 
 
-                for (int i=3;i<502;i+=5){
+                for (int i=7;i<506;i+=5){
                     if (Habilidades[i]==null || Habilidades[i].equals ("")){
                     Habilidades[i]="No habilidad3";
                     break;
                     }   
                 }
 
-                for (int i=4;i<502;i+=5){
+                for (int i=8;i<506;i+=5){
                     if (Habilidades[i]==null || Habilidades[i].equals ("")){
                     Habilidades[i]="No habilidad4";
                     break;
                     }   
                 }
 
-                for (int i=5;i<502;i+=5){
+                for (int i=9;i<506;i+=5){
                     if (Habilidades[i]==null || Habilidades[i].equals ("")){
                     Habilidades[i]="No habilidad5";
                     break;
@@ -162,7 +146,7 @@ if (OPCION <=9){
             // else madre
             else {
             // Se guarda la habilidad 2
-            for (int i=2;i<=502;i+=5){
+            for (int i=6;i<=506;i+=5){
                 if (Habilidades[i]==null || Habilidades[i].equals ("")){
                     Habilidades[i]=ingresohabilidad2;
                 break;
@@ -173,21 +157,21 @@ if (OPCION <=9){
                 String ingresohabilidad3=buffer.readLine();
 
                 if (ingresohabilidad3.equals("omitir")){ 
-                    for (int i=3;i<502;i+=5){
+                    for (int i=7;i<506;i+=5){
                         if (Habilidades[i]==null || Habilidades[i].equals ("")){
                         Habilidades[i]="No habilidad3";
                         break;
                         }   
                     }
 
-                    for (int i=4;i<502;i+=5){
+                    for (int i=8;i<506;i+=5){
                         if (Habilidades[i]==null || Habilidades[i].equals ("")){
                         Habilidades[i]="No habilidad4";
                         break;
                         }   
                     }
 
-                    for (int i=5;i<502;i+=5){
+                    for (int i=9;i<506;i+=5){
                         if (Habilidades[i]==null || Habilidades[i].equals ("")){
                         Habilidades[i]="No habilidad5";
                         break;
@@ -198,7 +182,7 @@ if (OPCION <=9){
                 // else hijo mayor
                 else{
                 // Se guarda la habilidad 3
-                    for (int i=3;i<=502;i+=5){
+                    for (int i=7;i<=506;i+=5){
                         if (Habilidades[i]==null || Habilidades[i].equals ("")){
                         Habilidades[i]=ingresohabilidad3;
                         break;
@@ -209,14 +193,14 @@ if (OPCION <=9){
                     String ingresohabilidad4=buffer.readLine();
 
                     if (ingresohabilidad4.equals("omitir")){ 
-                    for (int i=4;i<502;i+=5){
+                    for (int i=8;i<506;i+=5){
                         if (Habilidades[i]==null || Habilidades[i].equals ("")){
                         Habilidades[i]="No habilidad4";
                         break;
                         }   
                     }
 
-                    for (int i=5;i<502;i+=5){
+                    for (int i=9;i<506;i+=5){
                         if (Habilidades[i]==null || Habilidades[i].equals ("")){
                         Habilidades[i]="No habilidad5";
                         break;
@@ -226,7 +210,7 @@ if (OPCION <=9){
                     // else hijo del medio
                     else{
                         // Se guarda la habilidad 4
-                        for (int i=4;i<=502;i+=5){
+                        for (int i=8;i<=506;i+=5){
                             if (Habilidades[i]==null || Habilidades[i].equals ("")){
                             Habilidades[i]=ingresohabilidad4;
                             break;
@@ -238,7 +222,7 @@ if (OPCION <=9){
                         String ingresohabilidad5=buffer.readLine();
 
                         if (ingresohabilidad5.equals("omitir")){ 
-                        for (int i=5;i<502;i+=5){
+                        for (int i=9;i<506;i+=5){
                             if (Habilidades[i]==null || Habilidades[i].equals ("")){
                             Habilidades[i]="No habilidad5";
                             break;
@@ -248,7 +232,7 @@ if (OPCION <=9){
                         //else hijo menor
                         else{
                             // Se guarda la habilidad 5
-                            for (int i=5;i<=502;i+=5){
+                            for (int i=9;i<=506;i+=5){
                                 if (Habilidades[i]==null || Habilidades[i].equals ("")){
                                 Habilidades[i]=ingresohabilidad5;
                                 break;
@@ -287,27 +271,84 @@ if (OPCION <=9){
    }  
                 
     
+// MODIFICAR PERSONAJE
+if ( OPCION==2){
     
+    System.out.println("Escriba el nombre o ID del personaje que desea modificar");
+    String modificacion =buffer.readLine();
     
-    
-       
-     
-    
-    if ( OPCION==2){
-    
-    
-    System.out.println(NombredePersonajes[1]);
-    System.out.println(ArmadePersonajes[1]);
-    
-    
-    for (String habilidad : Habilidades) {
-    System.out.println(habilidad);
-}
-    System.out.println(Fuerza[1]);
-    System.out.println(ID[1]);
-    System.out.println(ID[2]);
-    
+    for (int i=1;i<=101;i++){
+    if (modificacion.toLowerCase().equals(NombredePersonajes[i].toLowerCase())){
+        System.out.println("Estos son las datos del personaje " + NombredePersonajes[i]);
+        System.out.println("1.Nombre:"+NombredePersonajes[i]);
+        System.out.println("2.Arma:"+ArmadePersonajes[i]);
+        System.out.println("3.Habilidades:");
+            System.out.println("Habilidad 1= "+ Habilidades[i*5]); 
+            System.out.println("Habilidad 2= "+ Habilidades[(i*5)+1]);
+            System.out.println("Habilidad 3= "+ Habilidades[(i*5)+2]);
+            System.out.println("Habilidad 4= "+ Habilidades[(i*5)+3]);
+            System.out.println("Habilidad 5= "+ Habilidades[(i*5)+4]);
+        System.out.println("4.Nivel de poder:"+Fuerza[i]);
+        System.out.println(" ");
+        System.out.println("Si desea modificar algún atributo escriba el número correspondiente");
+        String modi =buffer.readLine();
+        Integer MODI = Integer.parseInt(modi);
+        
+        // Cambio de Nombre
+        if ( MODI==1){
+        NombredePersonajes[i]=null;
+        
+        Boolean repetido =true;
+        while (repetido==true) {  
+        System.out.println("Cambiar nombre de personaje: ");
+        String ingresonombre = buffer.readLine(); 
+        NombredePersonajes[0]="Dato de primera comparación";
+        repetido =false;
+        
+            if (NombredePersonajes[i]==null || NombredePersonajes[i].equals ("")){
+                NombredePersonajes[i]=ingresonombre;
+                
+                for (int j=0;j<i;j++){
+                    
+                    if (NombredePersonajes[j].equalsIgnoreCase(NombredePersonajes[i])){
+                        System.out.println("El nombre ya existe,ingresa otro nombre");
+                        NombredePersonajes[i]=null;
+                        repetido = true;
+                        break;
+                       
+                        }
+                    }
+                
+                 }
+            
+            }
+        
+        
+        }
+        
+        //Cambiar Arma
+        if (MODI==2){
+            
+        }
+    break;
+        }
     }
+    
+    
+    
+}//llave que cierra opcion 2
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     if ( OPCION==3){
     System.out.println("3");
     }
