@@ -33,6 +33,7 @@ public class Main {
  public static void main (String[] arge) throws IOException{   
     
 String[] NombredePersonajes = new String[101];
+Integer[] ID = new Integer[100];
 String[] ArmadePersonajes = new String[101];
 String[] Habilidades = new String[502]; // Esto me da la posibilidad de solo poder agregar 100 personajes
 Integer[] Fuerza = new Integer[100];
@@ -82,7 +83,7 @@ if (OPCION <=9){
         for (int i=1;i<=101;i++){
             if (NombredePersonajes[i]==null || NombredePersonajes[i].equals ("")){
                 NombredePersonajes[i]=ingresonombre;
-                
+                ID[i] = 202500+i;
                 
                 for (int j=0;j<i;j++){
                     
@@ -123,10 +124,10 @@ if (OPCION <=9){
         }
         
             // Sino quiere habilidad 2 y el resto
-            System.out.println("Agregar habilidad 2 (sino quiere más habilidades escriba saltar):");
+            System.out.println("Agregar habilidad 2 (sino quiere más habilidades escriba omitir):");
             String ingresohabilidad2=buffer.readLine();
 
-            if (ingresohabilidad2.equals("saltar")){ 
+            if (ingresohabilidad2.equals("omitir")){ 
                 for (int i=2;i<=502;i+=5){
                     if (Habilidades[i]==null || Habilidades[i].equals ("")){
                     Habilidades[i]="No habilidad2"; 
@@ -168,10 +169,10 @@ if (OPCION <=9){
                 }
             }
                 // Sino se quiere la habilidad 3 y el resto
-                System.out.println("Agregar habilidad 3 (sino quiere más habilidades escriba saltar):");
+                System.out.println("Agregar habilidad 3 (sino quiere más habilidades escriba omitir):");
                 String ingresohabilidad3=buffer.readLine();
 
-                if (ingresohabilidad3.equals("saltar")){ 
+                if (ingresohabilidad3.equals("omitir")){ 
                     for (int i=3;i<502;i+=5){
                         if (Habilidades[i]==null || Habilidades[i].equals ("")){
                         Habilidades[i]="No habilidad3";
@@ -204,10 +205,10 @@ if (OPCION <=9){
                         }
                     }   
                     // Sino se quiere la habilidad 4 y el resto
-                    System.out.println("Agregar habilidad 4 (sino quiere más habilidades escriba saltar):");
+                    System.out.println("Agregar habilidad 4 (sino quiere más habilidades escriba omitir):");
                     String ingresohabilidad4=buffer.readLine();
 
-                    if (ingresohabilidad4.equals("saltar")){ 
+                    if (ingresohabilidad4.equals("omitir")){ 
                     for (int i=4;i<502;i+=5){
                         if (Habilidades[i]==null || Habilidades[i].equals ("")){
                         Habilidades[i]="No habilidad4";
@@ -233,10 +234,10 @@ if (OPCION <=9){
                         }
 
                         // Sino se quiere la habilidad 4 y el resto
-                        System.out.println("Agregar habilidad 5 (sino quiere más habilidades escriba saltar):");
+                        System.out.println("Agregar habilidad 5 (sino quiere más habilidades escriba omitir):");
                         String ingresohabilidad5=buffer.readLine();
 
-                        if (ingresohabilidad5.equals("saltar")){ 
+                        if (ingresohabilidad5.equals("omitir")){ 
                         for (int i=5;i<502;i+=5){
                             if (Habilidades[i]==null || Habilidades[i].equals ("")){
                             Habilidades[i]="No habilidad5";
@@ -302,6 +303,9 @@ if (OPCION <=9){
     for (String habilidad : Habilidades) {
     System.out.println(habilidad);
 }
+    System.out.println(Fuerza[1]);
+    System.out.println(ID[1]);
+    System.out.println(ID[2]);
     
     }
     if ( OPCION==3){
