@@ -124,7 +124,7 @@ if (OPCION <=9){
         
         System.out.println("Agregar habilidad 2 (sino quiere más habilidades escriba saltar):");
         String ingresohabilidad2=buffer.readLine();
-        if (ingresohabilidad2=="saltar"){ 
+        if (ingresohabilidad2.equals("saltar")){ 
             
            
             for (int i=2;i<=502;i+=5){
@@ -141,9 +141,23 @@ if (OPCION <=9){
                 break;
                 }   
             }
-              
+            
+            for (int i=4;i<502;i+=5){
+                if (Habilidades[i]==null || Habilidades[i].equals ("")){
+                Habilidades[i]="No habilidad4";
+                break;
+                }   
+            }
+            
+            for (int i=5;i<502;i+=5){
+                if (Habilidades[i]==null || Habilidades[i].equals ("")){
+                Habilidades[i]="No habilidad5";
+                break;
+                }   
+            }           
        
         }
+        
         else {
         for (int i=2;i<=502;i+=5){
             if (Habilidades[i]==null || Habilidades[i].equals ("")){
@@ -179,11 +193,6 @@ if (OPCION <=9){
         break;
         }
         }
-        
-        
-        
-        
-        
         }
     }
        
