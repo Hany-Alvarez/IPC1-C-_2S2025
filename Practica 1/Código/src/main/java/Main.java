@@ -152,12 +152,7 @@ if (OPCION <=9){
         break;
         }
         }
-        }
-  
-    
-    ///
-    
-        System.out.println("Agregar habilidad 3:");
+         System.out.println("Agregar habilidad 3:");
         String ingresohabilidad3=buffer.readLine();
         for (int i=3;i<=502;i+=5){
             if (Habilidades[i]==null || Habilidades[i].equals ("")){
@@ -183,6 +178,12 @@ if (OPCION <=9){
         
         break;
         }
+        }
+        
+        
+        
+        
+        
         }
     }
        
