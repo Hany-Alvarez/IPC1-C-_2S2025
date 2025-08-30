@@ -12,8 +12,9 @@ import java.io.InputStreamReader;
  * @author hanya
  */
 public class Sistema_de_inventario_tienda_ropa {
-
+    
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        System.out.println("Definir variables");
     }
 }
