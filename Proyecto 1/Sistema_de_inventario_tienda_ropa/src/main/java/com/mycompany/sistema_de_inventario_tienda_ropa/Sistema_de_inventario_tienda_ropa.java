@@ -14,7 +14,13 @@ import java.io.InputStreamReader;
 public class Sistema_de_inventario_tienda_ropa {
     
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        System.out.println("Definir variables");
+     InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+
+        System.out.println("¡Bienvenido elige una opción!");
+
+        boolean salir = false;
+        
+ 
     }
 }
