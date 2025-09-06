@@ -23,6 +23,13 @@ public class Sistema_de_inventario_tienda_ropa {
         mensaje_de_venta(N,A);
         boolean salir = false;
         
+         do {
+             
+         }while (!salir);
+        
+        
+        
+        
  
     }
     
