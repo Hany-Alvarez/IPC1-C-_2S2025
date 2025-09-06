@@ -18,9 +18,16 @@ public class Sistema_de_inventario_tienda_ropa {
         BufferedReader buffer = new BufferedReader(capturarTeclado);
 
         System.out.println("¡Bienvenido elige una opción!");
-
+        String N="Natalia";
+        int A=2;
+        mensaje_de_venta(N,A);
         boolean salir = false;
         
+ 
+    }
+    
+    static void mensaje_de_venta(String nombre,int veces){
+        System.out.println("Hola "+nombre+" esta es tu intento "+veces);
  
     }
 }
