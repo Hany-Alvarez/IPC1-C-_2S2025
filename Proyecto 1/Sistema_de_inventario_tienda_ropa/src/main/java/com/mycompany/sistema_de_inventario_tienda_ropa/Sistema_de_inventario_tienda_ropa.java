@@ -43,7 +43,7 @@ public class Sistema_de_inventario_tienda_ropa {
             //Entrada al menu de opciones
             for (int i = 0; i <= 100; i++) {
                 if (Acciones_Correctas[0][i] == null && Acciones_Incorrectas[0][1] == null) {
-                    System.out.println("¡Gracias! ¡Ya puedes utilizar el inventario! (Recuerda cada acción se registra en bitácora)");
+                    System.out.println("¡Gracias! " + Persona[i] + " ¡Ya puedes utilizar el inventario! (Recuerda cada acción se registra en bitácora)");
                     System.out.println("");
                     System.out.println("1.Agregar Producto");
                     System.out.println("2.Buscar Producto");
@@ -53,27 +53,31 @@ public class Sistema_de_inventario_tienda_ropa {
                     System.out.println("6.Ver Datos del Estudiante");
                     System.out.println("7.Bitácora");
                     System.out.println("8.Salir");
-                    String opcion = buffer.readLine();
-                    Integer OPCION = Integer.parseInt(opcion);
 
                     //Menú
-                    switch (OPCION) {
-                        case 1 -> {
-                            System.out.println("Ingresa el número a sumar  ");
+                    try {
+                        String opcion = buffer.readLine();
+                        Integer OPCION = Integer.parseInt(opcion);
+
+                        switch (OPCION) {
+                            case 1 -> {
+                                System.out.println("Ingresa el número a sumar  ");
+
+                            }
+                            case 8 -> {
+                                salir = true;
+
+                            }
 
                         }
-                        case 8 -> {
-                            break;
 
-                        }
-
-                        default -> {
-                            break;
-                        }
+                    } catch (NumberFormatException c) {
+                        System.out.println("No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c);
                     }
 
                 }
             }
+
         } while (!salir);
 
     }
@@ -91,30 +95,31 @@ public class Sistema_de_inventario_tienda_ropa {
     public static String Nombre(String[] Persona) throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
-        
-        boolean salir = false;
+
+        boolean salir2 = false;
 
         do {
-        String nombre = buffer.readLine();
-        for (int i = 0; i <= 100; i++) {
-            if (Persona[i] == null || Persona[i].equals("")) {
-                Persona[i] = nombre;
-                if(Persona[i].equals("")){
-                Persona[i]=null;
-                System.out.println("Porfavor acceda un nombre válido");
+            String nombre = buffer.readLine();
+            for (int i = 0; i <= 100; i++) {
+                if (Persona[i] == null || Persona[i].equals("")) {
+                    Persona[i] = nombre;
+                    if (Persona[i].equals("")) {
+                        Persona[i] = null;
+                        System.out.println("Porfavor acceda un nombre válido");
+                        break;
+                    } else {
+                        salir2 = true;
+                    }
+
                 }
                 break;
             }
-
-        }
-        }while (!salir);
+        } while (!salir2);
 
         return null;
-    
-        }
- 
 
+    }
+}
 
-      
 ////////////////////////////////////////////////////////////////////////////////    
 
