@@ -19,6 +19,10 @@ public class Sistema_de_inventario_tienda_ropa {
         String[] Persona = new String[100];//Arreglo para el registro de personas que usan el programa
         String[][] Acciones_Correctas = new String[1000][1000]; //Arreglo para guardar las acciones correctas
         String[][] Acciones_Incorrectas = new String[1000][1000];//Arreglo para guardar las acciones incorrectas
+        String[] Nombre_Producto = new String[100];//Arreglo para el registro de nombre de producto
+        String[] Categoría = new String[100];//Arreglo para el registro de categpría
+        Integer[] Stock = new Integer[100];//Arreglo para el registro y modificación de stock
+        Integer[] Código = new Integer[100];//Arreglo para el código único
 
         //Entrada de texto
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
@@ -60,13 +64,41 @@ public class Sistema_de_inventario_tienda_ropa {
                         Integer OPCION = Integer.parseInt(opcion);
 
                         switch (OPCION) {
-                            case 1 -> {
+                            case 1 -> {//AGREGAR PRODUCTO
+
+                                String N = Producto(Nombre_Producto);
+                                String C = Categoría(Categoría,Nombre_Producto);
+
+                            }
+                            case 2 -> {
+                                System.out.println("Ingresa el número a sumar  ");
+
+                            }
+                            case 3 -> {
+                                System.out.println("Ingresa el número a sumar  ");
+
+                            }
+                            case 4 -> {
+                                System.out.println("Ingresa el número a sumar  ");
+
+                            }
+                            case 5 -> {
+                                System.out.println("Ingresa el número a sumar  ");
+
+                            }
+                            case 6 -> {
+                                System.out.println("Ingresa el número a sumar  ");
+
+                            }
+                            case 7 -> {
                                 System.out.println("Ingresa el número a sumar  ");
 
                             }
                             case 8 -> {
                                 salir = true;
 
+                            }
+                            default -> {
                             }
 
                         }
@@ -115,6 +147,64 @@ public class Sistema_de_inventario_tienda_ropa {
                 break;
             }
         } while (!salir2);
+
+        return null;//Revisar si el nombre sigue dando null
+
+    }
+
+    //
+    //Método para añadir nombre del producto
+    public static String Producto(String[] nombre_producto) throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+
+        boolean salir3 = false;
+        while (salir3 == false) {
+
+            System.out.println("Agregar nombre de producto: ");
+            String NP = buffer.readLine();
+            for (int i = 0; i <= 100; i++) {
+                if (nombre_producto[i] == null || nombre_producto[i].equals("")) {
+                    nombre_producto[i] = NP;
+
+                    for (int j = 0; j < i; j++) {
+                        if (nombre_producto[j].toLowerCase().equals(nombre_producto[i].toLowerCase())) {
+                            System.out.println("El nombre ya existe,ingresa otro nombre");
+                            nombre_producto[i] = null;
+                            salir3 = false;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            salir3 = true;
+        }
+
+        return null;
+
+    }
+
+    //
+    //Método para asignar catería al producto
+    public static String Categoría(String[] categoria,String[]persona) throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+
+        boolean salir4 = false;
+        while (salir4 == false) {
+
+            System.out.println("Categoría(blusa,playera,pantalón...): ");
+            String NP = buffer.readLine();
+            for (int i = 0; i <= 100; i++) {
+                if (persona[i]!=null && (categoria[i] == null || categoria[i].equals(""))) {
+                    categoria[i] = NP;
+                    break;
+                }
+
+            }
+            salir4 = true;
+        }
 
         return null;
 
