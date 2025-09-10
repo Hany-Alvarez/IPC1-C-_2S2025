@@ -12,5 +12,6 @@
 
 3. Que el programa no puede cerrar el primer menú
     Teoría 1: el cambio booleano no se esta leyendo por algun break.
+Respuesta: El mal control de do-while del método nombre no lo dejaba. 
 
 */

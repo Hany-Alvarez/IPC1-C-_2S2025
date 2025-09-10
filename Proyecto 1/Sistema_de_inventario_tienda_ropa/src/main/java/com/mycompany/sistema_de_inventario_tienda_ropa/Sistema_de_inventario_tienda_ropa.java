@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
  * @author hanya
  */
 ////////////////////////////////////////////////////////////////////////////////
+
 public class Sistema_de_inventario_tienda_ropa {
 
     public static void main(String[] args) throws IOException {
@@ -42,9 +43,11 @@ public class Sistema_de_inventario_tienda_ropa {
             if (Entrada == 1) {
 
                 //Solicitando y guardando nombre de la persona
-                try {
+                try {//Para evitar que el sistema colapse cuando se haya llegado al límite de personas registradas
                     System.out.println("Ingresa tu nombre para la bitacora");
                     String N = Nombre(Persona);
+                    System.out.println(Persona[0]);
+                    System.out.println(Persona[1]);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println("Upps! el sistema llego a su límite de ingresos" + " Error= " + e);
                     salir = true;
@@ -55,11 +58,11 @@ public class Sistema_de_inventario_tienda_ropa {
                 do {
                     //Entrada al menu de opciones
                     for (int i = 0; i <= 100; i++) {
-                        if (Persona[i] != null && (Acciones_Correctas[0][i] == null && Acciones_Incorrectas[0][i] == null)) {
+                        if (Persona[i] != null && Acciones_Correctas[0 + i][i] == null && Acciones_Incorrectas[0 + i][i] == null) {
                             Acciones_Correctas[0 + i][i] = "Ingreso al inventario";
-                            System.out.println(Acciones_Correctas[0+i][i]);
+                            System.out.println(Acciones_Correctas[0 + i][i]);
                             System.out.println("");
-                            System.out.println("Hola! "+Persona[i] + " Aquí está el menú del inventario (Recuerda cada acción se registra en bitácora)");
+                            System.out.println("Hola! " + Persona[i] + " Aquí está el menú del inventario (Recuerda cada acción se registra en bitácora)");
                             System.out.println("");
                             System.out.println("1.Agregar Producto");
                             System.out.println("2.Buscar Producto");
@@ -71,61 +74,62 @@ public class Sistema_de_inventario_tienda_ropa {
                             System.out.println("8.Salir");
 
                             //Menú
-                            try{
-                            String opcion = buffer.readLine();
-                            Integer OPCION = Integer.parseInt(opcion);
+                            try {
+                                String opcion = buffer.readLine();
+                                Integer OPCION = Integer.parseInt(opcion);
 
-                            switch (OPCION) {
-                                case 1 -> {//AGREGAR PRODUCTO
+                                switch (OPCION) {
+                                    case 1 -> {//AGREGAR PRODUCTO
 
-                                    String N = Producto(Nombre_Producto);
-                                    String C = Categoría(Categoría);
+                                        String N = Producto(Nombre_Producto);
+                                        String C = Categoría(Categoría);
+
+                                    }
+                                    case 2 -> {
+                                        System.out.println("Ingresa el número a sumar  ");
+
+                                    }
+                                    case 3 -> {
+                                        System.out.println("Ingresa el número a sumar  ");
+
+                                    }
+                                    case 4 -> {
+                                        System.out.println("Ingresa el número a sumar  ");
+
+                                    }
+                                    case 5 -> {
+                                        System.out.println("Ingresa el número a sumar  ");
+
+                                    }
+                                    case 6 -> {
+                                        System.out.println("Ingresa el número a sumar  ");
+
+                                    }
+                                    case 7 -> {
+                                        System.out.println("Ingresa el número a sumar  ");
+
+                                    }
+                                    case 8 -> {
+                                        salir_n = true;
+
+                                    }
+                                    default -> {
+                                        System.out.println("Opció no valida→selecciona una opción del menú");
+                                    }
 
                                 }
-                                case 2 -> {
-                                    System.out.println("Ingresa el número a sumar  ");
-
-                                }
-                                case 3 -> {
-                                    System.out.println("Ingresa el número a sumar  ");
-
-                                }
-                                case 4 -> {
-                                    System.out.println("Ingresa el número a sumar  ");
-
-                                }
-                                case 5 -> {
-                                    System.out.println("Ingresa el número a sumar  ");
-
-                                }
-                                case 6 -> {
-                                    System.out.println("Ingresa el número a sumar  ");
-
-                                }
-                                case 7 -> {
-                                    System.out.println("Ingresa el número a sumar  ");
-
-                                }
-                                case 8 -> {
-                                    salir_n = true;
-
-                                }
-                                default -> {
-                                    System.out.println("Opció no valida→selecciona una opción del menú");
-                                }
-
-                            }
-                            }
-                            catch(NumberFormatException c){//Este por si la persona ingresa un salto o espacio,letras (LETRAS)
+                            } catch (NumberFormatException c) {//Este por si la persona ingresa un salto o espacio,letras (LETRAS)
                                 System.out.println("No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c);
                             }
 
                         } else {//Este es por si la persona ingresa un número fuera del rango del menú(NUMEROS)
-                            System.out.println("Ingreso " + i);
+                            //System.out.println("Ingreso " + i);
                             break;
                         }
+                        break;//break de prueba
 
                     }
+                    //break;//break de prueba 
                 } while (!salir_n);
             } else {
                 salir = true;
@@ -149,26 +153,29 @@ public class Sistema_de_inventario_tienda_ropa {
 
         boolean salir2 = false;
 
-        do {
-            String nombre = buffer.readLine();
-            for (int i = 0; i <= 100; i++) {
+        for (int i = 0; i <= 100; i++) {
+            do {
+                String nombre = buffer.readLine();
                 if (Persona[i] == null || Persona[i].equals("")) {
                     Persona[i] = nombre;
                     if (Persona[i].equals("")) {
                         Persona[i] = null;
                         System.out.println("Porfavor acceda un nombre válido");
-                        break;
+
                     }
-                salir2=true;
+                    salir2 = true;
+                    //break
                 }
-                
-            }
-        } while (!salir2);
+            } while (!salir2);
+            break;//este break permite que el for no se repita hasta 100   
+        }
 
         return null;//Revisar si el nombre sigue dando null
-
     }
 
+    //
+    //
+    //
     //
     //Método para añadir nombre del producto
     public static String Producto(String[] nombre_producto) throws IOException {
