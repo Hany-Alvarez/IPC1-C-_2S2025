@@ -18,7 +18,6 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Cell;
 
-
 /**
  *
  * @author hanya
@@ -45,6 +44,10 @@ public class Sistema_de_inventario_tienda_ropa {
     static int contador6 = 0;
     static String[][] Tiempo = new String[1][100];//Matriz para el tiempo
     static int contador7 = 0;
+    static Integer[][] Cantidad = new Integer[1][100];//Matriz para el cantidad de productos vendidos
+    static int contador8 = 0;
+    static String[][] P_V = new String[1][100];//Matriz para el producto vendido
+    static int contador9 = 0;
 
     public static void main(String[] args) throws IOException {
         System.out.println("¡Bienvenido a la Tienda de Ropa Jujutsu Kaisen!");
@@ -606,6 +609,12 @@ public class Sistema_de_inventario_tienda_ropa {
                     //Resta
                     int Resta = Stock[0][i] - CA;
                     Stock[0][i] = Resta;
+                    //Registro de CA
+                    Cantidad[0][i] = CA;
+                    contador8++;
+                    //Registro de P_V
+                    P_V[0][i]=Nombre_Producto[0][i];
+                    contador9++;
                     //Registro
                     System.out.println("Registrando venta con los siguientes datos");
                     System.out.println("Código del producto: " + Codigo[0][i]);
@@ -616,7 +625,7 @@ public class Sistema_de_inventario_tienda_ropa {
                     System.out.println("Fecha y hora de transacción: " + Tiempo[0][contador7 - 1]);
                     //Se agrega el total
                     Total[0][contador6] = Precio[0][i] * CA;
-                    contador1++;
+                    contador6++;
                     System.out.println("Total de venta: " + Total[0][contador6]);
                 } else {
                     System.out.println("Stock insuficiente");
@@ -680,7 +689,7 @@ public class Sistema_de_inventario_tienda_ropa {
                             salir_n = true;
 
                         }
-                       
+
                         default -> {
                             System.out.println("Opció no valida→selecciona una opción del menú");// Este es por si le persona no escoge ninguna opción
                         }
@@ -700,65 +709,118 @@ public class Sistema_de_inventario_tienda_ropa {
         }
 
     }
-    
+
     ///////////////////////////////////////////////////////////////////////////
     //Método para Generar Reporte de Stock
-    public static void R_Stock() throws IOException {
+    public static void R_Venta() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
-        int count=5;
 
-        if (count == 0) {
-            System.out.println("No hay productos para exportar.");
+        if (contador6 == 0) {
+            System.out.println("No hay productos para exportar al PDF.");
             return;
         }
-        System.out.print("Ruta/nombre del PDF (por defecto 'productos.pdf'): ");
+        System.out.print("Ruta/nombre del PDF (por defecto 'DD_MM_YYYY_HH_mm_ss_Venta.pdf'): ");
         String path = buffer.readLine();
-               
+
         if (path.isEmpty()) {
-            path = "Musicagenialdelaviaquenotieneestenombere.pdf";
+            //String Fecha=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"+".pdf"));
+
+            path = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd_MM_YYYY HH_mm_ss_Venta"));
         }
 
         try (PdfWriter writer = new PdfWriter(path); PdfDocument pdf = new PdfDocument(writer); Document doc = new Document(pdf)) {
 
-            doc.add(new Paragraph("Inventario de Productos (arreglos)")
+            doc.add(new Paragraph("Reporte de Venta")
                     .setBold()
                     .setFontSize(14));
-            doc.add(new Paragraph("Generado: "
+            doc.add(new Paragraph("Reporte Generado: "
                     + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))));
 
-            Table table = new Table(new float[]{3, 6, 3});
+            Table table = new Table(new float[]{3, 6, 3, 3});
             table.useAllAvailableWidth();
-            table.addHeaderCell(new Cell().add(new Paragraph("ID")));
-            table.addHeaderCell(new Cell().add(new Paragraph("Nombre")));
-            table.addHeaderCell(new Cell().add(new Paragraph("Precio")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Productos Vendidos")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Cantidad")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Fecha")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Total de cada venta")));
 
             double total = 0.0;
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < contador6; i++) {
                 //Nombre_Producto p = Stock[0][i];
-                table.addCell(new Cell().add(new Paragraph("Hola")));
-                table.addCell(new Cell().add(new Paragraph("2")));
-                table.addCell(new Cell().add(new Paragraph(String.format("3"))));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(P_V[0][i]))));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Cantidad[0][i]))));
+                table.addCell(new Cell().add(new Paragraph(Tiempo[0][i])));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Total[0][i]))));
                 total += Total[0][i];
             }
 
             // Fila resumen
-            table.addCell(new Cell(1, 2).add(new Paragraph("Total productos: " + count)));
+            table.addCell(new Cell(1, 3).add(new Paragraph("Total productos: " + contador6)));
             table.addCell(new Cell().add(new Paragraph(String.format("%.2f", total))));
 
             doc.add(table);
-            System.out.println("PDF de productos creado: " + path);
+            System.out.println("PDF de productos vendidos: " + path);
         } catch (Exception e) {
             System.err.println("Error exportando PDF: " + e.getMessage());
         }
-    } 
-    
-    
-    //Método para Generar Reporte de Venta
-    public static void R_Venta() throws IOException {
-    
     }
-    
+
+    //Método para Generar Reporte de Venta
+    public static void R_Stock() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+
+        if (contador1 == 0) {
+            System.out.println("No hay productos para exportar al PDF.");
+            return;
+        }
+        System.out.print("Ruta/nombre del PDF (por defecto 'DD_MM_YYYY_HH_mm_ss_Stock.pdf'): ");
+        String path = buffer.readLine();
+
+        if (path.isEmpty()) {
+            //String Fecha=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"+".pdf"));
+
+            path = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss"));
+        }
+
+        try (PdfWriter writer = new PdfWriter(path); PdfDocument pdf = new PdfDocument(writer); Document doc = new Document(pdf)) {
+
+            doc.add(new Paragraph("Reporte de Stock")
+                    .setBold()
+                    .setFontSize(14));
+            doc.add(new Paragraph("Reporte Generado: "
+                    + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))));
+
+            Table table = new Table(new float[]{3, 6, 3, 3, 3});
+            table.useAllAvailableWidth();
+            table.addHeaderCell(new Cell().add(new Paragraph("Nombre")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Código")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Categoría")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Precio")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Cantidad disponible")));
+
+            //double total = 0.0;
+            for (int i = 0; i < contador1; i++) {
+                //Nombre_Producto p = Stock[0][i];
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Nombre_Producto[0][i]))));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Codigo[0][i]))));
+                table.addCell(new Cell().add(new Paragraph(Categoria_Producto[0][i])));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Precio[0][i]))));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Stock[0][i]))));
+                //total += Codigo[0][i];
+            }
+
+            // Fila resumen
+            table.addCell(new Cell(1, 5).add(new Paragraph("Total productos registrados: " + contador1)));
+            //table.addCell(new Cell().add(new Paragraph(String.format("%.2f", total))));
+
+            doc.add(table);
+            System.out.println("PDF de productos en stock: " + path);
+        } catch (Exception e) {
+            System.err.println("Error exportando PDF: " + e.getMessage());
+        }
+    }
+
     ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
