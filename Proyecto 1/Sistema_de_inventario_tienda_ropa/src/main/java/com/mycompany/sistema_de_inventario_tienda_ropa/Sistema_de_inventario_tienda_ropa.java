@@ -49,19 +49,16 @@ public class Sistema_de_inventario_tienda_ropa {
                 //Solicitando y guardando nombre de la persona
                 try {//Para evitar que el sistema colapse cuando se haya llegado al límite de personas registradas
 
-                    
                     Nombre();
-                    int N = contador-1;
+                    int N = contador - 1;
                     System.out.println(N);
                     System.out.println(Persona[0][N]);
                     //System.out.println(Persona[0][1]);
 
-                
+                    boolean salir_n = false;
+                    do {
+                        //Entrada al menu de opciones
 
-                boolean salir_n = false;
-                do {
-                    //Entrada al menu de opciones
-                    
                         if (Persona[0][N] != null) {
                             //agregar algo
                             Acciones_Correctas[0][N] = "Ingreso al inventario";
@@ -122,9 +119,9 @@ public class Sistema_de_inventario_tienda_ropa {
                                     default -> {
                                         System.out.println("Opció no valida→selecciona una opción del menú");
                                     }
-                                
+
                                 }
-                                
+
                             } catch (NumberFormatException c) {//Este por si la persona ingresa un salto o espacio,letras (LETRAS)
                                 System.out.println("No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c);
                             }
@@ -133,17 +130,15 @@ public class Sistema_de_inventario_tienda_ropa {
                             break;
                         }
                         //break;//break de prueba
-                    
-                    
-                } while (!salir_n);
-                
+
+                    } while (!salir_n);
+
                 } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println("Upps! el sistema llego a su límite de ingresos" + " Error= " + e);
                     //salir = true;
 
                 }
-                
-                
+
             } else {
                 salir = true;
             }
@@ -169,40 +164,48 @@ public class Sistema_de_inventario_tienda_ropa {
 
         System.out.println("Ingresa tu nombre para poder acceder al menú");
         String nombre = buffer.readLine();
-        
+
         //Se agrega a la matriz
         Persona[0][contador] = nombre;
         contador++;
-        System.out.println(Persona[0][contador-1]);
+        System.out.println(Persona[0][contador - 1]);
 
         System.out.println("Se agrego tu nombre a la bitacora");
-        
+
     }
 
     //Método para añadir nombre del producto
     public static void Producto() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
+        boolean retirada = true;
+        do {
+            System.out.println("Ingresa el nombre del producto: ");
+            String nombreproducto = buffer.readLine();
+            retirada=false;
+            //Nombre_Producto[0][0]="Posición de muestra";
+            //Se agrega a la matriz
+            Nombre_Producto[0][contador1] = nombreproducto;
+            contador1++;
+            //Se revisa que el nombre no este repetido 
 
-        System.out.println("Ingresa el nombre del producto: ");
-        String nombreproducto = buffer.readLine();
-        //Nombre_Producto[0][0]="Posición de muestra";
-        //Se agrega a la matriz
-        Nombre_Producto[0][contador1] = nombreproducto;
-        contador1++;
-        //Se revisa que el nombre no este repetido 
-
-        if (Nombre_Producto[0][contador1] != null) {
-            for (int i = 0; i < (contador1 - 1); i++) {
-                if (Nombre_Producto[0][i].toLowerCase().equals(Nombre_Producto[0][contador1].toLowerCase())) {
-                    System.out.println("El nombre ya existe,ingresa otro nombre");
-                    Nombre_Producto[0][contador1] = null;
-                    break;
+            if (Nombre_Producto[0][(contador1 - 1)] != null) {
+                for (int i = 0; i < (contador1 - 1); i++) {
+                    if (Nombre_Producto[0][i].toLowerCase().equals(Nombre_Producto[0][contador1 - 1].toLowerCase())) {
+                        System.out.println("El nombre ya existe,ingresa otro nombre");
+                        Nombre_Producto[0][contador1] = null;
+                        break;
+                    }
+                    
                 }
+                    
             }
-        }
-        System.out.println("Se agrego el nombre del producto");
-        System.out.println("");
+
+            System.out.println("Se agrego el nombre del producto");
+            System.out.println("");
+
+        } while (!retirada);
+
     }
 
     //Método para asignar catería al producto
