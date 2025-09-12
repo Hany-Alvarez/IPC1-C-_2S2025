@@ -125,9 +125,8 @@ public class Sistema_de_inventario_tienda_ropa {
 
                                     }
                                     case 6 -> {//GENERAR REPORTES
-                                       PDF();
-                                       break;
-
+                                        PDF();
+                                        break;
 
                                     }
                                     case 7 -> {//VER DATOS DEL ESTUDIANTE
@@ -622,13 +621,15 @@ public class Sistema_de_inventario_tienda_ropa {
         }
 
     }
-   ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
         //Método para ver Bitacora
     public static void Bitacora() throws IOException {
 
     }
+
     ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
@@ -636,14 +637,21 @@ public class Sistema_de_inventario_tienda_ropa {
     public static void PDF() throws IOException {
 
     }
-   ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
         //Método para ver dato del estudiante
     public static void Estudiante() throws IOException {
+        System.out.println("Facultad de Ingeniería");
+        System.out.println("Laboratorio de Introducción a la Programación y Computación 1");
+        System.out.println("");
+
+        System.out.println("Nombre: Hany Clara Jannette Alvarez Bulux");
+        System.out.println("CUI: 3263543281401 ");
+        System.out.println("Carnet: 202401231");
+        System.out.println("Correo: 3263543281401@ingenieria.usac.edu.gt ");
 
     }
-    
-    
-    
+
 }
