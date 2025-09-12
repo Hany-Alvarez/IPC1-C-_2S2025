@@ -567,7 +567,7 @@ public class Sistema_de_inventario_tienda_ropa {
                 Categoria_Producto[0][i] ="Borrado"+i ;
                 Precio[0][i] = 0;   //por ser de tipo primitivo no admite null
                 Stock[0][i] = 0;
-                Codigo[0][i] = 0;
+                Codigo[0][i] = i;
                 System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
                 System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
                 System.out.println("3.Precio :Q" + Precio[0][i]);
@@ -615,28 +615,31 @@ public class Sistema_de_inventario_tienda_ropa {
                     int Resta = Stock[0][i] - CA;
                     Stock[0][i] = Resta;
                     //Registro de CA
-                    Cantidad[0][i] = CA;
+                    Cantidad[0][contador8] = CA;
                     contador8++;
                     //Registro de P_V
-                    P_V[0][i] = Nombre_Producto[0][i];
+                    P_V[0][contador9] = Nombre_Producto[0][i];
                     contador9++;
                     //Registro
                     System.out.println("Registrando venta con los siguientes datos");
+                    System.out.println("Nombre del producto "+P_V[0][contador9-1]);
                     System.out.println("Código del producto: " + Codigo[0][i]);
-                    System.out.println("Cantidad vendida: " + CA);
+                    System.out.println("Cantidad vendida: " + Cantidad[0][contador8-1]);
                     //Tiempo de transacción
                     Tiempo[0][contador7] = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    System.out.println("Fecha y hora de transacción: " + Tiempo[0][contador7]);
                     contador7++;
-                    System.out.println("Fecha y hora de transacción: " + Tiempo[0][contador7 - 1]);
                     //Se agrega el total
-                    Total[0][contador6] = Precio[0][i] * CA;
-                    contador6++;
+                    Total[0][contador6] = Float.parseFloat(ca) * Precio[0][i];//Esto para que no se elimine el float del precio a la hora de multiplicar y apareza en consola
                     System.out.println("Total de venta: " + Total[0][contador6]);
+                    contador6++;
+                    //para que no se repita
                 } else {
                     System.out.println("Stock insuficiente");
                 }
                 respuesta = true;
             }
+            //break de prueba
         }
         if (respuesta == false) {
             System.out.println("Código no encontrado,no existe el producto");
