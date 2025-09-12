@@ -760,13 +760,14 @@ public class Sistema_de_inventario_tienda_ropa {
                 table.addCell(new Cell().add(new Paragraph(String.valueOf(P_V[0][i]))));
                 table.addCell(new Cell().add(new Paragraph(String.valueOf(Cantidad[0][i]))));
                 table.addCell(new Cell().add(new Paragraph(Tiempo[0][i])));
-                table.addCell(new Cell().add(new Paragraph(String.valueOf(Total[0][i]))));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf("Q"+Total[0][i]))));
                 total += Total[0][i];
             }
 
             // Fila resumen
             table.addCell(new Cell(1, 3).add(new Paragraph("Total productos: " + contador6)));
-            table.addCell(new Cell().add(new Paragraph(String.format("%.2f", total))));
+            table.addCell(new Cell().add(new Paragraph(String.format("Q"+"%.2f", total))));//Esto puede producir un error sino lo cambiamos
+            table.addCell(new Cell(1, 5).add(new Paragraph("Persona que realiza la venta: "+Persona[0][contador-1])));// Así siempre imprime a la última guardada
 
             doc.add(table);
             System.out.println("PDF de productos vendidos: " + path);
@@ -819,7 +820,7 @@ public class Sistema_de_inventario_tienda_ropa {
                 if(Categoria_Producto[0][i]!=null){
                 table.addCell(new Cell().add(new Paragraph(Categoria_Producto[0][i])));}
                 if(Precio[0][i]!=0){
-                table.addCell(new Cell().add(new Paragraph(String.valueOf(Precio[0][i]))));}
+                table.addCell(new Cell().add(new Paragraph(String.valueOf("Q"+Precio[0][i]))));}
                 if(Stock[0][i]!=null){
                 table.addCell(new Cell().add(new Paragraph(String.valueOf(Stock[0][i]))));}
                 //total += Codigo[0][i];
@@ -833,7 +834,7 @@ public class Sistema_de_inventario_tienda_ropa {
             }
             }
             table.addCell(new Cell(1, 5).add(new Paragraph("Total productos registrados: " + contprueba)));
-            table.addCell(new Cell(1, 5).add(new Paragraph(Persona[0][contador-1])));// Así siempre imprime a la última guardada
+            table.addCell(new Cell(1, 5).add(new Paragraph("Persona que ingreso el inventario: "+Persona[0][contador-1])));// Así siempre imprime a la última guardada
             
             //table.addCell(new Cell().add(new Paragraph(String.format("%.2f", total))));
 
