@@ -23,6 +23,7 @@ import com.itextpdf.layout.element.Cell;
  * @author hanya
  */
 ////////////////////////////////////////////////////////////////////////////////
+
 public class Sistema_de_inventario_tienda_ropa {
 
     //Declarar Variables
@@ -48,6 +49,7 @@ public class Sistema_de_inventario_tienda_ropa {
     static int contador8 = 0;
     static String[][] P_V = new String[1][100];//Matriz para el producto vendido
     static int contador9 = 0;
+    static int contprueba=0;
 
     public static void main(String[] args) throws IOException {
         System.out.println("¡Bienvenido a la Tienda de Ropa Jujutsu Kaisen!");
@@ -824,7 +826,15 @@ public class Sistema_de_inventario_tienda_ropa {
             }
 
             // Fila resumen
-            table.addCell(new Cell(1, 5).add(new Paragraph("Total productos registrados: " + contador1)));
+            contprueba=contador1;
+            for (int i=0;i< contador1;i++){
+            if(Nombre_Producto[0][i]==null){
+            contprueba=contprueba-1;
+            }
+            }
+            table.addCell(new Cell(1, 5).add(new Paragraph("Total productos registrados: " + contprueba)));
+            table.addCell(new Cell(1, 5).add(new Paragraph(Persona[0][contador-1])));// Así siempre imprime a la última guardada
+            
             //table.addCell(new Cell().add(new Paragraph(String.format("%.2f", total))));
 
             doc.add(table);
@@ -862,4 +872,3 @@ public class Sistema_de_inventario_tienda_ropa {
     }
 
 }
-
