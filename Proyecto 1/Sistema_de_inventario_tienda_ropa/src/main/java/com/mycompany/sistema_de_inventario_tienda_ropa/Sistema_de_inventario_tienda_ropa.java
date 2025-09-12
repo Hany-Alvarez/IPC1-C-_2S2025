@@ -102,15 +102,16 @@ public class Sistema_de_inventario_tienda_ropa {
                                         break;
 
                                     }
-                                    case 3 -> {
+                                    case 3 -> {//BORRAR PRODUCTO
+                                        E_Codigo();
+                                        break;
+
+                                    }
+                                    case 4 -> {//REGISTRAR VENTA
                                         System.out.println("Ingresa el número a sumar  ");
 
                                     }
-                                    case 4 -> {
-                                        System.out.println("Ingresa el número a sumar  ");
-
-                                    }
-                                    case 5 -> {
+                                    case 5 -> {//
                                         System.out.println("Ingresa el número a sumar  ");
 
                                     }
@@ -317,8 +318,7 @@ public class Sistema_de_inventario_tienda_ropa {
     ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-//MÉTODOS PARA MOSTRAR
-    //Método para mostrar producto
+
     public static void Opciones_Mostrar() throws IOException {
         //Entrada de texto
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
@@ -525,8 +525,49 @@ public class Sistema_de_inventario_tienda_ropa {
             System.out.println("Código no encontrado,no existe el producto");
             }
     }
-}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+        //Método para eliminar por medio de Código
+    public static void E_Codigo() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+        System.out.println("Ingresa el código del producto");
+        String nc = buffer.readLine();
+        Integer NC = Integer.parseInt(nc);
+        boolean respuesta=false;
+        for(int i=0;i<Codigo[0].length- 1;i++){
+            if (Objects.equals(Codigo[0][i], NC)) {
+                Nombre_Producto[0][i]=null;
+                Categoria_Producto[0][i]=null;
+                Precio[0][i]=0;   //por ser de tipo primitivo no admite null
+                Stock[0][i]=null;
+                Codigo[0][i]=null;
+                System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
+                System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
+                System.out.println("3.Precio :Q" + Precio[0][i]);
+                System.out.println("4.Cantidad en stock: " + Stock[0][i]);
+                System.out.println("5.Código único del producto: " + Codigo[0][i]);
+                System.out.println("");   
+                respuesta=true;
+            }     
+        }
+        if (respuesta==false){
+            System.out.println("Código no encontrado,no existe el producto");
+            }
+    }
 ////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+        //Método para registrar venta
+    public static void Venta() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+        System.out.println("Escribe el código del producto de venta");
+        String nc = buffer.readLine();
+        Integer NC = Integer.parseInt(nc);
+
+    }
+}
