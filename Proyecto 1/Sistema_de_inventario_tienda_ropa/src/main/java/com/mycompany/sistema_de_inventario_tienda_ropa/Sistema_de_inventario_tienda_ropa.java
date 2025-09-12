@@ -317,6 +317,7 @@ public class Sistema_de_inventario_tienda_ropa {
                 //Se agrega a la matriz
                 Codigo[0][contador4] = COD;
                 contador4++;
+                System.out.println(Codigo[0][contador-1]);
                 //Se revisa que el nombre no este repetido 
 
                 for (int i = 0; i < (contador4 - 1); i++) {
