@@ -613,7 +613,7 @@ public class Sistema_de_inventario_tienda_ropa {
                     Cantidad[0][i] = CA;
                     contador8++;
                     //Registro de P_V
-                    P_V[0][i]=Nombre_Producto[0][i];
+                    P_V[0][i] = Nombre_Producto[0][i];
                     contador9++;
                     //Registro
                     System.out.println("Registrando venta con los siguientes datos");
@@ -724,9 +724,9 @@ public class Sistema_de_inventario_tienda_ropa {
         String path = buffer.readLine();
 
         if (path.isEmpty()) {
-            //String Fecha=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"+".pdf"));
+            String Fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss"));
 
-            path = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd_MM_YYYY HH_mm_ss_Venta"));
+            path = Fecha + "_Venta.pdf";
         }
 
         try (PdfWriter writer = new PdfWriter(path); PdfDocument pdf = new PdfDocument(writer); Document doc = new Document(pdf)) {
@@ -778,9 +778,9 @@ public class Sistema_de_inventario_tienda_ropa {
         String path = buffer.readLine();
 
         if (path.isEmpty()) {
-            //String Fecha=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"+".pdf"));
+            String Fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss"));
 
-            path = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss"));
+            path = Fecha + "_Stock.pdf";
         }
 
         try (PdfWriter writer = new PdfWriter(path); PdfDocument pdf = new PdfDocument(writer); Document doc = new Document(pdf)) {
