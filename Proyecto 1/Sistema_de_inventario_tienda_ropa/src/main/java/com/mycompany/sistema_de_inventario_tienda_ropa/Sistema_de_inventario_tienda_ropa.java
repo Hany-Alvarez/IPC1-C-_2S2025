@@ -179,32 +179,27 @@ public class Sistema_de_inventario_tienda_ropa {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
         boolean retirada = true;
-        do {
+        while (retirada == true) {
             System.out.println("Ingresa el nombre del producto: ");
             String nombreproducto = buffer.readLine();
-            retirada=false;
+            retirada = false;
             //Nombre_Producto[0][0]="Posición de muestra";
             //Se agrega a la matriz
             Nombre_Producto[0][contador1] = nombreproducto;
             contador1++;
             //Se revisa que el nombre no este repetido 
 
-            if (Nombre_Producto[0][(contador1 - 1)] != null) {
-                for (int i = 0; i < (contador1 - 1); i++) {
-                    if (Nombre_Producto[0][i].toLowerCase().equals(Nombre_Producto[0][contador1 - 1].toLowerCase())) {
-                        System.out.println("El nombre ya existe,ingresa otro nombre");
-                        Nombre_Producto[0][contador1] = null;
-                        break;
-                    }
-                    
+            for (int i = 0; i < (contador1 - 1); i++) {
+                if (Nombre_Producto[0][i].toLowerCase().equals(Nombre_Producto[0][contador1 - 1].toLowerCase())) {
+                    System.out.println("El nombre ya existe,ingresa otro nombre");
+                    Nombre_Producto[0][contador1 - 1] = null;
+                    retirada = true;
+                    break;
                 }
-                    
+                break;
             }
 
-            System.out.println("Se agrego el nombre del producto");
-            System.out.println("");
-
-        } while (!retirada);
+        }
 
     }
 
