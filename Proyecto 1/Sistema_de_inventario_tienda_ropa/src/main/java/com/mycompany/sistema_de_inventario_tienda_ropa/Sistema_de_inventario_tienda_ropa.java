@@ -97,8 +97,9 @@ public class Sistema_de_inventario_tienda_ropa {
                                         break;
 
                                     }
-                                    case 2 -> {
-                                        System.out.println("Ingresa el número a sumar  ");
+                                    case 2 -> {//MOSTRAR PRODUCTO
+                                        Opciones_Mostrar();
+                                        break;
 
                                     }
                                     case 3 -> {
@@ -154,7 +155,7 @@ public class Sistema_de_inventario_tienda_ropa {
         } while (!salir);
     }
 
-////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
     
     
     
@@ -313,7 +314,7 @@ public class Sistema_de_inventario_tienda_ropa {
 
     }
 
-////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 //MÉTODOS PARA MOSTRAR
@@ -337,6 +338,8 @@ public class Sistema_de_inventario_tienda_ropa {
                 System.out.println("3.Precio");
                 System.out.println("4.Cantidad en stock ");
                 System.out.println("5.Código único del producto ");
+                System.out.println("6.Salir ");
+                System.out.println("");
 
                 //Menú
                 try {
@@ -344,46 +347,33 @@ public class Sistema_de_inventario_tienda_ropa {
                     Integer OPCION = Integer.parseInt(opcion);
 
                     switch (OPCION) {
-                        case 1 -> {//AGREGAR PRODUCTO
-                            Producto();
-                            Categoria();
-                            Precio();
-                            Stock();
-                            Codigo();
-
+                        case 1 -> {//Por Nombre del producto
+                            M_Nombre();
                             break;
 
                         }
-                        case 2 -> {
+                        case 2 -> {// Por categoría
                             System.out.println("Ingresa el número a sumar  ");
 
                         }
-                        case 3 -> {
+                        case 3 -> {// Por precio
                             System.out.println("Ingresa el número a sumar  ");
 
                         }
-                        case 4 -> {
+                        case 4 -> {// Por cantidad en stock
                             System.out.println("Ingresa el número a sumar  ");
 
                         }
-                        case 5 -> {
+                        case 5 -> {// Por Código único del producto
                             System.out.println("Ingresa el número a sumar  ");
 
                         }
-                        case 6 -> {
-                            System.out.println("Ingresa el número a sumar  ");
-
-                        }
-                        case 7 -> {
-                            System.out.println("Ingresa el número a sumar  ");
-
-                        }
-                        case 8 -> {
+                        case 6 -> {//Salir
                             salir_n = true;
 
                         }
                         default -> {
-                            System.out.println("Opció no valida→selecciona una opción del menú");
+                            System.out.println("Opció no valida→selecciona una opción del menú");// Este es por si le persona no escoge ninguna opción
                         }
 
                     }
@@ -402,17 +392,34 @@ public class Sistema_de_inventario_tienda_ropa {
 
     }
 
+    ///////////////////////////////////////////////////////////////////////////////
+//MÉTODOS PARA MOSTRAR
+    //Método para mostrar por nombre
+    public static void M_Nombre() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+        System.out.println("Ingresa el nombre del producto");
+        String nm = buffer.readLine();
+        int count = 0;
+        System.out.println(contador1);
+        if (count <= contador1 - 1) {
+            if (nm.toLowerCase().equals(Nombre_Producto[0][count].toLowerCase())) {
+                System.out.println("1.Nombre del producto: " + Nombre_Producto[0][count]);
+                System.out.println("2.Categoría: " + Categoria_Producto[0][count]);
+                System.out.println("3.Precio Q" + Precio[0][count]);
+                System.out.println("4.Cantidad en stock " + Stock[0][count]);
+                System.out.println("5.Código único del producto " + Codigo[0][count]);
+                System.out.println("");
+                
+            } else {
+                System.out.println("El producto no existe"); 
+            }
+
+        }
+        count++;
+      
+    }
 }
-
-
-
-
-
-
-
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
