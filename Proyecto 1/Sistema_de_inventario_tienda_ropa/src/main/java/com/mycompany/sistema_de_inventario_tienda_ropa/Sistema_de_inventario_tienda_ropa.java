@@ -7,6 +7,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
+import java.util.*;
+import java.time.LocalDateTime; //Librerí para el tiempo
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -30,6 +33,10 @@ public class Sistema_de_inventario_tienda_ropa {
     static int contador4 = 0;
     static float[][] Precio = new float[1][100];//Matriz para el código único
     static int contador5 = 0;
+    static float[][] Total = new float[1][100];//Matriz para el total de venta (precio*cantidad vendida)
+    static int contador6 = 0;
+    static String[][] Tiempo = new String[1][100];//Matriz para el tiempo
+    static int contador7 = 0;
 
     public static void main(String[] args) throws IOException {
         System.out.println("¡Bienvenido a la Tienda de Ropa Jujutsu Kaisen!");
@@ -108,7 +115,8 @@ public class Sistema_de_inventario_tienda_ropa {
 
                                     }
                                     case 4 -> {//REGISTRAR VENTA
-                                        System.out.println("Ingresa el número a sumar  ");
+                                        Venta();
+                                        break;
 
                                     }
                                     case 5 -> {//
@@ -371,7 +379,6 @@ public class Sistema_de_inventario_tienda_ropa {
                             M_Codigo();
                             break;
 
-
                         }
                         case 6 -> {//Salir
                             salir_n = true;
@@ -405,129 +412,126 @@ public class Sistema_de_inventario_tienda_ropa {
         BufferedReader buffer = new BufferedReader(capturarTeclado);
         System.out.println("Ingresa el nombre del producto");
         String nm = buffer.readLine();
-        boolean respuesta=false;
-        for(int i=0;i<Nombre_Producto[0].length;i++){
+        boolean respuesta = false;
+        for (int i = 0; i < Nombre_Producto[0].length; i++) {
             if (Nombre_Producto[0][i] != null && nm.toLowerCase().equals(Nombre_Producto[0][i].toLowerCase())) {
                 System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
                 System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
                 System.out.println("3.Precio :Q" + Precio[0][i]);
                 System.out.println("4.Cantidad en stock: " + Stock[0][i]);
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
-                System.out.println("");   
-                respuesta=true;
-            }     
-        }
-        if (respuesta==false){
-            System.out.println("No existe el producto");
+                System.out.println("");
+                respuesta = true;
             }
-        
-        
-      
+        }
+        if (respuesta == false) {
+            System.out.println("No existe el producto");
+        }
+
     }
-         //Método para mostrar por categoría
-     public static void M_Categoria() throws IOException {
-         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+    //Método para mostrar por categoría
+
+    public static void M_Categoria() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
         System.out.println("Ingresa la categoría del producto");
         String nm = buffer.readLine();
-        boolean respuesta=false;
-        for(int i=0;i<Categoria_Producto[0].length;i++){
+        boolean respuesta = false;
+        for (int i = 0; i < Categoria_Producto[0].length; i++) {
             if (Categoria_Producto[0][i] != null && nm.toLowerCase().equals(Categoria_Producto[0][i].toLowerCase())) {
-                System.out.println("--------------------------------------------------------------------------------");  
+                System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
                 System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
                 System.out.println("3.Precio :Q" + Precio[0][i]);
                 System.out.println("4.Cantidad en stock: " + Stock[0][i]);
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
-                System.out.println("--------------------------------------------------------------------------------");  
-                System.out.println("");   
-                respuesta=true;
-            }     
-        }
-        if (respuesta==false){
-            System.out.println("Categoría no encontrada,no existe el producto");
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("");
+                respuesta = true;
             }
-     }
-     
-             //Método para mostrar por precio
+        }
+        if (respuesta == false) {
+            System.out.println("Categoría no encontrada,no existe el producto");
+        }
+    }
+
+    //Método para mostrar por precio
     public static void M_Precio() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
         System.out.println("Ingresa el precio");
         String nc = buffer.readLine();
         float NC = Float.parseFloat(nc);
-        boolean respuesta=false;
-        for(int i=0;i<Precio[0].length- 1;i++){
+        boolean respuesta = false;
+        for (int i = 0; i < Precio[0].length - 1; i++) {
             if (Objects.equals(Precio[0][i], NC)) {
-                System.out.println("--------------------------------------------------------------------------------");  
+                System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
                 System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
                 System.out.println("3.Precio :Q" + Precio[0][i]);
                 System.out.println("4.Cantidad en stock: " + Stock[0][i]);
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
-                System.out.println("--------------------------------------------------------------------------------");  
-                System.out.println("");   
-                respuesta=true;
-            }     
-        }
-        if (respuesta==false){
-            System.out.println("Precio no encontrado,no existe el producto");
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("");
+                respuesta = true;
             }
+        }
+        if (respuesta == false) {
+            System.out.println("Precio no encontrado,no existe el producto");
+        }
     }
-    
-             //Método para mostrar por precio
+
+    //Método para mostrar por precio
     public static void M_Stock() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
         System.out.println("Ingresa el stock");
         String nc = buffer.readLine();
         Integer NC = Integer.parseInt(nc);
-        boolean respuesta=false;
-        for(int i=0;i<Stock[0].length- 1;i++){
+        boolean respuesta = false;
+        for (int i = 0; i < Stock[0].length - 1; i++) {
             if (Objects.equals(Stock[0][i], NC)) {
-                System.out.println("--------------------------------------------------------------------------------");  
+                System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
                 System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
                 System.out.println("3.Precio :Q" + Precio[0][i]);
                 System.out.println("4.Cantidad en stock: " + Stock[0][i]);
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
-                System.out.println("--------------------------------------------------------------------------------");  
-                System.out.println("");   
-                respuesta=true;
-            }     
-        }
-        if (respuesta==false){
-            System.out.println("Stock no encontrado,no existe el producto");
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("");
+                respuesta = true;
             }
+        }
+        if (respuesta == false) {
+            System.out.println("Stock no encontrado,no existe el producto");
+        }
     }
-     
 
-        //Método para mostrar por código
+    //Método para mostrar por código
     public static void M_Codigo() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
         System.out.println("Ingresa el código del producto");
         String nc = buffer.readLine();
         Integer NC = Integer.parseInt(nc);
-        boolean respuesta=false;
-        for(int i=0;i<Codigo[0].length- 1;i++){
+        boolean respuesta = false;
+        for (int i = 0; i < Codigo[0].length - 1; i++) {
             if (Objects.equals(Codigo[0][i], NC)) {
                 System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
                 System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
                 System.out.println("3.Precio :Q" + Precio[0][i]);
                 System.out.println("4.Cantidad en stock: " + Stock[0][i]);
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
-                System.out.println("");   
-                respuesta=true;
-            }     
-        }
-        if (respuesta==false){
-            System.out.println("Código no encontrado,no existe el producto");
+                System.out.println("");
+                respuesta = true;
             }
+        }
+        if (respuesta == false) {
+            System.out.println("Código no encontrado,no existe el producto");
+        }
     }
 
-
-////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
         //Método para eliminar por medio de Código
@@ -537,37 +541,80 @@ public class Sistema_de_inventario_tienda_ropa {
         System.out.println("Ingresa el código del producto");
         String nc = buffer.readLine();
         Integer NC = Integer.parseInt(nc);
-        boolean respuesta=false;
-        for(int i=0;i<Codigo[0].length- 1;i++){
+        boolean respuesta = false;
+        for (int i = 0; i < Codigo[0].length - 1; i++) {
             if (Objects.equals(Codigo[0][i], NC)) {
-                Nombre_Producto[0][i]=null;
-                Categoria_Producto[0][i]=null;
-                Precio[0][i]=0;   //por ser de tipo primitivo no admite null
-                Stock[0][i]=null;
-                Codigo[0][i]=null;
+                Nombre_Producto[0][i] = null;
+                Categoria_Producto[0][i] = null;
+                Precio[0][i] = 0;   //por ser de tipo primitivo no admite null
+                Stock[0][i] = null;
+                Codigo[0][i] = null;
                 System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
                 System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
                 System.out.println("3.Precio :Q" + Precio[0][i]);
                 System.out.println("4.Cantidad en stock: " + Stock[0][i]);
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
-                System.out.println("");   
-                respuesta=true;
-            }     
-        }
-        if (respuesta==false){
-            System.out.println("Código no encontrado,no existe el producto");
+                System.out.println("");
+                respuesta = true;
             }
+        }
+        if (respuesta == false) {
+            System.out.println("Código no encontrado,no existe el producto");
+        }
     }
-////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
         //Método para registrar venta
     public static void Venta() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
+
         System.out.println("Escribe el código del producto de venta");
         String nc = buffer.readLine();
         Integer NC = Integer.parseInt(nc);
+
+        boolean respuesta = false;
+        for (int i = 0; i < Codigo[0].length - 1; i++) {
+            if (Objects.equals(Codigo[0][i], NC)) {
+                System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
+                System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
+                System.out.println("3.Precio :Q" + Precio[0][i]);
+                System.out.println("4.Cantidad en stock: " + Stock[0][i]);
+                System.out.println("5.Código único del producto: " + Codigo[0][i]);
+                System.out.println("");
+                System.out.println("¿Cuánto quiere vender?(escriba la cantidad entera)");
+                String ca = buffer.readLine();
+                Integer CA = Integer.parseInt(ca);
+
+                //validación de existencia y stock suficiente
+                if (CA <= Stock[0][i]) {
+                    System.out.println("Si hay stock suficiente");
+                    //Resta
+                    int Resta = Stock[0][i] - CA;
+                    Stock[0][i] = Resta;
+                    //Registro
+                    System.out.println("Registrando venta con los siguientes datos:");
+                    System.out.println("Código del producto: "+Codigo[0][i]);
+                    System.out.println("Cantidad vendida: "+CA);
+                    //Tiempo de transacción
+                    Tiempo[0][contador7]= LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    contador7++;
+                    System.out.println("Fecha y hora de transacción: "+Tiempo[0][contador7-1]);
+                    //Se agrega el total
+                    Total[0][contador6] = Precio[0][i]*CA;
+                    contador1++;
+                    System.out.println("Total de venta: "+Total[0][contador6]);
+                } else {
+                    System.out.println("Stock insuficiente");
+                }
+                respuesta = true;
+            }
+        }
+        if (respuesta == false) {
+            System.out.println("Código no encontrado,no existe el producto");
+        }
 
     }
 }
