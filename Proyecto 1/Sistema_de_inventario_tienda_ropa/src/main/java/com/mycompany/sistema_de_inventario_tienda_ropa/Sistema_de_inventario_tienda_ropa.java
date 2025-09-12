@@ -18,10 +18,11 @@ public class Sistema_de_inventario_tienda_ropa {
     static String Persona[][] = new String[1][100]; //Matriz para el registro de personas que usan el programa
     static int contador = 0;
     static String[][] Acciones_Correctas = new String[1000][1000]; //Matriz para guardar las acciones correctas
-    static int contador1 = 0;
     static String[][] Acciones_Incorrectas = new String[1000][1000];//Matriz para guardar las acciones incorrectas
     static String[][] Nombre_Producto = new String[1][100];//Matriz para el registro de nombre de producto
+    static int contador1 = 0;
     static String[][] Categoria_Producto = new String[1][100];//Matriz para el registro de categpría
+    static int contador2 = 0;
     static Integer[][] Stock = new Integer[1][100];//Matriz para el registro y modificación de stock
     static Integer[][] Código = new Integer[1][100];//Matriz para el código único
 
@@ -207,9 +208,20 @@ public class Sistema_de_inventario_tienda_ropa {
     public static void Categoria() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
-        System.out.println("aña");
+        System.out.println("Ingresa la categoría a la cual pertenece");
+        String cat = buffer.readLine();
+
+        //Se agrega a la matriz
+        Categoria_Producto[0][contador2] = cat;
+        contador2++;
+        System.out.println(Categoria_Producto[0][contador2 - 1]);
+
+        System.out.println("Se agrego la categoría");
 
     }
+    
+    
+   
 }
 ////////////////////////////////////////////////////////////////////////////////    
 
