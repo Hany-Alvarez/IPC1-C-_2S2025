@@ -11,6 +11,14 @@ import java.util.*;
 import java.time.LocalDateTime; //Librerí para el tiempo
 import java.time.format.DateTimeFormatter;
 
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.Cell;
+
+
 /**
  *
  * @author hanya
@@ -635,9 +643,122 @@ public class Sistema_de_inventario_tienda_ropa {
     ////////////////////////////////////////////////////////////////////////////////
         //Método generar PDF
     public static void PDF() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+
+        boolean salir = false;
+
+        //Solicitando la opción
+        try {//Para evitar que el sistema colapse cuando se haya llegado al límite de personas registradas
+
+            boolean salir_n = false;
+            do {
+                //Entrada al menu de opciones
+                System.out.println("");
+                System.out.println("¿Qué quieres generar?");
+                System.out.println("1.Reporte de Stock");
+                System.out.println("2.Reporte de Ventas");
+                System.out.println("3.Salir");
+                System.out.println("");
+
+                //Menú
+                try {
+                    String opcion = buffer.readLine();
+                    Integer OPCION = Integer.parseInt(opcion);
+
+                    switch (OPCION) {
+                        case 1 -> {//Reporte de Stock
+                            R_Stock();
+                            break;
+
+                        }
+                        case 2 -> {//Reporte de Ventas
+                            R_Venta();
+                            break;
+                        }
+                        case 3 -> {// Salir
+                            salir_n = true;
+
+                        }
+                       
+                        default -> {
+                            System.out.println("Opció no valida→selecciona una opción del menú");// Este es por si le persona no escoge ninguna opción
+                        }
+
+                    }
+
+                } catch (NumberFormatException c) {//Este por si la persona ingresa un salto o espacio,letras (LETRAS)
+                    System.out.println("No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c);
+                }
+
+            } while (!salir_n);
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Upps! el sistema llego a su límite de ingresos" + " Error= " + e);
+            //salir = true;
+
+        }
 
     }
+    
+    ///////////////////////////////////////////////////////////////////////////
+    //Método para Generar Reporte de Stock
+    public static void R_Stock() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+        int count=5;
 
+        if (count == 0) {
+            System.out.println("No hay productos para exportar.");
+            return;
+        }
+        System.out.print("Ruta/nombre del PDF (por defecto 'productos.pdf'): ");
+        String path = buffer.readLine();
+               
+        if (path.isEmpty()) {
+            path = "Musicagenialdelaviaquenotieneestenombere.pdf";
+        }
+
+        try (PdfWriter writer = new PdfWriter(path); PdfDocument pdf = new PdfDocument(writer); Document doc = new Document(pdf)) {
+
+            doc.add(new Paragraph("Inventario de Productos (arreglos)")
+                    .setBold()
+                    .setFontSize(14));
+            doc.add(new Paragraph("Generado: "
+                    + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))));
+
+            Table table = new Table(new float[]{3, 6, 3});
+            table.useAllAvailableWidth();
+            table.addHeaderCell(new Cell().add(new Paragraph("ID")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Nombre")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Precio")));
+
+            double total = 0.0;
+            for (int i = 0; i < count; i++) {
+                //Nombre_Producto p = Stock[0][i];
+                table.addCell(new Cell().add(new Paragraph("Hola")));
+                table.addCell(new Cell().add(new Paragraph("2")));
+                table.addCell(new Cell().add(new Paragraph(String.format("3"))));
+                total += Total[0][i];
+            }
+
+            // Fila resumen
+            table.addCell(new Cell(1, 2).add(new Paragraph("Total productos: " + count)));
+            table.addCell(new Cell().add(new Paragraph(String.format("%.2f", total))));
+
+            doc.add(table);
+            System.out.println("PDF de productos creado: " + path);
+        } catch (Exception e) {
+            System.err.println("Error exportando PDF: " + e.getMessage());
+        }
+    } 
+    
+    
+    //Método para Generar Reporte de Venta
+    public static void R_Venta() throws IOException {
+    
+    }
+    
     ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
