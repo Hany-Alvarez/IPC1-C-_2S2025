@@ -332,6 +332,7 @@ public class Sistema_de_inventario_tienda_ropa {
             boolean salir_n = false;
             do {
                 //Entrada al menu de opciones
+                System.out.println("");
                 System.out.println("Selecciona el filtro para ver el/los productos:");
                 System.out.println("1.Nombre del producto ");
                 System.out.println("2.Categoría ");
@@ -353,14 +354,17 @@ public class Sistema_de_inventario_tienda_ropa {
 
                         }
                         case 2 -> {// Por categoría
-                            
+                            M_Categoria();
+                            break;
                         }
                         case 3 -> {// Por precio
-                            System.out.println("Ingresa el número a sumar  ");
+                            M_Precio();
+                            break;
 
                         }
                         case 4 -> {// Por cantidad en stock
-                            System.out.println("Ingresa el número a sumar  ");
+                            M_Stock();
+                            break;
 
                         }
                         case 5 -> {// Por Código único del producto
@@ -420,8 +424,85 @@ public class Sistema_de_inventario_tienda_ropa {
         
       
     }
+         //Método para mostrar por categoría
+     public static void M_Categoria() throws IOException {
+         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+        System.out.println("Ingresa la categoría del producto");
+        String nm = buffer.readLine();
+        boolean respuesta=false;
+        for(int i=0;i<Categoria_Producto[0].length;i++){
+            if (Categoria_Producto[0][i] != null && nm.toLowerCase().equals(Categoria_Producto[0][i].toLowerCase())) {
+                System.out.println("--------------------------------------------------------------------------------");  
+                System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
+                System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
+                System.out.println("3.Precio :Q" + Precio[0][i]);
+                System.out.println("4.Cantidad en stock: " + Stock[0][i]);
+                System.out.println("5.Código único del producto: " + Codigo[0][i]);
+                System.out.println("--------------------------------------------------------------------------------");  
+                System.out.println("");   
+                respuesta=true;
+            }     
+        }
+        if (respuesta==false){
+            System.out.println("Categoría no encontrada,no existe el producto");
+            }
+     }
+     
+             //Método para mostrar por precio
+    public static void M_Precio() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+        System.out.println("Ingresa el precio");
+        String nc = buffer.readLine();
+        float NC = Float.parseFloat(nc);
+        boolean respuesta=false;
+        for(int i=0;i<Precio[0].length- 1;i++){
+            if (Objects.equals(Precio[0][i], NC)) {
+                System.out.println("--------------------------------------------------------------------------------");  
+                System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
+                System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
+                System.out.println("3.Precio :Q" + Precio[0][i]);
+                System.out.println("4.Cantidad en stock: " + Stock[0][i]);
+                System.out.println("5.Código único del producto: " + Codigo[0][i]);
+                System.out.println("--------------------------------------------------------------------------------");  
+                System.out.println("");   
+                respuesta=true;
+            }     
+        }
+        if (respuesta==false){
+            System.out.println("Precio no encontrado,no existe el producto");
+            }
+    }
+    
+             //Método para mostrar por precio
+    public static void M_Stock() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+        System.out.println("Ingresa el stock");
+        String nc = buffer.readLine();
+        Integer NC = Integer.parseInt(nc);
+        boolean respuesta=false;
+        for(int i=0;i<Stock[0].length- 1;i++){
+            if (Objects.equals(Stock[0][i], NC)) {
+                System.out.println("--------------------------------------------------------------------------------");  
+                System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
+                System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
+                System.out.println("3.Precio :Q" + Precio[0][i]);
+                System.out.println("4.Cantidad en stock: " + Stock[0][i]);
+                System.out.println("5.Código único del producto: " + Codigo[0][i]);
+                System.out.println("--------------------------------------------------------------------------------");  
+                System.out.println("");   
+                respuesta=true;
+            }     
+        }
+        if (respuesta==false){
+            System.out.println("Stock no encontrado,no existe el producto");
+            }
+    }
+     
 
-        //Método para mostrar por nombre
+        //Método para mostrar por código
     public static void M_Codigo() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
@@ -443,9 +524,6 @@ public class Sistema_de_inventario_tienda_ropa {
         if (respuesta==false){
             System.out.println("Código no encontrado,no existe el producto");
             }
-        
-        
-      
     }
 }
 
