@@ -62,7 +62,7 @@ public class Sistema_de_inventario_tienda_ropa {
                 do {
                     //Entrada al menu de opciones
                     
-                        if (Persona[0][N] != null && Acciones_Correctas[0][N] == null && Acciones_Incorrectas[0][N] == null) {
+                        if (Persona[0][N] != null) {
                             //agregar algo
                             Acciones_Correctas[0][N] = "Ingreso al inventario";
                             System.out.println(Acciones_Correctas[0][N]);
@@ -124,13 +124,13 @@ public class Sistema_de_inventario_tienda_ropa {
                                     }
                                 
                                 }
-                                break;// esto es para ver si ya no me saca
+                                
                             } catch (NumberFormatException c) {//Este por si la persona ingresa un salto o espacio,letras (LETRAS)
                                 System.out.println("No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c);
                             }
                         } else {//Este es por si la persona ingresa un número fuera del rango del menú(NUMEROS)
                             System.out.println("Ingreso " + N);
-                            
+                            break;
                         }
                         //break;//break de prueba
                     
