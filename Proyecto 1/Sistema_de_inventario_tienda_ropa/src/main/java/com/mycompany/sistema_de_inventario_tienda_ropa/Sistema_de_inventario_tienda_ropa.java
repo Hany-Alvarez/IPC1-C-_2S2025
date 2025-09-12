@@ -225,19 +225,28 @@ public class Sistema_de_inventario_tienda_ropa {
 
     }
 //Método para asignar stock del producto
+
     public static void Stock() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
-        System.out.println("Ingresa el stock del producto (en números enteros)");
-        String sto = buffer.readLine();
-        Integer STO = Integer.parseInt(sto);
 
-        //Se agrega a la matriz
-        Stock[0][contador3] = STO;
-        contador3++;
-        System.out.println(Stock[0][contador3 - 1]);
-
-        System.out.println("Se agrego el stock");
+        boolean retirada = true;
+        while (retirada == true) {
+            System.out.println("Ingresa el stock del producto (en números enteros)");
+            String sto = buffer.readLine();
+            Integer STO = Integer.parseInt(sto);
+            if (STO > -1) {
+                //Se agrega a la matriz
+                Stock[0][contador3] = STO;
+                contador3++;
+                System.out.println(Stock[0][contador3 - 1]);
+                System.out.println("Se agrego el stock");
+                retirada=false;
+            } else {
+                System.out.println("No puede agregar números menos a 0, intentelo de nuevo");
+                retirada = true;
+            }
+        }
 
     }
 
@@ -270,8 +279,7 @@ public class Sistema_de_inventario_tienda_ropa {
         }
 
     }
-    
-   
+
 }
 ////////////////////////////////////////////////////////////////////////////////    
 
