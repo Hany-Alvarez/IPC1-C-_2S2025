@@ -209,7 +209,7 @@ public class Sistema_de_inventario_tienda_ropa {
 
     }
 
-    //Método para asignar catería al producto
+    //Método para asignar categoría al producto
     public static void Categoria() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
@@ -259,6 +259,7 @@ public class Sistema_de_inventario_tienda_ropa {
             System.out.println("Ingresa el código único del producto: ");
             String cod = buffer.readLine();
             Integer COD = Integer.parseInt(cod);
+            if(COD>-1){
             retirada = false;
             //Nombre_Producto[0][0]="Posición de muestra";
             //Se agrega a la matriz
@@ -276,6 +277,11 @@ public class Sistema_de_inventario_tienda_ropa {
                 break;
             }
 
+        }
+            else{
+            System.out.println("No puede agregar números negativos, porfavor intentelo de nuevo");
+            retirada=true;
+            }
         }
 
     }
