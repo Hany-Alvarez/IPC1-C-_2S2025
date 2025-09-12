@@ -83,9 +83,9 @@ public class Sistema_de_inventario_tienda_ropa {
                             System.out.println("2.Buscar Producto");
                             System.out.println("3.Eliminar Producto");
                             System.out.println("4.Registrar Venta");
-                            System.out.println("5.Generar Reportes");
-                            System.out.println("6.Ver Datos del Estudiante");
-                            System.out.println("7.Bitácora");
+                            System.out.println("5.Bitácora");
+                            System.out.println("6.Generar Reportes");
+                            System.out.println("7.Ver Datos del Estudiante");
                             System.out.println("8.Salir");
 
                             //Menú
@@ -119,23 +119,27 @@ public class Sistema_de_inventario_tienda_ropa {
                                         break;
 
                                     }
-                                    case 5 -> {//
-                                        System.out.println("Ingresa el número a sumar  ");
+                                    case 5 -> {//BITÁCORA
+                                        Bitacora();
+                                        break;
 
                                     }
-                                    case 6 -> {
-                                        System.out.println("Ingresa el número a sumar  ");
+                                    case 6 -> {//GENERAR REPORTES
+                                       PDF();
+                                       break;
+
 
                                     }
-                                    case 7 -> {
-                                        System.out.println("Ingresa el número a sumar  ");
+                                    case 7 -> {//VER DATOS DEL ESTUDIANTE
+                                        Estudiante();
+                                        break;
 
                                     }
-                                    case 8 -> {
+                                    case 8 -> {//SALIR
                                         salir_n = true;
 
                                     }
-                                    default -> {
+                                    default -> {//Cualquier opción que no este en el menú
                                         System.out.println("Opció no valida→selecciona una opción del menú");
                                     }
 
@@ -591,21 +595,22 @@ public class Sistema_de_inventario_tienda_ropa {
                 //validación de existencia y stock suficiente
                 if (CA <= Stock[0][i]) {
                     System.out.println("Si hay stock suficiente");
+                    System.out.println("");
                     //Resta
                     int Resta = Stock[0][i] - CA;
                     Stock[0][i] = Resta;
                     //Registro
-                    System.out.println("Registrando venta con los siguientes datos:");
-                    System.out.println("Código del producto: "+Codigo[0][i]);
-                    System.out.println("Cantidad vendida: "+CA);
+                    System.out.println("Registrando venta con los siguientes datos");
+                    System.out.println("Código del producto: " + Codigo[0][i]);
+                    System.out.println("Cantidad vendida: " + CA);
                     //Tiempo de transacción
-                    Tiempo[0][contador7]= LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    Tiempo[0][contador7] = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                     contador7++;
-                    System.out.println("Fecha y hora de transacción: "+Tiempo[0][contador7-1]);
+                    System.out.println("Fecha y hora de transacción: " + Tiempo[0][contador7 - 1]);
                     //Se agrega el total
-                    Total[0][contador6] = Precio[0][i]*CA;
+                    Total[0][contador6] = Precio[0][i] * CA;
                     contador1++;
-                    System.out.println("Total de venta: "+Total[0][contador6]);
+                    System.out.println("Total de venta: " + Total[0][contador6]);
                 } else {
                     System.out.println("Stock insuficiente");
                 }
@@ -617,4 +622,28 @@ public class Sistema_de_inventario_tienda_ropa {
         }
 
     }
+   ////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+        //Método para ver Bitacora
+    public static void Bitacora() throws IOException {
+
+    }
+    ////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+        //Método generar PDF
+    public static void PDF() throws IOException {
+
+    }
+   ////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+        //Método para ver dato del estudiante
+    public static void Estudiante() throws IOException {
+
+    }
+    
+    
+    
 }
