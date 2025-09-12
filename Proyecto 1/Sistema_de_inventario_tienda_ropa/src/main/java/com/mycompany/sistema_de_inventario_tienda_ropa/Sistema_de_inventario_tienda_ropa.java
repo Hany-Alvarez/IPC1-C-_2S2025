@@ -220,12 +220,15 @@ public class Sistema_de_inventario_tienda_ropa {
             //Se agrega a la matriz
             Nombre_Producto[0][contador1] = nombreproducto;
             contador1++;
+            System.out.println(Nombre_Producto[0][contador1]);
+            
             //Se revisa que el nombre no este repetido 
 
             for (int i = 0; i < (contador1 - 1); i++) {
                 if (Nombre_Producto[0][i].toLowerCase().equals(Nombre_Producto[0][contador1 - 1].toLowerCase())) {
                     System.out.println("El nombre ya existe,ingresa otro nombre");
                     Nombre_Producto[0][contador1 - 1] = null;
+                    contador1=contador1-1;
                     retirada = true;
                     break;
                 }
@@ -317,13 +320,14 @@ public class Sistema_de_inventario_tienda_ropa {
                 //Se agrega a la matriz
                 Codigo[0][contador4] = COD;
                 contador4++;
-                System.out.println(Codigo[0][contador-1]);
+                System.out.println(Codigo[0][contador4]);
                 //Se revisa que el nombre no este repetido 
 
                 for (int i = 0; i < (contador4 - 1); i++) {
                     if (Objects.equals(Codigo[0][i], Codigo[0][contador4 - 1])) {
                         System.out.println("El código ya existe");
                         Codigo[0][contador4 - 1] = null;
+                        contador4=contador4-1;
                         retirada = true;
                         break;
                     }
@@ -559,11 +563,11 @@ public class Sistema_de_inventario_tienda_ropa {
         boolean respuesta = false;
         for (int i = 0; i < Codigo[0].length - 1; i++) {
             if (Objects.equals(Codigo[0][i], NC)) {
-                Nombre_Producto[0][i] = null;
-                Categoria_Producto[0][i] = null;
+                Nombre_Producto[0][i] = "Borrado"+i;
+                Categoria_Producto[0][i] ="Borrado"+i ;
                 Precio[0][i] = 0;   //por ser de tipo primitivo no admite null
-                Stock[0][i] = null;
-                Codigo[0][i] = null;
+                Stock[0][i] = 0;
+                Codigo[0][i] = 0;
                 System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
                 System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
                 System.out.println("3.Precio :Q" + Precio[0][i]);
