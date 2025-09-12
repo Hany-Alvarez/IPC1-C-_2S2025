@@ -6,6 +6,7 @@ package com.mycompany.sistema_de_inventario_tienda_ropa;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Objects;
 
 /**
  *
@@ -25,7 +26,8 @@ public class Sistema_de_inventario_tienda_ropa {
     static int contador2 = 0;
     static Integer[][] Stock = new Integer[1][100];//Matriz para el registro y modificación de stock
     static int contador3 = 0;
-    static Integer[][] Código = new Integer[1][100];//Matriz para el código único
+    static Integer[][] Codigo = new Integer[1][100];//Matriz para el código único
+    static int contador4 = 0;
 
     public static void main(String[] args) throws IOException {
         System.out.println("¡Bienvenido a la Tienda de Ropa Jujutsu Kaisen!");
@@ -87,6 +89,7 @@ public class Sistema_de_inventario_tienda_ropa {
                                         Producto();
                                         Categoria();
                                         Stock();
+                                        Codigo();
                                         //continue;
                                         break;
 
@@ -225,7 +228,7 @@ public class Sistema_de_inventario_tienda_ropa {
     public static void Stock() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
-        System.out.println("Ingresa el stock del producto");
+        System.out.println("Ingresa el stock del producto (en números enteros)");
         String sto = buffer.readLine();
         Integer STO = Integer.parseInt(sto);
 
@@ -235,6 +238,36 @@ public class Sistema_de_inventario_tienda_ropa {
         System.out.println(Stock[0][contador3 - 1]);
 
         System.out.println("Se agrego el stock");
+
+    }
+
+    //Método para añadir código único
+    public static void Codigo() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+        boolean retirada = true;
+        while (retirada == true) {
+            System.out.println("Ingresa el código único del producto: ");
+            String cod = buffer.readLine();
+            Integer COD = Integer.parseInt(cod);
+            retirada = false;
+            //Nombre_Producto[0][0]="Posición de muestra";
+            //Se agrega a la matriz
+            Codigo[0][contador4] = COD;
+            contador4++;
+            //Se revisa que el nombre no este repetido 
+
+            for (int i = 0; i < (contador4 - 1); i++) {
+                if (Objects.equals(Codigo[0][i], Codigo[0][contador4 - 1])) {
+                    System.out.println("El código ya existe");
+                    Codigo[0][contador4 - 1] = null;
+                    retirada = true;
+                    break;
+                }
+                break;
+            }
+
+        }
 
     }
     
