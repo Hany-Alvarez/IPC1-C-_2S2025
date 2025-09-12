@@ -9,5 +9,6 @@ package com.mycompany.sistema_de_inventario_tienda_ropa;
  * @author hanya
  */
 public class Métodos {
-    
+    // No me digas que borre mis métodos noooooooo
+   
 }

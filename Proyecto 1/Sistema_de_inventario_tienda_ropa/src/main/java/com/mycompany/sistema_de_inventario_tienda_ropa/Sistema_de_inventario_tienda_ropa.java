@@ -563,11 +563,11 @@ public class Sistema_de_inventario_tienda_ropa {
         boolean respuesta = false;
         for (int i = 0; i < Codigo[0].length - 1; i++) {
             if (Objects.equals(Codigo[0][i], NC)) {
-                Nombre_Producto[0][i] = "Borrado"+i;
-                Categoria_Producto[0][i] ="Borrado"+i ;
+                Nombre_Producto[0][i] = null;
+                Categoria_Producto[0][i] =null ;
                 Precio[0][i] = 0;   //por ser de tipo primitivo no admite null
-                Stock[0][i] = 0;
-                Codigo[0][i] = i;
+                Stock[0][i] = null;
+                Codigo[0][i] = null;
                 System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
                 System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
                 System.out.println("3.Precio :Q" + Precio[0][i]);
@@ -810,11 +810,16 @@ public class Sistema_de_inventario_tienda_ropa {
             //double total = 0.0;
             for (int i = 0; i < contador1; i++) {
                 //Nombre_Producto p = Stock[0][i];
-                table.addCell(new Cell().add(new Paragraph(String.valueOf(Nombre_Producto[0][i]))));
-                table.addCell(new Cell().add(new Paragraph(String.valueOf(Codigo[0][i]))));
-                table.addCell(new Cell().add(new Paragraph(Categoria_Producto[0][i])));
-                table.addCell(new Cell().add(new Paragraph(String.valueOf(Precio[0][i]))));
-                table.addCell(new Cell().add(new Paragraph(String.valueOf(Stock[0][i]))));
+                if(Nombre_Producto[0][i]!=null){
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Nombre_Producto[0][i]))));}
+                if(Codigo[0][i]!=null){
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Codigo[0][i]))));}
+                if(Categoria_Producto[0][i]!=null){
+                table.addCell(new Cell().add(new Paragraph(Categoria_Producto[0][i])));}
+                if(Precio[0][i]!=0){
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Precio[0][i]))));}
+                if(Stock[0][i]!=null){
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Stock[0][i]))));}
                 //total += Codigo[0][i];
             }
 
@@ -828,6 +833,17 @@ public class Sistema_de_inventario_tienda_ropa {
             System.err.println("Error exportando PDF: " + e.getMessage());
         }
     }
+    
+    
+    public static void S_Producto() throws IOException {
+        for (int i = 0; i < contador1; i++){
+        if (Nombre_Producto[0][i]!=null){
+        }
+       
+    }
+    }
+    
+    
 
     ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -846,3 +862,4 @@ public class Sistema_de_inventario_tienda_ropa {
     }
 
 }
+
