@@ -353,8 +353,7 @@ public class Sistema_de_inventario_tienda_ropa {
 
                         }
                         case 2 -> {// Por categoría
-                            System.out.println("Ingresa el número a sumar  ");
-
+                            
                         }
                         case 3 -> {// Por precio
                             System.out.println("Ingresa el número a sumar  ");
@@ -365,7 +364,9 @@ public class Sistema_de_inventario_tienda_ropa {
 
                         }
                         case 5 -> {// Por Código único del producto
-                            System.out.println("Ingresa el número a sumar  ");
+                            M_Codigo();
+                            break;
+
 
                         }
                         case 6 -> {//Salir
@@ -410,12 +411,37 @@ public class Sistema_de_inventario_tienda_ropa {
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
                 System.out.println("");   
                 respuesta=true;
-            }
-            
-            
+            }     
         }
         if (respuesta==false){
             System.out.println("No existe el producto");
+            }
+        
+        
+      
+    }
+
+        //Método para mostrar por nombre
+    public static void M_Codigo() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+        System.out.println("Ingresa el código del producto");
+        String nc = buffer.readLine();
+        Integer NC = Integer.parseInt(nc);
+        boolean respuesta=false;
+        for(int i=0;i<Codigo[0].length- 1;i++){
+            if (Objects.equals(Codigo[0][i], NC)) {
+                System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
+                System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
+                System.out.println("3.Precio :Q" + Precio[0][i]);
+                System.out.println("4.Cantidad en stock: " + Stock[0][i]);
+                System.out.println("5.Código único del producto: " + Codigo[0][i]);
+                System.out.println("");   
+                respuesta=true;
+            }     
+        }
+        if (respuesta==false){
+            System.out.println("Código no encontrado,no existe el producto");
             }
         
         
