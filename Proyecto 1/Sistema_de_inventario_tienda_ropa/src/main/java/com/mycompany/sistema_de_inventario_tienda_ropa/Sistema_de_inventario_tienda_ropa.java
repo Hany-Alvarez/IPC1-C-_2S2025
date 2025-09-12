@@ -24,6 +24,7 @@ public class Sistema_de_inventario_tienda_ropa {
     static String[][] Categoria_Producto = new String[1][100];//Matriz para el registro de categpría
     static int contador2 = 0;
     static Integer[][] Stock = new Integer[1][100];//Matriz para el registro y modificación de stock
+    static int contador3 = 0;
     static Integer[][] Código = new Integer[1][100];//Matriz para el código único
 
     public static void main(String[] args) throws IOException {
@@ -85,6 +86,7 @@ public class Sistema_de_inventario_tienda_ropa {
                                     case 1 -> {//AGREGAR PRODUCTO
                                         Producto();
                                         Categoria();
+                                        Stock();
                                         //continue;
                                         break;
 
@@ -219,7 +221,22 @@ public class Sistema_de_inventario_tienda_ropa {
         System.out.println("Se agrego la categoría");
 
     }
-    
+//Método para asignar stock del producto
+    public static void Stock() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+        System.out.println("Ingresa el stock del producto");
+        String sto = buffer.readLine();
+        Integer STO = Integer.parseInt(sto);
+
+        //Se agrega a la matriz
+        Stock[0][contador3] = STO;
+        contador3++;
+        System.out.println(Stock[0][contador3 - 1]);
+
+        System.out.println("Se agrego el stock");
+
+    }
     
    
 }
