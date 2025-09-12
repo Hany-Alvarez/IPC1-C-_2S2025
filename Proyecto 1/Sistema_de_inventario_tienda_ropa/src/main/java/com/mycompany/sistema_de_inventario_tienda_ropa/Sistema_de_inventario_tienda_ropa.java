@@ -49,25 +49,25 @@ public class Sistema_de_inventario_tienda_ropa {
                 //Solicitando y guardando nombre de la persona
                 try {//Para evitar que el sistema colapse cuando se haya llegado al límite de personas registradas
 
+                    
                     Nombre();
-                    System.out.println(Persona[0][0]);
-                    System.out.println(Persona[0][1]);
+                    int N = contador-1;
+                    System.out.println(N);
+                    System.out.println(Persona[0][N]);
+                    //System.out.println(Persona[0][1]);
 
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    System.out.println("Upps! el sistema llego a su límite de ingresos" + " Error= " + e);
-                    salir = true;
-
-                }
+                
 
                 boolean salir_n = false;
                 do {
                     //Entrada al menu de opciones
-                    for (int i = 0; i <= 100; i++) {
-                        if (Persona[i] != null && Acciones_Correctas[0 + i][i] == null && Acciones_Incorrectas[0 + i][i] == null) {
-                            Acciones_Correctas[0 + i][i] = "Ingreso al inventario";
-                            System.out.println(Acciones_Correctas[0 + i][i]);
+                    
+                        if (Persona[0][N] != null && Acciones_Correctas[0][N] == null && Acciones_Incorrectas[0][N] == null) {
+                            //agregar algo
+                            Acciones_Correctas[0][N] = "Ingreso al inventario";
+                            System.out.println(Acciones_Correctas[0][N]);
                             System.out.println("");
-                            System.out.println("Hola! " + Persona[0][i] + " Aquí está el menú del inventario (Recuerda cada acción se registra en bitácora)");
+                            System.out.println("Hola! " + Persona[0][N] + " Aquí está el menú del inventario (Recuerda cada acción se registra en bitácora)");
                             System.out.println("");
                             System.out.println("1.Agregar Producto");
                             System.out.println("2.Buscar Producto");
@@ -86,7 +86,9 @@ public class Sistema_de_inventario_tienda_ropa {
                                 switch (OPCION) {
                                     case 1 -> {//AGREGAR PRODUCTO
                                         Producto();
-                                        continue;
+                                        Categoria();
+                                        //continue;
+                                        break;
 
                                     }
                                     case 2 -> {
@@ -120,20 +122,28 @@ public class Sistema_de_inventario_tienda_ropa {
                                     default -> {
                                         System.out.println("Opció no valida→selecciona una opción del menú");
                                     }
-
+                                
                                 }
+                                break;// esto es para ver si ya no me saca
                             } catch (NumberFormatException c) {//Este por si la persona ingresa un salto o espacio,letras (LETRAS)
                                 System.out.println("No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c);
                             }
-
                         } else {//Este es por si la persona ingresa un número fuera del rango del menú(NUMEROS)
-                            //System.out.println("Ingreso " + i);
-                            break;
+                            System.out.println("Ingreso " + N);
+                            
                         }
-                        break;//break de prueba
-                    } 
+                        //break;//break de prueba
+                    
                     
                 } while (!salir_n);
+                
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println("Upps! el sistema llego a su límite de ingresos" + " Error= " + e);
+                    //salir = true;
+
+                }
+                
+                
             } else {
                 salir = true;
             }
@@ -147,8 +157,10 @@ public class Sistema_de_inventario_tienda_ropa {
     
     
 ////////////////////////////////////////////////////////////////////////////////
-    /// @throws java.io.IOException 
-    //MÉTODOS
+
+    /// @throws java.io.IOException
+    /// @thr 
+      //MÉTODOS
     //
     //Método que solicita y guarda el nombre de la persona que entra al sistema 
     public static void Nombre() throws IOException {
@@ -157,11 +169,14 @@ public class Sistema_de_inventario_tienda_ropa {
 
         System.out.println("Ingresa tu nombre para poder acceder al menú");
         String nombre = buffer.readLine();
-
+        
         //Se agrega a la matriz
         Persona[0][contador] = nombre;
         contador++;
+        System.out.println(Persona[0][contador-1]);
+
         System.out.println("Se agrego tu nombre a la bitacora");
+        
     }
 
     //Método para añadir nombre del producto
@@ -194,6 +209,7 @@ public class Sistema_de_inventario_tienda_ropa {
     public static void Categoria() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
+        System.out.println("aña");
 
     }
 }

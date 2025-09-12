@@ -3,16 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.sistema_de_inventario_tienda_ropa;
-import java.util.List;
+
 /**
  *
  * @author hanya
  */
-public class Asistencia {
-   
+public class Métodos {
     
-
-
-
 }
-
