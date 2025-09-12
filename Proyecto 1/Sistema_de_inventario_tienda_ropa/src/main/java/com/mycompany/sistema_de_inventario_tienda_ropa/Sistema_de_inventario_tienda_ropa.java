@@ -400,23 +400,25 @@ public class Sistema_de_inventario_tienda_ropa {
         BufferedReader buffer = new BufferedReader(capturarTeclado);
         System.out.println("Ingresa el nombre del producto");
         String nm = buffer.readLine();
-        int count = 0;
-        System.out.println(contador1);
-        if (count <= contador1 - 1) {
-            if (nm.toLowerCase().equals(Nombre_Producto[0][count].toLowerCase())) {
-                System.out.println("1.Nombre del producto: " + Nombre_Producto[0][count]);
-                System.out.println("2.Categoría: " + Categoria_Producto[0][count]);
-                System.out.println("3.Precio Q" + Precio[0][count]);
-                System.out.println("4.Cantidad en stock " + Stock[0][count]);
-                System.out.println("5.Código único del producto " + Codigo[0][count]);
-                System.out.println("");
-                
-            } else {
-                System.out.println("El producto no existe"); 
+        boolean respuesta=false;
+        for(int i=0;i<Nombre_Producto[0].length;i++){
+            if (Nombre_Producto[0][i] != null && nm.toLowerCase().equals(Nombre_Producto[0][i].toLowerCase())) {
+                System.out.println("1.Nombre del producto: " + Nombre_Producto[0][i]);
+                System.out.println("2.Categoría: " + Categoria_Producto[0][i]);
+                System.out.println("3.Precio :Q" + Precio[0][i]);
+                System.out.println("4.Cantidad en stock: " + Stock[0][i]);
+                System.out.println("5.Código único del producto: " + Codigo[0][i]);
+                System.out.println("");   
+                respuesta=true;
             }
-
+            
+            
         }
-        count++;
+        if (respuesta==false){
+            System.out.println("No existe el producto");
+            }
+        
+        
       
     }
 }
