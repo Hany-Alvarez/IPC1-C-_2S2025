@@ -28,6 +28,8 @@ public class Sistema_de_inventario_tienda_ropa {
     static int contador3 = 0;
     static Integer[][] Codigo = new Integer[1][100];//Matriz para el código único
     static int contador4 = 0;
+    static float[][] Precio = new float[1][100];//Matriz para el código único
+    static int contador5 = 0;
 
     public static void main(String[] args) throws IOException {
         System.out.println("¡Bienvenido a la Tienda de Ropa Jujutsu Kaisen!");
@@ -88,6 +90,7 @@ public class Sistema_de_inventario_tienda_ropa {
                                     case 1 -> {//AGREGAR PRODUCTO
                                         Producto();
                                         Categoria();
+                                        Precio();
                                         Stock();
                                         Codigo();
                                         //continue;
@@ -151,7 +154,7 @@ public class Sistema_de_inventario_tienda_ropa {
         } while (!salir);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
     
     
     
@@ -161,7 +164,7 @@ public class Sistema_de_inventario_tienda_ropa {
 
     /// @throws java.io.IOException
     /// @thr 
-      //MÉTODOS
+    //MÉTODOS PARA GUARDAR
     //
     //Método que solicita y guarda el nombre de la persona que entra al sistema 
     public static void Nombre() throws IOException {
@@ -224,8 +227,33 @@ public class Sistema_de_inventario_tienda_ropa {
         System.out.println("Se agrego la categoría");
 
     }
-//Método para asignar stock del producto
 
+//Método para asignar precio
+    public static void Precio() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+
+        boolean retirada = true;
+        while (retirada == true) {
+            System.out.println("Ingresa el precio del producto");
+            String pre = buffer.readLine();
+            float PRE = Float.parseFloat(pre);
+            if (PRE > -1) {
+                //Se agrega a la matriz
+                Precio[0][contador5] = PRE;
+                contador5++;
+                System.out.println(Precio[0][contador5 - 1]);
+                System.out.println("Se agrego el precio");
+                retirada = false;
+            } else {
+                System.out.println("No puede agregar números negativos, intentelo de nuevo");
+                retirada = true;
+            }
+        }
+
+    }
+
+//Método para asignar stock del producto
     public static void Stock() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
@@ -241,7 +269,7 @@ public class Sistema_de_inventario_tienda_ropa {
                 contador3++;
                 System.out.println(Stock[0][contador3 - 1]);
                 System.out.println("Se agrego el stock");
-                retirada=false;
+                retirada = false;
             } else {
                 System.out.println("No puede agregar números menos a 0, intentelo de nuevo");
                 retirada = true;
@@ -259,33 +287,133 @@ public class Sistema_de_inventario_tienda_ropa {
             System.out.println("Ingresa el código único del producto: ");
             String cod = buffer.readLine();
             Integer COD = Integer.parseInt(cod);
-            if(COD>-1){
-            retirada = false;
-            //Nombre_Producto[0][0]="Posición de muestra";
-            //Se agrega a la matriz
-            Codigo[0][contador4] = COD;
-            contador4++;
-            //Se revisa que el nombre no este repetido 
+            if (COD > -1) {
+                retirada = false;
+                //Nombre_Producto[0][0]="Posición de muestra";
+                //Se agrega a la matriz
+                Codigo[0][contador4] = COD;
+                contador4++;
+                //Se revisa que el nombre no este repetido 
 
-            for (int i = 0; i < (contador4 - 1); i++) {
-                if (Objects.equals(Codigo[0][i], Codigo[0][contador4 - 1])) {
-                    System.out.println("El código ya existe");
-                    Codigo[0][contador4 - 1] = null;
-                    retirada = true;
+                for (int i = 0; i < (contador4 - 1); i++) {
+                    if (Objects.equals(Codigo[0][i], Codigo[0][contador4 - 1])) {
+                        System.out.println("El código ya existe");
+                        Codigo[0][contador4 - 1] = null;
+                        retirada = true;
+                        break;
+                    }
                     break;
                 }
-                break;
-            }
 
-        }
-            else{
-            System.out.println("No puede agregar números negativos, porfavor intentelo de nuevo");
-            retirada=true;
+            } else {
+                System.out.println("No puede agregar números negativos, porfavor intentelo de nuevo");
+                retirada = true;
             }
         }
 
     }
 
-}
-////////////////////////////////////////////////////////////////////////////////    
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//MÉTODOS PARA MOSTRAR
+    //Método para mostrar producto
+    public static void Opciones_Mostrar() throws IOException {
+        //Entrada de texto
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
 
+        boolean salir = false;
+
+        //Solicitando y guardando nombre de la persona
+        try {//Para evitar que el sistema colapse cuando se haya llegado al límite de personas registradas
+
+            boolean salir_n = false;
+            do {
+                //Entrada al menu de opciones
+                System.out.println("Selecciona el filtro para ver el/los productos:");
+                System.out.println("1.Nombre del producto ");
+                System.out.println("2.Categoría ");
+                System.out.println("3.Precio");
+                System.out.println("4.Cantidad en stock ");
+                System.out.println("5.Código único del producto ");
+
+                //Menú
+                try {
+                    String opcion = buffer.readLine();
+                    Integer OPCION = Integer.parseInt(opcion);
+
+                    switch (OPCION) {
+                        case 1 -> {//AGREGAR PRODUCTO
+                            Producto();
+                            Categoria();
+                            Precio();
+                            Stock();
+                            Codigo();
+
+                            break;
+
+                        }
+                        case 2 -> {
+                            System.out.println("Ingresa el número a sumar  ");
+
+                        }
+                        case 3 -> {
+                            System.out.println("Ingresa el número a sumar  ");
+
+                        }
+                        case 4 -> {
+                            System.out.println("Ingresa el número a sumar  ");
+
+                        }
+                        case 5 -> {
+                            System.out.println("Ingresa el número a sumar  ");
+
+                        }
+                        case 6 -> {
+                            System.out.println("Ingresa el número a sumar  ");
+
+                        }
+                        case 7 -> {
+                            System.out.println("Ingresa el número a sumar  ");
+
+                        }
+                        case 8 -> {
+                            salir_n = true;
+
+                        }
+                        default -> {
+                            System.out.println("Opció no valida→selecciona una opción del menú");
+                        }
+
+                    }
+
+                } catch (NumberFormatException c) {//Este por si la persona ingresa un salto o espacio,letras (LETRAS)
+                    System.out.println("No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c);
+                }
+
+            } while (!salir_n);
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Upps! el sistema llego a su límite de ingresos" + " Error= " + e);
+            //salir = true;
+
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
