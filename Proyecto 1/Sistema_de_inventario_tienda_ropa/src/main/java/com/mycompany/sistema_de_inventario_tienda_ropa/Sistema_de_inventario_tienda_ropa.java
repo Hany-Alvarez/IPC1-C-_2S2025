@@ -93,8 +93,8 @@ public class Sistema_de_inventario_tienda_ropa {
 
                     Nombre();
                     int N = contador - 1;
-                    System.out.println(N);
-                    System.out.println(Persona[0][N]);
+                    //System.out.println(N);
+                    //System.out.println(Persona[0][N]);
                     //System.out.println(Persona[0][1]);
 
                     boolean salir_n = false;
@@ -177,16 +177,25 @@ public class Sistema_de_inventario_tienda_ropa {
 
                                     }
                                     default -> {//Cualquier opción que no este en el menú
-                                        System.out.println("Opció no valida→selecciona una opción del menú");
+                                        System.out.println("Opción no valida→selecciona una opción del menú");
+                                        String e = "incorrecta";
+                                        String f = "Opción no valida→selecciona una opción del menú";
+                                        Acciones(e, f); //Se registra esta acción 
                                     }
 
                                 }
 
                             } catch (NumberFormatException c) {//Este por si la persona ingresa un salto o espacio,letras (LETRAS)
                                 System.out.println("No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c);
+                                String e = "incorrecta";
+                                String f = "No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c;
+                                Acciones(e, f); //Se registra esta acción
                             }
                         } else {//Este es por si la persona ingresa un número fuera del rango del menú(NUMEROS)
                             System.out.println("Ingreso " + N);
+                            String e = "incorrecta";
+                            String f = "Ingreso invalido";
+                            Acciones(e, f); //Se registra esta acción
                             break;
                         }
                         //break;//break de prueba
@@ -195,6 +204,9 @@ public class Sistema_de_inventario_tienda_ropa {
 
                 } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println("Upps! el sistema llego a su límite de ingresos" + " Error= " + e);
+                    String g = "incorrecta";
+                    String f = "Upps! el sistema llego a su límite de ingresos" + " Error= " + e;
+                    Acciones(g, f); //Se registra esta acción
                     //salir = true;
 
                 }
@@ -228,7 +240,7 @@ public class Sistema_de_inventario_tienda_ropa {
         //Se agrega a la matriz
         Persona[0][contador] = nombre;
         contador++;
-        System.out.println(Persona[0][contador - 1]);
+        //System.out.println(Persona[0][contador - 1]);
 
         System.out.println("Se agrego tu nombre a la bitacora");
 
@@ -247,12 +259,15 @@ public class Sistema_de_inventario_tienda_ropa {
             //Se agrega a la matriz
             Nombre_Producto[0][contador1] = nombreproducto;
             contador1++;
-            System.out.println(Nombre_Producto[0][contador1]);
+            //System.out.println(Nombre_Producto[0][contador1]);
 
             //Se revisa que el nombre no este repetido 
             for (int i = 0; i < (contador1 - 1); i++) {
                 if (Nombre_Producto[0][i].toLowerCase().equals(Nombre_Producto[0][contador1 - 1].toLowerCase())) {
                     System.out.println("El nombre ya existe,ingresa otro nombre");
+                    String g = "incorrecta";
+                    String f = "El nombre ya existe,ingresa otro nombre";
+                    Acciones(g, f); //Se registra esta acción
                     Nombre_Producto[0][contador1 - 1] = null;
                     contador1 = contador1 - 1;
                     retirada = true;
@@ -300,6 +315,9 @@ public class Sistema_de_inventario_tienda_ropa {
                 retirada = false;
             } else {
                 System.out.println("No puede agregar números negativos, intentelo de nuevo");
+                String g = "incorrecta";
+                String f = "No puede agregar números negativos, intentelo de nuevo";
+                Acciones(g, f); //Se registra esta acción
                 retirada = true;
             }
         }
@@ -325,6 +343,9 @@ public class Sistema_de_inventario_tienda_ropa {
                 retirada = false;
             } else {
                 System.out.println("No puede agregar números menos a 0, intentelo de nuevo");
+                String g = "incorrecta";
+                String f = "No puede agregar números menos a 0, intentelo de nuevo";
+                Acciones(g, f); //Se registra esta acción
                 retirada = true;
             }
         }
@@ -346,12 +367,15 @@ public class Sistema_de_inventario_tienda_ropa {
                 //Se agrega a la matriz
                 Codigo[0][contador4] = COD;
                 contador4++;
-                System.out.println(Codigo[0][contador4]);
+                //System.out.println(Codigo[0][contador4]);
                 //Se revisa que el nombre no este repetido 
 
                 for (int i = 0; i < (contador4 - 1); i++) {
                     if (Objects.equals(Codigo[0][i], Codigo[0][contador4 - 1])) {
                         System.out.println("El código ya existe");
+                        String g = "incorrecta";
+                        String f = "El código ya existe";
+                        Acciones(g, f); //Se registra esta acción
                         Codigo[0][contador4 - 1] = null;
                         contador4 = contador4 - 1;
                         retirada = true;
@@ -362,6 +386,9 @@ public class Sistema_de_inventario_tienda_ropa {
 
             } else {
                 System.out.println("No puede agregar números negativos, porfavor intentelo de nuevo");
+                String g = "incorrecta";
+                String f = "No puede agregar números negativos, porfavor intentelo de nuevo";
+                Acciones(g, f); //Se registra esta acción
                 retirada = true;
             }
         }
@@ -431,18 +458,27 @@ public class Sistema_de_inventario_tienda_ropa {
                         }
                         default -> {
                             System.out.println("Opció no valida→selecciona una opción del menú");// Este es por si le persona no escoge ninguna opción
+                            String g = "incorrecta";
+                            String f = "Opció no valida→selecciona una opción del menú";
+                            Acciones(g, f); //Se registra esta acción
                         }
 
                     }
 
                 } catch (NumberFormatException c) {//Este por si la persona ingresa un salto o espacio,letras (LETRAS)
                     System.out.println("No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c);
+                    String g = "incorrecta";
+                    String f = "No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c;
+                    Acciones(g, f); //Se registra esta acción
                 }
 
             } while (!salir_n);
 
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Upps! el sistema llego a su límite de ingresos" + " Error= " + e);
+            String g = "incorrecta";
+            String f = "Upps! el sistema llego a su límite de ingresos" + " Error= " + e;
+            Acciones(g, f); //Se registra esta acción
             //salir = true;
 
         }
@@ -475,6 +511,9 @@ public class Sistema_de_inventario_tienda_ropa {
         }
         if (respuesta == false) {
             System.out.println("No existe el producto");
+            String g = "incorrecta";
+            String f = "No existe el producto";
+            Acciones(g, f); //Se registra esta acción
         }
 
     }
@@ -505,6 +544,9 @@ public class Sistema_de_inventario_tienda_ropa {
         }
         if (respuesta == false) {
             System.out.println("Categoría no encontrada,no existe el producto");
+            String g = "incorrecta";
+            String f = "Categoría no encontrada,no existe el producto";
+            Acciones(g, f); //Se registra esta acción
         }
     }
 
@@ -534,6 +576,9 @@ public class Sistema_de_inventario_tienda_ropa {
         }
         if (respuesta == false) {
             System.out.println("Precio no encontrado,no existe el producto");
+            String g = "incorrecta";
+            String f = "Precio no encontrado,no existe el producto";
+            Acciones(g, f); //Se registra esta acción
         }
     }
 
@@ -563,6 +608,9 @@ public class Sistema_de_inventario_tienda_ropa {
         }
         if (respuesta == false) {
             System.out.println("Stock no encontrado,no existe el producto");
+            String g = "incorrecta";
+            String f = "Stock,no encontrado,no existe el producto";
+            Acciones(g, f); //Se registra esta acción
         }
     }
 
@@ -590,6 +638,9 @@ public class Sistema_de_inventario_tienda_ropa {
         }
         if (respuesta == false) {
             System.out.println("Código no encontrado,no existe el producto");
+            String g = "incorrecta";
+            String f = "Código no encontrado,no existe el producto";
+            Acciones(g, f); //Se registra esta acción
         }
     }
 
@@ -625,6 +676,9 @@ public class Sistema_de_inventario_tienda_ropa {
         }
         if (respuesta == false) {
             System.out.println("Código no encontrado,no existe el producto");
+            String g = "incorrecta";
+            String f = "Código no encontrado,no existe el producto";
+            Acciones(g, f); //Se registra esta acción
         }
     }
 
@@ -685,6 +739,9 @@ public class Sistema_de_inventario_tienda_ropa {
                     Acciones(c, d); //Se registra esta acción
                 } else {
                     System.out.println("Stock insuficiente");
+                    String g = "incorrecta";
+                    String f = "Stock insuficiente";
+                    Acciones(g, f); //Se registra esta acción
                 }
                 respuesta = true;
             }
@@ -692,6 +749,9 @@ public class Sistema_de_inventario_tienda_ropa {
         }
         if (respuesta == false) {
             System.out.println("Código no encontrado,no existe el producto");
+            String g = "incorrecta";
+            String f = "Código no encontrado,no existe el producto";
+            Acciones(g, f); //Se registra esta acción
         }
 
     }
@@ -794,19 +854,28 @@ public class Sistema_de_inventario_tienda_ropa {
                         }
 
                         default -> {
-                            System.out.println("Opció no valida→selecciona una opción del menú");// Este es por si le persona no escoge ninguna opción
+                            System.out.println("Opción no valida→selecciona una opción del menú");// Este es por si le persona no escoge ninguna opción
+                            String g = "incorrecta";
+                            String f = "Opción no valida→selecciona una opción del menú";
+                            Acciones(g, f); //Se registra esta acción
                         }
 
                     }
 
                 } catch (NumberFormatException c) {//Este por si la persona ingresa un salto o espacio,letras (LETRAS)
                     System.out.println("No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú" + " Error= " + c);
+                    String g = "incorrecta";
+                    String f = "No puedes ingresar saltos de línea o letras ¡Recuerda! solo puedes ingresar las opciones del menú"+" Error= "+c;
+                    Acciones(g, f); //Se registra esta acción
                 }
 
             } while (!salir_n);
 
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Upps! el sistema llego a su límite de ingresos" + " Error= " + e);
+            String g = "incorrecta";
+            String f = "Upss! el sistema llego a su límite de ingresos"+" Error= "+e;
+            Acciones(g, f); //Se registra esta acción
             //salir = true;
 
         }
@@ -821,6 +890,9 @@ public class Sistema_de_inventario_tienda_ropa {
 
         if (contador6 == 0) {
             System.out.println("No hay productos para exportar al PDF.");
+            String g = "incorrecta";
+            String f = "No hay productos para exportar al PDF.";
+            Acciones(g, f); //Se registra esta acción
             return;
         }
         System.out.print("Ruta/nombre del PDF (por defecto 'DD_MM_YYYY_HH_mm_ss_Venta.pdf'): ");
@@ -870,6 +942,9 @@ public class Sistema_de_inventario_tienda_ropa {
             Acciones(c, d); //Se registra esta acción
         } catch (Exception e) {
             System.err.println("Error exportando PDF: " + e.getMessage());
+            String g = "incorrecta";
+            String f = "Erro exportando PDF: "+ e.getMessage();
+            Acciones(g, f); //Se registra esta acción
         }
     }
 
@@ -880,6 +955,9 @@ public class Sistema_de_inventario_tienda_ropa {
 
         if (contador1 == 0) {
             System.out.println("No hay productos para exportar al PDF.");
+            String g = "incorrecta";
+            String f = "No hay productos para exportar al PDF.";
+            Acciones(g, f); //Se registra esta acción
             return;
         }
         System.out.print("Ruta/nombre del PDF (por defecto 'DD_MM_YYYY_HH_mm_ss_Stock.pdf'): ");
@@ -948,6 +1026,9 @@ public class Sistema_de_inventario_tienda_ropa {
 
         } catch (Exception e) {
             System.err.println("Error exportando PDF: " + e.getMessage());
+            String g = "incorrecta";
+            String f = "Error exportando PDF: "+ e.getMessage();
+            Acciones(g, f); //Se registra esta acción
         }
     }
 
