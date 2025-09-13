@@ -1,4 +1,4 @@
-# IPC1-C-_2S2025
+# IPC1-C-_2S2025_PROYECTO 1
 
 ### Funcionamiento del Programa 😎
 Este programa es un ejemplo de creación de inventario con una temática de venta de ropa, con la finalidad de implementar conceptos como lo son las matrices, control de errores, tipos de datos y todo lo relacionado para poder ejecutar un programa en la consola.
