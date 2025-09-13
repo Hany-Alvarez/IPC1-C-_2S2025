@@ -7,7 +7,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
-import java.util.*;
 import java.time.LocalDateTime; //Librerí para el tiempo
 import java.time.format.DateTimeFormatter;
 
@@ -29,6 +28,10 @@ public class Sistema_de_inventario_tienda_ropa {
     //Acciones
     static String Persona[][] = new String[1][100]; //Matriz para el registro de personas que usan el programa
     static int contador = 0;
+    static String Persona1[][] = new String[1][100]; //Matriz para el registro de personas que usan el programa
+    static int contp1 = 0;
+    static String Persona2[][] = new String[1][100]; //Matriz para el registro de personas que usan el programa
+    static int contp2 = 0;
     static String[][] Acciones_Correctas = new String[1][1000]; //Matriz para guardar las acciones correctas
     static int gatito1 = 0;
     static String[][] Acciones_Incorrectas = new String[1][1000];//Matriz para guardar las acciones incorrectas
@@ -61,6 +64,7 @@ public class Sistema_de_inventario_tienda_ropa {
     static int contador8 = 0;
     static String[][] P_V = new String[1][100];//Matriz para el producto vendido
     static int contador9 = 0;
+
     static int contprueba = 0;
 
     public static void main(String[] args) throws IOException {
@@ -698,37 +702,26 @@ public class Sistema_de_inventario_tienda_ropa {
         //Método para ver Bitacora
     public static void Bitacora() throws IOException {
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        for (int i = 0; i < contador; i++) {
-            System.out.println("ACCIONES CORRECTAS:");
-            for (int j = 0; j < gatito3; j++) {
-                System.out.println("------------------------------------------------------------");
-                System.out.println(Tiempos[0][j]);
-                System.out.println(TAC[0][j]);
-                System.out.println(Acciones_Correctas[0][j]);
-                System.out.println(Persona[0][i]);
-            }
+        System.out.println("ACCIONES CORRECTAS:");
+        for (int j = 0; j < gatito3; j++) {
             System.out.println("------------------------------------------------------------");
-            System.out.println("------------------------------------------------------------");
-            System.out.println("");
-            System.out.println("ACCIONES INCORRECTAS:");
-            for (int k = 0; k < gatito33; k++) {
-                System.out.println("------------------------------------------------------------");
-                System.out.println(Tiemposs[0][k]);
-                System.out.println(TAI[0][k]);
-                System.out.println(Acciones_Incorrectas[0][k]);
-                System.out.println(Persona[0][i]);
-            }
+            System.out.println(Tiempos[0][j]);
+            System.out.println(TAC[0][j]);
+            System.out.println(Acciones_Correctas[0][j]);
+            System.out.println(Persona1[0][j]);
         }
+        System.out.println("------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------");
+        System.out.println("");
+        System.out.println("ACCIONES INCORRECTAS:");
+        for (int k = 0; k < gatito33; k++) {
+            System.out.println("------------------------------------------------------------");
+            System.out.println(Tiemposs[0][k]);
+            System.out.println(TAI[0][k]);
+            System.out.println(Acciones_Incorrectas[0][k]);
+            System.out.println(Persona2[0][k]);
+        }
+
     }
     //Método para ver Bitacora
 
@@ -741,6 +734,8 @@ public class Sistema_de_inventario_tienda_ropa {
             gatito4++;
             Acciones_Correctas[0][gatito1] = "Correcta";
             gatito1++;
+            Persona1[0][contp1] = Persona[0][contador - 1];
+            contp1++;
         }
         if (a == "incorrecta") {
             Tiemposs[0][gatito33] = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss"));
@@ -749,6 +744,8 @@ public class Sistema_de_inventario_tienda_ropa {
             gatito5++;
             Acciones_Incorrectas[0][gatito2] = "Incorrecta";
             gatito2++;
+            Persona2[0][contp2] = Persona[0][contador - 1];
+            contp2++;
         }
         return null;
     }
