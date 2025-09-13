@@ -41,7 +41,7 @@ public class Sistema_de_inventario_tienda_ropa {
     static int gatito4 = 0;
     static String[][] TAI = new String[1][100];//Matriz para el tiempo (Tipo de acción incorrecta)
     static int gatito5 = 0;
-    
+
     ///Resto del Proyecto 
     static String[][] Nombre_Producto = new String[1][100];//Matriz para el registro de nombre de producto
     static int contador1 = 0;
@@ -99,10 +99,10 @@ public class Sistema_de_inventario_tienda_ropa {
 
                         if (Persona[0][N] != null) {
                             //agregar algo
-                            String a="correcta";
-                            String b="Ingreso al inventario";
-                            Acciones(a,b); //Se registra esta acción 
-                            
+                            String a = "correcta";
+                            String b = "Ingreso al inventario";
+                            Acciones(a, b); //Se registra esta acción 
+
                             System.out.println("");
                             System.out.println("Hola! " + Persona[0][N] + " Aquí está el menú del inventario (Recuerda cada acción se registra en bitácora)");
                             System.out.println("");
@@ -122,14 +122,15 @@ public class Sistema_de_inventario_tienda_ropa {
 
                                 switch (OPCION) {
                                     case 1 -> {//AGREGAR PRODUCTO
-                                        
+
                                         Producto();
                                         Categoria();
                                         Precio();
                                         Stock();
                                         Codigo();
-                                        Acciones_Correctas[0][gatito1] = gatito1 + ".Se agrego el producto con nombre:"+Nombre_Producto[0][contador1-1];
-                                        gatito1++;
+                                        String c = "correcta";
+                                        String d = "Se agrego el producto: " + Nombre_Producto[0][contador1 - 1];
+                                        Acciones(c, d); //Se registra esta acción
                                         //continue;
                                         break;
 
@@ -165,6 +166,9 @@ public class Sistema_de_inventario_tienda_ropa {
 
                                     }
                                     case 8 -> {//SALIR
+                                        String c = "correcta";
+                                        String d = "Saliendo del inventario";
+                                        Acciones(c, d); //Se registra esta acción
                                         salir_n = true;
 
                                     }
@@ -458,6 +462,10 @@ public class Sistema_de_inventario_tienda_ropa {
                 System.out.println("4.Cantidad en stock: " + Stock[0][i]);
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
                 System.out.println("");
+
+                String c = "correcta";
+                String d = "Se mostro por opción de nombre al producto: " + nm;
+                Acciones(c, d); //Se registra esta acción
                 respuesta = true;
             }
         }
@@ -484,6 +492,10 @@ public class Sistema_de_inventario_tienda_ropa {
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("");
+
+                String c = "correcta";
+                String d = "Se mostro producto(s) con categoría: " + nm;
+                Acciones(c, d); //Se registra esta acción
                 respuesta = true;
             }
         }
@@ -510,6 +522,9 @@ public class Sistema_de_inventario_tienda_ropa {
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("");
+                String c = "correcta";
+                String d = "Se mostro producto(s) con precio de: " + nc;
+                Acciones(c, d); //Se registra esta acción
                 respuesta = true;
             }
         }
@@ -536,6 +551,9 @@ public class Sistema_de_inventario_tienda_ropa {
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("");
+                String c = "correcta";
+                String d = "Se mostro producto(s) con stock de: " + nc;
+                Acciones(c, d); //Se registra esta acción
                 respuesta = true;
             }
         }
@@ -560,6 +578,9 @@ public class Sistema_de_inventario_tienda_ropa {
                 System.out.println("4.Cantidad en stock: " + Stock[0][i]);
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
                 System.out.println("");
+                String c = "correcta";
+                String d = "Se mostro producto con código de: " + nc;
+                Acciones(c, d); //Se registra esta acción
                 respuesta = true;
             }
         }
@@ -592,6 +613,9 @@ public class Sistema_de_inventario_tienda_ropa {
                 System.out.println("4.Cantidad en stock: " + Stock[0][i]);
                 System.out.println("5.Código único del producto: " + Codigo[0][i]);
                 System.out.println("");
+                String c = "correcta";
+                String d = "Se borro producto con código de: " + nc;
+                Acciones(c, d); //Se registra esta acción
                 respuesta = true;
             }
         }
@@ -652,6 +676,9 @@ public class Sistema_de_inventario_tienda_ropa {
                     System.out.println("Total de venta: " + Total[0][contador6]);
                     contador6++;
                     //para que no se repita
+                    String c = "correcta";
+                    String d = "Se registro una venta del producto " + Nombre_Producto[0][i] + " con un total de: " + Total[0][contador6 - 1];
+                    Acciones(c, d); //Se registra esta acción
                 } else {
                     System.out.println("Stock insuficiente");
                 }
@@ -669,50 +696,62 @@ public class Sistema_de_inventario_tienda_ropa {
 ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
         //Método para ver Bitacora
-    public static void Bitacora() throws IOException { 
+    public static void Bitacora() throws IOException {
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         for (int i = 0; i < contador; i++) {
-        System.out.println("Acciones realizados por "+Persona[0][i]);
-        System.out.println("ACCIONES CORRECTAS:");
-        for (int j=0;j<gatito3;j++){
-        System.out.println("------------------------------------------------------------");
-        System.out.println(Tiempos[0][j]);
-        System.out.println(TAC[0][j]);
-        System.out.println(Acciones_Correctas[0][j]);
-        }
-        System.out.println("");
-        System.out.println("ACCIONES INCORRECTAS:");
-        for (int k=0;k<gatito33;k++){
-        System.out.println("------------------------------------------------------------");
-        System.out.println(Tiemposs[0][k]);
-        System.out.println(TAI[0][k]);
-        System.out.println(Acciones_Incorrectas[0][k]);
+            System.out.println("ACCIONES CORRECTAS:");
+            for (int j = 0; j < gatito3; j++) {
+                System.out.println("------------------------------------------------------------");
+                System.out.println(Tiempos[0][j]);
+                System.out.println(TAC[0][j]);
+                System.out.println(Acciones_Correctas[0][j]);
+                System.out.println(Persona[0][i]);
+            }
+            System.out.println("------------------------------------------------------------");
+            System.out.println("------------------------------------------------------------");
+            System.out.println("");
+            System.out.println("ACCIONES INCORRECTAS:");
+            for (int k = 0; k < gatito33; k++) {
+                System.out.println("------------------------------------------------------------");
+                System.out.println(Tiemposs[0][k]);
+                System.out.println(TAI[0][k]);
+                System.out.println(Acciones_Incorrectas[0][k]);
+                System.out.println(Persona[0][i]);
+            }
         }
     }
-    }
-            //Método para ver Bitacora
-    public static String  Acciones(String a, String b) throws IOException { 
-        
-        if( a =="correcta"){
-        Tiempos[0][gatito3]=LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss"));
-        gatito3++;
-        TAC[0][gatito4]=b;
-        gatito4++;
-        Acciones_Correctas[0][gatito1]="Correcta"; 
-        gatito1++;
+    //Método para ver Bitacora
+
+    public static String Acciones(String a, String b) throws IOException {
+
+        if (a == "correcta") {
+            Tiempos[0][gatito3] = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss"));
+            gatito3++;
+            TAC[0][gatito4] = b;
+            gatito4++;
+            Acciones_Correctas[0][gatito1] = "Correcta";
+            gatito1++;
         }
-        if(a=="incorrecta"){
-        Tiemposs[0][gatito33]=LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss"));
-        gatito33++;
-        TAI[0][gatito5]=b;
-        gatito5++;
-        Acciones_Incorrectas[0][gatito2]="Incorrecta"; 
-        gatito2++;
+        if (a == "incorrecta") {
+            Tiemposs[0][gatito33] = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss"));
+            gatito33++;
+            TAI[0][gatito5] = b;
+            gatito5++;
+            Acciones_Incorrectas[0][gatito2] = "Incorrecta";
+            gatito2++;
         }
-            return null;
+        return null;
     }
-    
-    
 
     ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -828,6 +867,10 @@ public class Sistema_de_inventario_tienda_ropa {
 
             doc.add(table);
             System.out.println("PDF de productos vendidos: " + path);
+
+            String c = "correcta";
+            String d = "Se creo un documento de venta " + path;
+            Acciones(c, d); //Se registra esta acción
         } catch (Exception e) {
             System.err.println("Error exportando PDF: " + e.getMessage());
         }
@@ -901,16 +944,13 @@ public class Sistema_de_inventario_tienda_ropa {
             //table.addCell(new Cell().add(new Paragraph(String.format("%.2f", total))));
             doc.add(table);
             System.out.println("PDF de productos en stock: " + path);
+
+            String c = "correcta";
+            String d = "Se creo un documento de stock " + path;
+            Acciones(c, d); //Se registra esta acción
+
         } catch (Exception e) {
             System.err.println("Error exportando PDF: " + e.getMessage());
-        }
-    }
-
-    public static void S_Producto() throws IOException {
-        for (int i = 0; i < contador1; i++) {
-            if (Nombre_Producto[0][i] != null) {
-            }
-
         }
     }
 
@@ -927,6 +967,10 @@ public class Sistema_de_inventario_tienda_ropa {
         System.out.println("CUI: 3263543281401 ");
         System.out.println("Carnet: 202401231");
         System.out.println("Correo: 3263543281401@ingenieria.usac.edu.gt ");
+
+        String c = "correcta";
+        String d = "Se ingreso a los datos de estudiante";
+        Acciones(c, d); //Se registra esta acción
 
     }
 
