@@ -233,13 +233,25 @@ public class Sistema_de_inventario_tienda_ropa {
     public static void Nombre() throws IOException {
         InputStreamReader capturarTeclado = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(capturarTeclado);
-
+        
+        boolean salir2=false;
+        do{
         System.out.println("Ingresa tu nombre para poder acceder al menú");
         String nombre = buffer.readLine();
-
+        
         //Se agrega a la matriz
         Persona[0][contador] = nombre;
         contador++;
+        salir2=true;
+        if (Persona[0][contador-1].equals("")){
+            Persona[0][contador-1]=null;
+            contador=contador-1;
+            System.out.println("Porfavor acceda un nombre válido");
+            salir2=false;
+            //break;
+        }
+        }while(!salir2);
+       
         //System.out.println(Persona[0][contador - 1]);
 
         System.out.println("Se agrego tu nombre a la bitacora");
