@@ -26,11 +26,23 @@ import com.itextpdf.layout.element.Cell;
 
 public class Sistema_de_inventario_tienda_ropa {
 
-    //Declarar Variables
+    //Acciones
     static String Persona[][] = new String[1][100]; //Matriz para el registro de personas que usan el programa
     static int contador = 0;
-    static String[][] Acciones_Correctas = new String[1000][1000]; //Matriz para guardar las acciones correctas
-    static String[][] Acciones_Incorrectas = new String[1000][1000];//Matriz para guardar las acciones incorrectas
+    static String[][] Acciones_Correctas = new String[1][1000]; //Matriz para guardar las acciones correctas
+    static int gatito1 = 0;
+    static String[][] Acciones_Incorrectas = new String[1][1000];//Matriz para guardar las acciones incorrectas
+    static int gatito2 = 0;
+    static String[][] Tiempos = new String[1][100];//Matriz para el tiempo
+    static int gatito3 = 0;
+    static String[][] Tiemposs = new String[1][100];//Matriz para el tiempo
+    static int gatito33 = 0;
+    static String[][] TAC = new String[1][100];//Matriz para el tiempo (Tipo de acción correcta)
+    static int gatito4 = 0;
+    static String[][] TAI = new String[1][100];//Matriz para el tiempo (Tipo de acción incorrecta)
+    static int gatito5 = 0;
+    
+    ///Resto del Proyecto 
     static String[][] Nombre_Producto = new String[1][100];//Matriz para el registro de nombre de producto
     static int contador1 = 0;
     static String[][] Categoria_Producto = new String[1][100];//Matriz para el registro de categpría
@@ -49,7 +61,7 @@ public class Sistema_de_inventario_tienda_ropa {
     static int contador8 = 0;
     static String[][] P_V = new String[1][100];//Matriz para el producto vendido
     static int contador9 = 0;
-    static int contprueba=0;
+    static int contprueba = 0;
 
     public static void main(String[] args) throws IOException {
         System.out.println("¡Bienvenido a la Tienda de Ropa Jujutsu Kaisen!");
@@ -87,8 +99,10 @@ public class Sistema_de_inventario_tienda_ropa {
 
                         if (Persona[0][N] != null) {
                             //agregar algo
-                            Acciones_Correctas[0][N] = "Ingreso al inventario";
-                            System.out.println(Acciones_Correctas[0][N]);
+                            String a="correcta";
+                            String b="Ingreso al inventario";
+                            Acciones(a,b); //Se registra esta acción 
+                            
                             System.out.println("");
                             System.out.println("Hola! " + Persona[0][N] + " Aquí está el menú del inventario (Recuerda cada acción se registra en bitácora)");
                             System.out.println("");
@@ -108,11 +122,14 @@ public class Sistema_de_inventario_tienda_ropa {
 
                                 switch (OPCION) {
                                     case 1 -> {//AGREGAR PRODUCTO
+                                        
                                         Producto();
                                         Categoria();
                                         Precio();
                                         Stock();
                                         Codigo();
+                                        Acciones_Correctas[0][gatito1] = gatito1 + ".Se agrego el producto con nombre:"+Nombre_Producto[0][contador1-1];
+                                        gatito1++;
                                         //continue;
                                         break;
 
@@ -223,14 +240,13 @@ public class Sistema_de_inventario_tienda_ropa {
             Nombre_Producto[0][contador1] = nombreproducto;
             contador1++;
             System.out.println(Nombre_Producto[0][contador1]);
-            
-            //Se revisa que el nombre no este repetido 
 
+            //Se revisa que el nombre no este repetido 
             for (int i = 0; i < (contador1 - 1); i++) {
                 if (Nombre_Producto[0][i].toLowerCase().equals(Nombre_Producto[0][contador1 - 1].toLowerCase())) {
                     System.out.println("El nombre ya existe,ingresa otro nombre");
                     Nombre_Producto[0][contador1 - 1] = null;
-                    contador1=contador1-1;
+                    contador1 = contador1 - 1;
                     retirada = true;
                     break;
                 }
@@ -329,7 +345,7 @@ public class Sistema_de_inventario_tienda_ropa {
                     if (Objects.equals(Codigo[0][i], Codigo[0][contador4 - 1])) {
                         System.out.println("El código ya existe");
                         Codigo[0][contador4 - 1] = null;
-                        contador4=contador4-1;
+                        contador4 = contador4 - 1;
                         retirada = true;
                         break;
                     }
@@ -566,7 +582,7 @@ public class Sistema_de_inventario_tienda_ropa {
         for (int i = 0; i < Codigo[0].length - 1; i++) {
             if (Objects.equals(Codigo[0][i], NC)) {
                 Nombre_Producto[0][i] = null;
-                Categoria_Producto[0][i] =null ;
+                Categoria_Producto[0][i] = null;
                 Precio[0][i] = 0;   //por ser de tipo primitivo no admite null
                 Stock[0][i] = null;
                 Codigo[0][i] = null;
@@ -624,9 +640,9 @@ public class Sistema_de_inventario_tienda_ropa {
                     contador9++;
                     //Registro
                     System.out.println("Registrando venta con los siguientes datos");
-                    System.out.println("Nombre del producto "+P_V[0][contador9-1]);
+                    System.out.println("Nombre del producto " + P_V[0][contador9 - 1]);
                     System.out.println("Código del producto: " + Codigo[0][i]);
-                    System.out.println("Cantidad vendida: " + Cantidad[0][contador8-1]);
+                    System.out.println("Cantidad vendida: " + Cantidad[0][contador8 - 1]);
                     //Tiempo de transacción
                     Tiempo[0][contador7] = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                     System.out.println("Fecha y hora de transacción: " + Tiempo[0][contador7]);
@@ -653,9 +669,50 @@ public class Sistema_de_inventario_tienda_ropa {
 ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
         //Método para ver Bitacora
-    public static void Bitacora() throws IOException {
-
+    public static void Bitacora() throws IOException { 
+        
+        for (int i = 0; i < contador; i++) {
+        System.out.println("Acciones realizados por "+Persona[0][i]);
+        System.out.println("ACCIONES CORRECTAS:");
+        for (int j=0;j<gatito3;j++){
+        System.out.println("------------------------------------------------------------");
+        System.out.println(Tiempos[0][j]);
+        System.out.println(TAC[0][j]);
+        System.out.println(Acciones_Correctas[0][j]);
+        }
+        System.out.println("");
+        System.out.println("ACCIONES INCORRECTAS:");
+        for (int k=0;k<gatito33;k++){
+        System.out.println("------------------------------------------------------------");
+        System.out.println(Tiemposs[0][k]);
+        System.out.println(TAI[0][k]);
+        System.out.println(Acciones_Incorrectas[0][k]);
+        }
     }
+    }
+            //Método para ver Bitacora
+    public static String  Acciones(String a, String b) throws IOException { 
+        
+        if( a =="correcta"){
+        Tiempos[0][gatito3]=LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss"));
+        gatito3++;
+        TAC[0][gatito4]=b;
+        gatito4++;
+        Acciones_Correctas[0][gatito1]="Correcta"; 
+        gatito1++;
+        }
+        if(a=="incorrecta"){
+        Tiemposs[0][gatito33]=LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss"));
+        gatito33++;
+        TAI[0][gatito5]=b;
+        gatito5++;
+        Acciones_Incorrectas[0][gatito2]="Incorrecta"; 
+        gatito2++;
+        }
+            return null;
+    }
+    
+    
 
     ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -760,14 +817,14 @@ public class Sistema_de_inventario_tienda_ropa {
                 table.addCell(new Cell().add(new Paragraph(String.valueOf(P_V[0][i]))));
                 table.addCell(new Cell().add(new Paragraph(String.valueOf(Cantidad[0][i]))));
                 table.addCell(new Cell().add(new Paragraph(Tiempo[0][i])));
-                table.addCell(new Cell().add(new Paragraph(String.valueOf("Q"+Total[0][i]))));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf("Q" + Total[0][i]))));
                 total += Total[0][i];
             }
 
             // Fila resumen
             table.addCell(new Cell(1, 3).add(new Paragraph("Total productos: " + contador6)));
-            table.addCell(new Cell().add(new Paragraph(String.format("Q"+"%.2f", total))));//Esto puede producir un error sino lo cambiamos
-            table.addCell(new Cell(1, 5).add(new Paragraph("Persona que realiza la venta: "+Persona[0][contador-1])));// Así siempre imprime a la última guardada
+            table.addCell(new Cell().add(new Paragraph(String.format("Q" + "%.2f", total))));//Esto puede producir un error sino lo cambiamos
+            table.addCell(new Cell(1, 5).add(new Paragraph("Persona que realiza la venta: " + Persona[0][contador - 1])));// Así siempre imprime a la última guardada
 
             doc.add(table);
             System.out.println("PDF de productos vendidos: " + path);
@@ -813,48 +870,49 @@ public class Sistema_de_inventario_tienda_ropa {
             //double total = 0.0;
             for (int i = 0; i < contador1; i++) {
                 //Nombre_Producto p = Stock[0][i];
-                if(Nombre_Producto[0][i]!=null){
-                table.addCell(new Cell().add(new Paragraph(String.valueOf(Nombre_Producto[0][i]))));}
-                if(Codigo[0][i]!=null){
-                table.addCell(new Cell().add(new Paragraph(String.valueOf(Codigo[0][i]))));}
-                if(Categoria_Producto[0][i]!=null){
-                table.addCell(new Cell().add(new Paragraph(Categoria_Producto[0][i])));}
-                if(Precio[0][i]!=0){
-                table.addCell(new Cell().add(new Paragraph(String.valueOf("Q"+Precio[0][i]))));}
-                if(Stock[0][i]!=null){
-                table.addCell(new Cell().add(new Paragraph(String.valueOf(Stock[0][i]))));}
+                if (Nombre_Producto[0][i] != null) {
+                    table.addCell(new Cell().add(new Paragraph(String.valueOf(Nombre_Producto[0][i]))));
+                }
+                if (Codigo[0][i] != null) {
+                    table.addCell(new Cell().add(new Paragraph(String.valueOf(Codigo[0][i]))));
+                }
+                if (Categoria_Producto[0][i] != null) {
+                    table.addCell(new Cell().add(new Paragraph(Categoria_Producto[0][i])));
+                }
+                if (Precio[0][i] != 0) {
+                    table.addCell(new Cell().add(new Paragraph(String.valueOf("Q" + Precio[0][i]))));
+                }
+                if (Stock[0][i] != null) {
+                    table.addCell(new Cell().add(new Paragraph(String.valueOf(Stock[0][i]))));
+                }
                 //total += Codigo[0][i];
             }
 
             // Fila resumen
-            contprueba=contador1;
-            for (int i=0;i< contador1;i++){
-            if(Nombre_Producto[0][i]==null){
-            contprueba=contprueba-1;
-            }
+            contprueba = contador1;
+            for (int i = 0; i < contador1; i++) {
+                if (Nombre_Producto[0][i] == null) {
+                    contprueba = contprueba - 1;
+                }
             }
             table.addCell(new Cell(1, 5).add(new Paragraph("Total productos registrados: " + contprueba)));
-            table.addCell(new Cell(1, 5).add(new Paragraph("Persona que ingreso el inventario: "+Persona[0][contador-1])));// Así siempre imprime a la última guardada
-            
-            //table.addCell(new Cell().add(new Paragraph(String.format("%.2f", total))));
+            table.addCell(new Cell(1, 5).add(new Paragraph("Persona que ingreso el inventario: " + Persona[0][contador - 1])));// Así siempre imprime a la última guardada
 
+            //table.addCell(new Cell().add(new Paragraph(String.format("%.2f", total))));
             doc.add(table);
             System.out.println("PDF de productos en stock: " + path);
         } catch (Exception e) {
             System.err.println("Error exportando PDF: " + e.getMessage());
         }
     }
-    
-    
+
     public static void S_Producto() throws IOException {
-        for (int i = 0; i < contador1; i++){
-        if (Nombre_Producto[0][i]!=null){
+        for (int i = 0; i < contador1; i++) {
+            if (Nombre_Producto[0][i] != null) {
+            }
+
         }
-       
     }
-    }
-    
-    
 
     ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
