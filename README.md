@@ -10,7 +10,10 @@ En terminos generales se enfoca en registrar como diferentes usuarios pueden acc
 - Instalar lenguaje de programación Java (una versión anterior a la de NeatBeans)
 - Descargar el código
 - Ejecutar archivo
-- Los pasos para utilizar el programa se encuntran en el **Manual de Usuario**
+- Los pasos para utilizar el programa se encuntran en el [Manual de Usuario.pdf](https://github.com/user-attachments/files/22327893/Manual.de.Usuario.1.pdf)
+  
 ### Mejoras Posibles 🔧
 - Que con un salto de línea al ingresar al primer menú no colapse el programa
-- Que no se guarde como nombre valido el salto de línea
+
+- Que se cree una opción para poder modificar los productos ingresados
+
