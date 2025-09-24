@@ -156,6 +156,7 @@ public class Sistema_de_inventario_tienda_ropa {
                                     }
                                     case 5 -> {//BITÁCORA
                                         Bitacora();
+                                        R_bitacora();
                                         break;
 
                                     }
@@ -1063,5 +1064,71 @@ public class Sistema_de_inventario_tienda_ropa {
         Acciones(c, d); //Se registra esta acción
 
     }
+    
+     //Método para Generar Reporte de Stock
+    public static void R_bitacora() throws IOException {
+        InputStreamReader capturarTeclado = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(capturarTeclado);
+
+        if (contador3 == 0) {
+            System.out.println("No hay acciones para exportar al PDF.");
+            String g = "incorrecta";
+            String f = "No hay productos para exportar al PDF.";
+            Acciones(g, f); //Se registra esta acción
+            return;
+        }
+        System.out.print("Ruta/nombre del PDF (por defecto 'DD_MM_YYYY_HH_mm_ss_Bitacora.pdf'): ");
+        String path = buffer.readLine();
+
+        if (path.isEmpty()) {
+            String Fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss"));
+
+            path = Fecha + "_Bitacora.pdf";
+        }
+
+        try (PdfWriter writer = new PdfWriter(path); PdfDocument pdf = new PdfDocument(writer); Document doc = new Document(pdf)) {
+
+            doc.add(new Paragraph("Reporte Bitacora")
+                    .setBold()
+                    .setFontSize(14));
+            doc.add(new Paragraph("Reporte Generado: "
+                    + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))));
+
+            Table table = new Table(new float[]{3, 6, 3, 3});
+            table.useAllAvailableWidth();
+            table.addHeaderCell(new Cell().add(new Paragraph("Acción")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Tipo de acción")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Fecha")));
+            table.addHeaderCell(new Cell().add(new Paragraph("Nombre")));
+
+            double total = 0.0;
+            for (int i = 0; i < contador3; i++) {
+                //Nombre_Producto p = Stock[0][i];
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(TAC[0][i]))));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Acciones_Correctas[0][i]))));
+                table.addCell(new Cell().add(new Paragraph(Tiempos[0][i])));
+                table.addCell(new Cell().add(new Paragraph(String.valueOf(Persona1[0][i]))));
+                //total += Total[0][i];
+            }
+
+            // Fila resumen
+            table.addCell(new Cell(1, 3).add(new Paragraph("Total Acciones: " + contador3)));
+            //table.addCell(new Cell().add(new Paragraph(String.format("Q" + "%.2f", total))));//Esto puede producir un error sino lo cambiamos
+            //table.addCell(new Cell(1, 5).add(new Paragraph("Persona que realiza la venta: " + Persona[0][contador - 1])));// Así siempre imprime a la última guardada
+
+            doc.add(table);
+            System.out.println("PDF de bitacora: " + path);
+
+            String c = "correcta";
+            String d = "Se creo un documento de venta " + path;
+            Acciones(c, d); //Se registra esta acción
+        } catch (Exception e) {
+            System.err.println("Error exportando PDF: " + e.getMessage());
+            String g = "incorrecta";
+            String f = "Erro exportando PDF: "+ e.getMessage();
+            Acciones(g, f); //Se registra esta acción
+        }
+    }
+    
 
 }
