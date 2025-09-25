@@ -32,6 +32,7 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
 
         Paneles();
         Etiquetas();
+        Boton();
 
     }
 
@@ -89,6 +90,10 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
 
     public void IngresoTextos(String textos) {
 
+    }
+
+    private void Boton() {
+        
     }
 
 }
