@@ -4,7 +4,7 @@
 
 package com.mycompany.arenausac;
 
-import clases.Clase1;
+import clases.Ventana;
 
 /**
  *
@@ -13,7 +13,7 @@ import clases.Clase1;
 public class ArenaUsac {
 
     public static void main(String[] args) {
-     Clase1 C=new Clase1("Arena de Peleas Pokemón_"+"_PID de la ventanta: "+getPID());
+     Ventana C=new Ventana("Arena de Peleas Pokemón_"+"_PID de la ventanta: "+getPID());
      C.setVisible(true);
     
     }
