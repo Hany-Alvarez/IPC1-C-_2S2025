@@ -10,7 +10,10 @@ import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
 
 public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
 
@@ -20,6 +23,7 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
     JButton b1;
     JButton b2;
     JButton b3;
+    JLabel mensaje;
     private final JButton btnAbrir = new JButton("Abrir arena");
 
 //
@@ -36,6 +40,16 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
         Paneles();
         Etiquetas();
         Boton();
+        IngresoTextos();
+        
+    /*ActionListener accion=new ActionListener(){
+    @Override
+    public void actionPerformed(ActionEvent e){
+    }
+    }
+    //b1.addActionListener(l);*/
+        
+        
 
     }
 
@@ -91,7 +105,17 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
 
     }
 
-    public void IngresoTextos(String textos) {
+    public void IngresoTextos() {
+        JTextField Entrada=new JTextField();//Aquí creo la entrada
+        Entrada.setText ("Hola!");//lo que ira en la entrada
+        this.panel2.add(Entrada);//lo meto a mi panel
+        Entrada.setBounds(100, 500, 300, 25);//Medidas de la canjita
+        Entrada.setFont(new Font(Font.SERIF,Font.BOLD,20));
+        Entrada.setBackground(new Color(255, 255, 255));//Color de fondo
+        Entrada.setForeground(new Color(0, 204, 204));
+        
+                
+        
 
     }
 
@@ -105,6 +129,14 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
     b1.setBackground(new Color(255, 255, 255));//Color de fondo de boton
     b1.setForeground(new Color(51, 51, 51));//color de la letra
     b1.setIcon(new ImageIcon(new ImageIcon("images/charmander.gif").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+    
+    mensaje=new JLabel();
+    mensaje.setBounds(100, 550, 300, 25);
+    panel2.add(mensaje);
+    
+   
+    
+    
     
     
     b2 =new JButton("Modificar Personaje");//Se crea el bott
