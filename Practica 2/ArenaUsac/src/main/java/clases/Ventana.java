@@ -17,6 +17,9 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
     JPanel miniventana; //Se instancia globalmente
     JPanel panel1;
     JPanel panel2;
+    JButton b1;
+    JButton b2;
+    JButton b3;
     private final JButton btnAbrir = new JButton("Abrir arena");
 
 //
@@ -24,7 +27,7 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
 // Constructor de la Clase Clase1
     public Ventana(String title) throws HeadlessException {// Es para manejar las excepciones de que el sistema operativo no tenga interfaz gráfica o no sea compatible
         super(title);
-        Dimension d = new Dimension(600, 500);//Se crea una variable para dimensionar en px
+        Dimension d = new Dimension(1920, 1080);//Se crea una variable para dimensionar en px
         this.setSize(d);//Esto es para dimensionar la ventana
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);//Para cerrar a la ventana
         //this.setResizable(false);//Para no permitir modificar el tamañan de la ventana
@@ -80,7 +83,7 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
 
         JLabel e2 = new JLabel("<html>Arena Pokemón</html>", imagenEscala, SwingConstants.CENTER);
         this.panel2.add(e2);
-        e2.setForeground(Color.white);
+        e2.setForeground(new Color(255, 0, 51));
         e2.setBounds(100, 10, 500, 300);
         e2.setHorizontalAlignment(SwingConstants.CENTER);//otra forma de alinear etiquetas
         Font fuente2 = new Font("Pokemon Solid", Font.TYPE1_FONT, 50);// Esto nos permite dale formato a las etiquetas
@@ -92,7 +95,29 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
 
     }
 
-    private void Boton() {
+    protected void Boton() {
+    
+    b1 =new JButton("Agregar Personaje");//Se crea el bott
+    panel2.setLayout(null);//para que tome el diseño del boton
+    panel2.add(b1);
+    b1.setBounds(290, 300, 260,40 );
+    b1.setFont(new Font("Super Joyful",Font.CENTER_BASELINE,15));//Esto es para el estilo de letra
+    b1.setBackground(new Color(255, 255, 255));//Color de fondo de boton
+    b1.setForeground(new Color(51, 51, 51));//color de la letra
+    b1.setIcon(new ImageIcon(new ImageIcon("images/charmander.gif").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+    
+    
+    b2 =new JButton("Modificar Personaje");//Se crea el bott
+    panel2.setLayout(null);//para que tome el diseño del boton
+    panel2.add(b2);
+    b2.setBounds(290, 360, 200,20 );
+    
+    
+    b3 =new JButton("Eliminar Personaje");//Se crea el bott
+    panel2.setLayout(null);//para que tome el diseño del boton
+    panel2.add(b3);
+    b3.setBounds(290, 390, 200,20 );
+    //
         
     }
 
