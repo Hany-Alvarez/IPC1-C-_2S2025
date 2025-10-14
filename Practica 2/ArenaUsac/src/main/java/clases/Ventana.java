@@ -20,7 +20,7 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
     JPanel miniventana; //Se instancia globalmente
     JPanel panel1;
     JPanel panel2;
-    JButton b1;
+    JButton b1 ;
     JButton b2;
     JButton b3;
     JLabel mensaje;
@@ -119,9 +119,19 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
 
     }
 
-    protected void Boton() {
+    public void Boton() {
     
     b1 =new JButton("Agregar Personaje");//Se crea el bott
+    b1.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e){
+       new Caja().setVisible(true);
+       dispose();
+    }
+    });
+    
+    
+    
+    
     panel2.setLayout(null);//para que tome el diseño del boton
     panel2.add(b1);
     b1.setBounds(290, 300, 260,40 );
@@ -129,6 +139,8 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
     b1.setBackground(new Color(255, 255, 255));//Color de fondo de boton
     b1.setForeground(new Color(51, 51, 51));//color de la letra
     b1.setIcon(new ImageIcon(new ImageIcon("images/charmander.gif").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+    
+
     
     mensaje=new JLabel();
     mensaje.setBounds(100, 550, 300, 25);

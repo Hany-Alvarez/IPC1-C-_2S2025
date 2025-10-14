@@ -4,6 +4,10 @@
 
 package com.mycompany.sancarlistashop;
 
+import Vista.Modulo_Administrador.Módulo_Administración;
+import Vista.Módulo_Autenticación;
+import Controlador.Controlador;
+
 /**
  *
  * @author hanya
@@ -11,6 +15,9 @@ package com.mycompany.sancarlistashop;
 public class SancarlistaShop {
 
     public static void main(String[] args) {
-        System.out.println("I don't have a idea but I cannnnn");
+     
+      
+     Módulo_Autenticación M1=new Módulo_Autenticación("Inicio de Sesión");
+     M1.setVisible(true);//Se hace visible la ventana de sesión
     }
 }
