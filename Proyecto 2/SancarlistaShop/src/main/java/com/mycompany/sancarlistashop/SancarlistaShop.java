@@ -16,8 +16,8 @@ public class SancarlistaShop {
 
     public static void main(String[] args) {
      
-      
-     Módulo_Autenticación M1=new Módulo_Autenticación("Inicio de Sesión");
+   Módulo_Autenticación M1=new Módulo_Autenticación("Inicio de Sesión");
      M1.setVisible(true);//Se hace visible la ventana de sesión
+     
     }
 }

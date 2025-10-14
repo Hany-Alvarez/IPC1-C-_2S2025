@@ -15,22 +15,20 @@ import java.io.InputStreamReader;
  */
 public class Controlador {
 
-    public void AbrirCerrrar(String Opcion, String letra) {
+    public void AbrirCerrrar(String Opcion, String letra,String letra2) {
 
         switch (Opcion) {
             case "a" -> {
-                System.out.println("El valor de a es:"+letra);
-                boolean respuesta = true;
-
-               
-                    Controlador llave = new Controlador();
-                    boolean respuesta2 = llave.Iniciar(letra, respuesta); //Función que verifica si la llave es correcta
-                    System.out.println("Se ejecuto el método");
-                    Módulo_Administración M2 = new Módulo_Administración("Módulo_Administración");
-                    M2.setVisible(respuesta2);
-                   
+                System.out.println("El valor del código es:" + letra+"y contraseña:"+letra2);
                 
- 
+
+                Controlador llave = new Controlador();
+                boolean respuesta2 = llave.Iniciar(letra,letra2); //Función que verifica si la llave es correcta
+                System.out.println("El valor de respueta2:" + respuesta2);
+                System.out.println("Se ejecuto el método");
+                Módulo_Administración M2 = new Módulo_Administración("Módulo_Administración");
+                M2.setVisible(respuesta2);
+                Módulo_Autenticación.visibilidad.setVisible(!respuesta2);
                 
 
             }
@@ -47,11 +45,17 @@ public class Controlador {
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public boolean Iniciar(String codigo, boolean r) {
-        if (codigo == "123") {
-            r = true;
+
+    
+    
+    public boolean Iniciar(String codigo,String contraseña) {
+
+        if (codigo.equals("123") && contraseña.equals("456")) {
+            System.out.println("Código y Contraseña Correctos, se encontro en el sistema");
+            return true;
         }
-        return true;
+          System.out.println("Código ó Contraseña Incorrectos, no se encontro en el sistema");
+        return false;
     }
 
 }

@@ -18,7 +18,6 @@ import java.awt.event.ActionListener;
 //Mis importaciones
 import Controlador.Controlador;
 
-
 /**
  *
  * @author hanya
@@ -26,6 +25,8 @@ import Controlador.Controlador;
 public final class Módulo_Autenticación extends JFrame {
 
 //Declaración de Variables
+    public static Módulo_Autenticación visibilidad;//Es un atributo global para todo el proyecto
+
     JPanel InicioSesión;
     JLabel titulo;
     JComboBox opciones;//Si nos da tiempo la lista desplegable
@@ -33,18 +34,19 @@ public final class Módulo_Autenticación extends JFrame {
     JLabel text2;
     JTextField text11;
     JTextField text22;
-    
-   //get
-  public String getcodigo;
-    
-  //set
-  
-  //OPCIONES
-  String ac="ac";
+
+    //get
+    public String getcodigo;
+    public String getcontraseña;
+    //set
+
+    //OPCIONES
+    String ac = "ac";
 
     //Constructor de la clase Módulo
     public Módulo_Autenticación(String title) throws HeadlessException {
         super(title);
+        visibilidad = this;// Es la dirección para la ventana general
 
         Dimension d = new Dimension(960, 600);//Objeto que tiene la dimensión de la ventana
         this.setSize(d);
@@ -107,9 +109,8 @@ public final class Módulo_Autenticación extends JFrame {
     }
 
     public void Text() {
-        
 
- ///CODIGO
+        ///CODIGO
         text11 = new JTextField();
         text11.setText("Codigo");
         text11.setBounds(410, 280, 300, 40);
@@ -118,22 +119,8 @@ public final class Módulo_Autenticación extends JFrame {
         text11.setForeground(new Color(153, 153, 153));//Color de la fuente
 
         this.InicioSesión.add(text11);
-        
-        //Guardar código
-        text11.addActionListener(e ->{
-        getcodigo=text11.getText();
-        System.out.println(getcodigo);
-        ac="a";
-        Controlador OP =new Controlador();
-        OP.AbrirCerrrar(ac,getcodigo);
-        });
-        
-        
 
-       
-        
-
-///CONTRASEÑA
+        ///CONTRASEÑA
         text22 = new JTextField();
         text22.setText("Contraseña");
         text22.setBounds(410, 400, 300, 40);
@@ -142,6 +129,36 @@ public final class Módulo_Autenticación extends JFrame {
         text22.setForeground(new Color(153, 153, 153));//Color de la fuente
 
         this.InicioSesión.add(text22);
+
+        //Validar por código
+        text11.addActionListener(e -> {
+            getcodigo = text11.getText();
+            System.out.println(getcodigo);
+            //ac="a";
+
+            getcontraseña = text22.getText();
+            System.out.println(getcontraseña);
+            ac = "a";
+
+            Controlador OP = new Controlador();
+            OP.AbrirCerrrar(ac, getcodigo, getcontraseña);
+
+        });
+        //Validar por contraseña
+                text22.addActionListener(e -> {
+            getcodigo = text11.getText();
+            System.out.println(getcodigo);
+            //ac="a";
+
+            getcontraseña = text22.getText();
+            System.out.println(getcontraseña);
+            ac = "a";
+
+            Controlador OP = new Controlador();
+            OP.AbrirCerrrar(ac, getcodigo, getcontraseña);
+
+        });
+
     }
 
 }
