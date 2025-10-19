@@ -61,8 +61,8 @@ public final class Módulo_Administración extends JFrame {
         //Configuraciones de diseño
         vendedores.setBounds(50, 60, 283, 40);
         vendedores.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
-        vendedores.setBackground(new Color(255, 204, 51));
-        vendedores.setForeground(new Color(51, 51, 51));
+        vendedores.setBackground(new Color(51, 51, 51));
+        vendedores.setForeground(new Color(255, 204, 51));
         add(vendedores);
         
         

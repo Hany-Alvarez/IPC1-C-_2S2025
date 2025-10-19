@@ -71,7 +71,7 @@ public final class Módulo_Autenticación extends JFrame {
 
         ///SANCARLISTA SHOP 
     //Condiciones base e icono
-    ImageIcon icono = new ImageIcon("images/Logo0.png");
+        ImageIcon icono = new ImageIcon("images/Logo0.png");
         ImageIcon USAC = new ImageIcon(icono.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
         titulo = new JLabel("Sancarlista Shop", USAC, SwingConstants.CENTER);
         titulo.setForeground(Color.WHITE);//Color del título
