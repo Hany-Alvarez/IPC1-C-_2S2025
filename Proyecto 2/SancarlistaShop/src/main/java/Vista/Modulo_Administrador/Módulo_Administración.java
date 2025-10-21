@@ -44,7 +44,7 @@ public final class Módulo_Administración extends JFrame {
 
     public Módulo_Administración(String title) throws HeadlessException {
         super(title);
-        v =this;
+        v = this;
 
         Dimension d = new Dimension(960, 600);//Objeto que tiene la dimensión de la ventana
         this.setSize(d);
@@ -79,18 +79,18 @@ public final class Módulo_Administración extends JFrame {
         Crear.setBackground(new Color(255, 255, 255));
         Crear.setForeground(new Color(51, 51, 51));
         Vendores.add(Crear);//Agregando al panel de vendedores
-        
-         ///Escritura de cada acción ⚠
+
+        ///Escritura de cada acción 
         ActionListener abrir = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-          Crear_Vendedor Ver=new Crear_Vendedor("Creación");
-          Ver.setVisible(true);
+                Crear_Vendedor Ver = new Crear_Vendedor("Creación");
+                Ver.setVisible(true);
             }
         };
         ///Acciones
           Crear.addActionListener(abrir);//Se le agrega la acción
- //--------------------------------------------------------------------------------------       
+        //--------------------------------------------------------------------------------------       
 
         //Boton Actualizar
         Vendores.setLayout(null);
@@ -101,6 +101,17 @@ public final class Módulo_Administración extends JFrame {
         Actualizar.setBackground(new Color(255, 255, 255));
         Actualizar.setForeground(new Color(51, 51, 51));
         Vendores.add(Actualizar);//Agregando al panel de vendedores
+
+        ///Escritura de cada acción 
+        ActionListener abrir2 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Actualizar_Vendedor Ver = new Actualizar_Vendedor("Actualizar");
+                Ver.setVisible(true);
+            }
+        };
+        ///Acciones
+          Actualizar.addActionListener(abrir2);//Se le agrega la acción
 //--------------------------------------------------------------------------------------
         //Boton Cargar
         Vendores.setLayout(null);
@@ -112,6 +123,17 @@ public final class Módulo_Administración extends JFrame {
         Cargar.setForeground(new Color(51, 51, 51));
         Vendores.add(Cargar);//Agregando al panel de vendedores
 
+        ///Escritura de cada acción 
+        ActionListener abrir3 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Cargar Ver = new Cargar("Cargar");
+                Ver.setVisible(true);
+            }
+        };
+        ///Acciones
+          Cargar.addActionListener(abrir3);//Se le agrega la acción
+//--------------------------------------------------------------------------------------
         //Boton Eliminar
         Eliminar = new JButton();
         Eliminar.setLayout(null);
@@ -123,6 +145,17 @@ public final class Módulo_Administración extends JFrame {
         Eliminar.setForeground(new Color(51, 51, 51));
         Vendores.add(Eliminar);//Agregando al panel de vendedores
 
+        ///Escritura de cada acción 
+        ActionListener abrir4 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Eliminar_Vendedor Ver = new Eliminar_Vendedor("Eliminar");
+                Ver.setVisible(true);
+            }
+        };
+        ///Acciones
+          Eliminar.addActionListener(abrir4);//Se le agrega la acción
+//--------------------------------------------------------------------------------------
         //Tabla de datos
         //Panel donde ira
         Vendores.setLayout(null);
@@ -284,13 +317,13 @@ public final class Módulo_Administración extends JFrame {
         casa.setForeground(new Color(51, 51, 51));//color de la letra
         casa.setIcon(new ImageIcon(new ImageIcon("images/casa.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
         add(casa);
-        
+
         ///Escritura de cada acción 
         ActionListener ircasa = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            Controlador volver =new Controlador();
-            volver.Casa(v);
+                Controlador volver = new Controlador();
+                volver.Casa(v);
             }
         };
         ///Acciones
