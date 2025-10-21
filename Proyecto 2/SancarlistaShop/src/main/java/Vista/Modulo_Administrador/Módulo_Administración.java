@@ -49,42 +49,10 @@ public final class Módulo_Administración extends JFrame {
 
         //Todos los métodos
         Barra();
+        BarraAccion();
         Vendedores();
         Productos();
-    }
-
-    public void Barra() {
-        
-  
- ///Boton para mostrar panel de vendedores
-        vendedores = new JButton("Vendedores");
-        //Configuraciones de diseño
-        vendedores.setBounds(50, 60, 283, 40);
-        vendedores.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
-        vendedores.setBackground(new Color(51, 51, 51));
-        vendedores.setForeground(new Color(255, 204, 51));
-        add(vendedores);
-        
-        
-        
-        
- //////Boton para mostrar panel de productos
-        productos = new JButton("Productos");
-        productos.setBounds(334, 60, 282, 40);
-        productos.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
-        productos.setBackground(new Color(255, 204, 51));
-        productos.setForeground(new Color(51, 51, 51));
-        add(productos);
-        
-        
-
-///Boton para mostrar panel de reportes
-        reportes = new JButton("Reportes");
-        reportes.setBounds(616, 60, 283, 40);
-        reportes.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
-        reportes.setBackground(new Color(255, 204, 51));
-        reportes.setForeground(new Color(51, 51, 51));
-        add(reportes);
+        Reportes();
     }
 
     public void Vendedores() {
@@ -139,12 +107,121 @@ public final class Módulo_Administración extends JFrame {
     }
 
     public void Productos() {
-        //Vendedores
+        //Productos
         this.setLayout(null);//Permite dimensionarl el panel
         Productos = new JPanel();
         Productos.setBackground(new Color(255, 255, 0));//Color
-        Productos.setBounds(50, 100, 700, 500);
-        //add(Vendores);//Agregar a la ventana general
+        Productos.setBounds(50, 100, 849, 440);
+        add(Productos);//Agregar a la ventana general
+        Productos.setVisible(false);
+    }
+
+    private void Reportes() {
+        //Reportes
+        this.setLayout(null);//Permite dimensionarl el panel
+        Reportes = new JPanel();
+        Reportes.setBackground(new Color(255, 51, 0));//Color
+        Reportes.setBounds(50, 100, 849, 440);
+        add(Reportes);//Agregar a la ventana general
+        Reportes.setVisible(false);
+
+    }
+
+    public void Barra() {
+
+        ///////Boton para mostrar panel de vendedores
+        vendedores = new JButton("Vendedores");
+        //Configuraciones de diseño
+        vendedores.setBounds(50, 60, 283, 40);
+        vendedores.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
+        vendedores.setBackground(new Color(51, 51, 51));
+        vendedores.setForeground(new Color(255, 204, 51));
+        add(vendedores);
+
+        //////Boton para mostrar panel de productos
+        productos = new JButton("Productos");
+        productos.setBounds(334, 60, 282, 40);
+        productos.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
+        productos.setBackground(new Color(255, 204, 51));
+        productos.setForeground(new Color(51, 51, 51));
+        add(productos);
+
+        //////Boton para mostrar panel de reportes
+        reportes = new JButton("Reportes");
+        reportes.setBounds(616, 60, 283, 40);
+        reportes.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
+        reportes.setBackground(new Color(255, 204, 51));
+        reportes.setForeground(new Color(51, 51, 51));
+        add(reportes);
+
+    }
+
+    private void BarraAccion() {
+        /// Vendedores     
+        ActionListener mostrar = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Paneles
+                Vendores.setVisible(true); //Se oculta el panel de Vendedores 
+                Productos.setVisible(false);//Se oculta el panel de producto
+                Reportes.setVisible(false);
+
+                //Botones
+                reportes.setBackground(new Color(255, 204, 51));
+                reportes.setForeground(new Color(51, 51, 51));
+                productos.setBackground(new Color(255, 204, 51));
+                productos.setForeground(new Color(51, 51, 51));
+                vendedores.setBackground(new Color(51, 51, 51));
+                vendedores.setForeground(new Color(255, 204, 51));
+            }
+        };
+
+        ///Acciones
+          vendedores.addActionListener(mostrar);//Se le agrega la acción
+
+        /// Productos
+          ///Escritura de cada acción 
+        ActionListener mostrar2 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Paneles
+                Vendores.setVisible(false); //Se oculta el panel de Vendedores 
+                Productos.setVisible(true);//Se muestra el panel de producto
+                Reportes.setVisible(false);
+                //Botones
+                vendedores.setBackground(new Color(255, 204, 51));
+                vendedores.setForeground(new Color(51, 51, 51));
+                productos.setBackground(new Color(51, 51, 51));
+                productos.setForeground(new Color(255, 204, 51));
+                reportes.setBackground(new Color(255, 204, 51));
+                reportes.setForeground(new Color(51, 51, 51));
+            }
+        };
+
+        ///Acciones
+          productos.addActionListener(mostrar2);//Se le agrega la acción
+          
+ ///Reportes
+          ///Escritura de cada acción ⚠️
+        ActionListener mostrar3 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Paneles
+                Vendores.setVisible(false); //Se oculta el panel de Vendedores 
+                Productos.setVisible(false);//Se oculta el panel de producto
+                Reportes.setVisible(true);
+
+                //Botones
+                vendedores.setBackground(new Color(255, 204, 51));
+                vendedores.setForeground(new Color(51, 51, 51));
+                productos.setBackground(new Color(255, 204, 51));
+                productos.setForeground(new Color(51, 51, 51));
+                reportes.setBackground(new Color(51, 51, 51));
+                reportes.setForeground(new Color(255, 204, 51));
+            }
+        };
+        ///Acciones
+          reportes.addActionListener(mostrar3);//Se le agrega la acción
 
     }
 

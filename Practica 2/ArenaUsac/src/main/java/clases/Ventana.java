@@ -123,6 +123,7 @@ public final class Ventana extends JFrame {// Se hace una clase hija de JFrame
     
     b1 =new JButton("Agregar Personaje");//Se crea el bott
     b1.addActionListener(new ActionListener() {
+    @Override
     public void actionPerformed(ActionEvent e){
        new Caja().setVisible(true);
        dispose();
