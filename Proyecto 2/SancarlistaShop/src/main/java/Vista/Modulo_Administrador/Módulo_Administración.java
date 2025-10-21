@@ -4,6 +4,8 @@
  */
 package Vista.Modulo_Administrador;
 
+import Controlador.Controlador;
+
 import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.HeadlessException;
@@ -23,6 +25,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public final class Módulo_Administración extends JFrame {
 
     //Declaración de Variables
+    public static Módulo_Administración v;
     JPanel Menu;
     JPanel Vendores;
     JPanel Productos;
@@ -37,8 +40,11 @@ public final class Módulo_Administración extends JFrame {
     JButton Cargar;
     JButton Eliminar;
 
+    JButton casa;
+
     public Módulo_Administración(String title) throws HeadlessException {
         super(title);
+        v =this;
 
         Dimension d = new Dimension(960, 600);//Objeto que tiene la dimensión de la ventana
         this.setSize(d);
@@ -53,6 +59,7 @@ public final class Módulo_Administración extends JFrame {
         Vendedores();
         Productos();
         Reportes();
+        Ir_Casa();
     }
 
     public void Vendedores() {
@@ -63,7 +70,7 @@ public final class Módulo_Administración extends JFrame {
         Vendores.setBackground(new Color(51, 153, 255));//Color
         Vendores.setBounds(50, 100, 849, 440);
         add(Vendores);//Agregar a la ventana general
-
+//--------------------------------------------------------------------------------------
         //Boton Crear
         Vendores.setLayout(null);
         Crear = new JButton("Crear");
@@ -72,6 +79,18 @@ public final class Módulo_Administración extends JFrame {
         Crear.setBackground(new Color(255, 255, 255));
         Crear.setForeground(new Color(51, 51, 51));
         Vendores.add(Crear);//Agregando al panel de vendedores
+        
+         ///Escritura de cada acción ⚠
+        ActionListener abrir = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+          Crear_Vendedor Ver=new Crear_Vendedor("Creación");
+          Ver.setVisible(true);
+            }
+        };
+        ///Acciones
+          Crear.addActionListener(abrir);//Se le agrega la acción
+ //--------------------------------------------------------------------------------------       
 
         //Boton Actualizar
         Vendores.setLayout(null);
@@ -82,7 +101,7 @@ public final class Módulo_Administración extends JFrame {
         Actualizar.setBackground(new Color(255, 255, 255));
         Actualizar.setForeground(new Color(51, 51, 51));
         Vendores.add(Actualizar);//Agregando al panel de vendedores
-
+//--------------------------------------------------------------------------------------
         //Boton Cargar
         Vendores.setLayout(null);
         Cargar = new JButton();
@@ -103,6 +122,37 @@ public final class Módulo_Administración extends JFrame {
         Eliminar.setBackground(new Color(255, 255, 255));
         Eliminar.setForeground(new Color(51, 51, 51));
         Vendores.add(Eliminar);//Agregando al panel de vendedores
+
+        //Tabla de datos
+        //Panel donde ira
+        Vendores.setLayout(null);
+        JPanel espacioTabla = new JPanel();
+        espacioTabla.setBackground(new Color(51, 153, 255));//Color
+        espacioTabla.setBounds(25, 20, 510, 400);
+        Vendores.add(espacioTabla);
+
+        //Filas
+        Object[][] filas = {
+            {"VE-001", "Juan Perez", "M", 10},
+            {"VE-002", "Juana Perez", "F", 20},
+            {"VE-001", "Juan Perez", "M", 10},
+            {"VE-002", "Juana Perez", "F", 20},};
+        //Columnas
+        String[] columnas = {"Código", "Nombre", "Genero", "Cantidad"};
+
+        //Crear Tabla
+        JTable tabla = new JTable(filas, columnas);
+
+        //Modificar tamaño de tabla
+        tabla.setRowHeight(50);
+        tabla.getColumnModel().getColumn(0).setPreferredWidth(300);
+
+        //Agregar tabla a un Scroll 
+        JScrollPane scroll = new JScrollPane(tabla);
+        scroll.setBounds(0, 0, 510, 400);
+
+        espacioTabla.setLayout(null);
+        espacioTabla.add(scroll);
 
     }
 
@@ -200,9 +250,9 @@ public final class Módulo_Administración extends JFrame {
 
         ///Acciones
           productos.addActionListener(mostrar2);//Se le agrega la acción
-          
- ///Reportes
-          ///Escritura de cada acción ⚠️
+
+        ///Reportes
+          ///Escritura de cada acción 
         ActionListener mostrar3 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -222,6 +272,29 @@ public final class Módulo_Administración extends JFrame {
         };
         ///Acciones
           reportes.addActionListener(mostrar3);//Se le agrega la acción
+
+    }
+
+    public void Ir_Casa() {
+        this.setLayout(null);
+        casa = new JButton("");
+        casa.setBounds(10, 0, 50, 50);
+        casa.setFont(new Font("Super Joyful", Font.CENTER_BASELINE, 15));//Esto es para el estilo de letra
+        casa.setBackground(new Color(255, 255, 255));//Color de fondo de boton
+        casa.setForeground(new Color(51, 51, 51));//color de la letra
+        casa.setIcon(new ImageIcon(new ImageIcon("images/casa.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        add(casa);
+        
+        ///Escritura de cada acción 
+        ActionListener ircasa = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            Controlador volver =new Controlador();
+            volver.Casa(v);
+            }
+        };
+        ///Acciones
+          casa.addActionListener(ircasa);//Se le agrega la acción
 
     }
 

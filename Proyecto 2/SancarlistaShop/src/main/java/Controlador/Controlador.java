@@ -8,6 +8,7 @@ import Vista.Modulo_Administrador.Módulo_Administración;
 import Vista.Módulo_Autenticación;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import javax.swing.JFrame;
 
 /**
  *
@@ -19,8 +20,9 @@ public class Controlador {
 
         switch (Opcion) {
             case "a" -> {
+                System.out.println("---------------------------------------------------------------");
                 System.out.println("El valor del código es:" + letra+"y contraseña:"+letra2);
-                
+                System.out.println("---------------------------------------------------------------");
 
                 Controlador llave = new Controlador();
                 boolean respuesta2 = llave.Iniciar(letra,letra2); //Función que verifica si la llave es correcta
@@ -48,6 +50,7 @@ public class Controlador {
 
     
     
+    ///Método para verificar al usuario y contraseña
     public boolean Iniciar(String codigo,String contraseña) {
 
         if (codigo.equals("123") && contraseña.equals("456")) {
@@ -57,5 +60,14 @@ public class Controlador {
           System.out.println("Código ó Contraseña Incorrectos, no se encontro en el sistema");
         return false;
     }
+    
+    ///Método para volver en cualquier página a Inciar Seció
+    public void Casa (JFrame a){
+        Módulo_Autenticación.visibilidad.setVisible(true);
+        a.setVisible(false);
+    }
+    
+    }
+    
 
-}
+
