@@ -26,6 +26,7 @@ public final class Módulo_Administración extends JFrame {
 
     //Declaración de Variables
     public static Módulo_Administración v;
+    public static JTable tabla;
     JPanel Menu;
     JPanel Vendores;
     JPanel Productos;
@@ -174,7 +175,8 @@ public final class Módulo_Administración extends JFrame {
         String[] columnas = {"Código", "Nombre", "Genero", "Cantidad de ventas confirmadas"};
 
         //Crear Tabla
-        JTable tabla = new JTable(filas, columnas);
+         
+        tabla = new JTable(filas, columnas);
 
         //Modificar tamaño de tabla
         tabla.setRowHeight(50);

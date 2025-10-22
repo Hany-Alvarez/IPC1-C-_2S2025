@@ -9,6 +9,8 @@ Without this configuration present, some functionality in the IDE may be limited
     <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
         <word>cantidad</word>
         <word>codigo</word>
+        <word>confirmación</word>
+        <word>confirmados</word>
         <word>contraseña</word>
         <word>genero</word>
         <word>nombre</word>

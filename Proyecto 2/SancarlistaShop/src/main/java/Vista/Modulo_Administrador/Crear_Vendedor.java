@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -44,7 +45,8 @@ public class Crear_Vendedor extends JFrame {
     public String getgenero;
     public String getcontraseña;
     
-    static String Usuario [][] =new String[1][100];
+    static String Usuario [][] =new String[100][4];
+    static int contador=0;
 
     public Crear_Vendedor(String title) throws HeadlessException {
         super(title);
@@ -185,6 +187,7 @@ public class Crear_Vendedor extends JFrame {
                 getcodigo = ecodigo.getText();
                 V.setCodigo(getcodigo);
                 ecodigo.setText("");
+                
 
 //nombre-----------------------------------------------------------------------
                 getnombre = enombre.getText();
@@ -195,7 +198,7 @@ public class Crear_Vendedor extends JFrame {
 //genero-----------------------------------------------------------------------
                 getgenero = (String) egenero.getSelectedItem();
                 Vendedor V3 = new Vendedor();
-                V3.setContraseña(getgenero);
+                V3.setGenero(getgenero);
          
 
 //contraseña-----------------------------------------------------------------------
@@ -203,6 +206,11 @@ public class Crear_Vendedor extends JFrame {
                 Vendedor V4 = new Vendedor();
                 V4.setContraseña(getcontraseña);
                 econtraseña.setText("");
+                
+//confirmados-----------------------------------------------------------------------
+                Vendedor V5 = new Vendedor();
+                V5.setConfirmados(0);
+                V5.validacionF();
 
             }
         };
@@ -213,7 +221,23 @@ public class Crear_Vendedor extends JFrame {
     }
 
     public void llenarTabla() {
-        DefaultTableModel mD =new DefaultTableModel(new String[] {"Código","Nombre","Genero"},Usuario.length);
+        DefaultTableModel mD =new DefaultTableModel(new String[] {"Código","Nombre","Genero","Confirmados"},Usuario.length);
+        
+        Módulo_Administración.tabla.setModel(mD);
+       
+        TableModel tm = Módulo_Administración.tabla.getModel();
+        
+     for(int i=0;i<=Usuario.length;i++){
+     
+         //Vendedor u =Usuario[1][i];
+     }
+       
+    
+    
+    
+    
+    
+    
     }
 
 }

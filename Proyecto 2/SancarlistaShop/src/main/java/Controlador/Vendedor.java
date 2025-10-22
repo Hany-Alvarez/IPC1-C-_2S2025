@@ -4,16 +4,27 @@
  */
 package Controlador;
 
+import java.util.Objects;
+
 /**
  *
  * @author hanya
  */
 public class Vendedor {
 
+
     private String codigo;
     private String nombre;
-    private char genero;
+    private String genero;
     private String contraseña;
+    private int confirmados;
+
+    static String Usuario[][] = new String[100][4];
+    static int contador = 0;
+    static int contador2 = 0;
+    static int contador3 = 0;
+    static int contador4 = 0;
+    static int contador5=0;
 
     public Vendedor() {
     }
@@ -30,7 +41,34 @@ public class Vendedor {
      */
     public void setCodigo(String codigo) {
         this.codigo = codigo;
-        System.out.println(codigo);
+
+        //Validaciones
+        switch (codigo) {
+            case "" -> {
+                System.out.println("El código no puede ser vacio");
+                break;
+
+            }
+            default -> {
+                //Se agrega a la matriz
+                Usuario[contador][0] = codigo;
+                contador++;
+                System.out.println(codigo);
+
+                for (int i = 0; i < (contador - 1); i++) {
+                    if (Objects.equals(Usuario[i][0], Usuario[contador - 1][0])) {
+                        Usuario[contador - 1][0] = null;
+                        contador = contador - 1;
+                        System.out.println("El código ya existe");
+                        break;
+                    } else {
+                        System.out.println("Codigo guardado en matriz: " + codigo + "Comprobación: " + i);
+                        //break;
+                    }
+                }
+            }
+        }
+System.out.println("Contador: "+contador);
     }
 
     /**
@@ -45,22 +83,53 @@ public class Vendedor {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
-        System.out.println(nombre);
+        //Validaciones
+        switch (nombre) {
+            case "" -> {
+                System.out.println("El nombre no puede ser vacio");
+                break;
+
+            }
+            default -> {
+                //Se agrega a la matriz
+                Usuario[contador2][1] = nombre;
+                contador2++;
+                System.out.println(nombre);
+            }
+        }
+        System.out.println("Contador2: "+contador2);
     }
 
     /**
      * @return the genero
      */
-    public char getGenero() {
+    public String getGenero() {
         return genero;
     }
 
     /**
      * @param genero the genero to set
      */
-    public void setGenero(char genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
-        System.out.println(genero);
+                //Validaciones
+        switch (genero) {
+            case "Masculino"-> {
+                Usuario[contador3][1] = "M";
+                contador3++;
+                System.out.println(Usuario[contador3-1][1]);
+                break;
+
+            }
+            case "Femenino" -> {
+                //Se agrega a la matriz
+                Usuario[contador3][1] = "F";
+                contador3++;
+                System.out.println(Usuario[contador3-1][1]);
+                break;
+            }
+        }
+        System.out.println("Contador3: "+contador3);
     }
 
     /**
@@ -75,7 +144,65 @@ public class Vendedor {
      */
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
-        System.out.println(contraseña);
+          switch (contraseña) {
+            case "" -> {
+                System.out.println("La contraseña no puede estar vacia");
+                break;
+
+            }
+            default -> {
+                //Se agrega a la matriz
+                Usuario[contador4][1] = contraseña;
+                contador4++;
+                System.out.println(Usuario[contador4-1][1] );
+            }
+        }
+        System.out.println("Contador4: "+contador4);
     }
+    
+        /**
+     * @return the confirmados
+     */
+    public int getConfirmados() {
+        return confirmados;
+    }
+
+    /**
+     * @param confirmados the confirmados to set
+     */
+    public void setConfirmados(int confirmados) {
+        this.confirmados = confirmados;
+        String con = String.valueOf(confirmados);
+        Usuario[contador5][1] = con;
+                contador5++;
+                System.out.println(Usuario[contador5-1][1] ); 
+                System.out.println("Contador5: "+contador5);
+    }
+    
+ ///Extra para validar todos los campos y si uno no cumple se reinicie la creación
+    public void validacionF() {
+        if(contador==contador2&&contador==contador3&&contador==contador4&&contador==contador5){
+        System.out.println("Todas las validaciones admitidas");
+        }
+        else{
+        System.out.println("Un campo está mal, rellena la información de nuevo");
+            contador=contador5-1;
+            Usuario[contador][1]=null;
+            
+            contador2=contador5-1;
+            Usuario[contador2][1]=null;
+            
+            contador3=contador5-1;
+            Usuario[contador3][1]=null;
+            
+            contador4=contador5-1;
+            Usuario[contador4][1]=null;
+            
+            contador5=contador5-1;
+            Usuario[contador5][1]=null;
+        }
+    }
+    
+        
 
 }
