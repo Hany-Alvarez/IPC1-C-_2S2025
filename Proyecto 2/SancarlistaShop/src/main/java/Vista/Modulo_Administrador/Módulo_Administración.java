@@ -171,7 +171,7 @@ public final class Módulo_Administración extends JFrame {
             {"VE-001", "Juan Perez", "M", 10},
             {"VE-002", "Juana Perez", "F", 20},};
         //Columnas
-        String[] columnas = {"Código", "Nombre", "Genero", "Cantidad"};
+        String[] columnas = {"Código", "Nombre", "Genero", "Cantidad de ventas confirmadas"};
 
         //Crear Tabla
         JTable tabla = new JTable(filas, columnas);

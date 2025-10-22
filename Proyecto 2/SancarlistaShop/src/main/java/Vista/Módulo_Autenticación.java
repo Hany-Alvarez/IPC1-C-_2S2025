@@ -142,6 +142,9 @@ public final class Módulo_Autenticación extends JFrame {
 
             Controlador OP = new Controlador();
             OP.AbrirCerrrar(ac, getcodigo, getcontraseña);
+            
+            text11.setText("");
+            text22.setText("");
 
         });
         //Validar por contraseña
@@ -156,6 +159,9 @@ public final class Módulo_Autenticación extends JFrame {
 
             Controlador OP = new Controlador();
             OP.AbrirCerrrar(ac, getcodigo, getcontraseña);
+            
+            text11.setText("");
+            text22.setText("");
 
         });
 

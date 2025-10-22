@@ -4,10 +4,18 @@
  */
 package Modelo;
 
+import Controlador.Vendedor;
+
 /**
  *
  * @author hanya
  */
 public class Modelo {
+    //Definiendo variables
+    static String Usuario [][] =new String[1][100];
+    static int contador =0;
+
+    
     
 }
+

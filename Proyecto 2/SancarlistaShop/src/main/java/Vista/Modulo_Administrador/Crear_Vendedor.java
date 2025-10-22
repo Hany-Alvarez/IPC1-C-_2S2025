@@ -4,6 +4,8 @@
  */
 package Vista.Modulo_Administrador;
 
+import Controlador.Controlador;
+import Controlador.Vendedor;
 import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.HeadlessException;
@@ -15,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,6 +38,14 @@ public class Crear_Vendedor extends JFrame {
 
     JButton crear;
 
+    //Variables para funcionalidad
+    public String getcodigo;
+    public String getnombre;
+    public String getgenero;
+    public String getcontraseña;
+    
+    static String Usuario [][] =new String[1][100];
+
     public Crear_Vendedor(String title) throws HeadlessException {
         super(title);
 
@@ -51,6 +62,7 @@ public class Crear_Vendedor extends JFrame {
         Nombre();
         Genero();
         Contraseña();
+        Boton();
 
     }
 
@@ -108,13 +120,13 @@ public class Crear_Vendedor extends JFrame {
         Font fuente2 = new Font("Super Joyful", Font.PLAIN, 30);
         nombre.setFont(fuente2);
         add(nombre);
- //----------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------
         enombre = new JTextField();
-        enombre .setText("");
-        enombre .setBounds(250, 248, 200, 30);
-        enombre .setFont(new Font("Super Joyful", Font.BOLD, 25));
-        enombre .setBackground(new Color(255, 255, 255, 255));
-        enombre .setForeground(new Color(153, 153, 153));//Color de la fuente
+        enombre.setText("");
+        enombre.setBounds(250, 248, 200, 30);
+        enombre.setFont(new Font("Super Joyful", Font.BOLD, 25));
+        enombre.setBackground(new Color(255, 255, 255, 255));
+        enombre.setForeground(new Color(153, 153, 153));//Color de la fuente
         add(enombre);
     }
 
@@ -128,13 +140,13 @@ public class Crear_Vendedor extends JFrame {
         Font fuente2 = new Font("Super Joyful", Font.PLAIN, 30);
         genero.setFont(fuente2);
         add(genero);
-        
- //----------------------------------------------------------------------------------------
-        String Genero[]={
+
+        //----------------------------------------------------------------------------------------
+        String Genero[] = {
             "Masculino",
             "Femenino"
         };
- 
+
         egenero = new JComboBox(Genero);
         egenero.setBounds(250, 310, 200, 30);
         egenero.setFont(new Font("Super Joyful", Font.BOLD, 25));
@@ -153,14 +165,55 @@ public class Crear_Vendedor extends JFrame {
         Font fuente2 = new Font("Super Joyful", Font.PLAIN, 30);
         contraseña.setFont(fuente2);
         add(contraseña);
- //----------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------
         econtraseña = new JTextField();
-         econtraseña .setText("");
-         econtraseña .setBounds(250, 388, 200, 30);
-         econtraseña.setFont(new Font("Super Joyful", Font.BOLD, 25));
-         econtraseña .setBackground(new Color(255, 255, 255, 255));
-         econtraseña .setForeground(new Color(153, 153, 153));//Color de la fuente
-        add( econtraseña);
+        econtraseña.setText("");
+        econtraseña.setBounds(250, 388, 200, 30);
+        econtraseña.setFont(new Font("Super Joyful", Font.BOLD, 25));
+        econtraseña.setBackground(new Color(255, 255, 255, 255));
+        econtraseña.setForeground(new Color(153, 153, 153));//Color de la fuente
+        add(econtraseña);
+    }
+
+    private void Boton() {
+        ///Escritura de cada acción 
+        ActionListener accion = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//codigo-----------------------------------------------------------------------
+                Vendedor V = new Vendedor();
+                getcodigo = ecodigo.getText();
+                V.setCodigo(getcodigo);
+                ecodigo.setText("");
+
+//nombre-----------------------------------------------------------------------
+                getnombre = enombre.getText();
+                Vendedor V2 = new Vendedor();
+                V2.setNombre(getnombre);
+                enombre.setText("");
+
+//genero-----------------------------------------------------------------------
+                getgenero = (String) egenero.getSelectedItem();
+                Vendedor V3 = new Vendedor();
+                V3.setContraseña(getgenero);
+         
+
+//contraseña-----------------------------------------------------------------------
+                getcontraseña = econtraseña.getText();
+                Vendedor V4 = new Vendedor();
+                V4.setContraseña(getcontraseña);
+                econtraseña.setText("");
+
+            }
+        };
+        ///Acciones
+          crear.addActionListener(accion);//Se le agrega la acción
+          ///Métodos
+          llenarTabla();
+    }
+
+    public void llenarTabla() {
+        DefaultTableModel mD =new DefaultTableModel(new String[] {"Código","Nombre","Genero"},Usuario.length);
     }
 
 }
