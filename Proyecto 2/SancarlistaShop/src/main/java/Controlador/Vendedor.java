@@ -229,5 +229,17 @@ public class Vendedor {
         }
 
     }
+    
+      public void PrimeroCargar(int a){//Arreglar los contadores si primero se carga y luego se crea
+          if(contador==0){
+          contador=a;
+          contador2=a;
+          contador3=a;
+          contador4=a;
+          contador5=a;
+          }
+     
+     
+     }
 
 }

@@ -88,6 +88,7 @@ public class CargarA {
 
             Vendedor a = new Vendedor();
             a.CrearTablaF();
+            a.PrimeroCargar(numLineas);
             a.ReyenarTabla(N);
 
         } catch (Exception ex) {
@@ -106,4 +107,8 @@ public class CargarA {
 
         }
     }
+   
+    
+    
+    
 }
