@@ -4,7 +4,10 @@
  */
 package Controlador;
 
+import Vista.Modulo_Administrador.Módulo_Administración;
 import java.util.Objects;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -19,7 +22,7 @@ public class Vendedor {
     private String contraseña;
     private int confirmados;
 
-    static String Usuario[][] = new String[100][4];
+    static String Usuario[][] = new String[100][5];
     static int contador = 0;
     static int contador2 = 0;
     static int contador3 = 0;
@@ -27,6 +30,7 @@ public class Vendedor {
     static int contador5=0;
 
     public Vendedor() {
+        
     }
 
     /**
@@ -62,7 +66,7 @@ public class Vendedor {
                         System.out.println("El código ya existe");
                         break;
                     } else {
-                        System.out.println("Codigo guardado en matriz: " + codigo + "Comprobación: " + i);
+                        System.out.println("Codigo guardado en matriz: " + Usuario[contador-1][0] + "Comprobación: " + i);
                         //break;
                     }
                 }
@@ -94,7 +98,7 @@ System.out.println("Contador: "+contador);
                 //Se agrega a la matriz
                 Usuario[contador2][1] = nombre;
                 contador2++;
-                System.out.println(nombre);
+                System.out.println(Usuario[contador2-1][1]);
             }
         }
         System.out.println("Contador2: "+contador2);
@@ -115,17 +119,17 @@ System.out.println("Contador: "+contador);
                 //Validaciones
         switch (genero) {
             case "Masculino"-> {
-                Usuario[contador3][1] = "M";
+                Usuario[contador3][2] = "M";
                 contador3++;
-                System.out.println(Usuario[contador3-1][1]);
+                System.out.println(Usuario[contador3-1][2]);
                 break;
 
             }
             case "Femenino" -> {
                 //Se agrega a la matriz
-                Usuario[contador3][1] = "F";
+                Usuario[contador3][2] = "F";
                 contador3++;
-                System.out.println(Usuario[contador3-1][1]);
+                System.out.println(Usuario[contador3-1][2]);
                 break;
             }
         }
@@ -152,9 +156,9 @@ System.out.println("Contador: "+contador);
             }
             default -> {
                 //Se agrega a la matriz
-                Usuario[contador4][1] = contraseña;
+                Usuario[contador4][3] = contraseña;
                 contador4++;
-                System.out.println(Usuario[contador4-1][1] );
+                System.out.println(Usuario[contador4-1][3] );
             }
         }
         System.out.println("Contador4: "+contador4);
@@ -173,9 +177,9 @@ System.out.println("Contador: "+contador);
     public void setConfirmados(int confirmados) {
         this.confirmados = confirmados;
         String con = String.valueOf(confirmados);
-        Usuario[contador5][1] = con;
+        Usuario[contador5][4] = con;
                 contador5++;
-                System.out.println(Usuario[contador5-1][1] ); 
+                System.out.println(Usuario[contador5-1][4] ); 
                 System.out.println("Contador5: "+contador5);
     }
     
@@ -187,20 +191,35 @@ System.out.println("Contador: "+contador);
         else{
         System.out.println("Un campo está mal, rellena la información de nuevo");
             contador=contador5-1;
-            Usuario[contador][1]=null;
+            Usuario[contador][0]=null;
             
             contador2=contador5-1;
             Usuario[contador2][1]=null;
             
             contador3=contador5-1;
-            Usuario[contador3][1]=null;
+            Usuario[contador3][2]=null;
             
             contador4=contador5-1;
-            Usuario[contador4][1]=null;
+            Usuario[contador4][3]=null;
             
             contador5=contador5-1;
-            Usuario[contador5][1]=null;
+            Usuario[contador5][4]=null;
         }
+    }
+        public void llenarTabla() {
+        DefaultTableModel mD =new DefaultTableModel(new String[] {"Código","Nombre","Genero","Cantidad de Ventas Confimadas"},contador5);
+        
+        Módulo_Administración.tabla.setModel(mD);
+       
+        TableModel tm = Módulo_Administración.tabla.getModel();
+        
+     for(int i=0;i<=contador5-1;i++){
+        tm.setValueAt(Usuario[i][0], i, 0);
+        tm.setValueAt(Usuario[i][1], i, 1);
+        tm.setValueAt(Usuario[i][2], i, 2);
+        tm.setValueAt(Usuario[i][4], i, 3);         
+     }  
+    
     }
     
         

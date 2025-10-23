@@ -167,12 +167,9 @@ public final class Módulo_Administración extends JFrame {
 
         //Filas
         Object[][] filas = {
-            {"VE-001", "Juan Perez", "M", 10},
-            {"VE-002", "Juana Perez", "F", 20},
-            {"VE-001", "Juan Perez", "M", 10},
-            {"VE-002", "Juana Perez", "F", 20},};
+            };
         //Columnas
-        String[] columnas = {"Código", "Nombre", "Genero", "Cantidad de ventas confirmadas"};
+        String[] columnas = {"Código","Nombre","Genero","Confirmados"};
 
         //Crear Tabla
          
@@ -180,7 +177,7 @@ public final class Módulo_Administración extends JFrame {
 
         //Modificar tamaño de tabla
         tabla.setRowHeight(50);
-        tabla.getColumnModel().getColumn(0).setPreferredWidth(300);
+        tabla.getColumnModel().getColumn(0).setPreferredWidth(200);
 
         //Agregar tabla a un Scroll 
         JScrollPane scroll = new JScrollPane(tabla);
