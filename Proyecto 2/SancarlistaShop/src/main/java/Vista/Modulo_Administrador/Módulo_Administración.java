@@ -199,7 +199,7 @@ public final class Módulo_Administración extends JFrame {
         espacioGráfico.setBounds(570, 130, 250, 290);
 
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
-        datos.addValue(10, (Comparable) "Ventas", (Comparable) "Enero");
+        datos.addValue(10, (Comparable) "Ventas", (Comparable) "Enjero");
         datos.addValue(20, (Comparable) "Ventas", (Comparable) "Febrero");
         datos.addValue(30, (Comparable) "Ventas", (Comparable) "Marzo");
 
