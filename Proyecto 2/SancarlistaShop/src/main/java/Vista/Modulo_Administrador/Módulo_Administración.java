@@ -17,6 +17,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -166,13 +173,11 @@ public final class Módulo_Administración extends JFrame {
         Vendores.add(espacioTabla);
 
         //Filas
-        Object[][] filas = {
-            };
+        Object[][] filas = {};
         //Columnas
-        String[] columnas = {"Código","Nombre","Genero","Confirmados"};
+        String[] columnas = {"Código", "Nombre", "Genero", "Confirmados"};
 
         //Crear Tabla
-         
         tabla = new JTable(filas, columnas);
 
         //Modificar tamaño de tabla
@@ -185,6 +190,39 @@ public final class Módulo_Administración extends JFrame {
 
         espacioTabla.setLayout(null);
         espacioTabla.add(scroll);
+//--------------------------------------------------------------------------------------
+//Gráfico
+//Panel donde ira
+        Vendores.setLayout(null);
+        JPanel espacioGráfico = new JPanel();
+        espacioGráfico.setBackground(new Color(51, 153, 255));//Color
+        espacioGráfico.setBounds(570, 130, 250, 290);
+
+        DefaultCategoryDataset datos = new DefaultCategoryDataset();
+        datos.addValue(10, (Comparable) "Ventas", (Comparable) "Enero");
+        datos.addValue(20, (Comparable) "Ventas", (Comparable) "Febrero");
+        datos.addValue(30, (Comparable) "Ventas", (Comparable) "Marzo");
+
+        JFreeChart grafico_vendedores = ChartFactory.createBarChart(
+                "Top 3 - Vendedores con más ventas confirmadas",
+                "Vendedor",
+                "Ventas",
+                datos
+        );
+        
+        //Color de las barras
+        CategoryPlot c =(CategoryPlot) grafico_vendedores.getPlot();
+        BarRenderer color =(BarRenderer) c.getRenderer();
+        
+        color.setSeriesPaint(0, new Color(0, 153, 255));
+
+        
+        //Se agrega a un chart
+        ChartPanel chartPanel = new ChartPanel(grafico_vendedores);//se convierte a chart
+        chartPanel.setPreferredSize(new java.awt.Dimension(250, 290));//Se dimensiona el chart para el tamaño de la gráfica
+        espacioGráfico.add(chartPanel, BorderLayout.CENTER); //Se agrega al panel
+
+        Vendores.add(espacioGráfico);
 
     }
 

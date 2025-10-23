@@ -22,7 +22,7 @@ public class Vendedor {
     private String contraseña;
     private int confirmados;
 
-    static String Usuario[][] = new String[100][5];
+    public static String Usuario[][] = new String[100][5];
     static int contador = 0;
     static int contador2 = 0;
     static int contador3 = 0;
