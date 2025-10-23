@@ -67,21 +67,24 @@ public class CargarA {
             // Se crea la matriz con tantas filas como líneas y 4 columnas
             //Usuario = new String[numLineas][5];
             //N = numLineas;
-            N=100;
+            N = 100;
 
             //Leer y guardar datos
             String linea;
-            int i = 0;
+            int i = 0;//la clave
+            Vendedor V6 = new Vendedor();
+
+            int h = V6.PrimeroCrear(i);
 
             while ((linea = br.readLine()) != null) {
                 String orden[] = linea.split(",");
 
                 if (orden.length >= 4) {
-                    Usuario[i][0] = orden[0]; // código
-                    Usuario[i][1] = orden[1]; // nombre
-                    Usuario[i][2] = orden[2]; // género
-                    Usuario[i][4] = orden[3]; // confirmadas
-                    i++;
+                    Usuario[h][0] = orden[0]; // código
+                    Usuario[h][1] = orden[1]; // nombre
+                    Usuario[h][2] = orden[2]; // género
+                    Usuario[h][4] = orden[3]; // confirmadas
+                    h++;
                 }
             }
             System.out.println("Archivo cargado correctamente con " + N + " registros.");
@@ -89,7 +92,7 @@ public class CargarA {
             Vendedor a = new Vendedor();
             a.CrearTablaF();
             a.PrimeroCargar(numLineas);
-            a.ReyenarTabla(N);
+            a.ReyenarTablaCargar(N);
 
         } catch (Exception ex) {
             System.out.println("Error al leer el archivo: " + ex.getMessage());
@@ -107,8 +110,5 @@ public class CargarA {
 
         }
     }
-   
-    
-    
-    
+
 }

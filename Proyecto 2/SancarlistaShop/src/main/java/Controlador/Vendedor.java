@@ -206,20 +206,19 @@ public class Vendedor {
 
     public void CrearTablaF() { //Crear tabla con formato
         //Validar que la tabla no exista
-        if(tm==null){
-         System.out.println("La tabla no existe, creando tabla");
-        DefaultTableModel mD = new DefaultTableModel(new String[]{"Código", "Nombre", "Genero", "Cantidad de Ventas Confimadas"}, 101);
+        if (tm == null) {
+            System.out.println("La tabla no existe, creando tabla");
+            DefaultTableModel mD = new DefaultTableModel(new String[]{"Código", "Nombre", "Genero", "Cantidad de Ventas Confimadas"}, 101);
 
-        Módulo_Administración.tabla.setModel(mD);
+            Módulo_Administración.tabla.setModel(mD);
 
-        tm = Módulo_Administración.tabla.getModel();
-        }
-        else{
-        System.out.println("La tabla ya existe, se continua para rellenar");
+            tm = Módulo_Administración.tabla.getModel();
+        } else {
+            System.out.println("La tabla ya existe, se continua para rellenar");
         }
     }
 
-    public void ReyenarTabla(int b) { //Solo para reyenar
+    public void ReyenarTablaCargar(int b) { //Solo para reyenar
 
         for (int i = 0; i <= b; i++) {
             tm.setValueAt(Usuario[i][0], i, 0);
@@ -229,17 +228,36 @@ public class Vendedor {
         }
 
     }
-    
-      public void PrimeroCargar(int a){//Arreglar los contadores si primero se carga y luego se crea
-          if(contador==0){
-          contador=a;
-          contador2=a;
-          contador3=a;
-          contador4=a;
-          contador5=a;
-          }
-     
-     
-     }
+
+    public void ReyenarTablaCrear(int b) { //Solo para reyenar
+        for (int i = 0; i <= b; i++) {
+            tm.setValueAt(Usuario[i][0], i, 0);
+            tm.setValueAt(Usuario[i][1], i, 1);
+            tm.setValueAt(Usuario[i][2], i, 2);
+            tm.setValueAt(Usuario[i][4], i, 3);
+        }
+
+    }
+
+    public void PrimeroCargar(int a) {//Arreglar los contadores si primero se carga y luego se crea
+        if (contador == 0) {
+            contador = a;
+            contador2 = a;
+            contador3 = a;
+            contador4 = a;
+            contador5 = a;
+        }
+    }
+
+    public int PrimeroCrear(int c) {
+        if (contador !=0) {
+            System.out.println("El sistema ya tiene elementos creados");
+            //c=contador;
+            return contador;
+        }
+        System.out.println("El sistema no tiene datos creados");
+        return 0;
+
+    }
 
 }

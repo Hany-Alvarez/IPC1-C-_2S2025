@@ -212,7 +212,7 @@ public class Crear_Vendedor extends JFrame {
 //Mostrar en la tabla--------------------------------------------------------------
                 Vendedor V6 =new Vendedor();
                 V6.CrearTablaF();
-                V6.ReyenarTabla(100);
+                V6.ReyenarTablaCrear(100);
             }
         };
         ///Acciones
