@@ -64,9 +64,10 @@ public class CargarA {
             fr = new FileReader(csv);
             br = new BufferedReader(fr);
 
-            // Creamos la matriz con tantas filas como líneas y 4 columnas
-            Usuario = new String[numLineas][5];
-            N = numLineas;
+            // Se crea la matriz con tantas filas como líneas y 4 columnas
+            //Usuario = new String[numLineas][5];
+            //N = numLineas;
+            N=100;
 
             //Leer y guardar datos
             String linea;
@@ -75,7 +76,7 @@ public class CargarA {
             while ((linea = br.readLine()) != null) {
                 String orden[] = linea.split(",");
 
-                if (orden.length == 4) {
+                if (orden.length >= 4) {
                     Usuario[i][0] = orden[0]; // código
                     Usuario[i][1] = orden[1]; // nombre
                     Usuario[i][2] = orden[2]; // género
