@@ -52,8 +52,7 @@ public class CargarA {
 
             //Contar cuantas lineas tiene el archivo
             int numLineas = 0;
-            
-            
+
             while (br.readLine() != null) {
                 numLineas++;
             }
@@ -66,7 +65,7 @@ public class CargarA {
             br = new BufferedReader(fr);
 
             // Creamos la matriz con tantas filas como líneas y 4 columnas
-            Usuario = new String[numLineas][4];
+            Usuario = new String[numLineas][5];
             N = numLineas;
 
             //Leer y guardar datos
@@ -80,13 +79,16 @@ public class CargarA {
                     Usuario[i][0] = orden[0]; // código
                     Usuario[i][1] = orden[1]; // nombre
                     Usuario[i][2] = orden[2]; // género
-                    Usuario[i][3] = orden[3]; // contraseña
+                    Usuario[i][4] = orden[3]; // confirmadas
                     i++;
                 }
             }
             System.out.println("Archivo cargado correctamente con " + N + " registros.");
 
-            llenarTablaF();
+            Vendedor a = new Vendedor();
+            a.CrearTablaF();
+            a.ReyenarTabla(N);
+
         } catch (Exception ex) {
             System.out.println("Error al leer el archivo: " + ex.getMessage());
         } finally {//Cerrar archivo
@@ -103,35 +105,4 @@ public class CargarA {
 
         }
     }
-
-    public void llenarTablaF() {
-        if(contador5!=0){
-            N=contador5+N;
-        }
-        DefaultTableModel mD = new DefaultTableModel(
-                new String[]{"Código", "nombre", "Género", "Cantidad de Ventas Confirmadas"},
-                N
-        );
-
-        Módulo_Administración.tabla.setModel(mD);
-
-        TableModel tm = Módulo_Administración.tabla.getModel();
-        int j=0;
-        if(contador5 != 0) {
-            j=contador5;
-         
-        } else {
-            System.out.println("La tabla no tiene vendedores creados");
-         }
-        
-        for (int i = j; i < N; i++) {
-            tm.setValueAt(Usuario[i][0], i, 0);
-            tm.setValueAt(Usuario[i][1], i, 1);
-            tm.setValueAt(Usuario[i][2], i, 2);
-            tm.setValueAt(Usuario[i][4], i, 3);
-
-        }
-
-    }
-
 }

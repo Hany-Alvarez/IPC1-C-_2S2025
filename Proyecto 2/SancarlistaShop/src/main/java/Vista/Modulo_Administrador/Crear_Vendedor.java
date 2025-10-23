@@ -211,7 +211,8 @@ public class Crear_Vendedor extends JFrame {
                 V5.validacionF();
 //Mostrar en la tabla--------------------------------------------------------------
                 Vendedor V6 =new Vendedor();
-                V6.llenarTabla();
+                V6.CrearTablaF();
+                V6.ReyenarTabla(100);
             }
         };
         ///Acciones
