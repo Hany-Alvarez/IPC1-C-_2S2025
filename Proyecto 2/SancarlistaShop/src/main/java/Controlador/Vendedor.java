@@ -27,7 +27,7 @@ public class Vendedor {
     static int contador2 = 0;
     static int contador3 = 0;
     static int contador4 = 0;
-    static int contador5=0;
+    public static int contador5=0;
 
     public Vendedor() {
         
@@ -215,7 +215,7 @@ System.out.println("Contador: "+contador);
         tm.setValueAt(Usuario[i][0], i, 0);
         tm.setValueAt(Usuario[i][1], i, 1);
         tm.setValueAt(Usuario[i][2], i, 2);
-        tm.setValueAt(Usuario[i][4], i, 3);         
+        tm.setValueAt(Usuario[i][3], i, 3);         
      }  
     
     }

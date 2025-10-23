@@ -5,6 +5,7 @@
 package Controlador;
 
 import static Controlador.Vendedor.Usuario;
+import static Controlador.Vendedor.contador5;
 import Vista.Modulo_Administrador.Módulo_Administración;
 import java.io.BufferedReader;
 import java.io.File;
@@ -51,6 +52,8 @@ public class CargarA {
 
             //Contar cuantas lineas tiene el archivo
             int numLineas = 0;
+            
+            
             while (br.readLine() != null) {
                 numLineas++;
             }
@@ -102,6 +105,9 @@ public class CargarA {
     }
 
     public void llenarTablaF() {
+        if(contador5!=0){
+            N=contador5+N;
+        }
         DefaultTableModel mD = new DefaultTableModel(
                 new String[]{"Código", "nombre", "Género", "Cantidad de Ventas Confirmadas"},
                 N
@@ -110,12 +116,19 @@ public class CargarA {
         Módulo_Administración.tabla.setModel(mD);
 
         TableModel tm = Módulo_Administración.tabla.getModel();
-
-        for (int i = 0; i < N; i++) {
+        int j=0;
+        if(contador5 != 0) {
+            j=contador5;
+         
+        } else {
+            System.out.println("La tabla no tiene vendedores creados");
+         }
+        
+        for (int i = j; i < N; i++) {
             tm.setValueAt(Usuario[i][0], i, 0);
             tm.setValueAt(Usuario[i][1], i, 1);
             tm.setValueAt(Usuario[i][2], i, 2);
-            tm.setValueAt(Usuario[i][3], i, 3);
+            tm.setValueAt(Usuario[i][4], i, 3);
 
         }
 
