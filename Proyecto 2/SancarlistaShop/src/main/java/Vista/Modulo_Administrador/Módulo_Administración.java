@@ -17,6 +17,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -138,7 +141,11 @@ public final class Módulo_Administración extends JFrame {
             public void actionPerformed(ActionEvent e) {
                               
                 CargarA cargar = new CargarA(); 
-                cargar.Archivo(Vendores);
+                try {
+                    cargar.Archivo(Vendores);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Módulo_Administración.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
         ///Acciones
