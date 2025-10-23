@@ -118,19 +118,17 @@ System.out.println("Contador: "+contador);
         this.genero = genero;
                 //Validaciones
         switch (genero) {
-            case "Masculino"-> {
+            case "Masculino","M"-> {
                 Usuario[contador3][2] = "M";
                 contador3++;
                 System.out.println(Usuario[contador3-1][2]);
-                break;
 
             }
-            case "Femenino" -> {
+            case "Femenino", "F" -> {
                 //Se agrega a la matriz
                 Usuario[contador3][2] = "F";
                 contador3++;
                 System.out.println(Usuario[contador3-1][2]);
-                break;
             }
         }
         System.out.println("Contador3: "+contador3);

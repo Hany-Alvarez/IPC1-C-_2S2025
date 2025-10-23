@@ -4,6 +4,7 @@
  */
 package Vista.Modulo_Administrador;
 
+import Controlador.CargarA;
 import Controlador.Controlador;
 
 import java.awt.Dimension;
@@ -135,8 +136,9 @@ public final class Módulo_Administración extends JFrame {
         ActionListener abrir3 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Cargar Ver = new Cargar("Cargar");
-                Ver.setVisible(true);
+                              
+                CargarA cargar = new CargarA(); 
+                cargar.Archivo(Vendores);
             }
         };
         ///Acciones

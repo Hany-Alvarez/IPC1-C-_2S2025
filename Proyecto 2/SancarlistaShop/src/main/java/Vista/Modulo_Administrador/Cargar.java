@@ -23,6 +23,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class Cargar extends JFrame {
 
     JLabel mensaje;
+    
 
     public Cargar(String title) throws HeadlessException {
         super(title);
