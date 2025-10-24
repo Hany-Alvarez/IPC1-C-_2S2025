@@ -4,7 +4,9 @@
  */
 package Controlador;
 
+import static Controlador.CargarA.B;
 import static Controlador.CargarA.h;
+import static Controlador.CargarA.orden;
 import Vista.Modulo_Administrador.Módulo_Administración;
 import java.util.Objects;
 import javax.swing.table.DefaultTableModel;
@@ -279,6 +281,27 @@ public class Vendedor {
         }
     
     
+    }
+    public void NoIgual(){
+        System.out.println("contador vale: "+contador);
+        System.out.println("B vale: "+B);
+        for(int z=0;z<contador;z++){//problema por si se pasa de tamaño
+            for(int y=B;y<=100;y++){
+                
+            if(Usuario[z][0].equalsIgnoreCase(Usuario[y][0]) ){//datos antes-datos después
+                System.out.println("Hay datos iguales");
+                Usuario[y][0]=null;
+                Usuario[y][1]=null;
+                Usuario[y][2]=null;
+                Usuario[y][4]=null;
+            }
+            else{
+                System.out.println("Antes: "+Usuario[z][0]);
+                System.out.println("Después : "+Usuario[y][0]);
+            System.out.println("No hay datos iguales creados previamente, continuar con el relleno");
+            }
+        }
+        }
     }
 
 }

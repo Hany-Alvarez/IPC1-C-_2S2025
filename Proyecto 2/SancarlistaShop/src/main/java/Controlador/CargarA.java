@@ -26,7 +26,9 @@ public class CargarA {
 
     public static int N;
     public static int A;
+    public static int B;
     public static int h;
+    public static String orden[];
 
     public void Archivo(JPanel a) throws FileNotFoundException {
         JFileChooser archivo = new JFileChooser();
@@ -54,12 +56,11 @@ public class CargarA {
 
             //Contar cuantas lineas tiene el archivo
             int numLineas = 0;
-
+            
             while (br.readLine() != null) {
                 numLineas++;
                 A=numLineas;
             }
-            
             // Reiniciar el lector para volver al inicio del archivo
             fr.close();
             br.close();
@@ -78,9 +79,10 @@ public class CargarA {
             Vendedor V6 = new Vendedor();
 
             h = V6.PrimeroCrear(i);
+            B=h;
 
             while ((linea = br.readLine()) != null) {
-                String orden[] = linea.split(",");
+                orden= linea.split(",");
 
                 if (orden.length >= 4) {
                     Usuario[h][0] = orden[0]; // código
@@ -95,6 +97,7 @@ public class CargarA {
             Vendedor a = new Vendedor();
             a.CrearTablaF();
             a.PrimeroCargar(numLineas);
+            a.NoIgual();
             a.ReyenarTablaCargar(N);
 
         } catch (Exception ex) {
