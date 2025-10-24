@@ -153,8 +153,9 @@ public class Crear_Producto extends JFrame {
 
         //----------------------------------------------------------------------------------------
         String Genero[] = {
-            "Masculino",
-            "Femenino"
+            "Tecnología",
+            "Alimento",
+            "General"
         };
 
         egenero = new JComboBox(Genero);

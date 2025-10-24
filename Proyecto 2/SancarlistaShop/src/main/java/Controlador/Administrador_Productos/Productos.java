@@ -130,15 +130,21 @@ public class Productos {
         this.categoria = categoria;
         //Validaciones
         switch (categoria) {
-            case "Masculino", "M" -> {
-                UsuarioP[contador3P][2] = "M";
+            case "Tecnología", "tecnología" -> {
+                UsuarioP[contador3P][2] = "Tecnología";
                 contador3P++;
                 System.out.println(UsuarioP[contador3P - 1][2]);
 
             }
-            case "Femenino", "F" -> {
+            case "Alimento", "alimento" -> {
                 //Se agrega a la matriz
-                UsuarioP[contador3P][2] = "F";
+                UsuarioP[contador3P][2] = "Alimento";
+                contador3P++;
+                System.out.println(UsuarioP[contador3P - 1][2]);
+            }
+             case "General", "general" -> {
+                //Se agrega a la matriz
+                UsuarioP[contador3P][2] = "General";
                 contador3P++;
                 System.out.println(UsuarioP[contador3P - 1][2]);
             }
