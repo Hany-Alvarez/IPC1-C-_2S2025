@@ -8,6 +8,7 @@ import Vista.Modulo_Administrador.Módulo_Administración;
 import Vista.Módulo_Autenticación;
 import Controlador.Controlador;
 import Vista.Modulo_Administrador.Crear_Vendedor;
+import Vista.Módulo_Vendedor.Módulo_Vendedor;
 
 /**
  *
@@ -20,6 +21,5 @@ public class SancarlistaShop {
    Módulo_Autenticación M1=new Módulo_Autenticación("Inicio de Sesión");
      M1.setVisible(true);//Se hace visible la ventana de sesión
      
-
     }
 }

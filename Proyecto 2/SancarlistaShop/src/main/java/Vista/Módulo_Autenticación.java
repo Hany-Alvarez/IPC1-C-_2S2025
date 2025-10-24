@@ -142,13 +142,14 @@ public final class Módulo_Autenticación extends JFrame {
 
             Controlador OP = new Controlador();
             OP.AbrirCerrrar(ac, getcodigo, getcontraseña);
-            
+            OP.SeciónVendedor(getcodigo, getcontraseña);
+
             text11.setText("");
             text22.setText("");
 
         });
         //Validar por contraseña
-                text22.addActionListener(e -> {
+        text22.addActionListener(e -> {
             getcodigo = text11.getText();
             System.out.println(getcodigo);
             //ac="a";
@@ -159,7 +160,8 @@ public final class Módulo_Autenticación extends JFrame {
 
             Controlador OP = new Controlador();
             OP.AbrirCerrrar(ac, getcodigo, getcontraseña);
-            
+            OP.SeciónVendedor(getcodigo, getcontraseña);
+
             text11.setText("");
             text22.setText("");
 
