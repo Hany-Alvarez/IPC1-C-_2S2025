@@ -1,4 +1,4 @@
-# IPC1-C-_2S2025_PROYECTO 1
+# IPC1-C-_2S2025_PROYECTO 2
 
 ### Funcionamiento del Programa 😎
 Este programa es un ejemplo de creación de inventario con una temática de venta de ropa, con la finalidad de implementar conceptos como lo son las matrices, control de errores, tipos de datos y todo lo relacionado para poder ejecutar un programa en la consola.
@@ -13,7 +13,5 @@ En terminos generales se enfoca en registrar como diferentes usuarios pueden acc
 - Los pasos para utilizar el programa se encuntran en el [Manual de Usuario.pdf](https://github.com/user-attachments/files/22327893/Manual.de.Usuario.1.pdf)
   
 ### Mejoras Posibles 🔧
-- Que con un salto de línea al ingresar al primer menú no colapse el programa
-
-- Que se cree una opción para poder modificar los productos ingresados
+- Que no sea necesario agregar primero un primer usario para cargar los archivos
 
