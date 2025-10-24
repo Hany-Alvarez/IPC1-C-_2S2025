@@ -158,13 +158,20 @@ public class Actualizar_Vendedor extends JFrame {
                 getecodigo = ecodigo.getText();
                 actu.setBuscarCodigo(getecodigo);
                 // ecodigo.setText("");
+                
                 String Nombre = actu.ActualizarN();
                 String Contra = actu.ActualizarC();
                 
+                if(Nombre!=null && Contra !=null){
                 System.out.println("El nombre es: " + Nombre);
                 System.out.println("La contraseña es: " + Contra);
+                
+                
                 enombre.setText(Nombre);
-                econtraseña.setText(Contra);
+                econtraseña.setText(Contra);}
+                else{
+                System.out.println("Codigo no encontrado");
+                }
             }
         };
         ///Acciones

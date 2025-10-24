@@ -366,30 +366,54 @@ public class Vendedor {
     }
 
     public String ActualizarN() {
+
         String a = null;
         System.out.println("El codigo es: " + buscarCodigo);
-        for (int i = 0; i <= 100; i++) {
-            if (Usuario[i][0].equalsIgnoreCase(buscarCodigo)) {
-                a = Usuario[i][1];
-                break;
+        try {
+            if (buscarCodigo != null) {
+                for (int i = 0; i <= 100; i++) {
+                    if (Usuario[i][0].equalsIgnoreCase(buscarCodigo)) {
+                        a = Usuario[i][1];
+                        break;
+                    } else {
+                        System.out.println("El codigo no existe1");
+                    }
+
+                }
+            } else {
+                System.out.println("El codigo no puede ser null1");
+
             }
 
+        } catch (Exception ex) {
+            System.out.println("El error es: " + ex);
         }
         return a;
-
     }
 
-    public String ActualizarC() {
+    public String ActualizarC() {//3
         String b = null;
         System.out.println("El codigo es: " + buscarCodigo);
-        for (int i = 0; i <= 100; i++) {
-            if (Usuario[i][0].equalsIgnoreCase(buscarCodigo)) {
+        try {
+            if (buscarCodigo != null) {
+                for (int i = 0; i <= 100; i++) {
+                    if (Usuario[i][0].equalsIgnoreCase(buscarCodigo)) {
+                        b = Usuario[i][3];
+                        break;
+                    } else {
+                        System.out.println("El codigo no existe2");
 
-                b = Usuario[i][3];
-                break;
+                    }
+
+                }
+            } else {
+                System.out.println("El codigo no puede ser null2");
+
             }
-
+        } catch (Exception ex) {
+            System.out.println("El error es: " + ex);
         }
+
         return b;
 
     }
@@ -456,18 +480,25 @@ public class Vendedor {
      * @param buscarCodigoE the buscarCodigoE to set
      */
     public void setBuscarCodigoE(String buscarCodigoE) {
-        this.buscarCodigoE = buscarCodigoE;
-        System.out.println("El codigo es: " + buscarCodigoE);
-        for (int i = 0; i <= 100; i++) {
-            if (Usuario[i][0].equalsIgnoreCase(buscarCodigoE)) {
-                Usuario[i][0] = null;//código
-                Usuario[i][1] = null;// Nombre
-                Usuario[i][2] = null; //Genero
-                Usuario[i][3] = null; //Contraseña
-                Usuario[i][4] = null; //Confirmación
-                break;
-            }
 
+        this.buscarCodigoE = buscarCodigoE;
+        try {
+            System.out.println("El codigo es: " + buscarCodigoE);
+            for (int i = 0; i <= 100; i++) {
+                if (Usuario[i][0].equalsIgnoreCase(buscarCodigoE)) {
+                    Usuario[i][0] = "-";//código
+                    Usuario[i][1] = "-";// Nombre
+                    Usuario[i][2] = "-"; //Genero
+                    Usuario[i][3] = "-"; //Contraseña
+                    Usuario[i][4] = "0"; //Confirmación
+                    break;
+                } else {
+                    System.out.println("El codigo no existe");
+                }
+
+            }
+        } catch (Exception ex) {
+            System.out.println("El error es: " + ex);
         }
 
     }

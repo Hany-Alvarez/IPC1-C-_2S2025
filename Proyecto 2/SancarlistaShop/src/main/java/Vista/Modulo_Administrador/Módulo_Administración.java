@@ -368,7 +368,7 @@ public final class Módulo_Administración extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (espacioGráfico == null) {
-
+                    try{
                     Vendores.setLayout(null);
                     espacioGráfico = new JPanel();
                     espacioGráfico.setBackground(new Color(51, 153, 255));//Color
@@ -408,8 +408,12 @@ public final class Módulo_Administración extends JFrame {
                     Vendores.add(espacioGráfico);
                     Vendores.revalidate();
                     Vendores.repaint();
+                     } catch (Exception ex) {
+            System.out.println("El error es: " + ex);
+        }
 
                 } else {
+                    try{
                     espacioGráfico.removeAll();
 
                     Vendores.setLayout(null);
@@ -448,6 +452,9 @@ public final class Módulo_Administración extends JFrame {
                     Vendores.add(espacioGráfico);
                     Vendores.revalidate();
                     Vendores.repaint();
+                     } catch (Exception ex) {
+            System.out.println("El error es: " + ex);
+        }
                 }
             }
         };
