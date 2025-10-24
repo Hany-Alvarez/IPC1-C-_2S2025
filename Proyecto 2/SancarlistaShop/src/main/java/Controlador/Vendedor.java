@@ -268,7 +268,7 @@ public class Vendedor {
         System.out.println("No hay datos cargados previos, seguir con creando sin corrimiento");
         }
         else{
-            System.out.println("Si hay datos cargados previos, arreglando corrimiento");
+            System.out.println("Si hasy datos cargados previos, arreglando corrimiento");
             System.out.println("El valor de lineas es :"+a);
             System.out.println("El valor del contador: "+contador);
         contador2=contador+a;
