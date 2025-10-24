@@ -4,6 +4,7 @@
  */
 package Vista.Modulo_Administrador;
 
+import Controlador.Vendedor;
 import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.HeadlessException;
@@ -28,6 +29,8 @@ public class Eliminar_Vendedor extends JFrame {
     JTextField ecodigo;
 
     JButton eliminar;
+    
+    public String getecodigo;
 
     public Eliminar_Vendedor(String title) throws HeadlessException {
         super(title);
@@ -42,6 +45,7 @@ public class Eliminar_Vendedor extends JFrame {
         //Métodos
         eliminar();
         codigo();
+        funciónE();
 
     }
 
@@ -86,6 +90,25 @@ public class Eliminar_Vendedor extends JFrame {
         ecodigo.setBackground(new Color(255, 255, 255, 255));
         ecodigo.setForeground(new Color(153, 153, 153));//Color de la fuente
         add(ecodigo);
+    }
+
+    public void funciónE() {
+             ///Escritura de cada acción 
+        ActionListener eli = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Vendedor actu = new Vendedor();
+                
+                getecodigo = ecodigo.getText();
+                actu.setBuscarCodigoE(getecodigo);
+                actu.ReyenarTablaCrear(100);
+                ecodigo.setText("");
+            }
+        };
+        ///Acciones
+          eliminar.addActionListener(eli);//Se le agrega la acción
+        
+        
     }
 
 }

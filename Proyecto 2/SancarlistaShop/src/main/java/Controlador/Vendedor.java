@@ -25,6 +25,7 @@ public class Vendedor {
     private String buscarCodigo;
     private String actun;
     private String actuc;
+    private String buscarCodigoE;
     private int confirmados;
 
     public static String Usuario[][] = new String[101][5];
@@ -430,10 +431,10 @@ public class Vendedor {
      * @param actuc the actuc to set
      * @param codigo
      */
-    public void setActuc(String actuc,String codigo) {
+    public void setActuc(String actuc, String codigo) {
         this.actuc = actuc;
         System.out.println("El codigo es: " + codigo);
-           System.out.println("La contraseña a actualizar es: " + actuc);
+        System.out.println("La contraseña a actualizar es: " + actuc);
         for (int i = 0; i <= 100; i++) {
             if (Usuario[i][0].equalsIgnoreCase(codigo)) {
 
@@ -444,4 +445,30 @@ public class Vendedor {
         }
     }
 
+    /**
+     * @return the buscarCodigoE
+     */
+    public String getBuscarCodigoE() {
+        return buscarCodigoE;
+    }
+
+    /**
+     * @param buscarCodigoE the buscarCodigoE to set
+     */
+    public void setBuscarCodigoE(String buscarCodigoE) {
+        this.buscarCodigoE = buscarCodigoE;
+        System.out.println("El codigo es: " + buscarCodigoE);
+        for (int i = 0; i <= 100; i++) {
+            if (Usuario[i][0].equalsIgnoreCase(buscarCodigoE)) {
+                Usuario[i][0] = null;//código
+                Usuario[i][1] = null;// Nombre
+                Usuario[i][2] = null; //Genero
+                Usuario[i][3] = null; //Contraseña
+                Usuario[i][4] = null; //Confirmación
+                break;
+            }
+
+        }
+
+    }
 }

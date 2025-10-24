@@ -22,26 +22,26 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  * @author hanya
  */
 public class Actualizar_Vendedor extends JFrame {
-
+    
     JLabel titulo;
     JLabel codigo;
     JLabel nombre;
     JLabel contraseña;
-
+    
     JTextField ecodigo;
     JTextField enombre;
     JTextField econtraseña;
-
+    
     JButton actu;
     JButton buscar;
-
+    
     public String getecodigo;
     public String getnombre;
     public String getcontraseña;
-
+    
     public Actualizar_Vendedor(String title) throws HeadlessException {
         super(title);
-
+        
         Dimension d = new Dimension(500, 500);//Objeto que tiene la dimensión de la ventana
         this.setSize(d);
         this.setDefaultCloseOperation(Actualizar_Vendedor.DISPOSE_ON_CLOSE);
@@ -56,7 +56,7 @@ public class Actualizar_Vendedor extends JFrame {
         contraseña();
         función();
     }
-
+    
     private void actualizar() {
         this.setLayout(null);
         ImageIcon icono = new ImageIcon("images/actu.gif");
@@ -78,7 +78,7 @@ public class Actualizar_Vendedor extends JFrame {
         actu.setForeground(new Color(51, 51, 51));
         add(actu);//Agregando al panel 
     }
-
+    
     private void codigo() {
         this.setLayout(null);
         codigo = new JLabel("Codigo");
@@ -107,7 +107,7 @@ public class Actualizar_Vendedor extends JFrame {
         add(buscar);//Agregando al panel 
 
     }
-
+    
     private void nombre() {
         this.setLayout(null);
         nombre = new JLabel("Nombre");
@@ -127,7 +127,7 @@ public class Actualizar_Vendedor extends JFrame {
         enombre.setForeground(new Color(153, 153, 153));//Color de la fuente
         add(enombre);
     }
-
+    
     private void contraseña() {
         this.setLayout(null);
         contraseña = new JLabel("Contraseña");
@@ -147,20 +147,20 @@ public class Actualizar_Vendedor extends JFrame {
         econtraseña.setForeground(new Color(153, 153, 153));//Color de la fuente
         add(econtraseña);
     }
-
+    
     public void función() {
         ///Escritura de cada acción 
         ActionListener abrir = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Vendedor actu = new Vendedor();
-
+                
                 getecodigo = ecodigo.getText();
                 actu.setBuscarCodigo(getecodigo);
                 // ecodigo.setText("");
                 String Nombre = actu.ActualizarN();
                 String Contra = actu.ActualizarC();
-
+                
                 System.out.println("El nombre es: " + Nombre);
                 System.out.println("La contraseña es: " + Contra);
                 enombre.setText(Nombre);
@@ -175,22 +175,22 @@ public class Actualizar_Vendedor extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Vendedor actu = new Vendedor();
-
+                
                 getecodigo = ecodigo.getText();
-
+                
                 getnombre = enombre.getText();
                 getcontraseña = econtraseña.getText();
-
+                
                 actu.setActun(getnombre, getecodigo);
                 actu.setActuc(getcontraseña, getecodigo);
                 
                 actu.ReyenarTablaCrear(100);
-
+                
             }
         };
         ///Acciones
           actu.addActionListener(actualizar);//Se le agrega la acción
 
     }
-
+    
 }
