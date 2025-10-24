@@ -4,6 +4,7 @@
  */
 package Vista.Modulo_Administrador;
 
+import Controlador.Vendedor;
 import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.HeadlessException;
@@ -34,6 +35,10 @@ public class Actualizar_Vendedor extends JFrame {
     JButton actu;
     JButton buscar;
 
+    public String getecodigo;
+    public String getnombre;
+    public String getcontraseña;
+
     public Actualizar_Vendedor(String title) throws HeadlessException {
         super(title);
 
@@ -49,6 +54,7 @@ public class Actualizar_Vendedor extends JFrame {
         codigo();
         nombre();
         contraseña();
+        función();
     }
 
     private void actualizar() {
@@ -99,6 +105,7 @@ public class Actualizar_Vendedor extends JFrame {
         buscar.setBackground(new Color(255, 255, 255));
         buscar.setForeground(new Color(51, 51, 51));
         add(buscar);//Agregando al panel 
+
     }
 
     private void nombre() {
@@ -139,6 +146,51 @@ public class Actualizar_Vendedor extends JFrame {
         econtraseña.setBackground(new Color(255, 255, 255, 255));
         econtraseña.setForeground(new Color(153, 153, 153));//Color de la fuente
         add(econtraseña);
+    }
+
+    public void función() {
+        ///Escritura de cada acción 
+        ActionListener abrir = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Vendedor actu = new Vendedor();
+
+                getecodigo = ecodigo.getText();
+                actu.setBuscarCodigo(getecodigo);
+                // ecodigo.setText("");
+                String Nombre = actu.ActualizarN();
+                String Contra = actu.ActualizarC();
+
+                System.out.println("El nombre es: " + Nombre);
+                System.out.println("La contraseña es: " + Contra);
+                enombre.setText(Nombre);
+                econtraseña.setText(Contra);
+            }
+        };
+        ///Acciones
+          buscar.addActionListener(abrir);//Se le agrega la acción
+
+        ///Escritura de cada acción 
+        ActionListener actualizar = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Vendedor actu = new Vendedor();
+
+                getecodigo = ecodigo.getText();
+
+                getnombre = enombre.getText();
+                getcontraseña = econtraseña.getText();
+
+                actu.setActun(getnombre, getecodigo);
+                actu.setActuc(getcontraseña, getecodigo);
+                
+                actu.ReyenarTablaCrear(100);
+
+            }
+        };
+        ///Acciones
+          actu.addActionListener(actualizar);//Se le agrega la acción
+
     }
 
 }

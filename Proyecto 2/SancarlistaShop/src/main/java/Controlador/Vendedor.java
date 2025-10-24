@@ -22,6 +22,9 @@ public class Vendedor {
     private String nombre;
     private String genero;
     private String contraseña;
+    private String buscarCodigo;
+    private String actun;
+    private String actuc;
     private int confirmados;
 
     public static String Usuario[][] = new String[101][5];
@@ -345,6 +348,100 @@ public class Vendedor {
         }
 
         return mayor3;
+    }
+
+    /**
+     * @return the buscarCodigo
+     */
+    public String getBuscarCodigo() {
+        return buscarCodigo;
+    }
+
+    /**
+     * @param buscarCodigo the buscarCodigo to set
+     */
+    public void setBuscarCodigo(String buscarCodigo) {
+        this.buscarCodigo = buscarCodigo;
+    }
+
+    public String ActualizarN() {
+        String a = null;
+        System.out.println("El codigo es: " + buscarCodigo);
+        for (int i = 0; i <= 100; i++) {
+            if (Usuario[i][0].equalsIgnoreCase(buscarCodigo)) {
+                a = Usuario[i][1];
+                break;
+            }
+
+        }
+        return a;
+
+    }
+
+    public String ActualizarC() {
+        String b = null;
+        System.out.println("El codigo es: " + buscarCodigo);
+        for (int i = 0; i <= 100; i++) {
+            if (Usuario[i][0].equalsIgnoreCase(buscarCodigo)) {
+
+                b = Usuario[i][3];
+                break;
+            }
+
+        }
+        return b;
+
+    }
+
+    /**
+     * @return the actun
+     */
+    public String getActun() {
+        return actun;
+    }
+
+    /**
+     * @param actun the actun to set
+     * @param codigo
+     */
+    public void setActun(String actun, String codigo) {
+        this.actun = actun;
+
+        System.out.println("El codigo es: " + codigo);
+        System.out.println("El Nombre a actualizar es: " + actun);
+        for (int i = 0; i <= 100; i++) {
+            if (Usuario[i][0].equalsIgnoreCase(codigo)) {
+
+                Usuario[i][1] = actun;
+                break;
+            }
+
+        }
+    }
+
+    /**
+     * @return the actuc
+     */
+    public String getActuc() {
+        return actuc;
+    }
+
+    /**
+     * @param actuc the actuc to set
+     * @param codigo
+     */
+    public void setActuc(String actuc,String codigo) {
+        this.actuc = actuc;
+        System.out.println("El codigo es: " + codigo);
+           System.out.println("La contraseña a actualizar es: " + actuc);
+        for (int i = 0; i <= 100; i++) {
+            if (Usuario[i][0].equalsIgnoreCase(codigo)) {
+
+                Usuario[i][3] = actuc;
+                break;
+            }
+
+        }
     }
 
 }

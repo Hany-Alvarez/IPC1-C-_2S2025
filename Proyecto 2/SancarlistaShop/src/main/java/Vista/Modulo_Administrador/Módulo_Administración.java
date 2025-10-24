@@ -7,7 +7,6 @@ package Vista.Modulo_Administrador;
 import Controlador.CargarA;
 import Controlador.Controlador;
 import Controlador.Vendedor;
-import static Vista.Modulo_Administrador.Grafico.AA;
 
 import java.awt.Dimension;
 import javax.swing.*;
@@ -384,9 +383,9 @@ public final class Módulo_Administración extends JFrame {
                     System.out.println("D3: " + D3);
 
                     DefaultCategoryDataset datos = new DefaultCategoryDataset();
-                    datos.addValue(D1, (Comparable) "Ventas", (Comparable) "Enjero");
-                    datos.addValue(D2, (Comparable) "Ventas", (Comparable) "Febrero");
-                    datos.addValue(D3, (Comparable) "Ventas", (Comparable) "Marzo");
+                    datos.addValue(D1, (Comparable) "Ventas", (Comparable) "Vendedor 1");
+                    datos.addValue(D2, (Comparable) "Ventas", (Comparable) "Vendedor 2");
+                    datos.addValue(D3, (Comparable) "Ventas", (Comparable) "Vendedor 3");
 
                     JFreeChart grafico_vendedores = ChartFactory.createBarChart(
                             "Top 3 - Vendedores con más ventas confirmadas",
