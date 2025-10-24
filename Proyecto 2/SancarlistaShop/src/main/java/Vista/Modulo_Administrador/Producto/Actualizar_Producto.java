@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Vista.Modulo_Administrador;
+package Vista.Modulo_Administrador.Producto;
 
-import Controlador.Vendedor;
+import Controlador.Administrador_Productos.Productos;
+import Controlador.Administrador_Vendedores.Vendedor;
 import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.HeadlessException;
@@ -21,30 +22,30 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  *
  * @author hanya
  */
-public class Actualizar_Vendedor extends JFrame {
+public class Actualizar_Producto extends JFrame {
     
-    JLabel titulo;
-    JLabel codigo;
-    JLabel nombre;
-    JLabel contraseña;
+    private JLabel titulo;
+    private JLabel codigo;
+    private JLabel nombre;
+    private JLabel contraseña;
     
-    JTextField ecodigo;
-    JTextField enombre;
-    JTextField econtraseña;
+    private JTextField ecodigo;
+    private JTextField enombre;
+    private JTextField econtraseña;
     
-    JButton actu;
-    JButton buscar;
+    private JButton actu;
+    private JButton buscar;
     
-    public String getecodigo;
-    public String getnombre;
-    public String getcontraseña;
+    private String getecodigo;
+    private String getnombre;
+    private String getcontraseña;
     
-    public Actualizar_Vendedor(String title) throws HeadlessException {
+    public Actualizar_Producto(String title) throws HeadlessException {
         super(title);
         
         Dimension d = new Dimension(500, 500);//Objeto que tiene la dimensión de la ventana
         this.setSize(d);
-        this.setDefaultCloseOperation(Actualizar_Vendedor.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(Actualizar_Producto.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         //this.setLayout(null);
         this.setVisible(true);
@@ -112,7 +113,7 @@ public class Actualizar_Vendedor extends JFrame {
         this.setLayout(null);
         nombre = new JLabel("Nombre");
         nombre.setForeground(new Color(25, 25, 133));//Color del título
-        nombre.setBounds(50, 210, 100, 100);//Posición
+        nombre.setBounds(50, 210, 150, 100);//Posición
 
         //Fuente
         Font fuente2 = new Font("Super Joyful", Font.PLAIN, 30);
@@ -121,7 +122,7 @@ public class Actualizar_Vendedor extends JFrame {
         //----------------------------------------------------------------------------------------
         enombre = new JTextField();
         enombre.setText("");
-        enombre.setBounds(200, 248, 250, 30);
+        enombre.setBounds(250, 248, 200, 30);
         enombre.setFont(new Font("Super Joyful", Font.BOLD, 25));
         enombre.setBackground(new Color(255, 255, 255, 255));
         enombre.setForeground(new Color(153, 153, 153));//Color de la fuente
@@ -130,9 +131,9 @@ public class Actualizar_Vendedor extends JFrame {
     
     private void contraseña() {
         this.setLayout(null);
-        contraseña = new JLabel("Contraseña");
+        contraseña = new JLabel("Atributo Único");
         contraseña.setForeground(new Color(25, 25, 133));//Color del título
-        contraseña.setBounds(50, 280, 150, 100);//Posición
+        contraseña.setBounds(50, 280, 200, 100);//Posición
 
         //Fuente
         Font fuente2 = new Font("Super Joyful", Font.PLAIN, 30);
@@ -141,7 +142,7 @@ public class Actualizar_Vendedor extends JFrame {
         //----------------------------------------------------------------------------------------
         econtraseña = new JTextField();
         econtraseña.setText("");
-        econtraseña.setBounds(200, 310, 250, 30);
+        econtraseña.setBounds(250, 310, 200, 30);
         econtraseña.setFont(new Font("Super Joyful", Font.BOLD, 25));
         econtraseña.setBackground(new Color(255, 255, 255, 255));
         econtraseña.setForeground(new Color(153, 153, 153));//Color de la fuente
@@ -153,7 +154,7 @@ public class Actualizar_Vendedor extends JFrame {
         ActionListener abrir = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Vendedor actu = new Vendedor();
+                Productos actu = new Productos();
                 
                 getecodigo = ecodigo.getText();
                 actu.setBuscarCodigo(getecodigo);
@@ -181,7 +182,7 @@ public class Actualizar_Vendedor extends JFrame {
         ActionListener actualizar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Vendedor actu = new Vendedor();
+                Productos actu = new Productos();
                 
                 getecodigo = ecodigo.getText();
                 

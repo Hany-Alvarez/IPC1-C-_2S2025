@@ -4,9 +4,16 @@
  */
 package Vista.Modulo_Administrador;
 
-import Controlador.CargarA;
+import Vista.Modulo_Administrador.Producto.Eliminar_Producto;
+import Vista.Modulo_Administrador.Producto.Crear_Producto;
+import Vista.Modulo_Administrador.Producto.Actualizar_Producto;
+import Vista.Modulo_Administrador.Vendedor.Eliminar_Vendedor;
+import Vista.Modulo_Administrador.Vendedor.Crear_Vendedor;
+import Vista.Modulo_Administrador.Vendedor.Actualizar_Vendedor;
+import Controlador.Administrador_Vendedores.CargarA;
+import Controlador.Administrador_Productos.Cargar_Producto;
 import Controlador.Controlador;
-import Controlador.Vendedor;
+import Controlador.Administrador_Vendedores.Vendedor;
 
 import java.awt.Dimension;
 import javax.swing.*;
@@ -38,7 +45,8 @@ public final class Módulo_Administración extends JFrame {
 
     //Declaración de Variables
     public static Módulo_Administración p;
-    public static JTable tabla;
+    //Datos para la sección de vendedores-----------------------------------
+    public static JTable tabla; //Esto es para el manejo de los vendedores
     JPanel Menu;
     JPanel Vendores;
     JPanel Productos;
@@ -56,6 +64,14 @@ public final class Módulo_Administración extends JFrame {
     JButton casa;
     JButton grafica;
     JPanel espacioGráfico;
+
+    //Datos para la sección de productos-----------------------------------
+    public static JTable tabla2; //Esto es para le manejo de los productos
+
+    JButton CrearP;
+    JButton ActualizarP;
+    JButton EliminarP;
+    JButton CargarP;
 
     public Módulo_Administración(String title) throws HeadlessException {
         super(title);
@@ -211,10 +227,127 @@ public final class Módulo_Administración extends JFrame {
         //Productos
         this.setLayout(null);//Permite dimensionarl el panel
         Productos = new JPanel();
-        Productos.setBackground(new Color(255, 255, 0));//Color
+        Productos.setBackground(new Color(255, 204, 0));//Color
         Productos.setBounds(50, 100, 849, 440);
         add(Productos);//Agregar a la ventana general
         Productos.setVisible(false);
+
+//CREAR PRODUCTO----------------------------------------------------------
+        Productos.setLayout(null);
+        CrearP = new JButton("Crear");
+        CrearP.setBounds(670, 50, 150, 30);
+        CrearP.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
+        CrearP.setBackground(new Color(255, 255, 255));
+        CrearP.setForeground(new Color(51, 51, 51));
+        Productos.add(CrearP);//Agregando al panel de vendedores
+
+        ///Escritura de cada acción 
+        ActionListener abrir = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Crear_Producto Ver2 = new Crear_Producto("Creación de producto");
+                Ver2.setVisible(true);
+            }
+        };
+        ///Acciones
+          CrearP.addActionListener(abrir);//Se le agrega la acción
+
+//ACTUALIZAR PRODUCTO
+        Productos.setLayout(null);
+        ActualizarP = new JButton();
+        ActualizarP = new JButton("Actualizar");
+        ActualizarP.setBounds(670, 100, 150, 30);
+        ActualizarP.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
+        ActualizarP.setBackground(new Color(255, 255, 255));
+        ActualizarP.setForeground(new Color(51, 51, 51));
+        Productos.add(ActualizarP);//Agregando al panel de vendedores
+
+        ///Escritura de cada acción 
+        ActionListener abrir2 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Actualizar_Producto Ver = new Actualizar_Producto("Actualizar");
+                Ver.setVisible(true);
+            }
+        };
+        ///Acciones
+          ActualizarP.addActionListener(abrir2);//Se le agrega la acción
+
+//ELIMINAR PRODUCTO----------------------------------------------------
+        EliminarP = new JButton();
+        EliminarP.setLayout(null);
+        EliminarP = new JButton();
+        EliminarP = new JButton("Eliminar");
+        EliminarP.setBounds(670, 150, 150, 30);
+        EliminarP.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
+        EliminarP.setBackground(new Color(255, 255, 255));
+        EliminarP.setForeground(new Color(51, 51, 51));
+        Productos.add(EliminarP);//Agregando al panel de vendedores
+
+        ///Escritura de cada acción 
+        ActionListener abrir4 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Eliminar_Producto Ver = new Eliminar_Producto("Eliminar");
+                Ver.setVisible(true);
+            }
+        };
+        ///Acciones
+          EliminarP.addActionListener(abrir4);//Se le agrega la acción
+
+//CARGAR PRODUCTO--------------------------------------------------------
+        Productos.setLayout(null);
+        CargarP = new JButton();
+        CargarP = new JButton("Cargar");
+        CargarP.setBounds(670, 200, 150, 30);
+        CargarP.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
+        CargarP.setBackground(new Color(255, 255, 255));
+        CargarP.setForeground(new Color(51, 51, 51));
+        Productos.add(CargarP);//Agregando al panel de vendedores
+
+        ///Escritura de cada acción 
+        ActionListener abrir3 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Cargar_Producto cargar = new Cargar_Producto();
+                try {
+                    cargar.Archivo(Productos);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Módulo_Administración.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        ///Acciones
+          CargarP.addActionListener(abrir3);//Se le agrega la acción
+
+//TABLA PRODUCTOS----------------------------------------------------------
+//Tabla de datos
+        //Panel donde ira
+        Productos.setLayout(null);
+        JPanel espacioTabla = new JPanel();
+        espacioTabla.setBackground(new Color(51, 153, 255));//Color
+        espacioTabla.setBounds(25, 20, 610, 400);
+        Productos.add(espacioTabla);
+
+        //Filas
+        Object[][] filas = {};
+        //Columnas
+        String[] columnas = {"Código", "Nombre", "Categoría", "Acciones"};
+
+        //Crear Tabla
+        tabla2 = new JTable(filas, columnas);
+
+        //Modificar tamaño de tabla
+        tabla2.setRowHeight(50);
+        tabla2.getColumnModel().getColumn(0).setPreferredWidth(200);
+
+        //Agregar tabla a un Scroll 
+        JScrollPane scroll = new JScrollPane(tabla2);
+        scroll.setBounds(0, 0, 610, 400);
+
+        espacioTabla.setLayout(null);
+        espacioTabla.add(scroll);
     }
 
     private void Reportes() {
@@ -368,93 +501,93 @@ public final class Módulo_Administración extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (espacioGráfico == null) {
-                    try{
-                    Vendores.setLayout(null);
-                    espacioGráfico = new JPanel();
-                    espacioGráfico.setBackground(new Color(51, 153, 255));//Color
-                    espacioGráfico.setBounds(570, 130, 250, 290);
-                    Vendedor G = new Vendedor();
+                    try {
+                        Vendores.setLayout(null);
+                        espacioGráfico = new JPanel();
+                        espacioGráfico.setBackground(new Color(51, 153, 255));//Color
+                        espacioGráfico.setBounds(570, 130, 250, 290);
+                        Vendedor G = new Vendedor();
 
-                    int D1 = G.Dato1();
-                    int D2 = G.Dato2();
-                    int D3 = G.Dato3();
-                    System.out.println("D1: " + D1);
-                    System.out.println("D2: " + D2);
-                    System.out.println("D3: " + D3);
+                        int D1 = G.Dato1();
+                        int D2 = G.Dato2();
+                        int D3 = G.Dato3();
+                        System.out.println("D1: " + D1);
+                        System.out.println("D2: " + D2);
+                        System.out.println("D3: " + D3);
 
-                    DefaultCategoryDataset datos = new DefaultCategoryDataset();
-                    datos.addValue(D1, (Comparable) "Ventas", (Comparable) "Vendedor 1");
-                    datos.addValue(D2, (Comparable) "Ventas", (Comparable) "Vendedor 2");
-                    datos.addValue(D3, (Comparable) "Ventas", (Comparable) "Vendedor 3");
+                        DefaultCategoryDataset datos = new DefaultCategoryDataset();
+                        datos.addValue(D1, (Comparable) "Ventas", (Comparable) "Vendedor 1");
+                        datos.addValue(D2, (Comparable) "Ventas", (Comparable) "Vendedor 2");
+                        datos.addValue(D3, (Comparable) "Ventas", (Comparable) "Vendedor 3");
 
-                    JFreeChart grafico_vendedores = ChartFactory.createBarChart(
-                            "Top 3 - Vendedores con más ventas confirmadas",
-                            "Vendedor",
-                            "Ventas",
-                            datos
-                    );
+                        JFreeChart grafico_vendedores = ChartFactory.createBarChart(
+                                "Top 3 - Vendedores con más ventas confirmadas",
+                                "Vendedor",
+                                "Ventas",
+                                datos
+                        );
 
-                    //Color de las barras
-                    CategoryPlot c = (CategoryPlot) grafico_vendedores.getPlot();
-                    BarRenderer color = (BarRenderer) c.getRenderer();
+                        //Color de las barras
+                        CategoryPlot c = (CategoryPlot) grafico_vendedores.getPlot();
+                        BarRenderer color = (BarRenderer) c.getRenderer();
 
-                    color.setSeriesPaint(0, new Color(0, 153, 255));
+                        color.setSeriesPaint(0, new Color(0, 153, 255));
 
-                    //Se agrega a un chart
-                    ChartPanel chartPanel = new ChartPanel(grafico_vendedores);//se convierte a chart
-                    chartPanel.setPreferredSize(new java.awt.Dimension(250, 290));//Se dimensiona el chart para el tamaño de la gráfica
-                    espacioGráfico.add(chartPanel, BorderLayout.CENTER); //Se agrega al panel
+                        //Se agrega a un chart
+                        ChartPanel chartPanel = new ChartPanel(grafico_vendedores);//se convierte a chart
+                        chartPanel.setPreferredSize(new java.awt.Dimension(250, 290));//Se dimensiona el chart para el tamaño de la gráfica
+                        espacioGráfico.add(chartPanel, BorderLayout.CENTER); //Se agrega al panel
 
-                    Vendores.add(espacioGráfico);
-                    Vendores.revalidate();
-                    Vendores.repaint();
-                     } catch (Exception ex) {
-            System.out.println("El error es: " + ex);
-        }
+                        Vendores.add(espacioGráfico);
+                        Vendores.revalidate();
+                        Vendores.repaint();
+                    } catch (Exception ex) {
+                        System.out.println("El error es: " + ex);
+                    }
 
                 } else {
-                    try{
-                    espacioGráfico.removeAll();
+                    try {
+                        espacioGráfico.removeAll();
 
-                    Vendores.setLayout(null);
-                    Vendedor G = new Vendedor();
+                        Vendores.setLayout(null);
+                        Vendedor G = new Vendedor();
 
-                    int D1 = G.Dato1();
-                    int D2 = G.Dato2();
-                    int D3 = G.Dato3();
-                    System.out.println("D1: " + D1);
-                    System.out.println("D2: " + D2);
-                    System.out.println("D3: " + D3);
+                        int D1 = G.Dato1();
+                        int D2 = G.Dato2();
+                        int D3 = G.Dato3();
+                        System.out.println("D1: " + D1);
+                        System.out.println("D2: " + D2);
+                        System.out.println("D3: " + D3);
 
-                    DefaultCategoryDataset datos = new DefaultCategoryDataset();
-                    datos.addValue(D1, (Comparable) "Ventas", (Comparable) "Vendedor 1");
-                    datos.addValue(D2, (Comparable) "Ventas", (Comparable) "Vendedor 2");
-                    datos.addValue(D3, (Comparable) "Ventas", (Comparable) "Vendedor 3");
+                        DefaultCategoryDataset datos = new DefaultCategoryDataset();
+                        datos.addValue(D1, (Comparable) "Ventas", (Comparable) "Vendedor 1");
+                        datos.addValue(D2, (Comparable) "Ventas", (Comparable) "Vendedor 2");
+                        datos.addValue(D3, (Comparable) "Ventas", (Comparable) "Vendedor 3");
 
-                    JFreeChart grafico_vendedores = ChartFactory.createBarChart(
-                            "Top 3 - Vendedores con más ventas confirmadas",
-                            "Vendedor",
-                            "Ventas",
-                            datos
-                    );
+                        JFreeChart grafico_vendedores = ChartFactory.createBarChart(
+                                "Top 3 - Vendedores con más ventas confirmadas",
+                                "Vendedor",
+                                "Ventas",
+                                datos
+                        );
 
-                    //Color de las barras
-                    CategoryPlot c = (CategoryPlot) grafico_vendedores.getPlot();
-                    BarRenderer color = (BarRenderer) c.getRenderer();
+                        //Color de las barras
+                        CategoryPlot c = (CategoryPlot) grafico_vendedores.getPlot();
+                        BarRenderer color = (BarRenderer) c.getRenderer();
 
-                    color.setSeriesPaint(0, new Color(0, 153, 255));
+                        color.setSeriesPaint(0, new Color(0, 153, 255));
 
-                    //Se agrega a un chart
-                    ChartPanel chartPanel = new ChartPanel(grafico_vendedores);//se convierte a chart
-                    chartPanel.setPreferredSize(new java.awt.Dimension(250, 290));//Se dimensiona el chart para el tamaño de la gráfica
-                    espacioGráfico.add(chartPanel, BorderLayout.CENTER); //Se agrega al panel
+                        //Se agrega a un chart
+                        ChartPanel chartPanel = new ChartPanel(grafico_vendedores);//se convierte a chart
+                        chartPanel.setPreferredSize(new java.awt.Dimension(250, 290));//Se dimensiona el chart para el tamaño de la gráfica
+                        espacioGráfico.add(chartPanel, BorderLayout.CENTER); //Se agrega al panel
 
-                    Vendores.add(espacioGráfico);
-                    Vendores.revalidate();
-                    Vendores.repaint();
-                     } catch (Exception ex) {
-            System.out.println("El error es: " + ex);
-        }
+                        Vendores.add(espacioGráfico);
+                        Vendores.revalidate();
+                        Vendores.repaint();
+                    } catch (Exception ex) {
+                        System.out.println("El error es: " + ex);
+                    }
                 }
             }
         };

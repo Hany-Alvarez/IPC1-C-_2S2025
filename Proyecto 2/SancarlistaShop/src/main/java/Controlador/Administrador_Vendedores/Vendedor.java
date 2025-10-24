@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controlador;
+package Controlador.Administrador_Vendedores;
 
-import static Controlador.CargarA.B;
-import static Controlador.CargarA.h;
-import static Controlador.CargarA.orden;
+import static Controlador.Administrador_Vendedores.CargarA.B;
+import static Controlador.Administrador_Vendedores.CargarA.h;
+import static Controlador.Administrador_Vendedores.CargarA.orden;
 import Vista.Modulo_Administrador.Módulo_Administración;
 import java.util.Objects;
 import javax.swing.table.DefaultTableModel;

@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Vista.Modulo_Administrador;
+package Vista.Modulo_Administrador.Vendedor;
 
-import Controlador.Vendedor;
+import Vista.Modulo_Administrador.Vendedor.Actualizar_Vendedor;
+import Controlador.Administrador_Vendedores.Vendedor;
 import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.HeadlessException;
@@ -23,14 +24,14 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  */
 public class Eliminar_Vendedor extends JFrame {
 
-    JLabel titulo;
-    JLabel codigo;
+    private JLabel titulo;
+    private JLabel codigo;
 
-    JTextField ecodigo;
+    private JTextField ecodigo;
 
-    JButton eliminar;
+    private JButton eliminar;
     
-    public String getecodigo;
+    private String getecodigo;
 
     public Eliminar_Vendedor(String title) throws HeadlessException {
         super(title);

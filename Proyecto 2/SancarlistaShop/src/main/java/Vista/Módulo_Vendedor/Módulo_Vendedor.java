@@ -4,12 +4,12 @@
  */
 package Vista.Módulo_Vendedor;
 
-import Controlador.CargarA;
+import Vista.Modulo_Administrador.Vendedor.Crear_Vendedor;
+import Vista.Modulo_Administrador.Vendedor.Eliminar_Vendedor;
+import Controlador.Administrador_Vendedores.CargarA;
 import Controlador.Controlador;
-import Controlador.Vendedor;
-import Vista.Modulo_Administrador.Actualizar_Vendedor;
-import Vista.Modulo_Administrador.Crear_Vendedor;
-import Vista.Modulo_Administrador.Eliminar_Vendedor;
+import Controlador.Administrador_Vendedores.Vendedor;
+import Vista.Modulo_Administrador.Vendedor.Actualizar_Vendedor;
 
 import java.awt.Dimension;
 import javax.swing.*;

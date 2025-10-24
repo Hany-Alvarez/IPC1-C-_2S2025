@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controlador;
+package Controlador.Administrador_Productos;
 
-import static Controlador.Vendedor.Usuario;
-import static Controlador.Vendedor.contador5;
+import static Controlador.Administrador_Productos.Productos.UsuarioP;
+import static Controlador.Administrador_Vendedores.Vendedor.Usuario;
+import static Controlador.Administrador_Vendedores.Vendedor.contador5;
 import Vista.Modulo_Administrador.Módulo_Administración;
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,13 +23,13 @@ import javax.swing.table.TableModel;
  *
  * @author hanya
  */
-public class CargarA {
+public class Cargar_Producto {
 
-    public static int N;
-    public static int A;
-    public static int B;
-    public static int h;
-    public static String orden[];
+    public static int NN;
+    public static int AA;
+    public static int BB;
+    public static int hh;
+    public static String orden2[];
 
     public void Archivo(JPanel a) throws FileNotFoundException {
         JFileChooser archivo = new JFileChooser();
@@ -59,7 +60,7 @@ public class CargarA {
 
             while (br.readLine() != null) {
                 numLineas++;
-                A = numLineas;
+                AA = numLineas;
             }
             // Reiniciar el lector para volver al inicio del archivo
             fr.close();
@@ -71,35 +72,35 @@ public class CargarA {
             // Se crea la matriz con tantas filas como líneas y 4 columnas
             //Usuario = new String[numLineas][5];
             //N = numLineas;
-            N = 100;
+            NN = 100;
 
             //Leer y guardar datos
             String linea;
             int i = 0;//la clave
-            Vendedor V6 = new Vendedor();
+            Productos V6 = new Productos();
 
-            h = V6.PrimeroCrear(i);
-            B = h;
+            hh = V6.PrimeroCrear(i);
+            BB = hh;
 
             while ((linea = br.readLine()) != null) {
-                orden = linea.split(",");
+                orden2 = linea.split(",");
 
-                if (orden.length >= 5) {
-                    Usuario[h][0] = orden[0]; // código
-                    Usuario[h][1] = orden[1]; // nombre
-                    Usuario[h][2] = orden[2]; // género
-                    Usuario[h][3] = orden[3];//Contraseña
-                    Usuario[h][4] = orden[4]; // confirmadas
-                    h++;
+                if (orden2.length >= 5) {
+                    UsuarioP[hh][0] = orden2[0]; // código
+                    UsuarioP[hh][1] = orden2[1]; // nombre
+                    UsuarioP[hh][2] = orden2[2]; // género
+                    UsuarioP[hh][3] = orden2[3];//Contraseña
+                    UsuarioP[hh][4] = orden2[4]; // confirmadas
+                    hh++;
                 }
             }
-            System.out.println("Archivo cargado correctamente con " + N + " registros.");
+            System.out.println("Archivo cargado correctamente con " + NN + " registros.");
 
-            Vendedor a = new Vendedor();
+            Productos a = new Productos();
             a.CrearTablaF();
             a.PrimeroCargar(numLineas);
             a.NoIgual();
-            a.ReyenarTablaCargar(N);
+            a.ReyenarTablaCargar(NN);
 
         } catch (Exception ex) {
             System.out.println("Error al leer el archivo: " + ex.getMessage());

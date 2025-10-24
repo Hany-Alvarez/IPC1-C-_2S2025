@@ -4,7 +4,7 @@
  */
 package Modelo;
 
-import Controlador.Vendedor;
+import Controlador.Administrador_Vendedores.Vendedor;
 
 /**
  *

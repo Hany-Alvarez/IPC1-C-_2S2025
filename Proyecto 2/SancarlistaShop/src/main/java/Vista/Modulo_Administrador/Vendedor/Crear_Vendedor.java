@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Vista.Modulo_Administrador;
+package Vista.Modulo_Administrador.Vendedor;
 
-import static Controlador.CargarA.A;
+import static Controlador.Administrador_Vendedores.CargarA.A;
 import Controlador.Controlador;
-import Controlador.Vendedor;
+import Controlador.Administrador_Vendedores.Vendedor;
 import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.HeadlessException;
@@ -27,24 +27,24 @@ import javax.swing.table.TableModel;
  */
 public class Crear_Vendedor extends JFrame {
 
-    JLabel titulo;
-    JLabel codigo;
-    JLabel nombre;
-    JLabel genero;
-    JLabel contraseña;
+    private JLabel titulo;
+    private JLabel codigo;
+    private JLabel nombre;
+    private JLabel genero;
+    private JLabel contraseña;
 
-    JTextField ecodigo;
-    JTextField enombre;
-    JComboBox egenero;
-    JTextField econtraseña;
+    private JTextField ecodigo;
+    private JTextField enombre;
+    private JComboBox egenero;
+    private JTextField econtraseña;
 
-    JButton crear;
+    private JButton crear;
 
     //Variables para funcionalidad
-    public String getcodigo;
-    public String getnombre;
-    public String getgenero;
-    public String getcontraseña;
+    private String getcodigo;
+    private String getnombre;
+    private String getgenero;
+    private String getcontraseña;
 
     static String Usuario[][] = new String[100][4];
     static int contador = 0;
@@ -69,7 +69,7 @@ public class Crear_Vendedor extends JFrame {
 
     }
 
-    private void Crear() {
+    public void Crear() {
         this.setLayout(null);
         ImageIcon icono = new ImageIcon("images/crear.png");
         ImageIcon USAC = new ImageIcon(icono.getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
@@ -92,7 +92,7 @@ public class Crear_Vendedor extends JFrame {
 
     }
 
-    private void Codigo() {
+    public void Codigo() {
         this.setLayout(null);
         codigo = new JLabel("Codigo");
         codigo.setForeground(new Color(25, 25, 133));//Color del título
@@ -113,7 +113,7 @@ public class Crear_Vendedor extends JFrame {
 
     }
 
-    private void Nombre() {
+    public void Nombre() {
         this.setLayout(null);
         nombre = new JLabel("Nombre");
         nombre.setForeground(new Color(25, 25, 133));//Color del título
@@ -133,7 +133,7 @@ public class Crear_Vendedor extends JFrame {
         add(enombre);
     }
 
-    private void Genero() {
+    public void Genero() {
         this.setLayout(null);
         genero = new JLabel("Genero");
         genero.setForeground(new Color(25, 25, 133));//Color del título
@@ -158,7 +158,7 @@ public class Crear_Vendedor extends JFrame {
         add(egenero);
     }
 
-    private void Contraseña() {
+    public void Contraseña() {
         this.setLayout(null);
         contraseña = new JLabel("Contraseña");
         contraseña.setForeground(new Color(25, 25, 133));//Color del título
@@ -178,7 +178,7 @@ public class Crear_Vendedor extends JFrame {
         add(econtraseña);
     }
 
-    private void Boton() {
+    public void Boton() {
         ///Escritura de cada acción 
         ActionListener accion = new ActionListener() {
             @Override

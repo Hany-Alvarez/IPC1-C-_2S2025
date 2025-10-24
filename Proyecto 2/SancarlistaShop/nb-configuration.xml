@@ -9,7 +9,9 @@ Without this configuration present, some functionality in the IDE may be limited
     <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
         <word>actuc</word>
         <word>actun</word>
+        <word>atributo</word>
         <word>cantidad</word>
+        <word>categoria</word>
         <word>codigo</word>
         <word>confirmación</word>
         <word>confirmados</word>

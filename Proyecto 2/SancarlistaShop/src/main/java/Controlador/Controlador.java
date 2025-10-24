@@ -4,7 +4,7 @@
  */
 package Controlador;
 
-import static Controlador.Vendedor.Usuario;
+import static Controlador.Administrador_Vendedores.Vendedor.Usuario;
 import Vista.Modulo_Administrador.Módulo_Administración;
 import static Vista.Modulo_Administrador.Módulo_Administración.p;
 import Vista.Módulo_Autenticación;
