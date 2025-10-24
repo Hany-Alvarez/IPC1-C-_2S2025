@@ -33,8 +33,10 @@ public class Vendedor {
     public static int contador5 = 0;
 
     public Vendedor() {
-
+    
     }
+    //Inicialización de Usuario para que no de null
+    
 
     /**
      * @return the codigo
@@ -228,18 +230,20 @@ public class Vendedor {
             tm.setValueAt(Usuario[i][1], i, 1);
             tm.setValueAt(Usuario[i][2], i, 2);
             tm.setValueAt(Usuario[i][4], i, 3);
+
         }
 
     }
 
     public void ReyenarTablaCrear(int b) { //Solo para reyenar
         for (int i = 0; i <= b; i++) {
+
             tm.setValueAt(Usuario[i][0], i, 0);
             tm.setValueAt(Usuario[i][1], i, 1);
             tm.setValueAt(Usuario[i][2], i, 2);
             tm.setValueAt(Usuario[i][4], i, 3);
-        }
 
+        }
     }
 
     public void PrimeroCargar(int a) {//Arreglar los contadores si primero se carga y luego se crea
@@ -253,7 +257,7 @@ public class Vendedor {
     }
 
     public int PrimeroCrear(int c) {
-        if (contador !=0) {
+        if (contador != 0) {
             System.out.println("El sistema ya tiene elementos creados");
             //c=contador;
             return contador;
@@ -262,46 +266,46 @@ public class Vendedor {
         return 0;
 
     }
-    
+
     public void CCC(int a) {//crear-cargar-crear
-        System.out.println("contador: "+contador);
-        System.out.println("suma: "+(h));
-        if(a==0 || contador>=h){
-        System.out.println("No hay datos cargados previos, seguir con creando sin corrimiento");
-        }
-        else{
+        System.out.println("contador: " + contador);
+        System.out.println("suma: " + (h));
+        if (a == 0 || contador >= h) {
+            System.out.println("No hay datos cargados previos, seguir con creando sin corrimiento");
+        } else {
             System.out.println("Si hasy datos cargados previos, arreglando corrimiento");
-            System.out.println("El valor de lineas es :"+a);
-            System.out.println("El valor del contador: "+contador);
-        contador2=contador+a;
-        contador3=contador+a;
-        contador4=contador+a;
-        contador5=contador+a;
-        contador=contador+a;
+            System.out.println("El valor de lineas es :" + a);
+            System.out.println("El valor del contador: " + contador);
+            contador2 = contador + a;
+            contador3 = contador + a;
+            contador4 = contador + a;
+            contador5 = contador + a;
+            contador = contador + a;
         }
-    
-    
+
     }
-    public void NoIgual(){
-        System.out.println("contador vale: "+contador);
-        System.out.println("B vale: "+B);
-        for(int z=0;z<contador;z++){//problema por si se pasa de tamaño
-            for(int y=B;y<=100;y++){
-                
-            if(Usuario[z][0].equalsIgnoreCase(Usuario[y][0]) ){//datos antes-datos después
-                System.out.println("Hay datos iguales");
-                Usuario[y][0]=null;
-                Usuario[y][1]=null;
-                Usuario[y][2]=null;
-                Usuario[y][4]=null;
+
+    public void NoIgual() {
+        
+        System.out.println("contador vale: " + contador);
+        System.out.println("B vale: " + B);
+        for (int z = 0; z < contador; z++) {//problema por si se pasa de tamaño
+            for (int y = B; y <= 100; y++) {
+
+                if (Usuario[z][0].equalsIgnoreCase(Usuario[y][0])) {//datos antes-datos después
+                    System.out.println("Hay datos iguales");
+                    Usuario[y][0] = null;
+                    Usuario[y][1] = null;
+                    Usuario[y][2] = null;
+                    Usuario[y][4] = null;
+                } else {
+                    System.out.println("Antes: " + Usuario[z][0]);
+                    System.out.println("Después : " + Usuario[y][0]);
+                    System.out.println("No hay datos iguales creados previamente, continuar con el relleno");
+                }
             }
-            else{
-                System.out.println("Antes: "+Usuario[z][0]);
-                System.out.println("Después : "+Usuario[y][0]);
-            System.out.println("No hay datos iguales creados previamente, continuar con el relleno");
-            }
-        }
         }
     }
+    
 
 }
