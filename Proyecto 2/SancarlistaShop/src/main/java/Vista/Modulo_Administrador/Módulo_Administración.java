@@ -6,6 +6,8 @@ package Vista.Modulo_Administrador;
 
 import Controlador.CargarA;
 import Controlador.Controlador;
+import Controlador.Vendedor;
+import static Vista.Modulo_Administrador.Grafico.AA;
 
 import java.awt.Dimension;
 import javax.swing.*;
@@ -36,7 +38,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public final class Módulo_Administración extends JFrame {
 
     //Declaración de Variables
-    public static Módulo_Administración v;
+    public static Módulo_Administración p;
     public static JTable tabla;
     JPanel Menu;
     JPanel Vendores;
@@ -53,10 +55,12 @@ public final class Módulo_Administración extends JFrame {
     JButton Eliminar;
 
     JButton casa;
+    JButton grafica;
+    JPanel espacioGráfico;
 
     public Módulo_Administración(String title) throws HeadlessException {
         super(title);
-        v = this;
+        p = this;
 
         Dimension d = new Dimension(960, 600);//Objeto que tiene la dimensión de la ventana
         this.setSize(d);
@@ -71,6 +75,7 @@ public final class Módulo_Administración extends JFrame {
         Vendedores();
         Productos();
         Reportes();
+        grafica();
         Ir_Casa();
     }
 
@@ -139,8 +144,8 @@ public final class Módulo_Administración extends JFrame {
         ActionListener abrir3 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                              
-                CargarA cargar = new CargarA(); 
+
+                CargarA cargar = new CargarA();
                 try {
                     cargar.Archivo(Vendores);
                 } catch (FileNotFoundException ex) {
@@ -200,38 +205,6 @@ public final class Módulo_Administración extends JFrame {
         espacioTabla.setLayout(null);
         espacioTabla.add(scroll);
 //--------------------------------------------------------------------------------------
-//Gráfico
-//Panel donde ira
-        Vendores.setLayout(null);
-        JPanel espacioGráfico = new JPanel();
-        espacioGráfico.setBackground(new Color(51, 153, 255));//Color
-        espacioGráfico.setBounds(570, 130, 250, 290);
-
-        DefaultCategoryDataset datos = new DefaultCategoryDataset();
-        datos.addValue(10, (Comparable) "Ventas", (Comparable) "Enjero");
-        datos.addValue(20, (Comparable) "Ventas", (Comparable) "Febrero");
-        datos.addValue(30, (Comparable) "Ventas", (Comparable) "Marzo");
-
-        JFreeChart grafico_vendedores = ChartFactory.createBarChart(
-                "Top 3 - Vendedores con más ventas confirmadas",
-                "Vendedor",
-                "Ventas",
-                datos
-        );
-        
-        //Color de las barras
-        CategoryPlot c =(CategoryPlot) grafico_vendedores.getPlot();
-        BarRenderer color =(BarRenderer) c.getRenderer();
-        
-        color.setSeriesPaint(0, new Color(0, 153, 255));
-
-        
-        //Se agrega a un chart
-        ChartPanel chartPanel = new ChartPanel(grafico_vendedores);//se convierte a chart
-        chartPanel.setPreferredSize(new java.awt.Dimension(250, 290));//Se dimensiona el chart para el tamaño de la gráfica
-        espacioGráfico.add(chartPanel, BorderLayout.CENTER); //Se agrega al panel
-
-        Vendores.add(espacioGráfico);
 
     }
 
@@ -369,11 +342,118 @@ public final class Módulo_Administración extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controlador volver = new Controlador();
-                volver.Casa(v);
+                volver.Casa(p);
             }
         };
         ///Acciones
           casa.addActionListener(ircasa);//Se le agrega la acción
+
+    }
+
+    public void grafica() {
+        Vendores.setLayout(null);
+        grafica = new JButton();
+        grafica.setLayout(null);
+        grafica = new JButton();
+        grafica = new JButton("G");
+        grafica.setBounds(760, 400, 60, 30);
+        grafica.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
+        grafica.setBackground(new Color(102, 204, 255));
+        grafica.setForeground(new Color(51, 51, 51));
+        Vendores.add(grafica);//Agregando al panel de vendedores
+
+        //Gráfico
+//Panel donde ira
+        ///Escritura de cada acción 
+        ActionListener actualizar = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (espacioGráfico == null) {
+
+                    Vendores.setLayout(null);
+                    espacioGráfico = new JPanel();
+                    espacioGráfico.setBackground(new Color(51, 153, 255));//Color
+                    espacioGráfico.setBounds(570, 130, 250, 290);
+                    Vendedor G = new Vendedor();
+
+                    int D1 = G.Dato1();
+                    int D2 = G.Dato2();
+                    int D3 = G.Dato3();
+                    System.out.println("D1: " + D1);
+                    System.out.println("D2: " + D2);
+                    System.out.println("D3: " + D3);
+
+                    DefaultCategoryDataset datos = new DefaultCategoryDataset();
+                    datos.addValue(D1, (Comparable) "Ventas", (Comparable) "Enjero");
+                    datos.addValue(D2, (Comparable) "Ventas", (Comparable) "Febrero");
+                    datos.addValue(D3, (Comparable) "Ventas", (Comparable) "Marzo");
+
+                    JFreeChart grafico_vendedores = ChartFactory.createBarChart(
+                            "Top 3 - Vendedores con más ventas confirmadas",
+                            "Vendedor",
+                            "Ventas",
+                            datos
+                    );
+
+                    //Color de las barras
+                    CategoryPlot c = (CategoryPlot) grafico_vendedores.getPlot();
+                    BarRenderer color = (BarRenderer) c.getRenderer();
+
+                    color.setSeriesPaint(0, new Color(0, 153, 255));
+
+                    //Se agrega a un chart
+                    ChartPanel chartPanel = new ChartPanel(grafico_vendedores);//se convierte a chart
+                    chartPanel.setPreferredSize(new java.awt.Dimension(250, 290));//Se dimensiona el chart para el tamaño de la gráfica
+                    espacioGráfico.add(chartPanel, BorderLayout.CENTER); //Se agrega al panel
+
+                    Vendores.add(espacioGráfico);
+                    Vendores.revalidate();
+                    Vendores.repaint();
+
+                } else {
+                    espacioGráfico.removeAll();
+
+                    Vendores.setLayout(null);
+                    Vendedor G = new Vendedor();
+
+                    int D1 = G.Dato1();
+                    int D2 = G.Dato2();
+                    int D3 = G.Dato3();
+                    System.out.println("D1: " + D1);
+                    System.out.println("D2: " + D2);
+                    System.out.println("D3: " + D3);
+
+                    DefaultCategoryDataset datos = new DefaultCategoryDataset();
+                    datos.addValue(D1, (Comparable) "Ventas", (Comparable) "Vendedor 1");
+                    datos.addValue(D2, (Comparable) "Ventas", (Comparable) "Vendedor 2");
+                    datos.addValue(D3, (Comparable) "Ventas", (Comparable) "Vendedor 3");
+
+                    JFreeChart grafico_vendedores = ChartFactory.createBarChart(
+                            "Top 3 - Vendedores con más ventas confirmadas",
+                            "Vendedor",
+                            "Ventas",
+                            datos
+                    );
+
+                    //Color de las barras
+                    CategoryPlot c = (CategoryPlot) grafico_vendedores.getPlot();
+                    BarRenderer color = (BarRenderer) c.getRenderer();
+
+                    color.setSeriesPaint(0, new Color(0, 153, 255));
+
+                    //Se agrega a un chart
+                    ChartPanel chartPanel = new ChartPanel(grafico_vendedores);//se convierte a chart
+                    chartPanel.setPreferredSize(new java.awt.Dimension(250, 290));//Se dimensiona el chart para el tamaño de la gráfica
+                    espacioGráfico.add(chartPanel, BorderLayout.CENTER); //Se agrega al panel
+
+                    Vendores.add(espacioGráfico);
+                    Vendores.revalidate();
+                    Vendores.repaint();
+                }
+            }
+        };
+        ///Acciones
+          grafica.addActionListener(actualizar);//Se le agrega la acción
 
     }
 

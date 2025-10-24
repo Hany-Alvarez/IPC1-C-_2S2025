@@ -31,12 +31,13 @@ public class Vendedor {
     static int contador3 = 0;
     static int contador4 = 0;
     public static int contador5 = 0;
+    public int mayor;
+    public int mayor2;
 
     public Vendedor() {
-    
+
     }
     //Inicialización de Usuario para que no de null
-    
 
     /**
      * @return the codigo
@@ -286,26 +287,64 @@ public class Vendedor {
     }
 
     public void NoIgual() {
-        
-        System.out.println("contador vale: " + contador);
-        System.out.println("B vale: " + B);
         for (int z = 0; z < contador; z++) {//problema por si se pasa de tamaño
             for (int y = B; y <= 100; y++) {
 
                 if (Usuario[z][0].equalsIgnoreCase(Usuario[y][0])) {//datos antes-datos después
-                    System.out.println("Hay datos iguales");
                     Usuario[y][0] = null;
                     Usuario[y][1] = null;
                     Usuario[y][2] = null;
                     Usuario[y][4] = null;
                 } else {
-                    System.out.println("Antes: " + Usuario[z][0]);
-                    System.out.println("Después : " + Usuario[y][0]);
-                    System.out.println("No hay datos iguales creados previamente, continuar con el relleno");
+
                 }
             }
         }
     }
-    
+
+    public int Dato1() {
+        mayor = 0;
+        System.out.println("El contador es:" + contador);
+        for (int i = 0; i < contador; i++) {
+            int valor = Integer.parseInt(Usuario[i][4]);
+
+            if (valor > mayor) {
+                System.out.println("El número " + valor + " es mayor que " + mayor);
+                mayor = valor;
+            }
+        }
+
+        return mayor;
+    }
+
+    public int Dato2() {
+        mayor2 = 0;
+        System.out.println("El contador es:" + contador);
+        for (int i = 0; i < contador; i++) {
+            int valor = Integer.parseInt(Usuario[i][4]);
+
+            if (valor > mayor2 && valor != mayor) {
+                System.out.println("El número " + valor + " es mayor que " + mayor2);
+                mayor2 = valor;
+            }
+        }
+
+        return mayor2;
+    }
+
+    public int Dato3() {
+        int mayor3 = 0;
+        System.out.println("El contador es:" + contador);
+        for (int i = 0; i < contador; i++) {
+            int valor = Integer.parseInt(Usuario[i][4]);
+
+            if (valor > mayor3 && valor != mayor && valor != mayor2) {
+                System.out.println("El número " + valor + " es mayor que " + mayor3);
+                mayor3 = valor;
+            }
+        }
+
+        return mayor3;
+    }
 
 }

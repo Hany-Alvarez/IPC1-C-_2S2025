@@ -56,10 +56,10 @@ public class CargarA {
 
             //Contar cuantas lineas tiene el archivo
             int numLineas = 0;
-            
+
             while (br.readLine() != null) {
                 numLineas++;
-                A=numLineas;
+                A = numLineas;
             }
             // Reiniciar el lector para volver al inicio del archivo
             fr.close();
@@ -79,16 +79,17 @@ public class CargarA {
             Vendedor V6 = new Vendedor();
 
             h = V6.PrimeroCrear(i);
-            B=h;
+            B = h;
 
             while ((linea = br.readLine()) != null) {
-                orden= linea.split(",");
+                orden = linea.split(",");
 
-                if (orden.length >= 4) {
+                if (orden.length >= 5) {
                     Usuario[h][0] = orden[0]; // código
                     Usuario[h][1] = orden[1]; // nombre
                     Usuario[h][2] = orden[2]; // género
-                    Usuario[h][4] = orden[3]; // confirmadas
+                    Usuario[h][3] = orden[3];//Contraseña
+                    Usuario[h][4] = orden[4]; // confirmadas
                     h++;
                 }
             }
