@@ -25,6 +25,8 @@ import javax.swing.table.TableModel;
 public class CargarA {
 
     public static int N;
+    public static int A;
+    public static int h;
 
     public void Archivo(JPanel a) throws FileNotFoundException {
         JFileChooser archivo = new JFileChooser();
@@ -55,8 +57,9 @@ public class CargarA {
 
             while (br.readLine() != null) {
                 numLineas++;
+                A=numLineas;
             }
-
+            
             // Reiniciar el lector para volver al inicio del archivo
             fr.close();
             br.close();
@@ -74,7 +77,7 @@ public class CargarA {
             int i = 0;//la clave
             Vendedor V6 = new Vendedor();
 
-            int h = V6.PrimeroCrear(i);
+            h = V6.PrimeroCrear(i);
 
             while ((linea = br.readLine()) != null) {
                 String orden[] = linea.split(",");

@@ -4,6 +4,7 @@
  */
 package Vista.Modulo_Administrador;
 
+import static Controlador.CargarA.A;
 import Controlador.Controlador;
 import Controlador.Vendedor;
 import java.awt.Dimension;
@@ -182,6 +183,8 @@ public class Crear_Vendedor extends JFrame {
         ActionListener accion = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Vendedor V8 =new Vendedor();
+                V8.CCC(A); //corregir los contadores por si hay corrimiento antes de registrar los datos
 //codigo-----------------------------------------------------------------------
                 Vendedor V = new Vendedor();
                 getcodigo = ecodigo.getText();
@@ -212,6 +215,8 @@ public class Crear_Vendedor extends JFrame {
 //Mostrar en la tabla--------------------------------------------------------------
                 Vendedor V6 =new Vendedor();
                 V6.CrearTablaF();
+                System.out.println(A);
+                //funcion
                 V6.ReyenarTablaCrear(100);
             }
         };

@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import static Controlador.CargarA.h;
 import Vista.Modulo_Administrador.Módulo_Administración;
 import java.util.Objects;
 import javax.swing.table.DefaultTableModel;
@@ -258,6 +259,26 @@ public class Vendedor {
         System.out.println("El sistema no tiene datos creados");
         return 0;
 
+    }
+    
+    public void CCC(int a) {//crear-cargar-crear
+        System.out.println("contador: "+contador);
+        System.out.println("suma: "+(h));
+        if(a==0 || contador>=h){
+        System.out.println("No hay datos cargados previos, seguir con creando sin corrimiento");
+        }
+        else{
+            System.out.println("Si hay datos cargados previos, arreglando corrimiento");
+            System.out.println("El valor de lineas es :"+a);
+            System.out.println("El valor del contador: "+contador);
+        contador2=contador+a;
+        contador3=contador+a;
+        contador4=contador+a;
+        contador5=contador+a;
+        contador=contador+a;
+        }
+    
+    
     }
 
 }
