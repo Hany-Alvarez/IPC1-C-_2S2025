@@ -63,7 +63,7 @@ public class Controlador {
     ///Método para verificar al usuario y contraseña
     public boolean Iniciar(String codigo, String contraseña) {
 
-        if (codigo.equals("123") && contraseña.equals("456")) {
+        if (codigo.equals("Codigo") && contraseña.equals("Contraseña")) {
             System.out.println("Código y Contraseña Correctos, se encontro en el sistema");
             return true;
         }

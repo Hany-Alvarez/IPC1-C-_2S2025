@@ -4,14 +4,18 @@
  */
 package Controlador.Administrador_Productos;
 
-import static Controlador.Administrador_Vendedores.CargarA.B;
-import static Controlador.Administrador_Vendedores.CargarA.h;
-import static Controlador.Administrador_Vendedores.CargarA.orden;
 import static Controlador.Administrador_Productos.Cargar_Producto.BB;
 import static Controlador.Administrador_Productos.Cargar_Producto.hh;
+
 import Vista.Modulo_Administrador.Módulo_Administración;
+import Vista.Modulo_Administrador.Producto.Botones_Lista;
+import Vista.Modulo_Administrador.Producto.GestionBoton;
 import java.util.Objects;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
 /**
@@ -28,7 +32,7 @@ public class Productos {
     private String actun;
     private String actuc;
     private String buscarCodigoE;
-    private int confirmados;//solo servira para la validación de nullos
+    private String confirmados;//solo servira para la validación de nullos
 
     public static String UsuarioP[][] = new String[101][5]; //Para almacenar los productos
     public static TableModel tms;
@@ -125,8 +129,9 @@ public class Productos {
 
     /**
      * @param categoria the categoria to set
+     * @return
      */
-    public void setCategoria(String categoria) {
+    public String setCategoria(String categoria) {
         this.categoria = categoria;
         //Validaciones
         switch (categoria) {
@@ -142,7 +147,7 @@ public class Productos {
                 contador3P++;
                 System.out.println(UsuarioP[contador3P - 1][2]);
             }
-             case "General", "general" -> {
+            case "General", "general" -> {
                 //Se agrega a la matriz
                 UsuarioP[contador3P][2] = "General";
                 contador3P++;
@@ -150,6 +155,7 @@ public class Productos {
             }
         }
         System.out.println("Contador3P: " + contador3P);
+        return categoria;
     }
 
     /**
@@ -162,7 +168,7 @@ public class Productos {
     /**
      * @param atributo the atributo to set
      */
-    public void setAtributo(String atributo) {
+    public void setAtributo(String atributo) {//Mensaje que se va ha mostrar
         this.atributo = atributo;
         switch (atributo) {
             case "" -> {
@@ -183,18 +189,39 @@ public class Productos {
     /**
      * @return the confirmados
      */
-    public int getConfirmados() {
+    public String getConfirmados() {
         return confirmados;
     }
 
     /**
      * @param confirmados the confirmados to set
      */
-    public void setConfirmados(int confirmados) {
+    public void setConfirmados(String confirmados) {
         this.confirmados = confirmados;
         String con = String.valueOf(confirmados);
-        UsuarioP[contador5P][4] = con;
-        contador5P++;
+        System.out.println("La categoría es: " + con);
+
+        switch (con) {
+            case "Tecnología", "tecnología" -> {
+                UsuarioP[contador5P][4] = "Ver detalle T";
+                contador5P++;
+                System.out.println(UsuarioP[contador5P - 1][2]);
+
+            }
+            case "Alimento", "alimento" -> {
+                //Se agrega a la matriz
+                UsuarioP[contador5P][4] = "Ver detalle A ";
+                contador5P++;
+                System.out.println(UsuarioP[contador5P - 1][2]);
+            }
+            case "General", "general" -> {
+                //Se agrega a la matriz
+                UsuarioP[contador5P][4] = "Ver detalle G";
+                contador5P++;
+                System.out.println(UsuarioP[contador5P - 1][2]);
+            }
+        }
+
         System.out.println(UsuarioP[contador5P - 1][4]);
         System.out.println("Contador5P: " + contador5P);
     }
@@ -224,11 +251,13 @@ public class Productos {
 
     public void CrearTablaF() { //Crear tabla con formato
         //Validar que la tabla no exista
+
         if (tms == null) {
             System.out.println("La tabla no existe, creando tabla");
-            DefaultTableModel mDP = new DefaultTableModel(new String[]{"Código", "Nombre", "Categoría", "Acciones"}, 101);
+            DefaultTableModel MD = new DefaultTableModel(new String[]{"Código", "Nombre", "Categoría", "Acciones"}, 101);
 
-            Módulo_Administración.tabla2.setModel(mDP);
+            Módulo_Administración.tabla2.setModel(MD);
+            Módulo_Administración.tabla2.getColumnModel().getColumn(3).setCellRenderer(new GestionBoton());
 
             tms = Módulo_Administración.tabla2.getModel();
         } else {
@@ -237,24 +266,36 @@ public class Productos {
     }
 
     public void ReyenarTablaCargar(int b) { //Solo para reyenar
+        System.out.println("Se está ejecutando el reyeno por carga");
 
         for (int i = 0; i <= b; i++) {
             tms.setValueAt(UsuarioP[i][0], i, 0);
             tms.setValueAt(UsuarioP[i][1], i, 1);
             tms.setValueAt(UsuarioP[i][2], i, 2);
-            tms.setValueAt(UsuarioP[i][4], i, 3);
+            //tms.setValueAt(UsuarioP[i][4], i, 3);
+
+            Botones_Lista boton = new Botones_Lista();
+            boton.boton(UsuarioP[i][4]); //Lógica es = Le pido a la matriz que me de el tipo categoría que es, la guardo y le paso eso al boton
+            JButton WWW = Botones_Lista.BOT; //Lógica es = El boton le dara sus atributos a WWW 
+            tms.setValueAt(" ", i, 3);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
 
         }
 
     }
 
     public void ReyenarTablaCrear(int b) { //Solo para reyenar
+        System.out.println("Se está ejecutando el reyeno por crear");
+        
         for (int i = 0; i <= b; i++) {
-
             tms.setValueAt(UsuarioP[i][0], i, 0);
             tms.setValueAt(UsuarioP[i][1], i, 1);
             tms.setValueAt(UsuarioP[i][2], i, 2);
-            tms.setValueAt(UsuarioP[i][4], i, 3);
+            //tms.setValueAt(UsuarioP[i][4], i, 3);
+
+            Botones_Lista boton = new Botones_Lista();
+            boton.boton(UsuarioP[i][4]); //Lógica es = Le pido a la matriz que me de el tipo categoría que es, la guardo y le paso eso al boton
+            JButton WWW = Botones_Lista.BOT; //Lógica es = El boton le dara sus atributos a WWW 
+            tms.setValueAt(WWW, i, 3);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
 
         }
     }
@@ -290,8 +331,8 @@ public class Productos {
             System.out.println("El valor de lineas es :" + a);
             System.out.println("El valor del contador: " + contadorP);
             contador2P = contadorP + a;
-            contador3P= contadorP + a;
-            contador4P= contadorP + a;
+            contador3P = contadorP + a;
+            contador4P = contadorP + a;
             contador5P = contadorP + a;
             contadorP = contadorP + a;
         }
@@ -300,7 +341,7 @@ public class Productos {
 
     public void NoIgual() {
         for (int z = 0; z < contadorP; z++) {//problema por si se pasa de tamaño
-            for (int y = BB ; y <= 100; y++) {//RENOMBRAR B
+            for (int y = BB; y <= 100; y++) {//RENOMBRAR B
 
                 if (UsuarioP[z][0].equalsIgnoreCase(UsuarioP[y][0])) {//datos antes-datos después
                     UsuarioP[y][0] = null;
@@ -494,10 +535,10 @@ public class Productos {
             System.out.println("El codigo es: " + buscarCodigoE);
             for (int i = 0; i <= 100; i++) {
                 if (UsuarioP[i][0].equalsIgnoreCase(buscarCodigoE)) {
-                    UsuarioP[i][0] = "-";//código
-                    UsuarioP[i][1] = "-";// Nombre
-                    UsuarioP[i][2] = "-"; //Genero
-                    UsuarioP[i][3] = "-"; //Contraseña
+                    UsuarioP[i][0] = " ";//código
+                    UsuarioP[i][1] = " ";// Nombre
+                    UsuarioP[i][2] = " "; //Genero
+                    UsuarioP[i][3] = " "; //Contraseña
                     UsuarioP[i][4] = "0"; //Confirmación
                     break;
                 } else {
@@ -511,3 +552,5 @@ public class Productos {
 
     }
 }
+
+

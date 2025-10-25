@@ -220,7 +220,7 @@ public class Crear_Producto extends JFrame {
 
 //confirmados-----------------------------------------------------------------------
                 Productos P5 = new Productos();
-                P5.setConfirmados(0);
+                P5.setConfirmados(getgenero);
                P5.validacionF();
 //Mostrar en la tabla--------------------------------------------------------------
                 Productos P6 = new Productos();
@@ -228,10 +228,16 @@ public class Crear_Producto extends JFrame {
                 System.out.println(AA);
                 //funcion
                 P6.ReyenarTablaCrear(100);
+ //Mostrar botones (Labels) en la tabla--------------------------------------------------------------
+               
+                
+                
+                
             }
         };
         ///Acciones
           crearP.addActionListener(accion2);//Se le agrega la acción
+          
 
 ///Métodos
     }
