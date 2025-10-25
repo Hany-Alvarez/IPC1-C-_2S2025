@@ -191,7 +191,7 @@ public final class Módulo_Vendedor extends JFrame {
         //Filas
         Object[][] filas = {};
         //Columnas
-        String[] columnas = {"Código", "Nombre", "Genero", "Confirmados"};
+        String[] columnas = {"Código", "Nombre", "Categoría", "Stock", "Acciones"};
 
         //Crear Tabla
         tabla = new JTable(filas, columnas);

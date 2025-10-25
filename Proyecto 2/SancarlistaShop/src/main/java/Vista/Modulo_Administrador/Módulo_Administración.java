@@ -73,6 +73,14 @@ public final class Módulo_Administración extends JFrame {
     JButton EliminarP;
     JButton CargarP;
 
+    JButton R_MásVendidos;
+    JButton R_MenosVendidos;
+    JButton R_Inventario;
+    JButton R_VentasVendedor;
+    JButton R_ClientesActivos;
+    JButton R_Financiero;
+    JButton R_PorCaducar;
+
     public Módulo_Administración(String title) throws HeadlessException {
         super(title);
         p = this;
@@ -354,11 +362,75 @@ public final class Módulo_Administración extends JFrame {
         //Reportes
         this.setLayout(null);//Permite dimensionarl el panel
         Reportes = new JPanel();
-        Reportes.setBackground(new Color(255, 51, 0));//Color
+        Reportes.setBackground(new Color(153, 153, 153));//Color
         Reportes.setBounds(50, 100, 849, 440);
         add(Reportes);//Agregar a la ventana general
         Reportes.setVisible(false);
 
+//REPORTES MÁS VENDIDOS--------------------------------------------
+        R_MásVendidos = new JButton("Productos más vendidos");
+        //Configuraciones de diseño
+        R_MásVendidos.setBounds(50, 60, 283, 40);
+        R_MásVendidos.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
+        R_MásVendidos.setBackground(new Color(51, 51, 51));
+        R_MásVendidos.setForeground(new Color(255, 255, 255));
+        Reportes.add(R_MásVendidos);
+        
+        
+//REPORTES MENOS VENDIDOS--------------------------------------------
+        R_MenosVendidos = new JButton("Productos menos vendidos");
+        //Configuraciones de diseño
+        R_MenosVendidos.setBounds(50, 60, 283, 40);
+        R_MenosVendidos.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
+        R_MenosVendidos.setBackground(new Color(51, 51, 51));
+        R_MenosVendidos.setForeground(new Color(255, 255, 255));
+        Reportes.add(R_MenosVendidos);
+        
+        
+//REPORTES INVENTARIO--------------------------------------------
+        R_Inventario = new JButton("Inventario");
+        //Configuraciones de diseño
+        R_Inventario.setBounds(50, 60, 283, 40);
+        R_Inventario.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
+        R_Inventario.setBackground(new Color(51, 51, 51));
+        R_Inventario.setForeground(new Color(255, 255, 255));
+        Reportes.add(R_Inventario);
+        
+//REPORTES VENTAS VENDEDOR--------------------------------------------
+        R_VentasVendedor = new JButton("Inventario");
+        //Configuraciones de diseño
+        R_VentasVendedor.setBounds(50, 60, 283, 40);
+        R_VentasVendedor.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
+        R_VentasVendedor.setBackground(new Color(51, 51, 51));
+        R_VentasVendedor.setForeground(new Color(255, 255, 255));
+        Reportes.add(R_VentasVendedor);
+
+//REPORTES CLIENTS ACTIVOS--------------------------------------------
+        R_ClientesActivos = new JButton("Clientes Activos");
+        //Configuraciones de diseño
+        R_ClientesActivos.setBounds(50, 60, 283, 40);
+        R_ClientesActivos.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
+        R_ClientesActivos.setBackground(new Color(51, 51, 51));
+        R_ClientesActivos.setForeground(new Color(255, 255, 255));
+        Reportes.add(R_ClientesActivos);
+        
+//REPORTES FINANCIERO--------------------------------------------
+        R_Financiero = new JButton("Financiero");
+        //Configuraciones de diseño
+        R_Financiero.setBounds(50, 60, 283, 40);
+        R_Financiero.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
+        R_Financiero.setBackground(new Color(51, 51, 51));
+        R_Financiero.setForeground(new Color(255, 255, 255));
+        Reportes.add(R_Financiero);
+
+//REPORTES PRODUTOS POR CADUCAR--------------------------------------------
+        R_PorCaducar = new JButton("Productos por caducar");
+        //Configuraciones de diseño
+        R_PorCaducar.setBounds(50, 60, 283, 40);
+        R_PorCaducar.setFont(new Font("SetiaHati-Regular", Font.CENTER_BASELINE, 15));
+        R_PorCaducar.setBackground(new Color(51, 51, 51));
+        R_PorCaducar.setForeground(new Color(255, 255, 255));
+        Reportes.add(R_PorCaducar);
     }
 
     public void Barra() {

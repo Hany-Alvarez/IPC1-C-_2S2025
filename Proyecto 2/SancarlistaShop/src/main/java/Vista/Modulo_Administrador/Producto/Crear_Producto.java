@@ -222,17 +222,24 @@ public class Crear_Producto extends JFrame {
                 Productos P5 = new Productos();
                 P5.setConfirmados(getgenero);
                P5.validacionF();
+               
+//confirmados-----------------------------------------------------------------------
+                Productos P9 = new Productos();
+                P9.setStock(0);
+               P9.validacionF();
+               
+//confirmados-----------------------------------------------------------------------
+                Productos P10 = new Productos();
+                P10.setAcciones("No hay acciones registradas");
+               P10.validacionF();
+               
 //Mostrar en la tabla--------------------------------------------------------------
                 Productos P6 = new Productos();
                 P6.CrearTablaF();
                 System.out.println(AA);
                 //funcion
                 P6.ReyenarTablaCrear(100);
- //Mostrar botones (Labels) en la tabla--------------------------------------------------------------
-               
-                
-                
-                
+      
             }
         };
         ///Acciones

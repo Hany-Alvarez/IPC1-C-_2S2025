@@ -298,6 +298,7 @@ public class Vendedor {
                     Usuario[y][0] = null;
                     Usuario[y][1] = null;
                     Usuario[y][2] = null;
+                    Usuario[y][3] = null;
                     Usuario[y][4] = null;
                 } else {
 
