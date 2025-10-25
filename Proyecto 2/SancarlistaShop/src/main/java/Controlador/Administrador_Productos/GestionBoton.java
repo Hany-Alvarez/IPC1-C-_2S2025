@@ -6,11 +6,8 @@ package Controlador.Administrador_Productos;
 
 import java.awt.Color;
 import java.awt.Component;
-import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.JButton;
-import javax.swing.UIManager;
 
 /**
  *

@@ -5,7 +5,6 @@
 package Controlador.Administrador_Productos;
 
 import static Controlador.Administrador_Productos.Productos.UsuarioP;
-import static Controlador.Administrador_Productos.Productos.contador5P;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -16,8 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
-
 /**
  *
  * @author hanya

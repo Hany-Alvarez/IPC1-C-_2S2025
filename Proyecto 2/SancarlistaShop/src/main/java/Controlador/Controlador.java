@@ -11,8 +11,6 @@ import Vista.Módulo_Autenticación;
 import Vista.Módulo_Vendedor.Módulo_Vendedor;
 import static Vista.Módulo_Vendedor.Módulo_Vendedor.q;
 import java.awt.HeadlessException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import javax.swing.JFrame;
 
 /**

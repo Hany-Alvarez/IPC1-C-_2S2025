@@ -5,19 +5,13 @@
 package Controlador.Administrador_Productos;
 
 import static Controlador.Administrador_Productos.Productos.UsuarioP;
-import static Controlador.Administrador_Vendedores.Vendedor.Usuario;
-import static Controlador.Administrador_Vendedores.Vendedor.contador5;
-import Vista.Modulo_Administrador.Módulo_Administración;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
