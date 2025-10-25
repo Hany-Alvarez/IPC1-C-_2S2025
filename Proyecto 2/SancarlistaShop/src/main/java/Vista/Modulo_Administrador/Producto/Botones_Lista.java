@@ -7,10 +7,13 @@ package Vista.Modulo_Administrador.Producto;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 /**
@@ -48,8 +51,15 @@ public class Botones_Lista extends JFrame {
         //BOT.setBackground(new Color(255, 255, 255));
         BOT.setForeground(new Color(0, 102, 204));
         
+        ActionListener atributo = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                 JOptionPane.showConfirmDialog(null, "Amo a mi esposo Gojo");
+            }
+        };
+        ///Acciones
+          BOT.addActionListener(atributo);//Se le agrega la acción
         
-
     }
     //DETALLES= Si se crear el boton pero solo muestran sus atributos
     

@@ -9,7 +9,6 @@ import static Controlador.Administrador_Productos.Cargar_Producto.hh;
 
 import Vista.Modulo_Administrador.Módulo_Administración;
 import Vista.Modulo_Administrador.Producto.Botones_Lista;
-import Vista.Modulo_Administrador.Producto.GestionBoton;
 import java.util.Objects;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -258,7 +257,7 @@ public class Productos {
 
             Módulo_Administración.tabla2.setModel(MD);
             Módulo_Administración.tabla2.getColumnModel().getColumn(3).setCellRenderer(new GestionBoton());
-
+            Módulo_Administración.tabla2.getColumnModel().getColumn(3).setCellEditor(new EditorBoton(Módulo_Administración.tabla2));
             tms = Módulo_Administración.tabla2.getModel();
         } else {
             System.out.println("La tabla ya existe, se continua para rellenar");
@@ -266,7 +265,7 @@ public class Productos {
     }
 
     public void ReyenarTablaCargar(int b) { //Solo para reyenar
- 
+
         for (int i = 0; i <= b; i++) {
             tms.setValueAt(UsuarioP[i][0], i, 0);
             tms.setValueAt(UsuarioP[i][1], i, 1);
@@ -284,18 +283,21 @@ public class Productos {
 
     public void ReyenarTablaCrear(int b) { //Solo para reyenar
         System.out.println("Se está ejecutando el reyeno por crear");
-        
-        for (int i = 0; i <= b; i++) {
-            tms.setValueAt(UsuarioP[i][0], i, 0);
-            tms.setValueAt(UsuarioP[i][1], i, 1);
-            tms.setValueAt(UsuarioP[i][2], i, 2);
-            //tms.setValueAt(UsuarioP[i][4], i, 3);
+        try {
+            for (int i = 0; i <= b; i++) {
+                tms.setValueAt(UsuarioP[i][0], i, 0);
+                tms.setValueAt(UsuarioP[i][1], i, 1);
+                tms.setValueAt(UsuarioP[i][2], i, 2);
+                //tms.setValueAt(UsuarioP[i][4], i, 3);
 
-            Botones_Lista boton = new Botones_Lista();
-            boton.boton(UsuarioP[i][4]); //Lógica es = Le pido a la matriz que me de el tipo categoría que es, la guardo y le paso eso al boton
-            JButton WWW = Botones_Lista.BOT; //Lógica es = El boton le dara sus atributos a WWW 
-            tms.setValueAt(WWW, i, 3);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
+                Botones_Lista boton = new Botones_Lista();
+                boton.boton(UsuarioP[i][4]); //Lógica es = Le pido a la matriz que me de el tipo categoría que es, la guardo y le paso eso al boton
+                JButton WWW = Botones_Lista.BOT; //Lógica es = El boton le dara sus atributos a WWW 
+                tms.setValueAt(WWW, i, 3);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
 
+            }
+        } catch (Exception ex) {
+            System.out.println("El error de reyenar es:" + ex);
         }
     }
 
@@ -480,15 +482,19 @@ public class Productos {
     public void setActun(String actun, String codigo) {
         this.actun = actun;
 
-        System.out.println("El codigo es: " + codigo);
-        System.out.println("El Nombre a actualizar es: " + actun);
-        for (int i = 0; i <= 100; i++) {
-            if (UsuarioP[i][0].equalsIgnoreCase(codigo)) {
+        try {
+            System.out.println("El codigo es: " + codigo);
+            System.out.println("El Nombre a actualizar es: " + actun);
+            for (int i = 0; i <= 100; i++) {
+                if (UsuarioP[i][0].equalsIgnoreCase(codigo)) {
 
-                UsuarioP[i][1] = actun;
-                break;
+                    UsuarioP[i][1] = actun;
+                    break;
+                }
+
             }
-
+        } catch (Exception ex) {
+            System.out.println("El error de Actualizar por nombre es:" + ex);
         }
     }
 
@@ -505,15 +511,19 @@ public class Productos {
      */
     public void setActuc(String actuc, String codigo) {
         this.actuc = actuc;
-        System.out.println("El codigo es: " + codigo);
-        System.out.println("La contraseña a actualizar es: " + actuc);
-        for (int i = 0; i <= 100; i++) {
-            if (UsuarioP[i][0].equalsIgnoreCase(codigo)) {
+        try {
+            System.out.println("El codigo es: " + codigo);
+            System.out.println("La contraseña a actualizar es: " + actuc);
+            for (int i = 0; i <= 100; i++) {
+                if (UsuarioP[i][0].equalsIgnoreCase(codigo)) {
 
-                UsuarioP[i][3] = actuc;
-                break;
+                    UsuarioP[i][3] = actuc;
+                    break;
+                }
+
             }
-
+        } catch (Exception ex) {
+            System.out.println("El error de Actualizar codigo es: " + ex);
         }
     }
 
@@ -551,5 +561,3 @@ public class Productos {
 
     }
 }
-
-
