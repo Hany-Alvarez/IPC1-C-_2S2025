@@ -47,6 +47,8 @@ public class Botones_Lista extends JFrame {
         BOT.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
         //BOT.setBackground(new Color(255, 255, 255));
         BOT.setForeground(new Color(0, 102, 204));
+        
+        
 
     }
     //DETALLES= Si se crear el boton pero solo muestran sus atributos

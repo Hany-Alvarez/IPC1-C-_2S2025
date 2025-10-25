@@ -266,8 +266,7 @@ public class Productos {
     }
 
     public void ReyenarTablaCargar(int b) { //Solo para reyenar
-        System.out.println("Se está ejecutando el reyeno por carga");
-
+ 
         for (int i = 0; i <= b; i++) {
             tms.setValueAt(UsuarioP[i][0], i, 0);
             tms.setValueAt(UsuarioP[i][1], i, 1);
@@ -277,7 +276,7 @@ public class Productos {
             Botones_Lista boton = new Botones_Lista();
             boton.boton(UsuarioP[i][4]); //Lógica es = Le pido a la matriz que me de el tipo categoría que es, la guardo y le paso eso al boton
             JButton WWW = Botones_Lista.BOT; //Lógica es = El boton le dara sus atributos a WWW 
-            tms.setValueAt(" ", i, 3);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
+            tms.setValueAt(WWW, i, 3);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
 
         }
 
