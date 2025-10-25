@@ -9,6 +9,7 @@ import Vista.Modulo_Administrador.Vendedor.Eliminar_Vendedor;
 import Controlador.Administrador_Vendedores.CargarA;
 import Controlador.Controlador;
 import Controlador.Administrador_Vendedores.Vendedor;
+import Vista.Modulo_Administrador.Producto.Crear_Producto;
 import Vista.Modulo_Administrador.Vendedor.Actualizar_Vendedor;
 
 import java.awt.Dimension;
@@ -41,7 +42,7 @@ public final class Módulo_Vendedor extends JFrame {
 
     //Declaración de Variables
     public static Módulo_Vendedor q;
-    public static JTable tabla;
+    public static JTable tabla3;
     JPanel Menu;
     JPanel Vendores;
     JPanel Productos;
@@ -103,7 +104,7 @@ public final class Módulo_Vendedor extends JFrame {
         ActionListener abrir = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Crear_Vendedor Ver = new Crear_Vendedor("Creación");
+                Crear_Producto Ver = new Crear_Producto("Creación");
                 Ver.setVisible(true);
             }
         };
@@ -194,14 +195,14 @@ public final class Módulo_Vendedor extends JFrame {
         String[] columnas = {"Código", "Nombre", "Categoría", "Stock", "Acciones"};
 
         //Crear Tabla
-        tabla = new JTable(filas, columnas);
+        tabla3 = new JTable(filas, columnas);
 
         //Modificar tamaño de tabla
-        tabla.setRowHeight(50);
-        tabla.getColumnModel().getColumn(0).setPreferredWidth(200);
+        tabla3.setRowHeight(50);
+        tabla3.getColumnModel().getColumn(0).setPreferredWidth(200);
 
         //Agregar tabla a un Scroll 
-        JScrollPane scroll = new JScrollPane(tabla);
+        JScrollPane scroll = new JScrollPane(tabla3);
         scroll.setBounds(0, 0, 510, 400);
 
         espacioTabla.setLayout(null);

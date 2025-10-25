@@ -10,6 +10,7 @@ import static Controlador.Administrador_Productos.Cargar_Producto.hh;
 
 import Vista.Modulo_Administrador.Módulo_Administración;
 import Vista.Modulo_Administrador.Producto.Botones_Lista;
+import Vista.Módulo_Vendedor.Módulo_Vendedor;
 import java.util.Objects;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -28,19 +29,23 @@ public class Productos_Vendedor {
     private String nombre;
     private String categoria;
     private String atributo;
+    private int stock;
+    private String acciones;
     private String buscarCodigo;
     private String actun;
     private String actuc;
     private String buscarCodigoE;
     private String confirmados;//solo servira para la validación de nullos
 
-    public static String UsuarioP[][] = new String[101][5]; //Para almacenar los productos
-    public static TableModel tms;
+    public static String UsuarioP[][] = new String[101][10]; //Para almacenar los productos
+    public static TableModel tmv;
     static int contadorP = 0;
     static int contador2P = 0;
     static int contador3P = 0;
     static int contador4P = 0;
     public static int contador5P = 0;
+    public int contador6P = 0;
+    public int contador7P = 0;
     public int mayorP;
     public int mayor2P;
 
@@ -226,6 +231,55 @@ public class Productos_Vendedor {
         System.out.println("Contador5P: " + contador5P);
     }
 
+//  INICIO DATOS QUE SE VERAN EN PRODUCTOS_VENDEDOR
+    /**
+     * @return the stock
+     */
+    public int getStock() {
+        return stock;
+    }
+
+    /**
+     * @param stock the stock to set
+     */
+    public void setStock(int stock) {
+        this.stock = stock;
+
+        if (stock < 0) {
+            System.out.println("El stock no puede ser negativo");
+
+        } else {
+            //Se agrega a la matriz
+            String T = String.valueOf(stock);
+            UsuarioP[contador6P][5] = T;
+            contador6P++;
+            System.out.println(UsuarioP[contador6P - 1][5]);
+        }
+
+        System.out.println("Contador6P: " + contador6P);
+
+    }
+
+    /**
+     * @return the acciones
+     */
+    public String getAcciones() {
+        return acciones;
+    }
+
+    /**
+     * @param acciones the acciones to set
+     */
+    public void setAcciones(String acciones) {
+        this.acciones = acciones;
+        UsuarioP[contador7P][6] = acciones;
+        contador7P++;
+        System.out.println(UsuarioP[contador7P - 1][6]);
+
+        System.out.println("Contador7P: " + contador7P);
+    }
+    //  FIN DATOS QUE SE VERAN EN PRODUCTOS_VENDEDOR
+
     ///Extra para validar todos los campos y si uno no cumple se reinicie la creación
     public void validacionF() {
         if (contadorP == contador2P && contadorP == contador3P && contadorP == contador4P && contadorP == contador5P) {
@@ -244,22 +298,29 @@ public class Productos_Vendedor {
             contador4P = contador5P - 1;
             UsuarioP[contador4P][3] = null;
 
+            contador6P = contador5P - 1;
+            UsuarioP[contador6P][5] = null;
+
+            contador7P = contador7P - 1;
+            UsuarioP[contador7P][6] = null;
+
             contador5P = contador5P - 1;
             UsuarioP[contador5P][4] = null;
+
         }
     }
 
     public void CrearTablaF() { //Crear tabla con formato
         //Validar que la tabla no exista
 
-        if (tms == null) {
+        if (tmv == null) {
             System.out.println("La tabla no existe, creando tabla");
-            DefaultTableModel MD = new DefaultTableModel(new String[]{"Código", "Nombre", "Categoría", "Stock", "Acciones"}, 101);
+            DefaultTableModel MD = new DefaultTableModel(new String[]{"Código", "Nombre", "Categoría", "Acciones"}, 101);
 
-            Módulo_Administración.tabla2.setModel(MD);
-            Módulo_Administración.tabla2.getColumnModel().getColumn(4).setCellRenderer(new GestionBoton());
-            Módulo_Administración.tabla2.getColumnModel().getColumn(4).setCellEditor(new EditorBoton(Módulo_Administración.tabla2));
-            tms = Módulo_Administración.tabla2.getModel();
+            Módulo_Vendedor.tabla3.setModel(MD);
+            Módulo_Vendedor.tabla3.getColumnModel().getColumn(3).setCellRenderer(new GestionBoton());
+            Módulo_Vendedor.tabla3.getColumnModel().getColumn(3).setCellEditor(new EditorBoton(Módulo_Vendedor.tabla3));
+            tmv = Módulo_Vendedor.tabla3.getModel();
         } else {
             System.out.println("La tabla ya existe, se continua para rellenar");
         }
@@ -268,18 +329,16 @@ public class Productos_Vendedor {
     public void ReyenarTablaCargar(int b) { //Solo para reyenar
 
         for (int i = 0; i <= b; i++) {
-            tms.setValueAt(UsuarioP[i][0], i, 0); //Código
-            tms.setValueAt(UsuarioP[i][1], i, 1); //Nombre
-            tms.setValueAt(UsuarioP[i][2], i, 2);//Categoría
-            tms.setValueAt(UsuarioP[i][5], i, 3);//Stock
-            
-          
-            
+            tmv.setValueAt(UsuarioP[i][0], i, 0); //Código
+            tmv.setValueAt(UsuarioP[i][1], i, 1); //Nombre
+            tmv.setValueAt(UsuarioP[i][2], i, 2);//Categoría
+            tmv.setValueAt(UsuarioP[i][5], i, 3);//Stock
+
             Botones_Lista boton = new Botones_Lista(); //Acciones
             boton.boton(UsuarioP[i][6]); //Lógica es = Le pido a la matriz que me de el tipo categoría que es, la guardo y le paso eso al boton
             JButton WWW = Botones_Lista.BOT; //Lógica es = El boton le dara sus atributos a WWW
             //JButton WWW = null; //Lógica es = El boton le dara sus atributos a WWW 
-            tms.setValueAt(WWW, i, 4);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
+            tmv.setValueAt(WWW, i, 4);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
 
         }
 
@@ -289,16 +348,16 @@ public class Productos_Vendedor {
         System.out.println("Se está ejecutando el reyeno por crear");
         try {
             for (int i = 0; i <= b; i++) {
-                tms.setValueAt(UsuarioP[i][0], i, 0);
-                tms.setValueAt(UsuarioP[i][1], i, 1);
-                tms.setValueAt(UsuarioP[i][2], i, 2);
-                //tms.setValueAt(UsuarioP[i][4], i, 3);
+                tmv.setValueAt(UsuarioP[i][0], i, 0); //Código
+                tmv.setValueAt(UsuarioP[i][1], i, 1); //Nombre
+                tmv.setValueAt(UsuarioP[i][2], i, 2);//Categoría
+                tmv.setValueAt(UsuarioP[i][5], i, 3);//Stock
 
-                Botones_Lista boton = new Botones_Lista();
-                boton.boton(UsuarioP[i][4]); //Lógica es = Le pido a la matriz que me de el tipo categoría que es, la guardo y le paso eso al boton
-                JButton WWW = Botones_Lista.BOT; //Lógica es = El boton le dara sus atributos a WWW 
-                tms.setValueAt(WWW, i, 3);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
-
+                Botones_Lista boton = new Botones_Lista(); //Acciones
+                boton.boton(UsuarioP[i][6]); //Lógica es = Le pido a la matriz que me de el tipo categoría que es, la guardo y le paso eso al boton
+                JButton WWW = Botones_Lista.BOT; //Lógica es = El boton le dara sus atributos a WWW
+                //JButton WWW = null; //Lógica es = El boton le dara sus atributos a WWW 
+                tmv.setValueAt(WWW, i, 4);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
             }
         } catch (Exception ex) {
             System.out.println("El error de reyenar es:" + ex);
@@ -312,6 +371,8 @@ public class Productos_Vendedor {
             contador3P = a;
             contador4P = a;
             contador5P = a;
+            contador6P = a;
+            contador7P = a;
         }
     }
 
@@ -339,6 +400,8 @@ public class Productos_Vendedor {
             contador3P = contadorP + a;
             contador4P = contadorP + a;
             contador5P = contadorP + a;
+            contador6P = contadorP + a;
+            contador7P = contadorP + a;
             contadorP = contadorP + a;
         }
 
@@ -352,7 +415,10 @@ public class Productos_Vendedor {
                     UsuarioP[y][0] = null;
                     UsuarioP[y][1] = null;
                     UsuarioP[y][2] = null;
+                    UsuarioP[y][3] = null;
                     UsuarioP[y][4] = null;
+                    UsuarioP[y][5] = null;
+                    UsuarioP[y][6] = null;
                 } else {
 
                 }
@@ -564,4 +630,5 @@ public class Productos_Vendedor {
         }
 
     }
+
 }
