@@ -1,7 +1,7 @@
 # IPC1-C-_2S2025_PROYECTO 2
 
 ### Funcionamiento del Programa 😎
-Este programa es un ejemplo de creación de inventario con una temática de venta de ropa, con la finalidad de implementar conceptos como lo son las matrices, control de errores, tipos de datos y todo lo relacionado para poder ejecutar un programa en la consola.
+Este programa es un ejemplo de creación de inventario con una temática de una tienda, con la finalidad de implementar conceptos como lo son las matrices, control de errores,herencia, polimorfismo, tipos de datos y todo lo relacionado para poder ejecutar un programa en la consola.
 
 En terminos generales se enfoca en registrar como diferentes usuarios pueden acceder al mismo y poder interactuar agregando productos, eliminando, haciendo ventas y algo que pueda hacer énfasis que es la generación de archivos pdf para más detalles consultar los **Manuales**
 
