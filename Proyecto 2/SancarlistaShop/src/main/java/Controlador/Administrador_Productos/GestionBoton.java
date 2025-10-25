@@ -4,6 +4,7 @@
  */
 package Controlador.Administrador_Productos;
 
+import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -29,15 +30,15 @@ public class GestionBoton extends DefaultTableCellRenderer {
             int row, int column
     ) {
         if (value != null) {
-            setText(value.toString());
+            setText("Ver detalles");
         } else {
-            setText("click");
+            setText("click"); //El desarrollo se encuentra en EditorBoton
         }
 
         if (isSelected) {
-            setBackground(table.getSelectionBackground());
+            setBackground(new Color(0, 255, 0));//Es para el color cuando se selecciona
         } else {
-            setBackground(UIManager.getColor("Button.background"));
+            setBackground(new Color(153, 255, 153)); //Es el color cuando no está seleccionado
         }
 
         return this;

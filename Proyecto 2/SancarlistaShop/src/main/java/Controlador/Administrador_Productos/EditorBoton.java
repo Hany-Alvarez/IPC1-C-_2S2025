@@ -4,7 +4,11 @@
  */
 package Controlador.Administrador_Productos;
 
+import static Controlador.Administrador_Productos.Productos.UsuarioP;
+import static Controlador.Administrador_Productos.Productos.contador5P;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultCellEditor;
@@ -29,12 +33,15 @@ public class EditorBoton extends DefaultCellEditor {
         super(new JCheckBox()); // solo se usa para cumplir con DefaultCellEditor
         this.table = table;
         editarBoton = new JButton();
+        editarBoton.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 10));
+        //editarBoton.setBackground(new Color(255, 255, 255));
+        editarBoton.setForeground(new Color(0, 102, 204));
         editarBoton.setOpaque(true);
 
         editarBoton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fireEditingStopped();
+                fireEditingStopped(); //Permite no queda en modo edición 
             }
         });
     }
@@ -43,20 +50,34 @@ public class EditorBoton extends DefaultCellEditor {
     public Component getTableCellEditorComponent(
             JTable table, Object value, boolean isSelected, int row, int column) {
 
-        label = (value == null) ? "click" : value.toString();
+        label = (value == null) ? "click" : "Cerrar detalles";
         editarBoton.setText(label);
-        click= true;
+        click = true;
         return editarBoton;
     }
 
     @Override
     public Object getCellEditorValue() {
-        if (click) {
-            // Acción al hacer clic
-            JOptionPane.showMessageDialog(editarBoton,
-                    "Se presionó el botón en la fila: " + table.getSelectedRow());
+        try {
+            if (click) {
+                switch (UsuarioP[table.getSelectedRow()][2]) {
+                    case "Tecnología", "tecnología" -> {
+                        JOptionPane.showMessageDialog(editarBoton, "El aparato tiene " + UsuarioP[table.getSelectedRow()][3] + " meses de garantía");
+                    }
+                    case "Alimento", "alimento" -> {
+                        JOptionPane.showMessageDialog(editarBoton, "El alimento vence el:  " + UsuarioP[table.getSelectedRow()][3] );
+                    }
+                    case "General", "general" -> {
+                        JOptionPane.showMessageDialog(editarBoton, "El producto esta elaborado de: " + UsuarioP[table.getSelectedRow()][3] );
+                    }
+                }
+
+            }
+            click = false;
+        } catch (Exception ex) {
+            System.out.println("El error en la selección de un mensaje es : " + ex);
         }
-        click = false;
+
         return label;
     }
 
@@ -67,5 +88,3 @@ public class EditorBoton extends DefaultCellEditor {
     }
 
 }
-
-

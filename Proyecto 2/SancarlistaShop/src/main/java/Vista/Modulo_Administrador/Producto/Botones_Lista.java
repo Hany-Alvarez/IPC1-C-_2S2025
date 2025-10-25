@@ -48,7 +48,7 @@ public class Botones_Lista extends JFrame {
         BOT = new JButton(cat);
         //BOT.setBounds(350, 180, 100, 30);
         BOT.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
-        //BOT.setBackground(new Color(255, 255, 255));
+        BOT.setBackground(new Color(255, 255, 255));
         BOT.setForeground(new Color(0, 102, 204));
         
         
