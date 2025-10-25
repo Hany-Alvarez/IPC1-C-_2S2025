@@ -49,11 +49,12 @@ public class EditorBoton extends DefaultCellEditor {
         return editarBoton;
     }
 
-    public Object getCellEditorValue(String mensaje) {
+    @Override
+    public Object getCellEditorValue() {
         if (click) {
             // Acción al hacer clic
             JOptionPane.showMessageDialog(editarBoton,
-                    mensaje);
+                    "Se presionó el botón en la fila: " + table.getSelectedRow());
         }
         click = false;
         return label;
