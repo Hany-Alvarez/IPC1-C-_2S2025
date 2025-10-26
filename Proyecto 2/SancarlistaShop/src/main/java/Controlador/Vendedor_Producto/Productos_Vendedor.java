@@ -631,10 +631,10 @@ public class Productos_Vendedor {
             System.out.println("El codigo es: " + buscarCodigoE);
             for (int i = 0; i <= 100; i++) {
                 if (UsuarioP[i][0].equalsIgnoreCase(buscarCodigoE)) {
-                    UsuarioP[i][0] = " ";//código
-                    UsuarioP[i][1] = " ";// Nombre
-                    UsuarioP[i][2] = " "; //Genero
-                    UsuarioP[i][3] = " "; //Contraseña
+                    UsuarioP[i][0] = "-";//código
+                    UsuarioP[i][1] = "-";// Nombre
+                    UsuarioP[i][2] = "-"; //Genero
+                    UsuarioP[i][3] = "-"; //Contraseña
                     UsuarioP[i][4] = "0"; //Confirmación
                     break;
                 } else {

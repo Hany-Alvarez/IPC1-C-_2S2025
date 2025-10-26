@@ -9,6 +9,7 @@ import Vista.Modulo_Administrador.Vendedor.Eliminar_Vendedor;
 import Controlador.Administrador_Vendedores.CargarA;
 import Controlador.Controlador;
 import Controlador.Administrador_Vendedores.Vendedor;
+import Controlador.Vendedor_Producto.CargarA_Vendedor_Producto;
 import Vista.Modulo_Administrador.Producto.Crear_Producto;
 import Vista.Modulo_Administrador.Vendedor.Actualizar_Vendedor;
 
@@ -33,6 +34,7 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
+
 /**
  *
  * @author hanya
@@ -78,7 +80,7 @@ public final class Módulo_Vendedor extends JFrame {
         Vendedores();
         Productos();
         Reportes();
-        grafica();
+
         Ir_Casa();
     }
 
@@ -90,33 +92,12 @@ public final class Módulo_Vendedor extends JFrame {
         Vendores.setBackground(new Color(0, 204, 204));//Color
         Vendores.setBounds(50, 100, 849, 440);
         add(Vendores);//Agregar a la ventana general
-//--------------------------------------------------------------------------------------
-        //Boton Crear
-        Vendores.setLayout(null);
-        Crear = new JButton("Crear");
-        Crear.setBounds(570, 30, 120, 30);
-        Crear.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
-        Crear.setBackground(new Color(255, 255, 255));
-        Crear.setForeground(new Color(51, 51, 51));
-        Vendores.add(Crear);//Agregando al panel de vendedores
-
-        ///Escritura de cada acción 
-        ActionListener abrir = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Crear_Producto Ver = new Crear_Producto("Creación");//Aquí nos quedamos analizando que esto lo que hace es crearme los productos en tabla 2 y no en 3 como queremos
-                Ver.setVisible(true);
-            }
-        };
-        ///Acciones
-          Crear.addActionListener(abrir);//Se le agrega la acción
-        //--------------------------------------------------------------------------------------       
 
         //Boton Actualizar
         Vendores.setLayout(null);
         Actualizar = new JButton();
         Actualizar = new JButton("Actualizar");
-        Actualizar.setBounds(570, 70, 120, 30);
+        Actualizar.setBounds(570, 100, 150, 30);
         Actualizar.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
         Actualizar.setBackground(new Color(255, 255, 255));
         Actualizar.setForeground(new Color(51, 51, 51));
@@ -126,7 +107,7 @@ public final class Módulo_Vendedor extends JFrame {
         ActionListener abrir2 = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Actualizar_Vendedor Ver = new Actualizar_Vendedor("Actualizar");
+                Actualizar_Producto_Vendedor_Producto Ver = new Actualizar_Producto_Vendedor_Producto("Actualizar Producto");
                 Ver.setVisible(true);
             }
         };
@@ -137,7 +118,7 @@ public final class Módulo_Vendedor extends JFrame {
         Vendores.setLayout(null);
         Cargar = new JButton();
         Cargar = new JButton("Cargar");
-        Cargar.setBounds(710, 30, 120, 30);
+        Cargar.setBounds(570, 150, 150, 30);
         Cargar.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
         Cargar.setBackground(new Color(255, 255, 255));
         Cargar.setForeground(new Color(51, 51, 51));
@@ -148,7 +129,7 @@ public final class Módulo_Vendedor extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                CargarA cargar = new CargarA();
+                CargarA_Vendedor_Producto cargar = new CargarA_Vendedor_Producto();
                 try {
                     cargar.Archivo(Vendores);
                 } catch (FileNotFoundException ex) {
@@ -158,28 +139,7 @@ public final class Módulo_Vendedor extends JFrame {
         };
         ///Acciones
           Cargar.addActionListener(abrir3);//Se le agrega la acción
-//--------------------------------------------------------------------------------------
-        //Boton Eliminar
-        Eliminar = new JButton();
-        Eliminar.setLayout(null);
-        Eliminar = new JButton();
-        Eliminar = new JButton("Eliminar");
-        Eliminar.setBounds(710, 70, 120, 30);
-        Eliminar.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
-        Eliminar.setBackground(new Color(255, 255, 255));
-        Eliminar.setForeground(new Color(51, 51, 51));
-        Vendores.add(Eliminar);//Agregando al panel de vendedores
 
-        ///Escritura de cada acción 
-        ActionListener abrir4 = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Eliminar_Vendedor Ver = new Eliminar_Vendedor("Eliminar");
-                Ver.setVisible(true);
-            }
-        };
-        ///Acciones
-          Eliminar.addActionListener(abrir4);//Se le agrega la acción
 //--------------------------------------------------------------------------------------
         //Tabla de datos
         //Panel donde ira
@@ -353,119 +313,4 @@ public final class Módulo_Vendedor extends JFrame {
 
     }
 
-    public void grafica() {
-        Vendores.setLayout(null);
-        grafica = new JButton();
-        grafica.setLayout(null);
-        grafica = new JButton();
-        grafica = new JButton("G");
-        grafica.setBounds(760, 400, 60, 30);
-        grafica.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
-        grafica.setBackground(new Color(102, 204, 255));
-        grafica.setForeground(new Color(51, 51, 51));
-        Vendores.add(grafica);//Agregando al panel de vendedores
-
-        //Gráfico
-//Panel donde ira
-        ///Escritura de cada acción 
-        ActionListener actualizar = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (espacioGráfico == null) {
-                    try{
-                    Vendores.setLayout(null);
-                    espacioGráfico = new JPanel();
-                    espacioGráfico.setBackground(new Color(51, 153, 255));//Color
-                    espacioGráfico.setBounds(570, 130, 250, 290);
-                    Vendedor G = new Vendedor();
-
-                    int D1 = G.Dato1();
-                    int D2 = G.Dato2();
-                    int D3 = G.Dato3();
-                    System.out.println("D1: " + D1);
-                    System.out.println("D2: " + D2);
-                    System.out.println("D3: " + D3);
-
-                    DefaultCategoryDataset datos = new DefaultCategoryDataset();
-                    datos.addValue(D1, (Comparable) "Ventas", (Comparable) "Vendedor 1");
-                    datos.addValue(D2, (Comparable) "Ventas", (Comparable) "Vendedor 2");
-                    datos.addValue(D3, (Comparable) "Ventas", (Comparable) "Vendedor 3");
-
-                    JFreeChart grafico_vendedores = ChartFactory.createBarChart(
-                            "Top 3 - Vendedores con más ventas confirmadas",
-                            "Vendedor",
-                            "Ventas",
-                            datos
-                    );
-
-                    //Color de las barras
-                    CategoryPlot c = (CategoryPlot) grafico_vendedores.getPlot();
-                    BarRenderer color = (BarRenderer) c.getRenderer();
-
-                    color.setSeriesPaint(0, new Color(0, 153, 255));
-
-                    //Se agrega a un chart
-                    ChartPanel chartPanel = new ChartPanel(grafico_vendedores);//se convierte a chart
-                    chartPanel.setPreferredSize(new java.awt.Dimension(250, 290));//Se dimensiona el chart para el tamaño de la gráfica
-                    espacioGráfico.add(chartPanel, BorderLayout.CENTER); //Se agrega al panel
-
-                    Vendores.add(espacioGráfico);
-                    Vendores.revalidate();
-                    Vendores.repaint();
-                     } catch (Exception ex) {
-            System.out.println("El error es: " + ex);
-        }
-
-                } else {
-                    try{
-                    espacioGráfico.removeAll();
-
-                    Vendores.setLayout(null);
-                    Vendedor G = new Vendedor();
-
-                    int D1 = G.Dato1();
-                    int D2 = G.Dato2();
-                    int D3 = G.Dato3();
-                    System.out.println("D1: " + D1);
-                    System.out.println("D2: " + D2);
-                    System.out.println("D3: " + D3);
-
-                    DefaultCategoryDataset datos = new DefaultCategoryDataset();
-                    datos.addValue(D1, (Comparable) "Ventas", (Comparable) "Vendedor 1");
-                    datos.addValue(D2, (Comparable) "Ventas", (Comparable) "Vendedor 2");
-                    datos.addValue(D3, (Comparable) "Ventas", (Comparable) "Vendedor 3");
-
-                    JFreeChart grafico_vendedores = ChartFactory.createBarChart(
-                            "Top 3 - Vendedores con más ventas confirmadas",
-                            "Vendedor",
-                            "Ventas",
-                            datos
-                    );
-
-                    //Color de las barras
-                    CategoryPlot c = (CategoryPlot) grafico_vendedores.getPlot();
-                    BarRenderer color = (BarRenderer) c.getRenderer();
-
-                    color.setSeriesPaint(0, new Color(0, 153, 255));
-
-                    //Se agrega a un chart
-                    ChartPanel chartPanel = new ChartPanel(grafico_vendedores);//se convierte a chart
-                    chartPanel.setPreferredSize(new java.awt.Dimension(250, 290));//Se dimensiona el chart para el tamaño de la gráfica
-                    espacioGráfico.add(chartPanel, BorderLayout.CENTER); //Se agrega al panel
-
-                    Vendores.add(espacioGráfico);
-                    Vendores.revalidate();
-                    Vendores.repaint();
-                     } catch (Exception ex) {
-            System.out.println("El error es: " + ex);
-        }
-                }
-            }
-        };
-        ///Acciones
-          grafica.addActionListener(actualizar);//Se le agrega la acción
-
-    }
-
 }
-

@@ -2,24 +2,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controlador.Administrador_Productos;
+package Controlador.Vendedor_Producto;
 
+import Controlador.Administrador_Productos.Productos;
 import static Controlador.Administrador_Productos.Productos.UsuarioP;
+import Controlador.Administrador_Vendedores.*;
+import static Controlador.Administrador_Vendedores.Vendedor.Usuario;
+import static Controlador.Administrador_Vendedores.Vendedor.contador5;
+import Vista.Modulo_Administrador.Módulo_Administración;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author hanya
  */
-public class Cargar_Producto {
+public class CargarA_Vendedor_Producto {
 
-    public static int NN;
+ public static int NN;
     public static int AA;
     public static int BB;
     public static int hh;
@@ -81,12 +89,7 @@ public class Cargar_Producto {
 
                 if (orden2.length >= 5) {
                     UsuarioP[hh][0] = orden2[0]; // código
-                    UsuarioP[hh][1] = orden2[1]; // nombre
-                    UsuarioP[hh][2] = orden2[2]; // género
-                    UsuarioP[hh][3] = orden2[3];//Contraseña
-                    UsuarioP[hh][4] = orden2[4]; // confirmadas
-                    UsuarioP[hh][5] = "0";
-                    
+                    UsuarioP[hh][5] = orden2[1]; // stock
                     hh++;
                 }
             }
@@ -95,7 +98,7 @@ public class Cargar_Producto {
             Productos a = new Productos();
             a.CrearTablaF();
             a.PrimeroCargar(numLineas);
-            //a.NoIgual();
+           // a.NoIgual();
             a.ReyenarTablaCargar(NN);
 
         } catch (Exception ex) {

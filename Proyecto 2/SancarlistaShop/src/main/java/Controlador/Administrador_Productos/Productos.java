@@ -404,7 +404,7 @@ public class Productos {
         }
 
     }
-
+/*
     public void NoIgual() {
         for (int z = 0; z < contadorP; z++) {//problema por si se pasa de tamaño
             for (int y = BB; y <= 100; y++) {//RENOMBRAR B
@@ -423,7 +423,7 @@ public class Productos {
             }
         }
     }
-
+*/
     public int Dato1() {
         mayorP = 0;
         System.out.println("El contador es:" + contadorP);
@@ -535,6 +535,31 @@ public class Productos {
         return b;
 
     }
+     public String ActualizarS() {
+
+        String a = null;
+        System.out.println("El codigo es: " + buscarCodigo);
+        try {
+            if (buscarCodigo != null) {
+                for (int i = 0; i <= 100; i++) {
+                    if (UsuarioP[i][0].equalsIgnoreCase(buscarCodigo)) {
+                        a = UsuarioP[i][1];
+                        break;
+                    } else {
+                        System.out.println("El codigo no existe1");
+                    }
+
+                }
+            } else {
+                System.out.println("El codigo no puede ser null1");
+
+            }
+
+        } catch (Exception ex) {
+            System.out.println("El error es: " + ex);
+        }
+        return a;
+    }
 
     /**
      * @return the actun
@@ -612,10 +637,10 @@ public class Productos {
             System.out.println("El codigo es: " + buscarCodigoE);
             for (int i = 0; i <= 100; i++) {
                 if (UsuarioP[i][0].equalsIgnoreCase(buscarCodigoE)) {
-                    UsuarioP[i][0] = " ";//código
-                    UsuarioP[i][1] = " ";// Nombre
-                    UsuarioP[i][2] = " "; //Genero
-                    UsuarioP[i][3] = " "; //Contraseña
+                    UsuarioP[i][0] = "-";//Código
+                    UsuarioP[i][1] = "-";// Nombre
+                    UsuarioP[i][2] = "-"; //Genero
+                    UsuarioP[i][3] = "-"; //Contraseña
                     UsuarioP[i][4] = "0"; //Confirmación
                     break;
                 } else {

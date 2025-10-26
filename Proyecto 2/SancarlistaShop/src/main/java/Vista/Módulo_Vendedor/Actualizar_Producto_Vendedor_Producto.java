@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Vista.Modulo_Administrador.Producto;
+package Vista.Módulo_Vendedor;
 
+import Vista.Modulo_Administrador.Producto.*;
 import static Controlador.Administrador_Productos.Cargar_Producto.AA;
 import Controlador.Administrador_Productos.Productos;
 import Controlador.Administrador_Vendedores.Vendedor;
@@ -26,7 +27,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  *
  * @author hanya
  */
-public class Actualizar_Producto extends JFrame {
+public class Actualizar_Producto_Vendedor_Producto extends JFrame {
     
     private JLabel titulo;
     private JLabel codigo;
@@ -44,12 +45,12 @@ public class Actualizar_Producto extends JFrame {
     private String getnombre;
     private String getcontraseña;
     
-    public Actualizar_Producto(String title) throws HeadlessException {
+    public Actualizar_Producto_Vendedor_Producto(String title) throws HeadlessException {
         super(title);
         
         Dimension d = new Dimension(500, 500);//Objeto que tiene la dimensión de la ventana
         this.setSize(d);
-        this.setDefaultCloseOperation(Actualizar_Producto.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(Actualizar_Producto_Vendedor_Producto.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         //this.setLayout(null);
         this.setVisible(true);
