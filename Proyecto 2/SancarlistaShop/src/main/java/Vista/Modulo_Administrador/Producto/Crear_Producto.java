@@ -10,6 +10,10 @@ import static Controlador.Administrador_Productos.Cargar_Producto.AA;
 import Controlador.Controlador;
 import Controlador.Administrador_Productos.Productos;
 import Controlador.Administrador_Vendedores.Vendedor;
+import Controlador.Vendedor_Producto.Productos_Vendedor;
+import Vista.Módulo_Autenticación;
+import Vista.Módulo_Vendedor.Módulo_Vendedor;
+import static Vista.Módulo_Vendedor.Módulo_Vendedor.q;
 import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.HeadlessException;
@@ -28,8 +32,8 @@ import javax.swing.table.TableModel;
  *
  * @author hanya
  */
-
 public class Crear_Producto extends JFrame {
+
     private JLabel titulo;
     private JLabel codigo;
     private JLabel nombre;
@@ -48,9 +52,7 @@ public class Crear_Producto extends JFrame {
     private String getnombre;
     private String getgenero;
     private String getcontraseña;
-    
-    
-    
+
     private JButton crearP;
 
     public Crear_Producto(String title) throws HeadlessException {
@@ -71,7 +73,6 @@ public class Crear_Producto extends JFrame {
         Boton();
 
     }
-
 
     public void Crear() {
         this.setLayout(null);
@@ -96,7 +97,6 @@ public class Crear_Producto extends JFrame {
 
     }
 
-
     public void Codigo() {
         this.setLayout(null);
         codigo = new JLabel("Codigo");
@@ -118,7 +118,6 @@ public class Crear_Producto extends JFrame {
 
     }
 
-    
     public void Nombre() {
         this.setLayout(null);
         nombre = new JLabel("Nombre");
@@ -138,7 +137,6 @@ public class Crear_Producto extends JFrame {
         enombre.setForeground(new Color(153, 153, 153));//Color de la fuente
         add(enombre);
     }
-
 
     public void Genero() {
         this.setLayout(null);
@@ -166,7 +164,6 @@ public class Crear_Producto extends JFrame {
         add(egenero);
     }
 
-
     public void Contraseña() {
         this.setLayout(null);
         contraseña = new JLabel("Atributo Único");
@@ -187,7 +184,6 @@ public class Crear_Producto extends JFrame {
         add(econtraseña);
     }
 
-   
     public void Boton() {
         ///Escritura de cada acción 
         ActionListener accion2 = new ActionListener() {
@@ -221,30 +217,42 @@ public class Crear_Producto extends JFrame {
 //confirmados-----------------------------------------------------------------------
                 Productos P5 = new Productos();
                 P5.setConfirmados(getgenero);
-               P5.validacionF();
-               
+                P5.validacionF();
+
 //confirmados-----------------------------------------------------------------------
                 Productos P9 = new Productos();
                 P9.setStock(0);
-               P9.validacionF();
-               
+                P9.validacionF();
+
 //confirmados-----------------------------------------------------------------------
                 Productos P10 = new Productos();
                 P10.setAcciones("No hay acciones registradas");
-               P10.validacionF();
-               
+                P10.validacionF();
+
 //Mostrar en la tabla--------------------------------------------------------------
                 Productos P6 = new Productos();
                 P6.CrearTablaF();
                 System.out.println(AA);
                 //funcion
                 P6.ReyenarTablaCrear(100);
-      
+
+//Empezar a Reyener la Tabla de Productos de Productos_Vendedores
+                if (q == null) {
+                    q = new Módulo_Vendedor("Módulo_Vendedor");
+                }
+                q.setVisible(false);
+                Productos_Vendedor PV1 = new Productos_Vendedor();
+                PV1.CrearTablaProducto_Vendedor();
+                System.out.println(AA);
+                //funcion
+                PV1.ReyenarTablaProducto_Vendedor(100);
+
             }
         };
         ///Acciones
           crearP.addActionListener(accion2);//Se le agrega la acción
-          
+
+    
 
 ///Métodos
     }

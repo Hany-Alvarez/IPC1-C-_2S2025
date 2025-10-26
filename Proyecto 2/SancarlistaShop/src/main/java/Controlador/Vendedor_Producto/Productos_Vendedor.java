@@ -7,6 +7,7 @@ package Controlador.Vendedor_Producto;
 import Controlador.Administrador_Productos.*;
 import static Controlador.Administrador_Productos.Cargar_Producto.BB;
 import static Controlador.Administrador_Productos.Cargar_Producto.hh;
+import static Controlador.Administrador_Productos.Productos.UsuarioP;
 
 import Vista.Modulo_Administrador.Módulo_Administración;
 import Vista.Modulo_Administrador.Producto.Botones_Lista;
@@ -37,7 +38,7 @@ public class Productos_Vendedor {
     private String buscarCodigoE;
     private String confirmados;//solo servira para la validación de nullos
 
-    public static String UsuarioP[][] = new String[101][10]; //Para almacenar los productos
+    //public static String UsuarioP[][] = new String[101][10]; //Para almacenar los productos
     public static TableModel tmv;
     static int contadorP = 0;
     static int contador2P = 0;
@@ -310,22 +311,38 @@ public class Productos_Vendedor {
         }
     }
 
-    public void CrearTablaF() { //Crear tabla con formato
-        //Validar que la tabla no exista
-
+    public void CrearTablaProducto_Vendedor() { //Crear tabla con formato
+       
         if (tmv == null) {
             System.out.println("La tabla no existe, creando tabla");
-            DefaultTableModel MD = new DefaultTableModel(new String[]{"Código", "Nombre", "Categoría", "Acciones"}, 101);
+            DefaultTableModel MDs = new DefaultTableModel(new String[]{"Código33", "Nombre", "Categoría", "Stock", "Acciones"}, 101);
 
-            Módulo_Vendedor.tabla3.setModel(MD);
-            Módulo_Vendedor.tabla3.getColumnModel().getColumn(3).setCellRenderer(new GestionBoton());
-            Módulo_Vendedor.tabla3.getColumnModel().getColumn(3).setCellEditor(new EditorBoton(Módulo_Vendedor.tabla3));
+            Módulo_Vendedor.tabla3.setModel(MDs);
+            Módulo_Vendedor.tabla3.getColumnModel().getColumn(4).setCellRenderer(new GestionBoton());
+            Módulo_Vendedor.tabla3.getColumnModel().getColumn(4).setCellEditor(new EditorBoton(Módulo_Vendedor.tabla3));
             tmv = Módulo_Vendedor.tabla3.getModel();
         } else {
-            System.out.println("La tabla ya existe, se continua para rellenar");
+            System.out.println("La tabla ya existe, se continua para rellenar con   producto Vendedor");
         }
     }
 
+    public void ReyenarTablaProducto_Vendedor(int b) { 
+    for (int i = 0; i <= b; i++) {
+            tmv.setValueAt(UsuarioP[i][0], i, 0); //Código
+            tmv.setValueAt(UsuarioP[i][1], i, 1); //Nombre
+            tmv.setValueAt(UsuarioP[i][2], i, 2);//Categoría
+            tmv.setValueAt(UsuarioP[i][5], i, 3);//Stock
+
+            Botones_Lista boton = new Botones_Lista(); //Acciones
+            boton.boton(UsuarioP[i][6]); //Lógica es = Le pido a la matriz que me de el tipo categoría que es, la guardo y le paso eso al boton
+            JButton WWW = Botones_Lista.BOT; //Lógica es = El boton le dara sus atributos a WWW
+            //JButton WWW = null; //Lógica es = El boton le dara sus atributos a WWW 
+            tmv.setValueAt(WWW, i, 4);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
+
+   
+    }//Crear tabla con formato
+    }
+    
     public void ReyenarTablaCargar(int b) { //Solo para reyenar
 
         for (int i = 0; i <= b; i++) {

@@ -4,8 +4,12 @@
  */
 package Vista.Modulo_Administrador.Producto;
 
+import static Controlador.Administrador_Productos.Cargar_Producto.AA;
 import Controlador.Administrador_Productos.Productos;
 import Controlador.Administrador_Vendedores.Vendedor;
+import Controlador.Vendedor_Producto.Productos_Vendedor;
+import Vista.Módulo_Vendedor.Módulo_Vendedor;
+import static Vista.Módulo_Vendedor.Módulo_Vendedor.q;
 import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.HeadlessException;
@@ -193,6 +197,9 @@ public class Actualizar_Producto extends JFrame {
                 actu.setActuc(getcontraseña, getecodigo);
                 
                 actu.ReyenarTablaCrear(100);
+//Empezar a Reyener la Tabla de Productos de Productos_Vendedores
+                Productos_Vendedor PV1 = new Productos_Vendedor();
+                PV1.ReyenarTablaProducto_Vendedor(100);
                 
             }
         };

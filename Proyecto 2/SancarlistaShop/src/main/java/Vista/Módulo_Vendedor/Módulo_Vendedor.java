@@ -104,7 +104,7 @@ public final class Módulo_Vendedor extends JFrame {
         ActionListener abrir = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Crear_Producto Ver = new Crear_Producto("Creación");
+                Crear_Producto Ver = new Crear_Producto("Creación");//Aquí nos quedamos analizando que esto lo que hace es crearme los productos en tabla 2 y no en 3 como queremos
                 Ver.setVisible(true);
             }
         };
@@ -192,7 +192,7 @@ public final class Módulo_Vendedor extends JFrame {
         //Filas
         Object[][] filas = {};
         //Columnas
-        String[] columnas = {"Código", "Nombre", "Categoría", "Stock", "Acciones"};
+        String[] columnas = {"Código3", "Nombre", "Categoría", "Stock", "Acciones"};
 
         //Crear Tabla
         tabla3 = new JTable(filas, columnas);
