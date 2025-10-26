@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador.Administrador_Vendedores;
-
+/*
+Controlador Base para toda la Subventana(Vendedor) en Administración
+*/
 import static Controlador.Administrador_Vendedores.CargarA.B;
 import static Controlador.Administrador_Vendedores.CargarA.h;
 import static Controlador.Administrador_Vendedores.CargarA.orden;

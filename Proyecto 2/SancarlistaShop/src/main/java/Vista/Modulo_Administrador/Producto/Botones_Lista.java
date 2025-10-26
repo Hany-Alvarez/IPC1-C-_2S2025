@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Vista.Modulo_Administrador.Producto;
-
+/*
+Interfaz para edición de boton en columna 3 de subventana(Producto) BotonGeneral(columna) MÓDULO ADMINISTRADOR
+*/
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;

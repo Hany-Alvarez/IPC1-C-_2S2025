@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Vista.Modulo_Administrador.Vendedor;
-
+/*
+Interfaz para Crear vendedores de la subventana(Vendedor) BotonEspecífico(Crear) MÓDULO ADMINISTRADOR
+*/
 import static Controlador.Administrador_Vendedores.CargarA.A;
 import Controlador.Controlador;
 import Controlador.Administrador_Vendedores.Vendedor;

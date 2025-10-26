@@ -3,23 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador.Vendedor_Producto;
-
+/*
+Controlador para leer los archivos de la subventana(Producto) Boton(Cargar) MÓDULO VENDEDOR
+*/
 import Controlador.Administrador_Productos.Productos;
 import static Controlador.Administrador_Productos.Productos.UsuarioP;
-import Controlador.Administrador_Vendedores.*;
-import static Controlador.Administrador_Vendedores.Vendedor.Usuario;
-import static Controlador.Administrador_Vendedores.Vendedor.contador5;
-import Vista.Modulo_Administrador.Módulo_Administración;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -27,7 +22,7 @@ import javax.swing.table.TableModel;
  */
 public class CargarA_Vendedor_Producto {
 
- public static int NN;
+    public static int NN;
     public static int AA;
     public static int BB;
     public static int hh;
@@ -98,7 +93,7 @@ public class CargarA_Vendedor_Producto {
             Productos a = new Productos();
             a.CrearTablaF();
             a.PrimeroCargar(numLineas);
-           // a.NoIgual();
+            // a.NoIgual();
             a.ReyenarTablaCargar(NN);
 
         } catch (Exception ex) {

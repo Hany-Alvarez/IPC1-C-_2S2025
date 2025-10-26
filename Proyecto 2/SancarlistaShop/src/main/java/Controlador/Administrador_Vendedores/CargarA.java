@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador.Administrador_Vendedores;
-
+/*
+Controlador para el boton de cargar en Subventana(Vendedor) en Administración
+*/
 import static Controlador.Administrador_Vendedores.Vendedor.Usuario;
 import static Controlador.Administrador_Vendedores.Vendedor.contador5;
 import Vista.Modulo_Administrador.Módulo_Administración;

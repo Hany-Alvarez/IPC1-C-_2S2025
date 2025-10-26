@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Vista.Modulo_Administrador.Vendedor;
-
+/*
+Interfaz para cargar vendedores subventana(Vendedores) BotonEspecífico(Cargar) MÓDULO ADMINISTRADOR
+*/
 import Vista.Modulo_Administrador.Vendedor.Actualizar_Vendedor;
 import java.awt.Dimension;
 import javax.swing.*;

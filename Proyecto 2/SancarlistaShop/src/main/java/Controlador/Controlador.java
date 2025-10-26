@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador;
-
+/*
+Controlador Base para todo el Proyecto
+*/
 import static Controlador.Administrador_Vendedores.Vendedor.Usuario;
 import Vista.Modulo_Administrador.Módulo_Administración;
 import static Vista.Modulo_Administrador.Módulo_Administración.p;

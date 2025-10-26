@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Vista.Modulo_Administrador;
-
+/*
+Interfaz para MÓDULO ADMINISTRADOR
+*/
 import Vista.Modulo_Administrador.Producto.Eliminar_Producto;
 import Vista.Modulo_Administrador.Producto.Crear_Producto;
 import Vista.Modulo_Administrador.Producto.Actualizar_Producto;

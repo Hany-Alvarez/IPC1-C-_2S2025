@@ -2,6 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+/*
+Interfaz que sale al presionar actualizar en la subventana(Producto) BotonEspecífico(Actualizar) MÓDULO VENDEDOR
+*/
 package Vista.Módulo_Vendedor;
 
 import Vista.Modulo_Administrador.Producto.*;
@@ -28,26 +32,26 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  * @author hanya
  */
 public class Actualizar_Producto_Vendedor_Producto extends JFrame {
-    
+
     private JLabel titulo;
     private JLabel codigo;
-    private JLabel nombre;
-    private JLabel contraseña;
-    
+    private JLabel stock;
+
+
     private JTextField ecodigo;
-    private JTextField enombre;
-    private JTextField econtraseña;
-    
+    private JTextField estock;
+
+
     private JButton actu;
     private JButton buscar;
-    
+
     private String getecodigo;
-    private String getnombre;
-    private String getcontraseña;
+    private int getstock;
+    
     
     public Actualizar_Producto_Vendedor_Producto(String title) throws HeadlessException {
         super(title);
-        
+
         Dimension d = new Dimension(500, 500);//Objeto que tiene la dimensión de la ventana
         this.setSize(d);
         this.setDefaultCloseOperation(Actualizar_Producto_Vendedor_Producto.DISPOSE_ON_CLOSE);
@@ -59,15 +63,14 @@ public class Actualizar_Producto_Vendedor_Producto extends JFrame {
         actualizar();
         codigo();
         nombre();
-        contraseña();
         función();
     }
-    
+
     private void actualizar() {
         this.setLayout(null);
         ImageIcon icono = new ImageIcon("images/actu.gif");
         ImageIcon USAC = new ImageIcon(icono.getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
-        titulo = new JLabel("Actualizar Producto", USAC, SwingConstants.CENTER);
+        titulo = new JLabel("Actualizar Stock", USAC, SwingConstants.CENTER);
         titulo.setForeground(new Color(25, 25, 133));//Color del título
         titulo.setBounds(20, 25, 480, 100);//Posición
 
@@ -84,7 +87,7 @@ public class Actualizar_Producto_Vendedor_Producto extends JFrame {
         actu.setForeground(new Color(51, 51, 51));
         add(actu);//Agregando al panel 
     }
-    
+
     private void codigo() {
         this.setLayout(null);
         codigo = new JLabel("Codigo");
@@ -98,85 +101,57 @@ public class Actualizar_Producto_Vendedor_Producto extends JFrame {
 //-------------------------------------------------------------------------------------
         ecodigo = new JTextField();
         ecodigo.setText("");
-        ecodigo.setBounds(200, 180, 150, 30);
+        ecodigo.setBounds(200, 180, 200, 30);
         ecodigo.setFont(new Font("Super Joyful", Font.BOLD, 25));
         ecodigo.setBackground(new Color(255, 255, 255, 255));
         ecodigo.setForeground(new Color(153, 153, 153));//Color de la fuente
         add(ecodigo);
-//-------------------------------------------------------------------------------------
-        this.setLayout(null);
-        buscar = new JButton("Buscar");
-        buscar.setBounds(350, 180, 100, 30);
-        buscar.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
-        buscar.setBackground(new Color(255, 255, 255));
-        buscar.setForeground(new Color(51, 51, 51));
-        add(buscar);//Agregando al panel 
 
     }
-    
+
     private void nombre() {
         this.setLayout(null);
-        nombre = new JLabel("Nombre");
-        nombre.setForeground(new Color(25, 25, 133));//Color del título
-        nombre.setBounds(50, 210, 150, 100);//Posición
+        stock = new JLabel("Stock");
+        stock.setForeground(new Color(25, 25, 133));//Color del título
+        stock.setBounds(50, 210, 150, 100);//Posición
 
         //Fuente
         Font fuente2 = new Font("Super Joyful", Font.PLAIN, 30);
-        nombre.setFont(fuente2);
-        add(nombre);
+        stock.setFont(fuente2);
+        add(stock);
         //----------------------------------------------------------------------------------------
-        enombre = new JTextField();
-        enombre.setText("");
-        enombre.setBounds(250, 248, 200, 30);
-        enombre.setFont(new Font("Super Joyful", Font.BOLD, 25));
-        enombre.setBackground(new Color(255, 255, 255, 255));
-        enombre.setForeground(new Color(153, 153, 153));//Color de la fuente
-        add(enombre);
+        estock = new JTextField();
+        estock.setText("");
+        estock.setBounds(250, 248, 200, 30);
+        estock.setFont(new Font("Super Joyful", Font.BOLD, 25));
+        estock.setBackground(new Color(255, 255, 255, 255));
+        estock.setForeground(new Color(153, 153, 153));//Color de la fuente
+        add(estock);
     }
-    
-    private void contraseña() {
-        this.setLayout(null);
-        contraseña = new JLabel("Atributo Único");
-        contraseña.setForeground(new Color(25, 25, 133));//Color del título
-        contraseña.setBounds(50, 280, 200, 100);//Posición
 
-        //Fuente
-        Font fuente2 = new Font("Super Joyful", Font.PLAIN, 30);
-        contraseña.setFont(fuente2);
-        add(contraseña);
-        //----------------------------------------------------------------------------------------
-        econtraseña = new JTextField();
-        econtraseña.setText("");
-        econtraseña.setBounds(250, 310, 200, 30);
-        econtraseña.setFont(new Font("Super Joyful", Font.BOLD, 25));
-        econtraseña.setBackground(new Color(255, 255, 255, 255));
-        econtraseña.setForeground(new Color(153, 153, 153));//Color de la fuente
-        add(econtraseña);
-    }
-    
     public void función() {
         ///Escritura de cada acción 
         ActionListener abrir = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Productos actu = new Productos();
-                
+
                 getecodigo = ecodigo.getText();
                 actu.setBuscarCodigo(getecodigo);
                 // ecodigo.setText("");
-                
-                String Nombre = actu.ActualizarN();
-                String Contra = actu.ActualizarC();
-                
-                if(Nombre!=null && Contra !=null){
-                System.out.println("El nombre es: " + Nombre);
-                System.out.println("La contraseña es: " + Contra);
-                
-                
-                enombre.setText(Nombre);
-                econtraseña.setText(Contra);}
-                else{
-                System.out.println("Codigo no encontrado");
+
+                int Stock = actu.ActualizarS();
+                String Codigo = actu.ActualizarCo();
+
+                if (Stock != 0 && Codigo != null) {
+                    System.out.println("El nombre es: " + Stock);
+                    System.out.println("La contraseña es: " + Codigo);
+
+                    ecodigo.setText(Codigo);
+                    String tock = String.valueOf(Stock);
+                    estock.setText(tock);
+                } else {
+                    System.out.println("Codigo no encontrado");
                 }
             }
         };
@@ -188,25 +163,25 @@ public class Actualizar_Producto_Vendedor_Producto extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Productos actu = new Productos();
-                
+
                 getecodigo = ecodigo.getText();
-                
+
                 getnombre = enombre.getText();
                 getcontraseña = econtraseña.getText();
-                
+
                 actu.setActun(getnombre, getecodigo);
                 actu.setActuc(getcontraseña, getecodigo);
-                
+
                 actu.ReyenarTablaCrear(100);
 //Empezar a Reyener la Tabla de Productos de Productos_Vendedores
                 Productos_Vendedor PV1 = new Productos_Vendedor();
                 PV1.ReyenarTablaProducto_Vendedor(100);
-                
+
             }
         };
         ///Acciones
           actu.addActionListener(actualizar);//Se le agrega la acción
 
     }
-    
+
 }

@@ -4,6 +4,9 @@
  */
 package Vista.Módulo_Vendedor;
 
+/*
+Interfaz Base para las ventanas de MODULO VENDEDOR
+*/
 import Vista.Modulo_Administrador.Vendedor.Crear_Vendedor;
 import Vista.Modulo_Administrador.Vendedor.Eliminar_Vendedor;
 import Controlador.Administrador_Vendedores.CargarA;

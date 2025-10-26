@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Vista.Modulo_Administrador.Producto;
-
+/*
+Interfaz para actualizar productos subventana(Producto) BotonGeneral(Actualizar) MÓDULO ADMINISTRADOR
+*/
 import static Controlador.Administrador_Productos.Cargar_Producto.AA;
 import Controlador.Administrador_Productos.Productos;
 import Controlador.Administrador_Vendedores.Vendedor;

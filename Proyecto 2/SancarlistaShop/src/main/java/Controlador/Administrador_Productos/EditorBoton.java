@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador.Administrador_Productos;
-
+/*
+Controlador para darle estilo y funciones después del click al boton de la columna 3 (0-3) en la subventana(Producto) en Adminitración
+*/
 import static Controlador.Administrador_Productos.Productos.UsuarioP;
 import java.awt.Color;
 import java.awt.Component;

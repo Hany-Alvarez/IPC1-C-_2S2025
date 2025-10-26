@@ -3,7 +3,9 @@
  */
 
 package com.mycompany.sancarlistashop;
-
+/*
+LA RAÍZ DE TODO EL PROYECTO
+*/
 import Vista.Modulo_Administrador.Módulo_Administración;
 import Vista.Módulo_Autenticación;
 import Controlador.Controlador;

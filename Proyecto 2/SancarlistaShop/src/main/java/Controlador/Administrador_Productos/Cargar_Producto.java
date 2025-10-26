@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador.Administrador_Productos;
-
+/*
+Controlador para leer el archivo en la subventana (Producto) en administración
+*/
 import static Controlador.Administrador_Productos.Productos.UsuarioP;
 import java.io.BufferedReader;
 import java.io.File;

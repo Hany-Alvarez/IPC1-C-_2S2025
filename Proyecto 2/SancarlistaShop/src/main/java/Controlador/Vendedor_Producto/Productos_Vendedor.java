@@ -4,20 +4,18 @@
  */
 package Controlador.Vendedor_Producto;
 
+/*
+Controlador para la subventana(Producto) de Módulo Vendedor
+ */
 import Controlador.Administrador_Productos.*;
 import static Controlador.Administrador_Productos.Cargar_Producto.BB;
 import static Controlador.Administrador_Productos.Cargar_Producto.hh;
 import static Controlador.Administrador_Productos.Productos.UsuarioP;
-
-import Vista.Modulo_Administrador.Módulo_Administración;
 import Vista.Modulo_Administrador.Producto.Botones_Lista;
 import Vista.Módulo_Vendedor.Módulo_Vendedor;
 import java.util.Objects;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
 /**
@@ -312,7 +310,7 @@ public class Productos_Vendedor {
     }
 
     public void CrearTablaProducto_Vendedor() { //Crear tabla con formato
-       
+
         if (tmv == null) {
             System.out.println("La tabla no existe, creando tabla");
             DefaultTableModel MDs = new DefaultTableModel(new String[]{"Código33", "Nombre", "Categoría", "Stock", "Acciones"}, 101);
@@ -326,8 +324,8 @@ public class Productos_Vendedor {
         }
     }
 
-    public void ReyenarTablaProducto_Vendedor(int b) { 
-    for (int i = 0; i <= b; i++) {
+    public void ReyenarTablaProducto_Vendedor(int b) {
+        for (int i = 0; i <= b; i++) {
             tmv.setValueAt(UsuarioP[i][0], i, 0); //Código
             tmv.setValueAt(UsuarioP[i][1], i, 1); //Nombre
             tmv.setValueAt(UsuarioP[i][2], i, 2);//Categoría
@@ -339,10 +337,9 @@ public class Productos_Vendedor {
             //JButton WWW = null; //Lógica es = El boton le dara sus atributos a WWW 
             tmv.setValueAt(WWW, i, 4);//Lógica es = Aquí se crea el boton jajaja esperanza es lo último que muere
 
-   
-    }//Crear tabla con formato
+        }//Crear tabla con formato
     }
-    
+
     public void ReyenarTablaCargar(int b) { //Solo para reyenar
 
         for (int i = 0; i <= b; i++) {

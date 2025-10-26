@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Vista.Modulo_Administrador.Producto;
-
+/*
+Interfaz para eliminar producto subventana(Producto) BotonEspecífico(Eliminar) MÓDULO ADMINISTRADOR
+*/
 import Vista.Modulo_Administrador.Vendedor.Actualizar_Vendedor;
 import Controlador.Administrador_Productos.Productos;
 import Controlador.Administrador_Vendedores.Vendedor;

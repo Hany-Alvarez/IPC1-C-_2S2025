@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Vista.Modulo_Administrador.Vendedor;
-
+/*
+Interfaz para actualizar subventana(Vendedor) BotonEspecifico(Actualizar) MÓDULO ADMINISTRADOR
+*/
 import Controlador.Administrador_Vendedores.Vendedor;
 import java.awt.Dimension;
 import javax.swing.*;
@@ -15,7 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+
 
 /**
  *

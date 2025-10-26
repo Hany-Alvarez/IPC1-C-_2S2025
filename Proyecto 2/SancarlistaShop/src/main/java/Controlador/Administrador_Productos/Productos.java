@@ -2,6 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+/*
+Controlar todas las funciones de la subventana(Producto) de administrador
+*/
 package Controlador.Administrador_Productos;
 
 import static Controlador.Administrador_Productos.Cargar_Producto.BB;
@@ -535,7 +538,15 @@ public class Productos {
         return b;
 
     }
-     public String ActualizarS() {
+    
+    public String ActualizarCo(){
+    
+        return null;
+    
+    }
+     public int ActualizarS() {
+
+         
 
         String a = null;
         System.out.println("El codigo es: " + buscarCodigo);
@@ -558,7 +569,7 @@ public class Productos {
         } catch (Exception ex) {
             System.out.println("El error es: " + ex);
         }
-        return a;
+        return 0;
     }
 
     /**
