@@ -386,7 +386,7 @@ public class Vendedor {
                         break;
                     } else {
                         System.out.println("El codigo no existe1");
-                        JOptionPane.showMessageDialog(null, "El codigo no existe");
+                        //JOptionPane.showMessageDialog(null, "El codigo no existe");
                     }
 
                 }
@@ -413,7 +413,7 @@ public class Vendedor {
                         break;
                     } else {
                         System.out.println("El codigo no existe2");
-                        JOptionPane.showMessageDialog(null, "El código no existe");
+                        //JOptionPane.showMessageDialog(null, "El código no existe");
 
                     }
 
@@ -507,7 +507,7 @@ public class Vendedor {
                     break;
                 } else {
                     System.out.println("El codigo no existe");
-                    JOptionPane.showMessageDialog(null, "El código no existe");
+                    //JOptionPane.showMessageDialog(null, "El código no existe");
                 }
 
             }

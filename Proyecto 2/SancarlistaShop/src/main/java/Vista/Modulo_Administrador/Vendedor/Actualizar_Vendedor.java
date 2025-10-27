@@ -173,7 +173,7 @@ public class Actualizar_Vendedor extends JFrame {
                 econtraseña.setText(Contra);}
                 else{
                 System.out.println("Codigo no encontrado");
-                JOptionPane.showMessageDialog(null, "Codigo no encontrado");
+                //JOptionPane.showMessageDialog(null, "Codigo no encontrado");
                 }
             }
         };
