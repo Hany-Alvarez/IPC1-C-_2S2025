@@ -282,7 +282,7 @@ public class Productos {
     //  FIN DATOS QUE SE VERAN EN PRODUCTOS_VENDEDOR
 
     ///Extra para validar todos los campos y si uno no cumple se reinicie la creación
-    public void validacionF() {
+    public void validacionF() {//no esta colocado el contador 6
         if (contadorP == contador2P && contadorP == contador3P && contadorP == contador4P && contadorP == contador5P) {
             System.out.println("Todas las validaciones admitidas");
         } else {
@@ -302,9 +302,6 @@ public class Productos {
             contador6P = contador5P - 1;
             UsuarioP[contador6P][5] = null;
 
-            contador7P = contador7P - 1;
-            UsuarioP[contador7P][6] = null;
-            
             contador5P = contador5P - 1;
             UsuarioP[contador5P][4] = null;
 
@@ -373,7 +370,6 @@ public class Productos {
             contador4P = a;
             contador5P = a;
             contador6P=a;
-            contador7P=a;
         }
     }
 
@@ -402,7 +398,6 @@ public class Productos {
             contador4P = contadorP + a;
             contador5P = contadorP + a;
             contador6P = contadorP + a;
-            contador7P = contadorP + a;
             contadorP = contadorP + a;
         }
 

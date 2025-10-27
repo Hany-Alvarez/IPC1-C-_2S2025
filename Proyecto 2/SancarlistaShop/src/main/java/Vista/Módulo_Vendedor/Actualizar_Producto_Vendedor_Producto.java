@@ -3,15 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-/*
+ /*
 Interfaz que sale al presionar actualizar en la subventana(Producto) BotonEspecífico(Actualizar) MÓDULO VENDEDOR
-*/
+ */
 package Vista.Módulo_Vendedor;
 
 import Vista.Modulo_Administrador.Producto.*;
 import static Controlador.Administrador_Productos.Cargar_Producto.AA;
 import Controlador.Administrador_Productos.Productos;
+import static Controlador.Administrador_Productos.Productos.UsuarioP;
 import Controlador.Administrador_Vendedores.Vendedor;
+import static Controlador.Controlador.G1;
 import Controlador.Vendedor_Producto.Productos_Vendedor;
 import Vista.Módulo_Vendedor.Módulo_Vendedor;
 import static Vista.Módulo_Vendedor.Módulo_Vendedor.q;
@@ -25,6 +27,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 /**
@@ -37,22 +41,18 @@ public class Actualizar_Producto_Vendedor_Producto extends JFrame {
     private JLabel codigo;
     private JLabel stock;
 
-
     private JTextField ecodigo;
     private JTextField estock;
 
-
     private JButton actu;
-    private JButton buscar;
 
     private String getecodigo;
-    private int getstock;
-    
-    
+    private String getstock;
+
     public Actualizar_Producto_Vendedor_Producto(String title) throws HeadlessException {
         super(title);
 
-        Dimension d = new Dimension(500, 500);//Objeto que tiene la dimensión de la ventana
+        Dimension d = new Dimension(500, 400);//Objeto que tiene la dimensión de la ventana
         this.setSize(d);
         this.setDefaultCloseOperation(Actualizar_Producto_Vendedor_Producto.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -62,7 +62,7 @@ public class Actualizar_Producto_Vendedor_Producto extends JFrame {
         //Métodos
         actualizar();
         codigo();
-        nombre();
+        stock();
         función();
     }
 
@@ -81,7 +81,7 @@ public class Actualizar_Producto_Vendedor_Producto extends JFrame {
 //--------------------------------------------------------------------------------------------
         this.setLayout(null);
         actu = new JButton("Actualizar");
-        actu.setBounds(110, 400, 280, 30);
+        actu.setBounds(110, 300, 280, 30);
         actu.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
         actu.setBackground(new Color(255, 255, 255));
         actu.setForeground(new Color(51, 51, 51));
@@ -109,7 +109,7 @@ public class Actualizar_Producto_Vendedor_Producto extends JFrame {
 
     }
 
-    private void nombre() {
+    private void stock() {
         this.setLayout(null);
         stock = new JLabel("Stock");
         stock.setForeground(new Color(25, 25, 133));//Color del título
@@ -122,7 +122,7 @@ public class Actualizar_Producto_Vendedor_Producto extends JFrame {
         //----------------------------------------------------------------------------------------
         estock = new JTextField();
         estock.setText("");
-        estock.setBounds(250, 248, 200, 30);
+        estock.setBounds(200, 248, 200, 30);
         estock.setFont(new Font("Super Joyful", Font.BOLD, 25));
         estock.setBackground(new Color(255, 255, 255, 255));
         estock.setForeground(new Color(153, 153, 153));//Color de la fuente
@@ -134,54 +134,35 @@ public class Actualizar_Producto_Vendedor_Producto extends JFrame {
         ActionListener abrir = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Productos actu = new Productos();
-
+                Productos_Vendedor actu= new Productos_Vendedor();
                 getecodigo = ecodigo.getText();
-                actu.setBuscarCodigo(getecodigo);
-                // ecodigo.setText("");
+                getstock = estock.getText();
+                String Tiempo = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+             
+                try {
+                    for (int i = 0; i < 100; i++) {
+                        
+                        if(UsuarioP[i][0].equalsIgnoreCase(getecodigo)){
+                            UsuarioP[i][5]=getstock;//se guarda el nuevo dato
+                            actu.ReyenarTablaCrear(100);//Para mostrar en la tabla
+                            actu.setAcciones(Tiempo);//Para registrar en que horario fue registrada
+                            actu.setProductoCodigo(getecodigo);
+                            actu.setProductoStock(UsuarioP[i][5]);
+                            actu.setVendedor(G1);
+                            break;
+                        }
+                        
+                        
 
-                int Stock = actu.ActualizarS();
-                String Codigo = actu.ActualizarCo();
+                    }
+                } catch (Exception ex) {
 
-                if (Stock != 0 && Codigo != null) {
-                    System.out.println("El nombre es: " + Stock);
-                    System.out.println("La contraseña es: " + Codigo);
-
-                    ecodigo.setText(Codigo);
-                    String tock = String.valueOf(Stock);
-                    estock.setText(tock);
-                } else {
-                    System.out.println("Codigo no encontrado");
                 }
-            }
-        };
-        ///Acciones
-          buscar.addActionListener(abrir);//Se le agrega la acción
-
-        ///Escritura de cada acción 
-        ActionListener actualizar = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Productos actu = new Productos();
-
-                getecodigo = ecodigo.getText();
-
-                getnombre = enombre.getText();
-                getcontraseña = econtraseña.getText();
-
-                actu.setActun(getnombre, getecodigo);
-                actu.setActuc(getcontraseña, getecodigo);
-
-                actu.ReyenarTablaCrear(100);
-//Empezar a Reyener la Tabla de Productos de Productos_Vendedores
-                Productos_Vendedor PV1 = new Productos_Vendedor();
-                PV1.ReyenarTablaProducto_Vendedor(100);
 
             }
         };
         ///Acciones
-          actu.addActionListener(actualizar);//Se le agrega la acción
+          actu.addActionListener(abrir);//Se le agrega la acción
 
     }
-
 }

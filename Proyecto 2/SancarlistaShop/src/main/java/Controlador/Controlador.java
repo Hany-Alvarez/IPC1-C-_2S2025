@@ -7,6 +7,7 @@ package Controlador;
 Controlador Base para todo el Proyecto
 */
 import static Controlador.Administrador_Vendedores.Vendedor.Usuario;
+import Controlador.Vendedor_Producto.Productos_Vendedor;
 import Vista.Modulo_Administrador.Módulo_Administración;
 import static Vista.Modulo_Administrador.Módulo_Administración.p;
 import Vista.Módulo_Autenticación;
@@ -22,6 +23,7 @@ import javax.swing.JFrame;
 public class Controlador {
 
     Módulo_Administración M2;
+    public static String G1;
 
 //Método para validar administrador
     public void AbrirCerrrar(String Opcion, String letra, String letra2) {
@@ -87,6 +89,8 @@ public class Controlador {
                     }
                     q.setVisible(true);
                     Módulo_Autenticación.visibilidad.setVisible(!true);
+                    
+                    G1=Usuario[i][1];//Guarda el vendedor que ingreso
 
                 }
             }

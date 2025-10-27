@@ -100,7 +100,7 @@ public final class Módulo_Vendedor extends JFrame {
         Vendores.setLayout(null);
         Actualizar = new JButton();
         Actualizar = new JButton("Actualizar");
-        Actualizar.setBounds(570, 100, 150, 30);
+        Actualizar.setBounds(650, 100, 150, 30);
         Actualizar.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
         Actualizar.setBackground(new Color(255, 255, 255));
         Actualizar.setForeground(new Color(51, 51, 51));
@@ -121,7 +121,7 @@ public final class Módulo_Vendedor extends JFrame {
         Vendores.setLayout(null);
         Cargar = new JButton();
         Cargar = new JButton("Cargar");
-        Cargar.setBounds(570, 150, 150, 30);
+        Cargar.setBounds(650, 150, 150, 30);
         Cargar.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
         Cargar.setBackground(new Color(255, 255, 255));
         Cargar.setForeground(new Color(51, 51, 51));
@@ -149,7 +149,7 @@ public final class Módulo_Vendedor extends JFrame {
         Vendores.setLayout(null);
         JPanel espacioTabla = new JPanel();
         espacioTabla.setBackground(new Color(51, 153, 255));//Color
-        espacioTabla.setBounds(25, 20, 510, 400);
+        espacioTabla.setBounds(25, 20, 600, 400);
         Vendores.add(espacioTabla);
 
         //Filas
@@ -162,11 +162,11 @@ public final class Módulo_Vendedor extends JFrame {
 
         //Modificar tamaño de tabla
         tabla3.setRowHeight(50);
-        tabla3.getColumnModel().getColumn(0).setPreferredWidth(200);
+        tabla3.getColumnModel().getColumn(4).setPreferredWidth(200);
 
         //Agregar tabla a un Scroll 
         JScrollPane scroll = new JScrollPane(tabla3);
-        scroll.setBounds(0, 0, 510, 400);
+        scroll.setBounds(0, 0, 600, 400);
 
         espacioTabla.setLayout(null);
         espacioTabla.add(scroll);

@@ -36,7 +36,7 @@ public class Productos_Vendedor {
     private String buscarCodigoE;
     private String confirmados;//solo servira para la validación de nullos
 
-    //public static String UsuarioP[][] = new String[101][10]; //Para almacenar los productos
+    public static String Historial[][] = new String[101][10]; //Para almacenar los productos
     public static TableModel tmv;
     static int contadorP = 0;
     static int contador2P = 0;
@@ -44,7 +44,11 @@ public class Productos_Vendedor {
     static int contador4P = 0;
     public static int contador5P = 0;
     public int contador6P = 0;
-    public int contador7P = 0;
+    static int H1 = 0;
+    static int H2 = 0;
+    static int H3=0;
+    static int H4=0;
+    static int H5 =0;
     public int mayorP;
     public int mayor2P;
 
@@ -269,13 +273,39 @@ public class Productos_Vendedor {
     /**
      * @param acciones the acciones to set
      */
-    public void setAcciones(String acciones) {
+    public void setAcciones(String acciones) {//Tiempo
         this.acciones = acciones;
-        UsuarioP[contador7P][6] = acciones;
-        contador7P++;
-        System.out.println(UsuarioP[contador7P - 1][6]);
+        Historial[H1][0] = acciones;
+        H1++;
+        System.out.println(Historial[H1 - 1][0]);
 
-        System.out.println("Contador7P: " + contador7P);
+        System.out.println("----Acción: " + H1);
+    }
+
+    public void setVendedor(String V) {//Tiempo
+        this.acciones = V;
+        Historial[H2][1] = V;
+        H2++;
+        System.out.println(Historial[H2 - 1][1]);
+
+        System.out.println("----Nombre: " + H2);
+    }
+
+    public void setProductoCodigo(String C) {//Tiempo
+        this.acciones = C;
+        Historial[H3][2] = C;
+        H3++;
+        System.out.println(Historial[H3 - 1][2]);
+
+        System.out.println("----Codigo del producto: " + H3);
+    }
+        public void setProductoStock(String C) {//Tiempo
+        this.acciones = C;
+        Historial[H4][3] = C;
+        H4++;
+        System.out.println(Historial[H4 - 1][3]);
+
+        System.out.println("----Stock: " + H4);
     }
     //  FIN DATOS QUE SE VERAN EN PRODUCTOS_VENDEDOR
 
@@ -300,9 +330,6 @@ public class Productos_Vendedor {
             contador6P = contador5P - 1;
             UsuarioP[contador6P][5] = null;
 
-            contador7P = contador7P - 1;
-            UsuarioP[contador7P][6] = null;
-
             contador5P = contador5P - 1;
             UsuarioP[contador5P][4] = null;
 
@@ -316,8 +343,8 @@ public class Productos_Vendedor {
             DefaultTableModel MDs = new DefaultTableModel(new String[]{"Código33", "Nombre", "Categoría", "Stock", "Acciones"}, 101);
 
             Módulo_Vendedor.tabla3.setModel(MDs);
-            Módulo_Vendedor.tabla3.getColumnModel().getColumn(4).setCellRenderer(new GestionBoton());
-            Módulo_Vendedor.tabla3.getColumnModel().getColumn(4).setCellEditor(new EditorBoton(Módulo_Vendedor.tabla3));
+            Módulo_Vendedor.tabla3.getColumnModel().getColumn(4).setCellRenderer(new GestionBoton_Historial());
+            Módulo_Vendedor.tabla3.getColumnModel().getColumn(4).setCellEditor(new EditorBoton_Historial(Módulo_Vendedor.tabla3));
             tmv = Módulo_Vendedor.tabla3.getModel();
         } else {
             System.out.println("La tabla ya existe, se continua para rellenar con   producto Vendedor");
@@ -386,7 +413,7 @@ public class Productos_Vendedor {
             contador4P = a;
             contador5P = a;
             contador6P = a;
-            contador7P = a;
+            //contador7P = a;
         }
     }
 
@@ -415,7 +442,7 @@ public class Productos_Vendedor {
             contador4P = contadorP + a;
             contador5P = contadorP + a;
             contador6P = contadorP + a;
-            contador7P = contadorP + a;
+            //  contador7P = contadorP + a;
             contadorP = contadorP + a;
         }
 
@@ -642,6 +669,10 @@ public class Productos_Vendedor {
         } catch (Exception ex) {
             System.out.println("El error es: " + ex);
         }
+
+    }
+
+    public void GenerarHistorial() {
 
     }
 
