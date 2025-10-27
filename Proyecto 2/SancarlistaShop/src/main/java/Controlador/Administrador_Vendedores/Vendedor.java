@@ -11,6 +11,7 @@ import static Controlador.Administrador_Vendedores.CargarA.h;
 import static Controlador.Administrador_Vendedores.CargarA.orden;
 import Vista.Modulo_Administrador.Módulo_Administración;
 import java.util.Objects;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -62,6 +63,7 @@ public class Vendedor {
         switch (codigo) {
             case "" -> {
                 System.out.println("El código no puede ser vacio");
+                JOptionPane.showMessageDialog(null, "El código no puede ser vacio");
                 break;
 
             }
@@ -76,6 +78,7 @@ public class Vendedor {
                         Usuario[contador - 1][0] = null;
                         contador = contador - 1;
                         System.out.println("El código ya existe");
+                        JOptionPane.showMessageDialog(null, "El código ya existe");
                         break;
                     } else {
                         System.out.println("Codigo guardado en matriz: " + Usuario[contador - 1][0] + "Comprobación: " + i);
@@ -103,6 +106,7 @@ public class Vendedor {
         switch (nombre) {
             case "" -> {
                 System.out.println("El nombre no puede ser vacio");
+                JOptionPane.showMessageDialog(null, "El nombre no puede ser vacio");
                 break;
 
             }
@@ -161,6 +165,7 @@ public class Vendedor {
         switch (contraseña) {
             case "" -> {
                 System.out.println("La contraseña no puede estar vacia");
+                JOptionPane.showMessageDialog(null, "La contraseña no puede ser vacio");
                 break;
 
             }
@@ -199,6 +204,7 @@ public class Vendedor {
             System.out.println("Todas las validaciones admitidas");
         } else {
             System.out.println("Un campo está mal, rellena la información de nuevo");
+            JOptionPane.showMessageDialog(null, "No se puede guardar un campo está mal rellenado");
             contador = contador5 - 1;
             Usuario[contador][0] = null;
 
@@ -380,11 +386,13 @@ public class Vendedor {
                         break;
                     } else {
                         System.out.println("El codigo no existe1");
+                        JOptionPane.showMessageDialog(null, "El codigo no existe");
                     }
 
                 }
             } else {
                 System.out.println("El codigo no puede ser null1");
+                JOptionPane.showMessageDialog(null, "El codigo no puede ser nullo");
 
             }
 
@@ -405,12 +413,14 @@ public class Vendedor {
                         break;
                     } else {
                         System.out.println("El codigo no existe2");
+                        JOptionPane.showMessageDialog(null, "El código no existe");
 
                     }
 
                 }
             } else {
                 System.out.println("El codigo no puede ser null2");
+                JOptionPane.showMessageDialog(null, "El código no puede ser vacio");
 
             }
         } catch (Exception ex) {
@@ -497,6 +507,7 @@ public class Vendedor {
                     break;
                 } else {
                     System.out.println("El codigo no existe");
+                    JOptionPane.showMessageDialog(null, "El código no existe");
                 }
 
             }

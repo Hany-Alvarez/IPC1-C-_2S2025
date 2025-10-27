@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Vista.Modulo_Administrador;
+
 /*
 Interfaz para MÓDULO ADMINISTRADOR
-*/
+ */
 import Vista.Modulo_Administrador.Producto.Eliminar_Producto;
 import Vista.Modulo_Administrador.Producto.Crear_Producto;
 import Vista.Modulo_Administrador.Producto.Actualizar_Producto;
@@ -64,6 +65,7 @@ public final class Módulo_Administración extends JFrame {
     JButton Eliminar;
 
     JButton casa;
+    JButton estu;
     JButton grafica;
     JPanel espacioGráfico;
 
@@ -102,6 +104,7 @@ public final class Módulo_Administración extends JFrame {
         Reportes();
         grafica();
         Ir_Casa();
+        Ir_Estudiante();
     }
 
     public void Vendedores() {
@@ -377,8 +380,7 @@ public final class Módulo_Administración extends JFrame {
         R_MásVendidos.setBackground(new Color(51, 51, 51));
         R_MásVendidos.setForeground(new Color(255, 255, 255));
         Reportes.add(R_MásVendidos);
-        
-        
+
 //REPORTES MENOS VENDIDOS--------------------------------------------
         R_MenosVendidos = new JButton("Productos menos vendidos");
         //Configuraciones de diseño
@@ -387,8 +389,7 @@ public final class Módulo_Administración extends JFrame {
         R_MenosVendidos.setBackground(new Color(51, 51, 51));
         R_MenosVendidos.setForeground(new Color(255, 255, 255));
         Reportes.add(R_MenosVendidos);
-        
-        
+
 //REPORTES INVENTARIO--------------------------------------------
         R_Inventario = new JButton("Inventario");
         //Configuraciones de diseño
@@ -397,7 +398,7 @@ public final class Módulo_Administración extends JFrame {
         R_Inventario.setBackground(new Color(51, 51, 51));
         R_Inventario.setForeground(new Color(255, 255, 255));
         Reportes.add(R_Inventario);
-        
+
 //REPORTES VENTAS VENDEDOR--------------------------------------------
         R_VentasVendedor = new JButton("Inventario");
         //Configuraciones de diseño
@@ -415,7 +416,7 @@ public final class Módulo_Administración extends JFrame {
         R_ClientesActivos.setBackground(new Color(51, 51, 51));
         R_ClientesActivos.setForeground(new Color(255, 255, 255));
         Reportes.add(R_ClientesActivos);
-        
+
 //REPORTES FINANCIERO--------------------------------------------
         R_Financiero = new JButton("Financiero");
         //Configuraciones de diseño
@@ -553,6 +554,31 @@ public final class Módulo_Administración extends JFrame {
         };
         ///Acciones
           casa.addActionListener(ircasa);//Se le agrega la acción
+
+    }
+
+    public void Ir_Estudiante() {
+        this.setLayout(null);
+        estu = new JButton("");
+        estu.setBounds(100, 0, 50, 50);
+        estu.setFont(new Font("Super Joyful", Font.CENTER_BASELINE, 15));//Esto es para el estilo de letra
+        estu.setBackground(new Color(255, 255, 255));//Color de fondo de boton
+        estu.setForeground(new Color(51, 51, 51));//color de la letra
+        estu.setIcon(new ImageIcon(new ImageIcon("images/casa.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        add(estu);
+
+        ///Escritura de cada acción 
+        ActionListener irestu = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,
+                        "Nombre:Hany Clara Jannette Alvarez Bulux\n"
+                        + "Curso: Introducción a la Programación y Computación 1\n"
+                        + "Estudiante de Ingiería en Sistemas");
+            }
+        };
+        ///Acciones
+          estu.addActionListener(irestu);//Se le agrega la acción
 
     }
 

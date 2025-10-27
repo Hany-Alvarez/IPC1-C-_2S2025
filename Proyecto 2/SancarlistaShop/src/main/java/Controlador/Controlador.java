@@ -15,6 +15,7 @@ import Vista.Módulo_Vendedor.Módulo_Vendedor;
 import static Vista.Módulo_Vendedor.Módulo_Vendedor.q;
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -70,6 +71,8 @@ public class Controlador {
             return true;
         }
         System.out.println("Código ó Contraseña Incorrectos, no se encontro en el sistema");
+                                JOptionPane.showMessageDialog(null, "No se encontro admin ");
+
         return false;
     }
 
@@ -78,6 +81,7 @@ public class Controlador {
         Módulo_Autenticación.visibilidad.setVisible(true);
         a.setVisible(false);
     }
+    
 
     //Método para validar entrada de Trabajador
     public void SeciónVendedor(String codigo, String contraseña) {
@@ -91,6 +95,7 @@ public class Controlador {
                     Módulo_Autenticación.visibilidad.setVisible(!true);
                     
                     G1=Usuario[i][1];//Guarda el vendedor que ingreso
+                    JOptionPane.showMessageDialog(null, "Vendedor encontrado ");
 
                 }
             }

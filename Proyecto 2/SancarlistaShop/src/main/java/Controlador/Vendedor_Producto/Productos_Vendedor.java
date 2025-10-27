@@ -428,7 +428,7 @@ public class Productos_Vendedor {
 
     }
 
-    public void CCCP(int a) {//crear-cargar-crear
+    public void CCCPV(int a) {//crear-cargar-crear
         System.out.println("contador: " + contadorP); //Hay que renombrar h
         System.out.println("suma: " + (hh));
         if (a == 0 || contadorP >= hh) {

@@ -6,7 +6,7 @@ package Vista.Módulo_Vendedor;
 
 /*
 Interfaz Base para las ventanas de MODULO VENDEDOR
-*/
+ */
 import Vista.Modulo_Administrador.Vendedor.Crear_Vendedor;
 import Vista.Modulo_Administrador.Vendedor.Eliminar_Vendedor;
 import Controlador.Administrador_Vendedores.CargarA;
@@ -42,13 +42,13 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author hanya
  */
-
 public final class Módulo_Vendedor extends JFrame {
 
     //Declaración de Variables
     public static Módulo_Vendedor q;
-     
+
     public static JTable tabla3;
+    public static JTable tabla4;
     JPanel Menu;
     public static JPanel Vendores;
     JPanel Productos;
@@ -82,7 +82,7 @@ public final class Módulo_Vendedor extends JFrame {
         Barra();
         BarraAccion();
         Vendedores();
-        Productos();
+        Clientes();
         Reportes();
 
         Ir_Casa();
@@ -91,7 +91,7 @@ public final class Módulo_Vendedor extends JFrame {
     public void Vendedores() {
         //Panel
         this.setLayout(null);//Permite dimensionarl el panel
-        
+
         Vendores = new JPanel();
         Vendores.setBackground(new Color(0, 204, 204));//Color
         Vendores.setBounds(50, 100, 849, 440);
@@ -156,7 +156,7 @@ public final class Módulo_Vendedor extends JFrame {
         //Filas
         Object[][] filas = {};
         //Columnas
-        String[] columnas = {"Código3", "Nombre", "Categoría", "Stock", "Acciones"};
+        String[] columnas = {"Código", "Nombre", "Categoría", "Stock", "Acciones"};
 
         //Crear Tabla
         tabla3 = new JTable(filas, columnas);
@@ -175,7 +175,7 @@ public final class Módulo_Vendedor extends JFrame {
 
     }
 
-    public void Productos() {
+    public void Clientes() {
         //Productos
         this.setLayout(null);//Permite dimensionarl el panel
         Productos = new JPanel();
@@ -183,6 +183,126 @@ public final class Módulo_Vendedor extends JFrame {
         Productos.setBounds(50, 100, 849, 440);
         add(Productos);//Agregar a la ventana general
         Productos.setVisible(false);
+
+//--------------------------------------------------------------------------------------
+        //Boton Crear
+        Productos.setLayout(null);
+        Crear = new JButton("Crear");
+        Crear.setBounds(570, 30, 120, 30);
+        Crear.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
+        Crear.setBackground(new Color(255, 255, 255));
+        Crear.setForeground(new Color(51, 51, 51));
+        Productos.add(Crear);//Agregando al panel de vendedores
+
+        ///Escritura de cada acción 
+        ActionListener abrir = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Crear_Cliente Ver = new Crear_Cliente("Crear Cliente");
+                Ver.setVisible(true);
+            }
+        };
+        ///Acciones
+          Crear.addActionListener(abrir);//Se le agrega la acción
+        //--------------------------------------------------------------------------------------       
+
+        //Boton Actualizar
+        Productos.setLayout(null);
+        Actualizar = new JButton();
+        Actualizar = new JButton("Actualizar");
+        Actualizar.setBounds(570, 70, 120, 30);
+        Actualizar.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
+        Actualizar.setBackground(new Color(255, 255, 255));
+        Actualizar.setForeground(new Color(51, 51, 51));
+        Productos.add(Actualizar);//Agregando al panel de vendedores
+
+        ///Escritura de cada acción 
+        ActionListener abrir2 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Actualizar_Vendedor Ver = new Actualizar_Vendedor("Update Cliente");
+                Ver.setVisible(true);
+            }
+        };
+        ///Acciones
+          Actualizar.addActionListener(abrir2);//Se le agrega la acción
+//--------------------------------------------------------------------------------------
+        //Boton Cargar
+        Productos.setLayout(null);
+        Cargar = new JButton();
+        Cargar = new JButton("Cargar");
+        Cargar.setBounds(710, 30, 120, 30);
+        Cargar.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
+        Cargar.setBackground(new Color(255, 255, 255));
+        Cargar.setForeground(new Color(51, 51, 51));
+        Productos.add(Cargar);//Agregando al panel de vendedores
+
+        ///Escritura de cada acción 
+        ActionListener abrir3 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                CargarA cargar = new CargarA();
+                try {
+                    cargar.Archivo(Productos);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Módulo_Vendedor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        ///Acciones
+          Cargar.addActionListener(abrir3);//Se le agrega la acción
+//--------------------------------------------------------------------------------------
+        //Boton Eliminar
+        Eliminar = new JButton();
+        Eliminar.setLayout(null);
+        Eliminar = new JButton();
+        Eliminar = new JButton("Eliminar");
+        Eliminar.setBounds(710, 70, 120, 30);
+        Eliminar.setFont(new Font("StialHati-Regular", Font.CENTER_BASELINE, 15));
+        Eliminar.setBackground(new Color(255, 255, 255));
+        Eliminar.setForeground(new Color(51, 51, 51));
+        Productos.add(Eliminar);//Agregando al panel de vendedores
+
+        ///Escritura de cada acción 
+        ActionListener abrir4 = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Eliminar_Vendedor Ver = new Eliminar_Vendedor("Delete Cliente");
+                Ver.setVisible(true);
+            }
+        };
+        ///Acciones
+          Eliminar.addActionListener(abrir4);//Se le agrega la acción
+//--------------------------------------------------------------------------------------
+        //Tabla de datos
+        //Panel donde ira
+        Productos.setLayout(null);
+        JPanel espacioTabla = new JPanel();
+        espacioTabla.setBackground(new Color(51, 153, 255));//Color
+        espacioTabla.setBounds(25, 20, 510, 400);
+        Productos.add(espacioTabla);
+
+        //Filas
+        Object[][] filas = {};
+        //Columnas
+        String[] columnas = {"Código", "Nombre", "Genero", "Fecha de Cumpleaños"};
+
+        //Crear Tabla
+        tabla4 = new JTable(filas, columnas);
+
+        //Modificar tamaño de tabla
+        tabla4.setRowHeight(50);
+        tabla4.getColumnModel().getColumn(3).setPreferredWidth(200);
+
+        //Agregar tabla a un Scroll 
+        JScrollPane scroll = new JScrollPane(tabla4);
+        scroll.setBounds(0, 0, 510, 400);
+
+        espacioTabla.setLayout(null);
+        espacioTabla.add(scroll);
+//--------------------------------------------------------------------------------------
+
     }
 
     private void Reportes() {
