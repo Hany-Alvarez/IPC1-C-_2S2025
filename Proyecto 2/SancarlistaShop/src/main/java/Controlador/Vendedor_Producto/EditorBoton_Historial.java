@@ -9,6 +9,9 @@ Controlador para darle estilo y funciones después del click al boton de la colu
  */
 import Controlador.Administrador_Productos.*;
 import static Controlador.Administrador_Productos.Productos.UsuarioP;
+import static Controlador.Vendedor_Producto.Productos_Vendedor.Historial;
+import Vista.Módulo_Vendedor.Módulo_Vendedor;
+import static Vista.Módulo_Vendedor.Módulo_Vendedor.Vendores;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -62,8 +65,11 @@ public class EditorBoton_Historial extends DefaultCellEditor {
     public Object getCellEditorValue() {
         try {
             if (click) {
+                
+                Guardar_Vendedor_Producto he = new Guardar_Vendedor_Producto();
+                
+                he.guardarHistorialCSV(Vendores, Historial);
 
-                JOptionPane.showMessageDialog(editarBoton, "Este stock se cargo el " + UsuarioP[table.getSelectedRow()][6] );
             }
 
             click = false;

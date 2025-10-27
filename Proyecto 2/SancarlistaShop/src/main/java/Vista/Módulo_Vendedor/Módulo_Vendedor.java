@@ -47,9 +47,10 @@ public final class Módulo_Vendedor extends JFrame {
 
     //Declaración de Variables
     public static Módulo_Vendedor q;
+     
     public static JTable tabla3;
     JPanel Menu;
-    JPanel Vendores;
+    public static JPanel Vendores;
     JPanel Productos;
     JPanel Reportes;
 
@@ -90,7 +91,7 @@ public final class Módulo_Vendedor extends JFrame {
     public void Vendedores() {
         //Panel
         this.setLayout(null);//Permite dimensionarl el panel
-
+        
         Vendores = new JPanel();
         Vendores.setBackground(new Color(0, 204, 204));//Color
         Vendores.setBounds(50, 100, 849, 440);

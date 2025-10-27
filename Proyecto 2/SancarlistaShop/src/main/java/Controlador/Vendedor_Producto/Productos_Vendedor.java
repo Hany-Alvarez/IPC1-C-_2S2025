@@ -36,7 +36,7 @@ public class Productos_Vendedor {
     private String buscarCodigoE;
     private String confirmados;//solo servira para la validación de nullos
 
-    public static String Historial[][] = new String[101][10]; //Para almacenar los productos
+    public static String Historial[][] = new String[101][4]; //Para almacenar los productos
     public static TableModel tmv;
     static int contadorP = 0;
     static int contador2P = 0;
