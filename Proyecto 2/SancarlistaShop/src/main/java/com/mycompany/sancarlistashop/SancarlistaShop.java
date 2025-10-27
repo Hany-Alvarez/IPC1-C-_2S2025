@@ -6,11 +6,7 @@ package com.mycompany.sancarlistashop;
 /*
 LA RAÍZ DE TODO EL PROYECTO
 */
-import Vista.Modulo_Administrador.Módulo_Administración;
 import Vista.Módulo_Autenticación;
-import Controlador.Controlador;
-import Vista.Modulo_Administrador.Vendedor.Crear_Vendedor;
-import Vista.Módulo_Vendedor.Módulo_Vendedor;
 
 /**
  *
